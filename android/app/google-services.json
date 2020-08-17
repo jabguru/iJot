@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "777445836697",
+    "firebase_url": "https://ijot-1da7a.firebaseio.com",
+    "project_id": "ijot-1da7a",
+    "storage_bucket": "ijot-1da7a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:777445836697:android:db2554d8b125f91ceaf508",
+        "android_client_info": {
+          "package_name": "com.jabguru.iJot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "777445836697-jr2oaaio13jhne94g0ltji0i3iuj7rjs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jabguru.iJot",
+            "certificate_hash": "f770dc5db5353fc5e035aaa951a13812a7eec3f8"
+          }
+        },
+        {
+          "client_id": "777445836697-chb3qgcamv92t6hpi7koldskg49m7s5n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArqSc7uTcVTLJOM5J-o5WAs8HhwnLQR2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "777445836697-chb3qgcamv92t6hpi7koldskg49m7s5n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
