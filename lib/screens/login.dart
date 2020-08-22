@@ -25,6 +25,15 @@ class _LoginState extends State<Login> {
 
   final _formKey = GlobalKey<FormState>();
 
+  _checkForUserItems() {
+    for (var i = 0; i < notesBox.length; i++) {
+      if (loggedInUserId == notesBox.getAt(i).ownerId) {
+        kUserItemsAvailable = true;
+      }
+    }
+    setState(() {});
+  }
+
   handleSignIn() async {
     final form = _formKey.currentState;
 
@@ -50,6 +59,9 @@ class _LoginState extends State<Login> {
           userBox = Hive.box('user');
           userBox.put('userId', userId);
 
+          await cloudToLocal();
+          await _checkForUserItems();
+
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => Notes()));
         }
@@ -70,8 +82,10 @@ class _LoginState extends State<Login> {
   @override
   void initState() {
     super.initState();
-
-    googleSignIn.onCurrentUserChanged.listen((account) {
+    googleSignIn.onCurrentUserChanged.listen((account) async {
+      setState(() {
+        _isLoading = true;
+      });
       final GoogleSignInAccount currentUser = googleSignIn.currentUser;
       String userId = currentUser.id;
 
@@ -81,10 +95,17 @@ class _LoginState extends State<Login> {
 
       userBox = Hive.box('user');
       userBox.put('userId', userId);
+      await cloudToLocal();
+      await _checkForUserItems();
 
+      setState(() {
+        _isLoading = false;
+      });
       Navigator.push(context, MaterialPageRoute(builder: (context) => Notes()));
     }, onError: (error) {
       print('Error Signing in: $error');
+      showErrorSnackbar(context,
+          message: 'Unable to Sign in with Google, try again.');
     });
   }
 

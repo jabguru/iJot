@@ -104,7 +104,7 @@ class _SingleNoteState extends State<SingleNote> {
               blurRadius: 4.0,
               offset: Offset(2, 2),
               color: Color(0x40000000),
-            )
+            ),
           ],
         ),
         child: Column(
@@ -171,23 +171,29 @@ class _SingleNoteState extends State<SingleNote> {
               ],
             ),
             Expanded(
-              child: TextFormField(
-                initialValue: _noteDetails,
-                expands: true,
-                maxLines: null,
-                minLines: null,
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Add Details...',
-                  hintStyle: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFFE5E5E5),
+              child: SingleChildScrollView(
+                reverse: true,
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.65,
+                  child: TextFormField(
+                    initialValue: _noteDetails,
+                    expands: true,
+                    maxLines: null,
+                    minLines: null,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Add Details...',
+                      hintStyle: TextStyle(
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFE5E5E5),
+                      ),
+                    ),
+                    onChanged: (value) {
+                      _noteDetails = value;
+                    },
                   ),
                 ),
-                onChanged: (value) {
-                  _noteDetails = value;
-                },
               ),
             ),
           ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:iJot/models/note.dart';
 import 'package:iJot/screens/splash_screen.dart';
@@ -17,6 +18,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays(
+      [SystemUiOverlay.bottom],
+    );
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Color(0xFFF6D4E0),
+      ),
+    );
     return MaterialApp(
       title: 'iJot',
       debugShowCheckedModeBanner: false,

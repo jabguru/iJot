@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     handleNavigation();
   }
 
-  checkForUserItems() {
+  _checkForUserItems() {
     for (var i = 0; i < notesBox.length; i++) {
       if (loggedInUserId == notesBox.getAt(i).ownerId) {
         kUserItemsAvailable = true;
@@ -41,10 +41,10 @@ class _SplashScreenState extends State<SplashScreen> {
     if (userId == null) {
       Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
     } else {
-      checkForUserItems();
       setState(() {
         loggedInUserId = userId;
       });
+      await _checkForUserItems();
       Navigator.push(context, MaterialPageRoute(builder: (context) => Notes()));
     }
   }
