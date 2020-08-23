@@ -174,7 +174,7 @@ class _SingleNoteState extends State<SingleNote> {
               child: SingleChildScrollView(
                 reverse: true,
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.65,
+                  height: MediaQuery.of(context).size.height * 0.67,
                   child: TextFormField(
                     initialValue: _noteDetails,
                     expands: true,

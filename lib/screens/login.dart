@@ -118,6 +118,7 @@ class _LoginState extends State<Login> {
       child: CustomScaffold(
           hasBars: false,
           title: 'Login',
+          shouldShrink: false,
           child: ModalProgressHUD(
             inAsyncCall: _isLoading,
             color: Theme.of(context).primaryColor,

@@ -11,12 +11,14 @@ class CustomScaffold extends StatefulWidget {
   final String title;
   final bool editMode;
   final Function onTap;
+  final bool shouldShrink;
   CustomScaffold({
     this.child,
     this.hasBars = true,
     @required this.title,
     this.editMode = false,
     this.onTap,
+    this.shouldShrink = true,
   });
 
   @override
@@ -42,7 +44,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomInset: true,
+        resizeToAvoidBottomInset: widget.shouldShrink,
         body: Stack(
           children: [
             Container(
