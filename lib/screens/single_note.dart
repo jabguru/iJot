@@ -7,6 +7,7 @@ import 'package:iJot/models/note.dart';
 import 'package:iJot/widgets/custom_scaffold.dart';
 import 'package:iJot/widgets/snackbar.dart';
 import 'package:uuid/uuid.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SingleNote extends StatefulWidget {
   final bool updateMode;
@@ -30,19 +31,22 @@ class _SingleNoteState extends State<SingleNote> {
 
   @override
   void initState() {
-    _noteCat = widget.updateMode ? widget.note.category : 'Uncategorized';
+    _noteCat = widget.updateMode
+        ? widget.note.category
+        : 'note_cat_uncategorized'.tr();
     _noteTitle = widget.updateMode ? widget.note.title : '';
     _noteDetails = widget.updateMode ? widget.note.details : '';
     super.initState();
   }
 
   var _categories = [
-    'Uncategorized',
-    'Study',
-    'Personal',
-    'Work',
-    'Todo',
+    'note_cat_uncategorized'.tr(),
+    'note_cat_study'.tr(),
+    'note_cat_personal'.tr(),
+    'note_cat_work'.tr(),
+    'note_cat_todo'.tr(),
   ];
+
   List<PopupMenuEntry> _buildPopUpMenuItems(BuildContext context) {
     return _categories
         .map(
@@ -90,7 +94,7 @@ class _SingleNoteState extends State<SingleNote> {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: widget.updateMode ? 'Edit' : 'New Note',
+      title: widget.updateMode ? 'note_edit'.tr() : 'note_new'.tr(),
       editMode: true,
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
@@ -119,7 +123,7 @@ class _SingleNoteState extends State<SingleNote> {
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.zero,
-                      hintText: 'Add Title...',
+                      hintText: 'note_add_title'.tr(),
                       hintStyle: TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
@@ -182,7 +186,7 @@ class _SingleNoteState extends State<SingleNote> {
                     minLines: null,
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Add Details...',
+                      hintText: 'note_add_details'.tr(),
                       hintStyle: TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
@@ -215,7 +219,8 @@ class _SingleNoteState extends State<SingleNote> {
           Navigator.pop(context);
         } else {
           showErrorSnackbar(context,
-              title: 'Add note', message: 'Note Must Have a Title');
+              title: 'note_add_note'.tr(),
+              message: 'note_add_note_message'.tr());
         }
       },
     );

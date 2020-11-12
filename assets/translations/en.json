@@ -1,0 +1,52 @@
+{
+
+    "email": "Email",
+    "password": "Password",
+    "sign_in": "Sign In",
+    "sign_up": "Sign Up",
+    "or": "OR",
+    "dont_have_an_account": "Don't have an account? ",
+    "already_have_an_account":"Already have an account? ",
+    "register":"Register",
+
+    "validation_email": "Please input email",
+    "validation_email_2":"Input a valid email!",
+    "validation_password": "Please input password",
+    "validation_password_2": "Password too short",
+
+
+    "notes":"Notes",
+    "no_notes_yet": "No Notes... Yet",
+    "sign_out": "Sign Out",
+
+
+    "note_edit": "Edit",
+    "note_new": "New Note",
+    "note_add_title": "Add Title...",
+    "note_add_details": "Add Details...",
+    "note_add_note": "Add note",
+    "note_add_note_message": "Note Must Have a Title",
+
+    "note_cat_uncategorized": "Uncategorized",
+    "note_cat_study": "Study",
+    "note_cat_personal": "Personal",
+    "note_cat_work": "Work",
+    "note_cat_todo": "Todo",
+
+
+    "delete_note": "Do you want to Delete this Note?",
+    "delete_note_undone": "This action cannot be undone",
+    "delete_cancel": "Cancel",
+    "delete": "Cancel",
+
+    "change_language":"Change Language",
+    "select_language":"Select Language",
+    "language_continue":"Continue",
+    "language_done":"Done",
+
+    "forgot_password": "Forgot Password?",
+    "reset_password_title": "Reset Password",
+    "reset" : "Reset"
+
+
+}

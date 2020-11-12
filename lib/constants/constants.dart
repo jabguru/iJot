@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 const kInputTextStyle = TextStyle(
   fontSize: 20.0,
@@ -8,3 +9,4 @@ const kInputTextStyle = TextStyle(
 const kCircularBorderRadius = 8.0;
 
 bool kUserItemsAvailable = false;
+var firstTimeBox = Hive.box('firstOpen');

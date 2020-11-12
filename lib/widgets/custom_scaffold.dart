@@ -3,18 +3,22 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:iJot/constants/constants.dart';
 import 'package:iJot/constants/firebase.dart';
+import 'package:iJot/screens/change_language.dart';
 import 'package:iJot/screens/splash_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class CustomScaffold extends StatefulWidget {
   final Widget child;
-  final bool hasBars;
+  final bool hasTopBars;
+  final bool hasBottomBars;
   final String title;
   final bool editMode;
   final Function onTap;
   final bool shouldShrink;
   CustomScaffold({
     this.child,
-    this.hasBars = true,
+    this.hasTopBars = true,
+    this.hasBottomBars = true,
     @required this.title,
     this.editMode = false,
     this.onTap,
@@ -60,13 +64,12 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                 colors: [
                   Color(0x80EEAAC2),
                   Color(0x80410E61),
-                  //- bug fixes
-                  //- multilanguage support
+                  // - bug fixes
+                  // - automatically sync notes from other devices without signing in and out
+                  // - multilanguage support
                   //- etc like that for playstore
                   // TODO: an avenue for snapping and adding to notes
-                  // TODO: add localization
-                  //TODO: MAKE FIXES FROM REVIEWS
-                  //TODO: automatically updating notes when logged in, incase i write a note in another device i wont need to log in and out of my own device. this would be done on load (main.dart or home)
+                  // TODO: add forgot password
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -76,7 +79,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                widget.hasBars
+                widget.hasTopBars
                     ? Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -90,29 +93,46 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                                   'assets/images/logo.png',
                                   height: 38.0,
                                 ),
-                                Container(
-                                  height: 36.0,
-                                  decoration: BoxDecoration(
-                                    color: Color(0x4D410E61),
-                                    borderRadius: BorderRadius.circular(
-                                        kCircularBorderRadius),
-                                  ),
-                                  child: FlatButton(
-                                    onPressed: () async {
-                                      await userBox.clear();
-                                      Navigator.push(
+                                Row(
+                                  children: [
+                                    Container(
+                                      height: 36.0,
+                                      decoration: BoxDecoration(
+                                        color: Color(0x4D410E61),
+                                        borderRadius: BorderRadius.circular(
+                                            kCircularBorderRadius),
+                                      ),
+                                      child: FlatButton(
+                                        onPressed: () async {
+                                          await userBox.clear();
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      SplashScreen()));
+                                        },
+                                        child: Text(
+                                          'sign_out'.tr(),
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16.0,
+                                          ),
+                                        ),
+                                        textColor: Colors.white,
+                                      ),
+                                    ),
+                                    SizedBox(width: 6.0),
+                                    GestureDetector(
+                                      onTap: () => Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  SplashScreen()));
-                                    },
-                                    child: Text('Sign Out',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16.0,
-                                        )),
-                                    textColor: Colors.white,
-                                  ),
+                                                  ChangeLanguage())),
+                                      child: Icon(Icons.language,
+                                          color:
+                                              Theme.of(context).primaryColor),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
@@ -132,7 +152,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                       )
                     : SizedBox.shrink(),
                 Expanded(child: widget.child),
-                widget.hasBars
+                widget.hasBottomBars
                     ? Stack(
                         alignment: Alignment.center,
                         children: [
@@ -151,9 +171,9 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                             ),
                           ),
                           AnimatedPositioned(
-                            duration: Duration(seconds: 1),
+                            duration: Duration(milliseconds: 700),
                             bottom: notAnimated ? 1.0 : 6.0,
-                            curve: Curves.easeInOut,
+                            curve: Curves.bounceInOut,
                             child: GestureDetector(
                               onTap: widget.onTap,
                               child: Container(

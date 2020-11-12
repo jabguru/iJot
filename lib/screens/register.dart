@@ -10,6 +10,7 @@ import 'package:iJot/widgets/custom_scaffold.dart';
 import 'package:iJot/widgets/progress.dart';
 import 'package:iJot/widgets/snackbar.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -64,8 +65,9 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: 'Sign Up',
-      hasBars: false,
+      title: 'register'.tr(),
+      hasTopBars: false,
+      hasBottomBars: false,
       child: ModalProgressHUD(
         inAsyncCall: _isLoading,
         color: Theme.of(context).primaryColor,
@@ -100,11 +102,11 @@ class _RegisterState extends State<Register> {
                               child: TextFormField(
                                 validator: (val) {
                                   if (val.trim().isEmpty) {
-                                    return 'Please input email';
+                                    return 'validation_email'.tr();
                                   } else if (!val.trim().contains(RegExp(
                                       r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)",
                                       caseSensitive: false))) {
-                                    return 'Input a valid email!';
+                                    return 'validation_email_2'.tr();
                                   } else {
                                     return null;
                                   }
@@ -113,7 +115,7 @@ class _RegisterState extends State<Register> {
                                 style: kInputTextStyle,
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
-                                  hintText: 'Email',
+                                  hintText: 'email'.tr(),
                                   filled: true,
                                   fillColor: Colors.white,
                                   border: InputBorder.none,
@@ -130,9 +132,9 @@ class _RegisterState extends State<Register> {
                               child: TextFormField(
                                 validator: (val) {
                                   if (val.trim().isEmpty) {
-                                    return 'Input a password';
+                                    return 'validation_password'.tr();
                                   } else if (val.trim().length < 6) {
-                                    return 'Password too short';
+                                    return 'validation_password_2'.tr();
                                   } else {
                                     return null;
                                   }
@@ -140,7 +142,7 @@ class _RegisterState extends State<Register> {
                                 onSaved: (value) => _passwordInput = value,
                                 style: kInputTextStyle,
                                 decoration: InputDecoration(
-                                  hintText: 'Password',
+                                  hintText: 'password'.tr(),
                                   filled: true,
                                   fillColor: Colors.white,
                                   border: InputBorder.none,
@@ -180,7 +182,7 @@ class _RegisterState extends State<Register> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    'Sign Up',
+                                    'sign_up'.tr(),
                                     style: TextStyle(
                                       fontSize: 20.0,
                                       color: Colors.white,
@@ -189,38 +191,6 @@ class _RegisterState extends State<Register> {
                                 ),
                               ),
                             ),
-                            // SizedBox(height: 8.0),
-                            // Text(
-                            //   'OR',
-                            //   style: TextStyle(
-                            //     color: Color(0x80FFFFFF),
-                            //     fontSize: 12.0,
-                            //   ),
-                            // ),
-                            // SizedBox(height: 8.0),
-                            // Container(
-                            //   height: 48.0,
-                            //   width: double.infinity,
-                            //   decoration: BoxDecoration(
-                            //     color: Colors.white,
-                            //     borderRadius: BorderRadius.circular(
-                            //         kCircularBorderRadius),
-                            //   ),
-                            //   child: Row(
-                            //     mainAxisAlignment: MainAxisAlignment.center,
-                            //     children: [
-                            //       Image.asset('assets/images/google-logo.png'),
-                            //       SizedBox(width: 8.0),
-                            //       Text(
-                            //         'Sign Up',
-                            //         style: TextStyle(
-                            //           fontSize: 20.0,
-                            //           color: Theme.of(context).primaryColor,
-                            //         ),
-                            //       ),
-                            //     ],
-                            //   ),
-                            // ),
                           ],
                         ),
                       ),
@@ -228,7 +198,7 @@ class _RegisterState extends State<Register> {
                       Column(
                         children: [
                           Text(
-                            'Already have an account?',
+                            'already_have_an_account'.tr(),
                             style: TextStyle(
                               fontSize: 15.0,
                               color: Colors.white,
@@ -242,7 +212,7 @@ class _RegisterState extends State<Register> {
                               ),
                             ),
                             child: Text(
-                              'Sign In',
+                              'sign_in'.tr(),
                               style: TextStyle(
                                 fontSize: 15.0,
                                 color: Colors.white,

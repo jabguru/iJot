@@ -7,6 +7,7 @@ import 'package:iJot/models/note.dart';
 import 'package:iJot/screens/single_note.dart';
 import 'package:iJot/widgets/custom_scaffold.dart';
 import 'package:iJot/widgets/note_container.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class Notes extends StatefulWidget {
   @override
@@ -14,11 +15,6 @@ class Notes extends StatefulWidget {
 }
 
 class _NotesState extends State<Notes> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
   Widget noContent() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -31,7 +27,7 @@ class _NotesState extends State<Notes> {
         )),
         SizedBox(height: 8.0),
         Text(
-          'No Notes... Yet',
+          'no_notes_yet'.tr(),
           style: TextStyle(
             color: Colors.white,
             fontSize: 24.0,
@@ -70,7 +66,7 @@ class _NotesState extends State<Notes> {
         return false;
       },
       child: CustomScaffold(
-        title: 'Notes',
+        title: 'notes'.tr(),
         child: _buildListView(),
         onTap: () {
           Navigator.push(

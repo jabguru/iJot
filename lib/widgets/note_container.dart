@@ -6,6 +6,7 @@ import 'package:iJot/constants/firebase.dart';
 import 'package:iJot/models/note.dart';
 import 'package:iJot/screens/single_note.dart';
 import 'package:intl/intl.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class NoteContainer extends StatefulWidget {
   final Note note;
@@ -25,7 +26,7 @@ class _NoteContainerState extends State<NoteContainer> {
             builder: (BuildContext context, StateSetter setState) {
               return AlertDialog(
                 title: Text(
-                  'Do you want to Delete this Note?',
+                  'delete_note'.tr(),
                   style: TextStyle(
                     color: Theme.of(context).primaryColor,
                     fontSize: 16.0,
@@ -35,7 +36,7 @@ class _NoteContainerState extends State<NoteContainer> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'This action cannot be undone',
+                      'delete_note_undone'.tr(),
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Color(0xFF444444),
@@ -57,7 +58,7 @@ class _NoteContainerState extends State<NoteContainer> {
                                   BorderRadius.circular(kCircularBorderRadius),
                             ),
                             child: Text(
-                              'Cancel',
+                              'delete_cancel'.tr(),
                               style: TextStyle(
                                 color: Theme.of(context).primaryColor,
                                 fontSize: 16.0,
@@ -82,7 +83,7 @@ class _NoteContainerState extends State<NoteContainer> {
                               border: Border.all(color: Colors.red),
                             ),
                             child: Text(
-                              'Delete',
+                              'delete'.tr(),
                               style: TextStyle(
                                 color: Colors.red,
                                 fontSize: 16.0,
@@ -102,8 +103,6 @@ class _NoteContainerState extends State<NoteContainer> {
 
   @override
   Widget build(BuildContext context) {
-    var formattedDate =
-        DateFormat('d MMM y').format(DateTime.parse(widget.note.dateTime));
     return GestureDetector(
       onTap: () => Navigator.push(
         context,
@@ -197,7 +196,10 @@ class _NoteContainerState extends State<NoteContainer> {
                           ),
                         ),
                         Text(
-                          formattedDate,
+                          DateFormat(
+                            'd MMM y',
+                            context.locale.languageCode,
+                          ).format(DateTime.parse(widget.note.dateTime)),
                           style: TextStyle(
                             fontSize: 12.0,
                           ),
