@@ -49,7 +49,7 @@ class _LoginState extends State<Login> {
           password: _passwordInput.trim(),
         );
         if (authUser != null) {
-          final FirebaseUser currentUser = await fireBaseAuth.currentUser();
+          final User currentUser = fireBaseAuth.currentUser;
           String userId = currentUser.uid;
 
           setState(() {

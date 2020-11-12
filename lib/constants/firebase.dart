@@ -8,16 +8,12 @@ final fireBaseAuth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
 String loggedInUserId;
 var userBox = Hive.box('user');
-final notesRef = Firestore.instance.collection('notes');
+final notesRef = FirebaseFirestore.instance.collection('notes');
 final notesBox = Hive.box<Note>('notes');
 
 syncNote(Note note) {
   try {
-    notesRef
-        .document(loggedInUserId)
-        .collection('userNotes')
-        .document(note.id)
-        .setData({
+    notesRef.doc(loggedInUserId).collection('userNotes').doc(note.id).set({
       'id': note.id,
       'title': note.title,
       'details': note.details,
@@ -32,11 +28,7 @@ syncNote(Note note) {
 
 updateNote(Note note) {
   try {
-    notesRef
-        .document(loggedInUserId)
-        .collection('userNotes')
-        .document(note.id)
-        .updateData({
+    notesRef.doc(loggedInUserId).collection('userNotes').doc(note.id).update({
       'title': note.title,
       'details': note.details,
       'category': note.category,
@@ -50,9 +42,9 @@ updateNote(Note note) {
 deleteNote(Note note) {
   try {
     notesRef
-        .document(loggedInUserId)
+        .doc(loggedInUserId)
         .collection('userNotes')
-        .document(note.id)
+        .doc(note.id)
         .get()
         .then((doc) {
       if (doc.exists) {
@@ -67,12 +59,12 @@ deleteNote(Note note) {
 cloudToLocal() async {
   try {
     QuerySnapshot snapshot = await notesRef
-        .document(loggedInUserId)
+        .doc(loggedInUserId)
         .collection('userNotes')
         .orderBy('dateTime')
-        .getDocuments();
+        .get();
 
-    snapshot.documents.forEach((doc) {
+    snapshot.docs.forEach((doc) {
       bool isContained = false;
       Note cloudNote = Note.fromDocument(doc);
       for (var i = 0; i < notesBox.length; i++) {

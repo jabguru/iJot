@@ -38,7 +38,7 @@ class _RegisterState extends State<Register> {
         final newUser = await fireBaseAuth.createUserWithEmailAndPassword(
             email: _emailInput.trim(), password: _passwordInput.trim());
         if (newUser != null) {
-          final FirebaseUser currentUser = await fireBaseAuth.currentUser();
+          final User currentUser = fireBaseAuth.currentUser;
           String userId = currentUser.uid;
 
           setState(() {
