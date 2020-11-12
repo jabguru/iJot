@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>777445836697-u2l83kqj1h6tccgovnmd3nskjqpidpus.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.777445836697-u2l83kqj1h6tccgovnmd3nskjqpidpus</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>777445836697-hbqgu9nq4kc7e0ahti1uf4i7p0is7n39.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBtPSYH5Xcp4g-9soIT5N-G4a2fAD0DBXs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>777445836697</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.jabguru.iJot</string>
+	<key>PROJECT_ID</key>
+	<string>ijot-1da7a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ijot-1da7a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:777445836697:ios:ba9dc98ce345f5ebeaf508</string>
+	<key>DATABASE_URL</key>
+	<string>https://ijot-1da7a.firebaseio.com</string>
+</dict>
+</plist>

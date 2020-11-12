@@ -60,6 +60,13 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                 colors: [
                   Color(0x80EEAAC2),
                   Color(0x80410E61),
+                  //- bug fixes
+                  //- multilanguage support
+                  //- etc like that for playstore
+                  // TODO: an avenue for snapping and adding to notes
+                  // TODO: add localization
+                  //TODO: MAKE FIXES FROM REVIEWS
+                  //TODO: automatically updating notes when logged in, incase i write a note in another device i wont need to log in and out of my own device. this would be done on load (main.dart or home)
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,

@@ -147,7 +147,6 @@ class _LoginState extends State<Login> {
                           SizedBox(height: 55.0),
                           Form(
                             key: _formKey,
-                            autovalidate: true,
                             child: Column(
                               children: [
                                 ClipRRect(

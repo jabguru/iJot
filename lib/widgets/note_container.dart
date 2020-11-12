@@ -151,13 +151,18 @@ class _NoteContainerState extends State<NoteContainer> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              widget.note.title,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0,
+                            Expanded(
+                              child: Text(
+                                widget.note.title,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.0,
+                                ),
                               ),
                             ),
+                            SizedBox(width: 6.0),
                             GestureDetector(
                               onTap: () => _showDeleteModal(context),
                               child: Image.asset(

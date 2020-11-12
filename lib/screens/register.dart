@@ -92,7 +92,6 @@ class _RegisterState extends State<Register> {
                       SizedBox(height: 55.0),
                       Form(
                         key: _formKey,
-                        autovalidate: true,
                         child: Column(
                           children: [
                             ClipRRect(
