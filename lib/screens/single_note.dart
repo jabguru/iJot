@@ -157,29 +157,24 @@ class _SingleNoteState extends State<SingleNote> {
               ],
             ),
             Expanded(
-              child: SingleChildScrollView(
-                reverse: true,
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.65,
-                  child: TextFormField(
-                    initialValue: _noteDetails,
-                    expands: true,
-                    maxLines: null,
-                    minLines: null,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'note_add_details'.tr(),
-                      hintStyle: TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFFE5E5E5),
-                      ),
-                    ),
-                    onChanged: (value) {
-                      _noteDetails = value;
-                    },
+              child: TextFormField(
+                initialValue: _noteDetails,
+                expands: true,
+                maxLines: null,
+                minLines: null,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.zero,
+                  hintText: 'note_add_details'.tr(),
+                  hintStyle: TextStyle(
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFE5E5E5),
                   ),
                 ),
+                onChanged: (value) {
+                  _noteDetails = value;
+                },
               ),
             ),
           ],

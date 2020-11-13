@@ -22,12 +22,14 @@ class FirebaseMethods {
 
   updateNote(Note note) {
     try {
-      notesRef.doc(loggedInUserId).collection('userNotes').doc(note.id).update({
-        'title': note.title,
-        'details': note.details,
-        'category': note.category,
-        'dateTime': DateTime.parse(note.dateTime),
-      });
+      notesRef.doc(loggedInUserId).collection('userNotes').doc(note.id).update(
+        {
+          'title': note.title,
+          'details': note.details,
+          'category': note.category,
+          'dateTime': DateTime.parse(note.dateTime),
+        },
+      );
     } catch (e) {
       print(e.toString());
     }
