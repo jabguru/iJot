@@ -56,7 +56,7 @@ class _LoginState extends State<Login> {
           await FirebaseMethods().cloudToLocal();
           await HiveMethods().checkForUserItems();
 
-          Navigator.push(
+          Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => Notes()));
         }
       } catch (e) {
@@ -99,7 +99,8 @@ class _LoginState extends State<Login> {
       setState(() {
         _isLoading = false;
       });
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Notes()));
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => Notes()));
     }, onError: (error) {
       print('Error Signing in: $error');
       showErrorSnackbar(context,

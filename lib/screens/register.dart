@@ -46,7 +46,7 @@ class _RegisterState extends State<Register> {
 
           userBox.put('userId', userId);
 
-          Navigator.push(
+          Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => Notes()));
         }
       } catch (e) {
