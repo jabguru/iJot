@@ -99,7 +99,7 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
                       onTap: widget.isFirstOpen
                           ? () {
                               firstTimeBox.add('opened');
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => Login()));
