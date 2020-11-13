@@ -28,12 +28,13 @@
   "delete_note": "Voulez-vous supprimer cette note?",
   "delete_note_undone": "Cette action ne peut pas être annulée",
   "delete_cancel": "Annuler",
-  "delete": "Annuler",
+  "delete": "Supprimer",
   "change_language": "Changer de langue",
   "select_language": "Choisir la langue",
   "language_continue": "Continuer",
   "language_done": "Terminé",
   "forgot_password": "Mot de passe oublié?",
   "reset_password_title": "réinitialiser le mot de passe",
-  "reset": "Réinitialiser"
+  "reset": "Réinitialiser",
+  "password_reset_successful": "Le lien de réinitialisation du mot de passe a été envoyé avec succès"
 }

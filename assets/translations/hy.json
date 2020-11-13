@@ -28,12 +28,13 @@
   "delete_note": "Անկանու՞մ եք ջնջել այս նշումը:",
   "delete_note_undone": "Այս գործողությունը չի կարող հետարկվել",
   "delete_cancel": "Չեղարկել",
-  "delete": "Չեղարկել",
+  "delete": "Նջել",
   "change_language": "Փոխել լեզուն",
   "select_language": "Ընտրել լեզուն",
   "language_continue": "Շարունակել",
   "language_done": "Կատարած",
   "forgot_password": "Մոռացել եք գաղտնաբառը?",
   "reset_password_title": "Վերականգնել գաղտնաբառը",
-  "reset": "Վերականգնել"
+  "reset": "Վերականգնել",
+  "password_reset_successful": "Գաղտնաբառի վերականգնման հղումը հաջողությամբ ուղարկվեց"
 }

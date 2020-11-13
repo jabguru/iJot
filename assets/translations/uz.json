@@ -28,12 +28,13 @@
   "delete_note": "Ushbu eslatmani o'chirmoqchimisiz?",
   "delete_note_undone": "Ushbu amalni qaytarib bo'lmaydi",
   "delete_cancel": "Bekor qilish",
-  "delete": "Bekor qilish",
+  "delete": "O'chirish",
   "change_language": "Tilni o'zgartirish",
   "select_language": "Tilni tanlang",
   "language_continue": "Davom eting",
   "language_done": "Bajarildi",
   "forgot_password": "Parolni unutdingizmi?",
   "reset_password_title": "Parolni tiklash",
-  "reset": "Qayta o'rnatish"
+  "reset": "Qayta o'rnatish",
+  "password_reset_successful": "Parolni tiklash havolasi muvaffaqiyatli yuborildi"
 }

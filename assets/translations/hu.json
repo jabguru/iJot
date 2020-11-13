@@ -28,12 +28,13 @@
   "delete_note": "Törli ezt a jegyzetet?",
   "delete_note_undone": "Ez a művelet nem visszavonható",
   "delete_cancel": "Megszünteti",
-  "delete": "Megszünteti",
+  "delete": "Töröl",
   "change_language": "Válts nyelvet",
   "select_language": "Válasszon nyelvet",
   "language_continue": "Folytatni",
   "language_done": "Kész",
   "forgot_password": "Elfelejtette a jelszavát?",
   "reset_password_title": "Jelszó visszaállítása",
-  "reset": "Visszaállítás"
+  "reset": "Visszaállítás",
+  "password_reset_successful": "A jelszó-visszaállító linket sikeresen elküldtük"
 }

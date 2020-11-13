@@ -28,12 +28,13 @@
   "delete_note": "Ingabe ufuna ukususa le Nothi?",
   "delete_note_undone": "Lesi senzo asikwazi ukuhlehliswa",
   "delete_cancel": "Khansela",
-  "delete": "Khansela",
+  "delete": "Susa",
   "change_language": "Shintsha Ulimi",
   "select_language": "Khetha Ulimi",
   "language_continue": "Qhubeka",
   "language_done": "Kwenziwe",
   "forgot_password": "Ukhohlwe iphasiwedi?",
   "reset_password_title": "Setha kabusha iphasiwedi",
-  "reset": "Setha kabusha"
+  "reset": "Setha kabusha",
+  "password_reset_successful": "Isixhumanisi sokusetha kabusha iphasiwedi sithunyelwe ngempumelelo"
 }

@@ -32,12 +32,12 @@ void showSuccessSnackbar(BuildContext context, {String title, String message}) {
     borderRadius: 15.0,
     title: title,
     message: message,
-    backgroundColor: Theme.of(context).accentColor,
+    backgroundColor: Theme.of(context).primaryColor.withOpacity(0.9),
     icon: Icon(
       Icons.check_circle,
-      color: Colors.green,
+      color: Colors.white,
     ),
-    duration: Duration(seconds: 2),
+    duration: Duration(seconds: 3),
   )..show(context);
 }
 

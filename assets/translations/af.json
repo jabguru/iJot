@@ -28,12 +28,13 @@
   "delete_note": "Wil u hierdie nota verwyder?",
   "delete_note_undone": "Hierdie handeling kan nie ongedaan gemaak word nie",
   "delete_cancel": "Kanselleer",
-  "delete": "Kanselleer",
+  "delete": "Vee uit",
   "change_language": "Verander taal",
   "select_language": "Kies taal",
   "language_continue": "Aanhou",
   "language_done": "Klaar",
   "forgot_password": "Wagwoord vergeet?",
   "reset_password_title": "Herstel wagwoord",
-  "reset": "Stel terug"
+  "reset": "Stel terug",
+  "password_reset_successful": "Skakel vir herstel van wagwoord is suksesvol gestuur"
 }

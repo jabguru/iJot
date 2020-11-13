@@ -28,12 +28,13 @@
   "delete_note": "के तपाइँ यो नोट हटाउन चाहानुहुन्छ?",
   "delete_note_undone": "यो कार्य पूर्ववत गर्न सकिदैन",
   "delete_cancel": "रद्द गर्नुहोस्",
-  "delete": "रद्द गर्नुहोस्",
+  "delete": "मेटाउन",
   "change_language": "भाषा परिवर्तन गर्नुहोस्",
   "select_language": "भाषा छनोट गर्नुस",
   "language_continue": "जारी राख्नुहोस्",
   "language_done": "भयो",
   "forgot_password": "पासवर्ड भुल्नु भयो?",
   "reset_password_title": "पासवर्ड रिसेट",
-  "reset": "रिसेट गर्नुहोस्"
+  "reset": "रिसेट गर्नुहोस्",
+  "password_reset_successful": "पासवर्ड रीसेट लिंक सफलतापूर्वक पठाइएको छ"
 }

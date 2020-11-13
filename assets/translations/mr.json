@@ -28,12 +28,13 @@
   "delete_note": "आपण ही टीप हटवू इच्छिता?",
   "delete_note_undone": "ही क्रिया पूर्ववत करणे शक्य नाही",
   "delete_cancel": "रद्द करा",
-  "delete": "रद्द करा",
+  "delete": "हटवा",
   "change_language": "भाषा बदला",
   "select_language": "भाषा निवडा",
   "language_continue": "सुरू",
   "language_done": "पूर्ण झाले",
   "forgot_password": "संकेतशब्द विसरलात?",
   "reset_password_title": "संकेतशब्द रीसेट करा",
-  "reset": "रीसेट करा"
+  "reset": "रीसेट करा",
+  "password_reset_successful": "संकेतशब्द रीसेट दुवा यशस्वीरित्या पाठविला गेला आहे"
 }

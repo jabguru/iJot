@@ -28,12 +28,13 @@
   "delete_note": "هل تريد حذف هذه الملاحظة؟",
   "delete_note_undone": "لا يمكن التراجع عن هذا الإجراء",
   "delete_cancel": "إلغاء",
-  "delete": "إلغاء",
+  "delete": "حذف",
   "change_language": "تغيير اللغة",
   "select_language": "اختار اللغة",
   "language_continue": "استمر",
   "language_done": "منجز",
   "forgot_password": "هل نسيت كلمة المرور؟",
   "reset_password_title": "إعادة تعيين كلمة المرور",
-  "reset": "إعادة تعيين"
+  "reset": "إعادة تعيين",
+  "password_reset_successful": "تم إرسال رابط إعادة تعيين كلمة المرور بنجاح"
 }

@@ -28,12 +28,13 @@
   "delete_note": "Bạn có muốn xóa Ghi chú này không?",
   "delete_note_undone": "Hành động này không thể được hoàn tác",
   "delete_cancel": "Huỷ bỏ",
-  "delete": "Huỷ bỏ",
+  "delete": "Xóa bỏ",
   "change_language": "Thay đổi ngôn ngữ",
   "select_language": "Chọn ngôn ngữ",
   "language_continue": "Tiếp tục",
   "language_done": "Làm xong",
   "forgot_password": "Quên mật khẩu?",
   "reset_password_title": "Đặt lại mật khẩu",
-  "reset": "Cài lại"
+  "reset": "Cài lại",
+  "password_reset_successful": "Liên kết đặt lại mật khẩu đã được gửi thành công"
 }

@@ -1,8 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:iJot/constants/constants.dart';
-import 'package:iJot/constants/firebase.dart';
+import 'package:iJot/constants/hive.dart';
 import 'package:iJot/screens/change_language.dart';
 import 'package:iJot/screens/splash_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -60,20 +59,14 @@ class _CustomScaffoldState extends State<CustomScaffold> {
             width: double.infinity,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Color(0x80EEAAC2),
-                  Color(0x80410E61),
-                  // - bug fixes
-                  // - automatically sync notes from other devices without signing in and out
-                  // - multilanguage support
-                  //- etc like that for playstore
-                  // TODO: an avenue for snapping and adding to notes
-                  // TODO: add forgot password
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
+              gradient: kLinearGradient,
+              // - bug fixes
+              // - automatically sync notes from other devices without signing in and out
+              // - multilanguage support
+              // - enabled Password reset
+              // - etc like that for playstore
+              // TODO: an avenue for snapping and adding to notes
+              // TODO: UPDATE ALL NOTES WITH CURRENT LANGUAGE CATEGORY AFTER LANGUAGE CHANGE
               color: Colors.white,
             ),
             child: Column(
@@ -138,7 +131,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: 16.0),
+                            padding: EdgeInsets.only(left: 16.0, bottom: 6.0),
                             child: Text(
                               widget.title,
                               style: TextStyle(

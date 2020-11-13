@@ -28,12 +28,13 @@
   "delete_note": "Та энэ тэмдэглэлийг устгах уу?",
   "delete_note_undone": "Энэ үйлдлийг буцаах боломжгүй",
   "delete_cancel": "Цуцлах",
-  "delete": "Цуцлах",
+  "delete": "Устгах",
   "change_language": "Хэл өөрчлөх",
   "select_language": "Хэл сонгох",
   "language_continue": "Үргэлжлүүлэх",
   "language_done": "Дууссан",
   "forgot_password": "Нууц үгээ мартсан?",
   "reset_password_title": "Нууц үгээ анхны байдалд нь оруулж",
-  "reset": "Дахин тохируулах"
+  "reset": "Дахин тохируулах",
+  "password_reset_successful": "Нууц үгийг шинэчлэх линк амжилттай илгээгдлээ"
 }

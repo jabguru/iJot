@@ -28,12 +28,13 @@
   "delete_note": "Je! Unataka Kufuta Ujumbe huu?",
   "delete_note_undone": "Kitendo hiki hakiwezi kutenduliwa",
   "delete_cancel": "Ghairi",
-  "delete": "Ghairi",
+  "delete": "Futa",
   "change_language": "Badilisha Lugha",
   "select_language": "Chagua Lugha",
   "language_continue": "Endelea",
   "language_done": "Imefanywa",
   "forgot_password": "Umesahau nywila?",
   "reset_password_title": "Weka upya Nenosiri",
-  "reset": "Weka upya"
+  "reset": "Weka upya",
+  "password_reset_successful": "Kiungo cha kuweka upya nenosiri kimetumwa kwa mafanikio"
 }

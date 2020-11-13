@@ -28,12 +28,13 @@
   "delete_note": "Bu qeydi silmək istəyirsiniz?",
   "delete_note_undone": "Bu əməliyyat geri qaytarıla bilməz",
   "delete_cancel": "Ləğv et",
-  "delete": "Ləğv et",
+  "delete": "Sil",
   "change_language": "Dili dəyişdirin",
   "select_language": "Dil seçin",
   "language_continue": "Davam edin",
   "language_done": "Bitdi",
   "forgot_password": "Şifrəni unutmusunuz?",
   "reset_password_title": "Parolu sıfırlamak",
-  "reset": "Sıfırla"
+  "reset": "Sıfırla",
+  "password_reset_successful": "Parol sıfırlama linki uğurla göndərildi"
 }

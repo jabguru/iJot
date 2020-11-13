@@ -28,12 +28,13 @@
   "delete_note": "Искате ли да изтриете тази бележка?",
   "delete_note_undone": "Това действие не може да бъде отменено",
   "delete_cancel": "Отказ",
-  "delete": "Отказ",
+  "delete": "Изтрий",
   "change_language": "Смени езика",
   "select_language": "Избери език",
   "language_continue": "продължи",
   "language_done": "Свършен",
   "forgot_password": "Забравена парола?",
   "reset_password_title": "Нулиране на паролата",
-  "reset": "Нулиране"
+  "reset": "Нулиране",
+  "password_reset_successful": "Връзката за нулиране на паролата е изпратена успешно"
 }

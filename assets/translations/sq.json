@@ -28,12 +28,13 @@
   "delete_note": "Dëshironi ta fshini këtë shënim?",
   "delete_note_undone": "Ky veprim nuk mund të zhbëhet",
   "delete_cancel": "Anulo",
-  "delete": "Anulo",
+  "delete": "Fshij",
   "change_language": "Ndrysho gjuhën",
   "select_language": "Zgjidh gjuhen",
   "language_continue": "Vazhdoni",
   "language_done": "Bërë",
   "forgot_password": "Keni harruar fjalëkalimin?",
   "reset_password_title": "Rivendosni fjalëkalimin",
-  "reset": "Rivendos"
+  "reset": "Rivendos",
+  "password_reset_successful": "Lidhja e rivendosjes së fjalëkalimit është dërguar me sukses"
 }

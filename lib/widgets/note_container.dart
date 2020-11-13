@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:iJot/constants/category.dart';
 import 'package:iJot/constants/constants.dart';
-import 'package:iJot/constants/firebase.dart';
+import 'package:iJot/methods/hive.dart';
 import 'package:iJot/models/note.dart';
 import 'package:iJot/screens/single_note.dart';
 import 'package:intl/intl.dart';
@@ -68,9 +67,10 @@ class _NoteContainerState extends State<NoteContainer> {
                         ),
                         GestureDetector(
                           onTap: () async {
-                            final noteBox = Hive.box<Note>('notes');
-                            noteBox.deleteAt(widget.noteIndex);
-                            deleteNote(widget.note);
+                            HiveMethods().deleteNote(
+                              note: widget.note,
+                              index: widget.noteIndex,
+                            );
                             Navigator.pop(context);
                           },
                           child: Container(

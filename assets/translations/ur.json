@@ -28,12 +28,13 @@
   "delete_note": "کیا آپ یہ نوٹ حذف کرنا چاہتے ہیں؟",
   "delete_note_undone": "اس کارروائی کو کالعدم نہیں کیا جاسکتا",
   "delete_cancel": "منسوخ کریں",
-  "delete": "منسوخ کریں",
+  "delete": "حذف کریں",
   "change_language": "زبان تبدیل کریں",
   "select_language": "زبان منتخب کریں",
   "language_continue": "جاری رہے",
   "language_done": "ہو گیا",
   "forgot_password": "پاسورڈ بھول گے؟",
   "reset_password_title": "پاس ورڈ ری سیٹ",
-  "reset": "ری سیٹ کریں"
+  "reset": "ری سیٹ کریں",
+  "password_reset_successful": "پاس ورڈ دوبارہ ترتیب دینے والا لنک کامیابی کے ساتھ بھیج دیا گیا ہے"
 }

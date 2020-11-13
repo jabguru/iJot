@@ -28,12 +28,13 @@
   "delete_note": "ایا تاسو غواړئ دا یادداشت حذف کړئ؟",
   "delete_note_undone": "دا کړنه بیرته نشي ترسره کیدلی",
   "delete_cancel": "لغوه کول",
-  "delete": "لغوه کول",
+  "delete": "ړنګول",
   "change_language": "ژبه بدل کړئ",
   "select_language": "ژبه غوره کړئ",
   "language_continue": "دوام ورکړئ",
   "language_done": "وشو",
   "forgot_password": "خپل پټ نوم درڅخه هیر دی؟",
   "reset_password_title": "شفر بیا جوړول",
-  "reset": "بیا تنظیمول"
+  "reset": "بیا تنظیمول",
+  "password_reset_successful": "د رمز له سره تنظیم کولو لینک په بریالیتوب سره استول شوی دی"
 }

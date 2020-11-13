@@ -28,12 +28,13 @@
   "delete_note": "Ohar hau ezabatu nahi duzu?",
   "delete_note_undone": "Ekintza hau ezin da desegin",
   "delete_cancel": "Utzi",
-  "delete": "Utzi",
+  "delete": "Ezabatu",
   "change_language": "Aldatu hizkuntza",
   "select_language": "Aukeratu hizkuntza",
   "language_continue": "Jarraitu",
   "language_done": "Eginda",
   "forgot_password": "Pasahitza ahaztua?",
   "reset_password_title": "Pasahitza berrezarri",
-  "reset": "Berrezarri"
+  "reset": "Berrezarri",
+  "password_reset_successful": "Pasahitza berrezartzeko esteka behar bezala bidali da"
 }

@@ -28,12 +28,13 @@
   "delete_note": "Вы хотите удалить эту заметку?",
   "delete_note_undone": "Это действие не может быть отменено",
   "delete_cancel": "Отмена",
-  "delete": "Отмена",
+  "delete": "удалять",
   "change_language": "Изменить язык",
   "select_language": "Выбрать язык",
   "language_continue": "Продолжать",
   "language_done": "Выполнено",
   "forgot_password": "Забыл пароль?",
   "reset_password_title": "Сброс пароля",
-  "reset": "Сброс настроек"
+  "reset": "Сброс настроек",
+  "password_reset_successful": "Ссылка для сброса пароля была успешно отправлена"
 }

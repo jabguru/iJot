@@ -28,12 +28,13 @@
   "delete_note": "Voleu suprimir aquesta nota?",
   "delete_note_undone": "Aquesta acció no es pot desfer",
   "delete_cancel": "Cancel · lar",
-  "delete": "Cancel · lar",
+  "delete": "Suprimeix",
   "change_language": "Canviar d'idioma",
   "select_language": "Seleccionar idioma",
   "language_continue": "Continua",
   "language_done": "Fet",
   "forgot_password": "Has oblidat la contrasenya?",
   "reset_password_title": "Restablir la contrasenya",
-  "reset": "Restableix"
+  "reset": "Restableix",
+  "password_reset_successful": "L'enllaç de restabliment de la contrasenya s'ha enviat correctament"
 }

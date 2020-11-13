@@ -28,12 +28,13 @@
   "delete_note": "คุณต้องการลบบันทึกนี้หรือไม่",
   "delete_note_undone": "การดำเนินการนี้ไม่สามารถยกเลิกได้",
   "delete_cancel": "ยกเลิก",
-  "delete": "ยกเลิก",
+  "delete": "ลบ",
   "change_language": "เปลี่ยนภาษา",
   "select_language": "เลือกภาษา",
   "language_continue": "ดำเนินการต่อ",
   "language_done": "เสร็จแล้ว",
   "forgot_password": "ลืมรหัสผ่าน?",
   "reset_password_title": "รีเซ็ตรหัสผ่าน",
-  "reset": "รีเซ็ต"
+  "reset": "รีเซ็ต",
+  "password_reset_successful": "ส่งลิงก์รีเซ็ตรหัสผ่านเรียบร้อยแล้ว"
 }

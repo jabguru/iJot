@@ -28,12 +28,13 @@
   "delete_note": "გსურთ წაშალოთ ეს შენიშვნა?",
   "delete_note_undone": "ამ მოქმედების გაუქმება შეუძლებელია",
   "delete_cancel": "გაუქმება",
-  "delete": "გაუქმება",
+  "delete": "წაშლა",
   "change_language": "Ენის შეცვლა",
   "select_language": "Აირჩიეთ ენა",
   "language_continue": "გაგრძელება",
   "language_done": "შესრულებულია",
   "forgot_password": "Დაგავიწყდა შენი პაროლი?",
   "reset_password_title": "პაროლის გადაყენება",
-  "reset": "გადატვირთვის"
+  "reset": "გადატვირთვის",
+  "password_reset_successful": "პაროლის გადატვირთვის ბმული წარმატებით გაიგზავნა"
 }

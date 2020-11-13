@@ -28,12 +28,13 @@
   "delete_note": "Doriți să ștergeți această notă?",
   "delete_note_undone": "Această acțiune nu poate fi anulată",
   "delete_cancel": "Anulare",
-  "delete": "Anulare",
+  "delete": "Șterge",
   "change_language": "Schimbați limba",
   "select_language": "Selecteaza limba",
   "language_continue": "Continua",
   "language_done": "Terminat",
   "forgot_password": "Ați uitat parola?",
   "reset_password_title": "Reseteaza parola",
-  "reset": "Resetați"
+  "reset": "Resetați",
+  "password_reset_successful": "Linkul de resetare a parolei a fost trimis cu succes"
 }

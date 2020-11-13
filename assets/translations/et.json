@@ -28,12 +28,13 @@
   "delete_note": "Kas soovite selle märkuse kustutada?",
   "delete_note_undone": "Seda toimingut ei saa tagasi võtta",
   "delete_cancel": "Tühista",
-  "delete": "Tühista",
+  "delete": "Kustuta",
   "change_language": "Keele muutmine",
   "select_language": "Vali keel",
   "language_continue": "Jätka",
   "language_done": "Valmis",
   "forgot_password": "Unustasid parooli?",
   "reset_password_title": "Lähtesta parool",
-  "reset": "Lähtesta"
+  "reset": "Lähtesta",
+  "password_reset_successful": "Parooli lähtestamise link on edukalt saadetud"
 }

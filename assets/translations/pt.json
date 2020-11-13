@@ -28,12 +28,13 @@
   "delete_note": "Você deseja excluir esta nota?",
   "delete_note_undone": "Essa ação não pode ser desfeita",
   "delete_cancel": "Cancelar",
-  "delete": "Cancelar",
+  "delete": "Excluir",
   "change_language": "Mudar idioma",
   "select_language": "Selecione o idioma",
   "language_continue": "Continuar",
   "language_done": "Feito",
   "forgot_password": "Esqueceu a senha?",
   "reset_password_title": "Redefinir senha",
-  "reset": "Redefinir"
+  "reset": "Redefinir",
+  "password_reset_successful": "O link de redefinição de senha foi enviado com sucesso"
 }

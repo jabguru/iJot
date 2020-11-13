@@ -1,18 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:iJot/constants/supported_locales.dart';
-import 'package:iJot/models/note.dart';
+import 'package:iJot/methods/hive.dart';
 import 'package:iJot/screens/splash_screen.dart';
-import 'package:path_provider/path_provider.dart' as path_provider;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp();
-  final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
-  Hive.init(appDocumentDir.path);
-  Hive.registerAdapter(NoteAdapter());
+  await Firebase.initializeApp();
+  await HiveMethods().initialize();
   runApp(
     EasyLocalization(
       path: 'assets/translations',

@@ -28,12 +28,13 @@
   "delete_note": "Wilt u deze notitie verwijderen?",
   "delete_note_undone": "Deze actie kan niet ongedaan gemaakt worden",
   "delete_cancel": "annuleren",
-  "delete": "annuleren",
+  "delete": "Verwijderen",
   "change_language": "Verander taal",
   "select_language": "Selecteer taal",
   "language_continue": "Doorgaan met",
   "language_done": "Gedaan",
   "forgot_password": "Wachtwoord vergeten?",
   "reset_password_title": "Wachtwoord opnieuw instellen",
-  "reset": "Reset"
+  "reset": "Reset",
+  "password_reset_successful": "De link voor het opnieuw instellen van het wachtwoord is succesvol verzonden"
 }

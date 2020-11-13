@@ -28,12 +28,13 @@
   "delete_note": "Adakah anda mahu Padamkan Nota ini?",
   "delete_note_undone": "Tindakan ini tidak dapat dibuat asal",
   "delete_cancel": "Batal",
-  "delete": "Batal",
+  "delete": "Padam",
   "change_language": "Tukar bahasa",
   "select_language": "Pilih Bahasa",
   "language_continue": "Teruskan",
   "language_done": "Selesai",
   "forgot_password": "Lupa kata laluan?",
   "reset_password_title": "Menetapkan semula kata laluan",
-  "reset": "Tetapkan semula"
+  "reset": "Tetapkan semula",
+  "password_reset_successful": "Pautan penetapan semula kata laluan berjaya dihantar"
 }

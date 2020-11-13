@@ -28,12 +28,13 @@
   "delete_note": "آیا می خواهید این یادداشت را حذف کنید؟",
   "delete_note_undone": "این عمل قابل واگرد نیست",
   "delete_cancel": "لغو",
-  "delete": "لغو",
+  "delete": "حذف",
   "change_language": "تغییر زبان",
   "select_language": "زبان را انتخاب کنید",
   "language_continue": "ادامه هید",
   "language_done": "انجام شده",
   "forgot_password": "رمز عبور خود را فراموش کرده اید؟",
   "reset_password_title": "بازنشانی گذرواژه",
-  "reset": "تنظیم مجدد"
+  "reset": "تنظیم مجدد",
+  "password_reset_successful": "پیوند تنظیم مجدد رمز عبور با موفقیت ارسال شد"
 }

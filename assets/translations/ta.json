@@ -28,12 +28,13 @@
   "delete_note": "இந்த குறிப்பை நீக்க விரும்புகிறீர்களா?",
   "delete_note_undone": "இந்த செயலைச் செயல்தவிர்க்க முடியாது",
   "delete_cancel": "ரத்துசெய்",
-  "delete": "ரத்துசெய்",
+  "delete": "அழி",
   "change_language": "மொழியை மாற்றுங்கள்",
   "select_language": "மொழியை தேர்ந்தெடுங்கள்",
   "language_continue": "தொடரவும்",
   "language_done": "முடிந்தது",
   "forgot_password": "கடவுச்சொல்லை மறந்துவிட்டீர்களா?",
   "reset_password_title": "கடவுச்சொல்லை மீட்டமைக்க",
-  "reset": "மீட்டமை"
+  "reset": "மீட்டமை",
+  "password_reset_successful": "கடவுச்சொல் மீட்டமைப்பு இணைப்பு வெற்றிகரமாக அனுப்பப்பட்டது"
 }

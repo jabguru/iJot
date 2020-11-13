@@ -28,12 +28,13 @@
   "delete_note": "ଆପଣ ଏହି ଟିପ୍ପଣୀ ବିଲୋପ କରିବାକୁ ଚାହୁଁଛନ୍ତି କି?",
   "delete_note_undone": "ଏହି କାର୍ଯ୍ୟକୁ ପୂର୍ବବତ୍ କରାଯାଇପାରିବ ନାହିଁ |",
   "delete_cancel": "ବାତିଲ୍ କରନ୍ତୁ |",
-  "delete": "ବାତିଲ୍ କରନ୍ତୁ |",
+  "delete": "ବିଲୋପ କରନ୍ତୁ |",
   "change_language": "ଭାଷା ପରିବର୍ତ୍ତନ କରନ୍ତୁ |",
   "select_language": "ଭାଷା ଚୟନ କରନ୍ତୁ |",
   "language_continue": "ଜାରି ରଖ |",
   "language_done": "ସମାପ୍ତ",
   "forgot_password": "ପାସୱାର୍ଡ଼ ଭୁଲି ଗଲେ କି?",
   "reset_password_title": "ପାସୱାର୍ଡ ପୁନ Res ସେଟ୍ କରନ୍ତୁ |",
-  "reset": "ପୁନ et ସେଟ୍ କରନ୍ତୁ |"
+  "reset": "ପୁନ et ସେଟ୍ କରନ୍ତୁ |",
+  "password_reset_successful": "ପାସୱାର୍ଡ ପୁନ et ସେଟ୍ ଲିଙ୍କ୍ ସଫଳତାର ସହିତ ପଠାଯାଇଛି |"
 }

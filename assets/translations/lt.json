@@ -28,12 +28,13 @@
   "delete_note": "Ar norite ištrinti šią pastabą?",
   "delete_note_undone": "Šio veiksmo negalima anuliuoti",
   "delete_cancel": "Atšaukti",
-  "delete": "Atšaukti",
+  "delete": "Ištrinti",
   "change_language": "Pakeisti KALBĄ",
   "select_language": "Pasirinkite kalbą",
   "language_continue": "Tęsti",
   "language_done": "padaryta",
   "forgot_password": "Pamiršote slaptažodį?",
   "reset_password_title": "Atstatyti slaptažodį",
-  "reset": "Atstatyti"
+  "reset": "Atstatyti",
+  "password_reset_successful": "Slaptažodžio nustatymo nuoroda sėkmingai išsiųsta"
 }

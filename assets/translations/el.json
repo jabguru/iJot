@@ -28,12 +28,13 @@
   "delete_note": "Θέλετε να διαγράψετε αυτήν τη σημείωση;",
   "delete_note_undone": "Αυτή η πράξη δε μπορεί να αναιρεθεί",
   "delete_cancel": "Ματαίωση",
-  "delete": "Ματαίωση",
+  "delete": "Διαγράφω",
   "change_language": "Αλλαξε γλώσσα",
   "select_language": "Επιλέξτε γλώσσα",
   "language_continue": "Να συνεχίσει",
   "language_done": "Εγινε",
   "forgot_password": "Ξεχάσατε τον κωδικό;",
   "reset_password_title": "Επαναφέρετε τον κωδικό πρόσβασης",
-  "reset": "Επαναφορά"
+  "reset": "Επαναφορά",
+  "password_reset_successful": "Ο σύνδεσμος επαναφοράς κωδικού πρόσβασης εστάλη με επιτυχία"
 }

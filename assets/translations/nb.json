@@ -28,12 +28,13 @@
   "delete_note": "Vil du slette dette notatet?",
   "delete_note_undone": "Denne handlingen kan ikke angres",
   "delete_cancel": "Avbryt",
-  "delete": "Avbryt",
+  "delete": "Slett",
   "change_language": "Skifte språk",
   "select_language": "Velg språk",
   "language_continue": "Fortsette",
   "language_done": "Ferdig",
   "forgot_password": "Glemt passord?",
   "reset_password_title": "Tilbakestille passord",
-  "reset": "Nullstille"
+  "reset": "Nullstille",
+  "password_reset_successful": "Koblingen for tilbakestilling av passord er sendt"
 }

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:iJot/constants/constants.dart';
+import 'package:iJot/constants/hive.dart';
 import 'package:iJot/constants/languages.dart';
 import 'package:iJot/screens/login.dart';
 import 'package:iJot/widgets/custom_scaffold.dart';
@@ -56,11 +57,7 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
                       widget.isFirstOpen
                           ? 'select_language'.tr()
                           : 'change_language'.tr(),
-                      style: TextStyle(
-                        color: Color(0xFF1D062A),
-                        fontSize: 32.0,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: kTitleTextStyle,
                     ),
                     SizedBox(height: 16.0),
                     ClipRRect(

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:iJot/constants/category.dart';
 import 'package:iJot/constants/constants.dart';
-import 'package:iJot/constants/firebase.dart';
+import 'package:iJot/methods/hive.dart';
 import 'package:iJot/models/note.dart';
 import 'package:iJot/widgets/custom_scaffold.dart';
 import 'package:iJot/widgets/snackbar.dart';
@@ -72,23 +71,6 @@ class _SingleNoteState extends State<SingleNote> {
           ),
         )
         .toList();
-  }
-
-  _addNote(Note note) {
-    final notesBox = Hive.box<Note>('notes');
-    notesBox.add(note);
-    if (!kUserItemsAvailable) {
-      setState(() {
-        kUserItemsAvailable = true;
-      });
-    }
-    syncNote(note);
-  }
-
-  _updateNote(Note note) {
-    final notesBox = Hive.box<Note>('notes');
-    notesBox.putAt(widget.noteIndex, note);
-    updateNote(note);
   }
 
   @override
@@ -215,7 +197,9 @@ class _SingleNoteState extends State<SingleNote> {
             ownerId: loggedInUserId,
           );
 
-          widget.updateMode ? _updateNote(newNote) : _addNote(newNote);
+          widget.updateMode
+              ? HiveMethods().updateNote(note: newNote, index: widget.noteIndex)
+              : HiveMethods().addNote(newNote);
           Navigator.pop(context);
         } else {
           showErrorSnackbar(context,

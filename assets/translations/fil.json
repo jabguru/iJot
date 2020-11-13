@@ -28,12 +28,13 @@
   "delete_note": "Nais mo bang Tanggalin ang Tandaan na ito?",
   "delete_note_undone": "Ang gawaing ito ay hindi pwedeng baguhin",
   "delete_cancel": "Kanselahin",
-  "delete": "Kanselahin",
+  "delete": "Tanggalin",
   "change_language": "Baguhin ang Wika",
   "select_language": "Piliin ang Wika",
   "language_continue": "Magpatuloy",
   "language_done": "Tapos na",
   "forgot_password": "Nakalimutan ang password?",
   "reset_password_title": "I-reset ang Password",
-  "reset": "I-reset"
+  "reset": "I-reset",
+  "password_reset_successful": "Matagumpay na naipadala ang link ng pag-reset ng password"
 }

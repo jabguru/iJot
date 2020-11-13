@@ -28,12 +28,13 @@
   "delete_note": "သင်ဤမှတ်စုကိုဖျက်လိုပါသလား။",
   "delete_note_undone": "ဒီလုပ်ဆောင်ချက်ကိုဖျက်သိမ်းလို့မရပါ",
   "delete_cancel": "ပယ်ဖျက်ပါ",
-  "delete": "ပယ်ဖျက်ပါ",
+  "delete": "ဖျက်ပါ",
   "change_language": "ဘာသာစကားပြောင်းပါ",
   "select_language": "ဘာသာစကားရွေးပါ",
   "language_continue": "ဆက်လက်",
   "language_done": "ပြီးပြီ",
   "forgot_password": "စကားဝှက်ကိုမေ့နေပါသလား?",
   "reset_password_title": "လျှို့ဝှတ်နံပါတ်အားမူလအတိုင်းပြန်လုပ်သည်",
-  "reset": "ပြန်လည်စတင်"
+  "reset": "ပြန်လည်စတင်",
+  "password_reset_successful": "စကားဝှက်ပြန်လည်သတ်မှတ် link ကိုအောင်မြင်စွာပို့ပြီးပါပြီ"
 }

@@ -28,12 +28,13 @@
   "delete_note": "Ali želite izbrisati to opombo?",
   "delete_note_undone": "Tega dejanja ni mogoče razveljaviti",
   "delete_cancel": "Prekliči",
-  "delete": "Prekliči",
+  "delete": "Izbriši",
   "change_language": "Spremeni jezik",
   "select_language": "Izberi jezik",
   "language_continue": "Nadaljujte",
   "language_done": "Končano",
   "forgot_password": "Ste pozabili geslo?",
   "reset_password_title": "Ponastavitev gesla",
-  "reset": "Ponastaviti"
+  "reset": "Ponastaviti",
+  "password_reset_successful": "Povezava za ponastavitev gesla je bila uspešno poslana"
 }

@@ -35,5 +35,6 @@
   "language_done": "ተከናውኗል",
   "forgot_password": "መክፈቻ ቁልፉን ረሳኽው?",
   "reset_password_title": "የይለፍ ቃል ዳግም ያስጀምሩ",
-  "reset": "ዳግም አስጀምር"
+  "reset": "ዳግም አስጀምር",
+  "password_reset_successful": "የይለፍ ቃል ዳግም ማስጀመር አገናኝ በተሳካ ሁኔታ ተልኳል"
 }

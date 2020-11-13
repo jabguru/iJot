@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hive/hive.dart';
 import 'package:iJot/constants/constants.dart';
 import 'package:iJot/constants/firebase.dart';
+import 'package:iJot/constants/hive.dart';
 import 'package:iJot/screens/login.dart';
 import 'package:iJot/screens/notes.dart';
 import 'package:iJot/widgets/custom_scaffold.dart';
@@ -42,17 +42,14 @@ class _RegisterState extends State<Register> {
           final User currentUser = fireBaseAuth.currentUser;
           String userId = currentUser.uid;
 
-          setState(() {
-            loggedInUserId = userId;
-          });
+          loggedInUserId = userId;
 
-          userBox = Hive.box('user');
           userBox.put('userId', userId);
 
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => Notes()));
         }
-      } on PlatformException catch (e) {
+      } catch (e) {
         showErrorSnackbar(context, message: e.message);
       }
 

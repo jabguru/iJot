@@ -28,12 +28,13 @@
   "delete_note": "Czy chcesz usunąć tę notatkę?",
   "delete_note_undone": "Tej czynności nie można cofnąć",
   "delete_cancel": "anulować",
-  "delete": "anulować",
+  "delete": "Usunąć",
   "change_language": "Zmień język",
   "select_language": "Wybierz język",
   "language_continue": "Kontyntynuj",
   "language_done": "Gotowe",
   "forgot_password": "Zapomniałeś hasła?",
   "reset_password_title": "Zresetuj hasło",
-  "reset": "Resetowanie"
+  "reset": "Resetowanie",
+  "password_reset_successful": "Link do resetowania hasła został wysłany pomyślnie"
 }

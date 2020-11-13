@@ -28,12 +28,13 @@
   "delete_note": "ທ່ານຕ້ອງການລຶບບັນທຶກນີ້ບໍ?",
   "delete_note_undone": "ການກະ ທຳ ນີ້ບໍ່ສາມາດຍົກເລີກໄດ້",
   "delete_cancel": "ຍົກເລີກ",
-  "delete": "ຍົກເລີກ",
+  "delete": "ລົບ",
   "change_language": "ປ່ຽນ​ພາ​ສາ",
   "select_language": "ເລືອກພາສາ",
   "language_continue": "ສືບຕໍ່",
   "language_done": "ເຮັດແລ້ວ",
   "forgot_password": "ລືມລະຫັດຜ່ານ?",
   "reset_password_title": "ຕັ້ງລະຫັດຜ່ານ",
-  "reset": "ປັບ ໃໝ່"
+  "reset": "ປັບ ໃໝ່",
+  "password_reset_successful": "ລິ້ງການຕັ້ງຄ່າລະຫັດຜ່ານໄດ້ຖືກສົ່ງໄປແລ້ວ"
 }

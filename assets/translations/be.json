@@ -28,12 +28,13 @@
   "delete_note": "Выдаліць гэтую нататку?",
   "delete_note_undone": "Гэта дзеянне нельга адмяніць",
   "delete_cancel": "Адмяніць",
-  "delete": "Адмяніць",
+  "delete": "Выдаліць",
   "change_language": "Змяніць мову",
   "select_language": "Выберыце Мова",
   "language_continue": "Працягвайце",
   "language_done": "Гатова",
   "forgot_password": "Забыліся на пароль?",
   "reset_password_title": "Скід пароля",
-  "reset": "Скід"
+  "reset": "Скід",
+  "password_reset_successful": "Спасылка на скід пароля паспяхова адпраўлена"
 }

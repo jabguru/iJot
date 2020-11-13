@@ -28,12 +28,13 @@
   "delete_note": "Apakah Anda ingin Menghapus Catatan ini?",
   "delete_note_undone": "Tindakan ini tidak bisa dibatalkan",
   "delete_cancel": "Membatalkan",
-  "delete": "Membatalkan",
+  "delete": "Menghapus",
   "change_language": "Ganti BAHASA",
   "select_language": "Pilih bahasa",
   "language_continue": "Terus",
   "language_done": "Selesai",
   "forgot_password": "Tidak ingat kata sandi?",
   "reset_password_title": "Atur Ulang Kata Sandi",
-  "reset": "Setel ulang"
+  "reset": "Setel ulang",
+  "password_reset_successful": "Tautan pengaturan ulang kata sandi telah berhasil dikirim"
 }

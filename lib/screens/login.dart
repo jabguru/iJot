@@ -1,13 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hive/hive.dart';
 import 'package:iJot/constants/constants.dart';
 import 'package:iJot/constants/firebase.dart';
+import 'package:iJot/constants/hive.dart';
+import 'package:iJot/methods/firebase.dart';
+import 'package:iJot/methods/hive.dart';
 import 'package:iJot/screens/notes.dart';
 import 'package:iJot/screens/register.dart';
 import 'package:iJot/widgets/custom_scaffold.dart';
+import 'package:iJot/widgets/password_reset.dart';
 import 'package:iJot/widgets/progress.dart';
 import 'package:iJot/widgets/snackbar.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
@@ -25,15 +30,6 @@ class _LoginState extends State<Login> {
   bool _isLoading = false;
 
   final _formKey = GlobalKey<FormState>();
-
-  _checkForUserItems() {
-    for (var i = 0; i < notesBox.length; i++) {
-      if (loggedInUserId == notesBox.getAt(i).ownerId) {
-        kUserItemsAvailable = true;
-      }
-    }
-    setState(() {});
-  }
 
   handleSignIn() async {
     final form = _formKey.currentState;
@@ -53,20 +49,17 @@ class _LoginState extends State<Login> {
           final User currentUser = fireBaseAuth.currentUser;
           String userId = currentUser.uid;
 
-          setState(() {
-            loggedInUserId = userId;
-          });
+          loggedInUserId = userId;
 
-          userBox = Hive.box('user');
           userBox.put('userId', userId);
 
-          await cloudToLocal();
-          await _checkForUserItems();
+          await FirebaseMethods().cloudToLocal();
+          await HiveMethods().checkForUserItems();
 
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => Notes()));
         }
-      } on PlatformException catch (e) {
+      } catch (e) {
         showErrorSnackbar(context, message: e.message);
       }
 
@@ -77,7 +70,13 @@ class _LoginState extends State<Login> {
   }
 
   _handleGoogleSignIn() {
-    googleSignIn.signIn();
+    try {
+      googleSignIn.signIn();
+    } catch (e) {
+      print('Error Signing in: $e');
+      showErrorSnackbar(context,
+          message: 'Unable to Sign in with Google, try again.');
+    }
   }
 
   @override
@@ -90,14 +89,12 @@ class _LoginState extends State<Login> {
       final GoogleSignInAccount currentUser = googleSignIn.currentUser;
       String userId = currentUser.id;
 
-      setState(() {
-        loggedInUserId = userId;
-      });
+      loggedInUserId = userId;
 
       userBox = Hive.box('user');
       userBox.put('userId', userId);
-      await cloudToLocal();
-      await _checkForUserItems();
+      await FirebaseMethods().cloudToLocal();
+      await HiveMethods().checkForUserItems();
 
       setState(() {
         _isLoading = false;
@@ -226,6 +223,19 @@ class _LoginState extends State<Login> {
                               ),
                               SizedBox(height: 8.0),
                               GestureDetector(
+                                onTap: () =>
+                                    showForgotPasswordBottomSheet(context),
+                                child: Text(
+                                  'forgot_password'.tr(),
+                                  style: TextStyle(
+                                    fontSize: 15.0,
+                                    color: Colors.white,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              GestureDetector(
                                 onTap: handleSignIn,
                                 child: Container(
                                   height: 48.0,
@@ -290,27 +300,34 @@ class _LoginState extends State<Login> {
                         SizedBox(height: 8.0),
                         Column(
                           children: [
-                            Text(
-                              'dont_have_an_account'.tr(),
-                              style: TextStyle(
-                                fontSize: 15.0,
-                                color: Colors.white,
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Register(),
-                                ),
-                              ),
-                              child: Text(
-                                'register'.tr(),
-                                style: TextStyle(
-                                  fontSize: 15.0,
-                                  color: Colors.white,
-                                  decoration: TextDecoration.underline,
-                                ),
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: 'dont_have_an_account'.tr(),
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: Colors.white,
+                                      fontFamily: 'Cabin',
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: 'register'.tr(),
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: Colors.white,
+                                      decoration: TextDecoration.underline,
+                                      fontFamily: 'Cabin',
+                                    ),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () => Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => Register(),
+                                            ),
+                                          ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],

@@ -28,12 +28,13 @@
   "delete_note": "ඔබට මෙම සටහන මකා දැමීමට අවශ්‍යද?",
   "delete_note_undone": "මෙම ක්‍රියාව අහෝසි කළ නොහැක",
   "delete_cancel": "අවලංගු කරන්න",
-  "delete": "අවලංගු කරන්න",
+  "delete": "මකන්න",
   "change_language": "භාෂාව වෙනස් කරන්න",
   "select_language": "භාෂාව තෝරන්න",
   "language_continue": "දිගටම කරගෙන යන්න",
   "language_done": "සිදු විය",
   "forgot_password": "මුරපදය අමතක වුණා ද?",
   "reset_password_title": "මුරපදය නැවත සකසන්න",
-  "reset": "නැවත සකසන්න"
+  "reset": "නැවත සකසන්න",
+  "password_reset_successful": "මුරපද යළි පිහිටුවීමේ සබැඳිය සාර්ථකව යවා ඇත"
 }

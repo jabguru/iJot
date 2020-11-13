@@ -28,12 +28,13 @@
   "delete_note": "Želite li izbrisati ovu bilješku?",
   "delete_note_undone": "Ova se radnja ne može poništiti",
   "delete_cancel": "Otkazati",
-  "delete": "Otkazati",
+  "delete": "Izbrisati",
   "change_language": "Promijeni jezik",
   "select_language": "Izaberi jezik",
   "language_continue": "Nastaviti",
   "language_done": "Gotovo",
   "forgot_password": "Zaboravili ste lozinku?",
   "reset_password_title": "Resetiranje lozinke",
-  "reset": "Resetirati"
+  "reset": "Resetirati",
+  "password_reset_successful": "Veza za ponovno postavljanje lozinke uspješno je poslana"
 }

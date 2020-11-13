@@ -28,12 +28,13 @@
   "delete_note": "Vill du radera den här anteckningen?",
   "delete_note_undone": "Denna åtgärd kan inte ångras",
   "delete_cancel": "Annullera",
-  "delete": "Annullera",
+  "delete": "Radera",
   "change_language": "Ändra språk",
   "select_language": "Välj språk",
   "language_continue": "Fortsätta",
   "language_done": "Gjort",
   "forgot_password": "Glömt ditt lösenord?",
   "reset_password_title": "Återställ lösenord",
-  "reset": "Återställa"
+  "reset": "Återställa",
+  "password_reset_successful": "Länken för återställning av lösenord har skickats"
 }

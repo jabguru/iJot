@@ -28,12 +28,13 @@
   "delete_note": "Vil du slette denne note?",
   "delete_note_undone": "Denne handling kan ikke fortrydes",
   "delete_cancel": "Afbestille",
-  "delete": "Afbestille",
+  "delete": "Slet",
   "change_language": "Skift sprog",
   "select_language": "Vælg sprog",
   "language_continue": "Blive ved",
   "language_done": "Færdig",
   "forgot_password": "Glemt kodeord?",
   "reset_password_title": "Nulstille kodeord",
-  "reset": "Nulstil"
+  "reset": "Nulstil",
+  "password_reset_successful": "Link til nulstilling af adgangskode er sendt"
 }

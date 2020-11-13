@@ -28,12 +28,13 @@
   "delete_note": "Viltu eyða þessari athugasemd?",
   "delete_note_undone": "Ekki er hægt að afturkalla þessa aðgerð",
   "delete_cancel": "Hætta við",
-  "delete": "Hætta við",
+  "delete": "Eyða",
   "change_language": "Skipta um tungumál",
   "select_language": "Veldu tungumál",
   "language_continue": "Haltu áfram",
   "language_done": "Gjört",
   "forgot_password": "Gleymt lykilorð?",
   "reset_password_title": "Endur stilla lykilorð",
-  "reset": "Endurstilla"
+  "reset": "Endurstilla",
+  "password_reset_successful": "Tengill um endurstillingu lykilorðs hefur verið sendur"
 }

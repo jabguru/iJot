@@ -28,12 +28,13 @@
   "delete_note": "Haluatko poistaa tämän muistiinpanon?",
   "delete_note_undone": "Tätä toimintoa ei voi kumota",
   "delete_cancel": "Peruuttaa",
-  "delete": "Peruuttaa",
+  "delete": "Poistaa",
   "change_language": "Vaihda kieltä",
   "select_language": "Valitse kieli",
   "language_continue": "Jatkaa",
   "language_done": "Tehty",
   "forgot_password": "Unohtuiko salasana?",
   "reset_password_title": "Nollaa salasana",
-  "reset": "Nollaa"
+  "reset": "Nollaa",
+  "password_reset_successful": "Salasanan palautuslinkki on lähetetty onnistuneesti"
 }

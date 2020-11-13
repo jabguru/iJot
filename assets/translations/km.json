@@ -28,12 +28,13 @@
   "delete_note": "តើអ្នកចង់លុបកំណត់ត្រានេះទេ?",
   "delete_note_undone": "សកម្មភាពនេះមិនអាចធ្វើវិញបានទេ",
   "delete_cancel": "បោះបង់",
-  "delete": "បោះបង់",
+  "delete": "លុប",
   "change_language": "ប្ដូរ​ភាសា",
   "select_language": "ជ្រើសរើស​ភាសា",
   "language_continue": "បន្ត",
   "language_done": "ធ្វើរួច",
   "forgot_password": "ភ្លេច​លេខសំងាត់​?",
   "reset_password_title": "កំណត់ពាក្យសម្ងាត់ឡើងវិញ",
-  "reset": "កំណត់ឡើងវិញ"
+  "reset": "កំណត់ឡើងវិញ",
+  "password_reset_successful": "តំណកំណត់ពាក្យសម្ងាត់ត្រូវបានផ្ញើដោយជោគជ័យ"
 }

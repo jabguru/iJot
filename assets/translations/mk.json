@@ -28,12 +28,13 @@
   "delete_note": "Дали сакате да ја избришете оваа белешка?",
   "delete_note_undone": "Ова дејство не може да се врати",
   "delete_cancel": "Откажи",
-  "delete": "Откажи",
+  "delete": "Избриши",
   "change_language": "Промени го јазикот",
   "select_language": "Одбери јазик",
   "language_continue": "Продолжете",
   "language_done": "Направено",
   "forgot_password": "Ја заборави лозинката?",
   "reset_password_title": "Ресетирање на Лозинка",
-  "reset": "Ресетирај"
+  "reset": "Ресетирај",
+  "password_reset_successful": "Врската за ресетирање на лозинка е успешно испратена"
 }

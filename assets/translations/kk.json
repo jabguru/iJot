@@ -28,12 +28,13 @@
   "delete_note": "Осы жазбаны жойғыңыз келе ме?",
   "delete_note_undone": "Бұл әрекетті қайтару мүмкін емес",
   "delete_cancel": "Бас тарту",
-  "delete": "Бас тарту",
+  "delete": "Жою",
   "change_language": "Тілді өзгерту",
   "select_language": "Тілді таңдаңыз",
   "language_continue": "Жалғастыру",
   "language_done": "Дайын",
   "forgot_password": "Құпия сөзді ұмыттыңыз ба?",
   "reset_password_title": "Құпия сөзді қалпына келтіру",
-  "reset": "Қалпына келтіру"
+  "reset": "Қалпына келтіру",
+  "password_reset_successful": "Құпия сөзді қалпына келтіру сілтемесі сәтті жіберілді"
 }

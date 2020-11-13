@@ -28,12 +28,13 @@
   "delete_note": "您要删除此注释吗？",
   "delete_note_undone": "此操作无法撤消",
   "delete_cancel": "取消",
-  "delete": "取消",
+  "delete": "删除",
   "change_language": "改变语言",
   "select_language": "选择语言",
   "language_continue": "继续",
   "language_done": "完成了",
   "forgot_password": "忘记密码？",
   "reset_password_title": "重设密码",
-  "reset": "重启"
+  "reset": "重启",
+  "password_reset_successful": "密码重置链接已成功发送"
 }

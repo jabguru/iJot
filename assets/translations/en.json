@@ -37,7 +37,7 @@
     "delete_note": "Do you want to Delete this Note?",
     "delete_note_undone": "This action cannot be undone",
     "delete_cancel": "Cancel",
-    "delete": "Cancel",
+    "delete": "Delete",
 
     "change_language":"Change Language",
     "select_language":"Select Language",
@@ -46,7 +46,7 @@
 
     "forgot_password": "Forgot Password?",
     "reset_password_title": "Reset Password",
-    "reset" : "Reset"
-
+    "reset" : "Reset",
+    "password_reset_successful": "Password reset link has been sent successfully"
 
 }

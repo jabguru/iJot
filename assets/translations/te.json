@@ -28,12 +28,13 @@
   "delete_note": "మీరు ఈ గమనికను తొలగించాలనుకుంటున్నారా?",
   "delete_note_undone": "ఈ చర్య రద్దు చేయబడదు",
   "delete_cancel": "రద్దు చేయండి",
-  "delete": "రద్దు చేయండి",
+  "delete": "తొలగించు",
   "change_language": "భాష మార్చు",
   "select_language": "భాషను ఎంచుకోండి",
   "language_continue": "కొనసాగించండి",
   "language_done": "పూర్తి",
   "forgot_password": "పాస్‌వర్డ్ మర్చిపోయారా?",
   "reset_password_title": "రహస్యపదాన్ని మార్చుకోండి",
-  "reset": "రీసెట్ చేయండి"
+  "reset": "రీసెట్ చేయండి",
+  "password_reset_successful": "పాస్వర్డ్ రీసెట్ లింక్ విజయవంతంగా పంపబడింది"
 }

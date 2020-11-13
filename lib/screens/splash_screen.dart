@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:iJot/constants/constants.dart';
-import 'package:iJot/constants/firebase.dart';
-import 'package:iJot/models/note.dart';
+import 'package:iJot/constants/hive.dart';
+import 'package:iJot/methods/firebase.dart';
+import 'package:iJot/methods/hive.dart';
 import 'package:iJot/screens/change_language.dart';
 import 'package:iJot/screens/login.dart';
 import 'package:iJot/screens/notes.dart';
@@ -17,28 +17,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    handleNavigation();
-  }
-
-  _checkForUserItems() {
-    for (var i = 0; i < notesBox.length; i++) {
-      if (loggedInUserId == notesBox.getAt(i).ownerId) {
-        kUserItemsAvailable = true;
-      }
-    }
-    setState(() {});
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      handleNavigation();
+    });
   }
 
   handleNavigation() async {
-    await Hive.openBox('user');
-    await Hive.openBox<Note>(
-      'notes',
-      compactionStrategy: (int total, int deleted) {
-        return deleted > 20;
-      },
-    );
-    await Hive.openBox('firstOpen');
-    userBox = Hive.box('user');
     String userId = userBox.get('userId');
     if (userId == null) {
       if (firstTimeBox.isEmpty) {
@@ -52,15 +36,16 @@ class _SplashScreenState extends State<SplashScreen> {
         );
       } else {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Login()));
+          context,
+          MaterialPageRoute(builder: (context) => Login()),
+        );
       }
     } else {
-      setState(() {
-        loggedInUserId = userId;
-      });
-      await _checkForUserItems();
-      // added this newly
-      cloudToLocal();
+      loggedInUserId = userId;
+
+      await HiveMethods().checkForUserItems();
+      // not awaiting cloudtolocal so as not to delay moving to screen
+      FirebaseMethods().cloudToLocal();
       Navigator.push(context, MaterialPageRoute(builder: (context) => Notes()));
     }
   }

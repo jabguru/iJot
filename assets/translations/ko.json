@@ -28,12 +28,13 @@
   "delete_note": "이 노트를 삭제 하시겠습니까?",
   "delete_note_undone": "이 작업은 취소 할 수 없습니다.",
   "delete_cancel": "취소",
-  "delete": "취소",
+  "delete": "지우다",
   "change_language": "언어 변경",
   "select_language": "언어 선택",
   "language_continue": "계속하다",
   "language_done": "끝난",
   "forgot_password": "비밀번호를 잊으 셨나요?",
   "reset_password_title": "암호를 재설정",
-  "reset": "초기화"
+  "reset": "초기화",
+  "password_reset_successful": "비밀번호 재설정 링크가 성공적으로 전송되었습니다."
 }

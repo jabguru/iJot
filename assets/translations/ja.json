@@ -28,12 +28,13 @@
   "delete_note": "このメモを削除しますか？",
   "delete_note_undone": "このアクションは元に戻せません",
   "delete_cancel": "キャンセル",
-  "delete": "キャンセル",
+  "delete": "削除",
   "change_language": "言語を変えてください",
   "select_language": "言語を選択する",
   "language_continue": "継続する",
   "language_done": "完了",
   "forgot_password": "パスワードをお忘れですか？",
   "reset_password_title": "パスワードを再設定する",
-  "reset": "リセット"
+  "reset": "リセット",
+  "password_reset_successful": "パスワードリセットリンクが正常に送信されました"
 }

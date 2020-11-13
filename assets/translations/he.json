@@ -28,12 +28,13 @@
   "delete_note": "האם אתה רוצה למחוק את ההערה הזו?",
   "delete_note_undone": "לא ניתן לבטל פעולה זו",
   "delete_cancel": "לְבַטֵל",
-  "delete": "לְבַטֵל",
+  "delete": "לִמְחוֹק",
   "change_language": "שנה שפה",
   "select_language": "בחר שפה",
   "language_continue": "לְהַמשִׁיך",
   "language_done": "בוצע",
   "forgot_password": "שכחת את הסיסמא?",
   "reset_password_title": "לאפס את הסיסמה",
-  "reset": "אִתחוּל"
+  "reset": "אִתחוּל",
+  "password_reset_successful": "הקישור לאיפוס סיסמה נשלח בהצלחה"
 }

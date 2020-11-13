@@ -28,12 +28,13 @@
   "delete_note": "Queres eliminar esta nota?",
   "delete_note_undone": "Esta acción non se pode desfacer",
   "delete_cancel": "Cancelar",
-  "delete": "Cancelar",
+  "delete": "Eliminar",
   "change_language": "Cambiar idioma",
   "select_language": "Selecciona idioma",
   "language_continue": "Continuar",
   "language_done": "Feito",
   "forgot_password": "Esqueciches o contrasinal?",
   "reset_password_title": "Restablecer contrasinal",
-  "reset": "Restablecer"
+  "reset": "Restablecer",
+  "password_reset_successful": "A ligazón de restablecemento do contrasinal enviouse correctamente"
 }

@@ -28,12 +28,13 @@
   "delete_note": "Vai vēlaties dzēst šo piezīmi?",
   "delete_note_undone": "Šo darbību nevar atsaukt",
   "delete_cancel": "Atcelt",
-  "delete": "Atcelt",
+  "delete": "Dzēst",
   "change_language": "Mainīt VALODU",
   "select_language": "Izvēlēties valodu",
   "language_continue": "Turpināt",
   "language_done": "Gatavs",
   "forgot_password": "Aizmirsi paroli?",
   "reset_password_title": "Atiestatīt paroli",
-  "reset": "Atiestatīt"
+  "reset": "Atiestatīt",
+  "password_reset_successful": "Paroles atiestatīšanas saite ir veiksmīgi nosūtīta"
 }

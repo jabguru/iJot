@@ -28,12 +28,13 @@
   "delete_note": "Chcete tuto poznámku smazat?",
   "delete_note_undone": "Tuto akci nelze vrátit zpět",
   "delete_cancel": "zrušení",
-  "delete": "zrušení",
+  "delete": "Vymazat",
   "change_language": "Změnit jazyk",
   "select_language": "Zvolte jazyk",
   "language_continue": "Pokračovat",
   "language_done": "Hotovo",
   "forgot_password": "Zapomenuté heslo?",
   "reset_password_title": "Obnovit heslo",
-  "reset": "Resetovat"
+  "reset": "Resetovat",
+  "password_reset_successful": "Odkaz na resetování hesla byl úspěšně odeslán"
 }

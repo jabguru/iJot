@@ -28,12 +28,13 @@
   "delete_note": "શું તમે આ નોંધ કા Deleteી નાખવા માંગો છો?",
   "delete_note_undone": "આ ક્રિયા પૂર્વવત્ કરી શકાતી નથી",
   "delete_cancel": "રદ કરો",
-  "delete": "રદ કરો",
+  "delete": "કા .ી નાખો",
   "change_language": "ભાષા બદલો",
   "select_language": "ભાષા પસંદ કરો",
   "language_continue": "ચાલુ રાખો",
   "language_done": "થઈ ગયું",
   "forgot_password": "પાસવર્ડ ભૂલી ગયા છો?",
   "reset_password_title": "પાસવર્ડ ફરીથી સેટ કરો",
-  "reset": "ફરીથી સેટ કરો"
+  "reset": "ફરીથી સેટ કરો",
+  "password_reset_successful": "પાસવર્ડ ફરીથી સેટ કરવાની લિંક સફળતાપૂર્વક મોકલવામાં આવી છે"
 }

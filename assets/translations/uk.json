@@ -28,12 +28,13 @@
   "delete_note": "Видалити цю примітку?",
   "delete_note_undone": "Цю дію не можна скасувати",
   "delete_cancel": "Скасувати",
-  "delete": "Скасувати",
+  "delete": "Видалити",
   "change_language": "Змінити мову",
   "select_language": "Оберіть мову",
   "language_continue": "Продовжуйте",
   "language_done": "Готово",
   "forgot_password": "Забули пароль?",
   "reset_password_title": "Скинути пароль",
-  "reset": "Скинути"
+  "reset": "Скинути",
+  "password_reset_successful": "Посилання для скидання пароля успішно надіслано"
 }

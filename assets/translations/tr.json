@@ -28,12 +28,13 @@
   "delete_note": "Bu Notu Silmek İstiyor musunuz?",
   "delete_note_undone": "Bu eylem geri alınamaz",
   "delete_cancel": "İptal etmek",
-  "delete": "İptal etmek",
+  "delete": "Sil",
   "change_language": "Dili değiştir",
   "select_language": "Dil Seçin",
   "language_continue": "Devam et",
   "language_done": "Bitti",
   "forgot_password": "Parolanızı mı unuttunuz?",
   "reset_password_title": "Şifreyi yenile",
-  "reset": "Sıfırla"
+  "reset": "Sıfırla",
+  "password_reset_successful": "Şifre sıfırlama bağlantısı başarıyla gönderildi"
 }

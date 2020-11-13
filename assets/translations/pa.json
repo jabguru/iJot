@@ -28,12 +28,13 @@
   "delete_note": "ਕੀ ਤੁਸੀਂ ਇਸ ਨੋਟ ਨੂੰ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
   "delete_note_undone": "ਇਸ ਕਿਰਿਆ ਨੂੰ ਵਾਪਸ ਨਹੀਂ ਲਿਆ ਜਾ ਸਕਦਾ ਹੈ",
   "delete_cancel": "ਰੱਦ ਕਰੋ",
-  "delete": "ਰੱਦ ਕਰੋ",
+  "delete": "ਮਿਟਾਓ",
   "change_language": "ਭਾਸ਼ਾ ਬਦਲੋ",
   "select_language": "ਭਾਸ਼ਾ ਚੁਣੋ",
   "language_continue": "ਜਾਰੀ ਰੱਖੋ",
   "language_done": "ਹੋ ਗਿਆ",
   "forgot_password": "ਪਾਸਵਰਡ ਭੁੱਲ ਗਏ?",
   "reset_password_title": "ਪਾਸਵਰਡ ਰੀਸੈਟ ਕਰੋ",
-  "reset": "ਰੀਸੈੱਟ"
+  "reset": "ਰੀਸੈੱਟ",
+  "password_reset_successful": "ਪਾਸਵਰਡ ਰੀਸੈਟ ਲਿੰਕ ਸਫਲਤਾਪੂਰਵਕ ਭੇਜਿਆ ਗਿਆ ਹੈ"
 }

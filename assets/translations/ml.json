@@ -28,12 +28,13 @@
   "delete_note": "ഈ കുറിപ്പ് ഇല്ലാതാക്കാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ?",
   "delete_note_undone": "ഈ പ്രവർത്തനം പഴയപടിയാക്കാൻ കഴിയില്ല",
   "delete_cancel": "റദ്ദാക്കുക",
-  "delete": "റദ്ദാക്കുക",
+  "delete": "ഇല്ലാതാക്കുക",
   "change_language": "ഭാഷ മാറ്റുക",
   "select_language": "ഭാഷ തിരഞ്ഞെടുക്കുക",
   "language_continue": "തുടരുക",
   "language_done": "ചെയ്‌തു",
   "forgot_password": "പാസ്വേഡ് മറന്നോ?",
   "reset_password_title": "പാസ്‌വേഡ് പുന Res സജ്ജമാക്കുക",
-  "reset": "പുന et സജ്ജമാക്കുക"
+  "reset": "പുന et സജ്ജമാക്കുക",
+  "password_reset_successful": "പാസ്‌വേഡ് പുന reset സജ്ജീകരണ ലിങ്ക് വിജയകരമായി അയച്ചു"
 }

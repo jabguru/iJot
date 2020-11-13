@@ -28,12 +28,13 @@
   "delete_note": "আপনি কি এই নোটটি মুছতে চান?",
   "delete_note_undone": "এই ক্রিয়াটি পূর্বাবস্থায় ফেরানো যাবে না",
   "delete_cancel": "বাতিল",
-  "delete": "বাতিল",
+  "delete": "মুছে ফেলা",
   "change_language": "ভাষা পরিবর্তন করুন",
   "select_language": "ভাষা নির্বাচন কর",
   "language_continue": "চালিয়ে যান",
   "language_done": "সম্পন্ন",
   "forgot_password": "পাসওয়ার্ড ভুলে গেছেন?",
   "reset_password_title": "পাসওয়ার্ড রিসেট করুন",
-  "reset": "রিসেট"
+  "reset": "রিসেট",
+  "password_reset_successful": "পাসওয়ার্ড পুনরায় সেট লিঙ্ক সফলভাবে প্রেরণ করা হয়েছে"
 }

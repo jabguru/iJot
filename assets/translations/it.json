@@ -28,12 +28,13 @@
   "delete_note": "Vuoi eliminare questa nota?",
   "delete_note_undone": "Questa azione non può essere annullata",
   "delete_cancel": "Annulla",
-  "delete": "Annulla",
+  "delete": "Elimina",
   "change_language": "Cambia lingua",
   "select_language": "Seleziona la lingua",
   "language_continue": "Continua",
   "language_done": "Fatto",
   "forgot_password": "Ha dimenticato la password?",
   "reset_password_title": "Resetta la password",
-  "reset": "Ripristina"
+  "reset": "Ripristina",
+  "password_reset_successful": "Il link per la reimpostazione della password è stato inviato con successo"
 }

@@ -28,12 +28,13 @@
   "delete_note": "¿Quieres eliminar esta nota?",
   "delete_note_undone": "Esta acción no se puede deshacer",
   "delete_cancel": "Cancelar",
-  "delete": "Cancelar",
+  "delete": "Eliminar",
   "change_language": "Cambiar idioma",
   "select_language": "Seleccione el idioma",
   "language_continue": "Seguir",
   "language_done": "Hecho",
   "forgot_password": "¿Se te olvidó tu contraseña?",
   "reset_password_title": "Restablecer la contraseña",
-  "reset": "Reiniciar"
+  "reset": "Reiniciar",
+  "password_reset_successful": "El enlace de restablecimiento de contraseña se ha enviado correctamente"
 }

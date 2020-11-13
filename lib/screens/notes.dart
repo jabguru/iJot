@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:iJot/constants/constants.dart';
-import 'package:iJot/constants/firebase.dart';
 import 'package:iJot/models/note.dart';
 import 'package:iJot/screens/single_note.dart';
 import 'package:iJot/widgets/custom_scaffold.dart';
