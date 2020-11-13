@@ -60,22 +60,17 @@ class _NotesState extends State<Notes> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        return false;
+    return CustomScaffold(
+      title: 'notes'.tr(),
+      child: _buildListView(),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SingleNote(),
+          ),
+        );
       },
-      child: CustomScaffold(
-        title: 'notes'.tr(),
-        child: _buildListView(),
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => SingleNote(),
-            ),
-          );
-        },
-      ),
     );
   }
 

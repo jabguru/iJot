@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
     String userId = userBox.get('userId');
     if (userId == null) {
       if (firstTimeBox.isEmpty) {
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => ChangeLanguage(
@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
         );
       } else {
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => Login()),
         );
@@ -46,7 +46,8 @@ class _SplashScreenState extends State<SplashScreen> {
       await HiveMethods().checkForUserItems();
       // not awaiting cloudtolocal so as not to delay moving to screen
       FirebaseMethods().cloudToLocal();
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Notes()));
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => Notes()));
     }
   }
 
