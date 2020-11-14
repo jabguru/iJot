@@ -131,7 +131,11 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: 16.0, bottom: 6.0),
+                            padding: EdgeInsets.only(
+                              left: 16.0,
+                              right: 16.0,
+                              bottom: 6.0,
+                            ),
                             child: Text(
                               widget.title,
                               style: TextStyle(
@@ -167,7 +171,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                           AnimatedPositioned(
                             duration: Duration(milliseconds: 700),
                             bottom: notAnimated ? 1.0 : 15.0,
-                            curve: Curves.bounceInOut,
+                            curve: Curves.easeInOut,
                             child: GestureDetector(
                               onTap: widget.onTap,
                               child: Container(

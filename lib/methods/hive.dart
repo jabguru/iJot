@@ -27,6 +27,7 @@ class HiveMethods {
   }
 
   Future checkForUserItems() async {
+    kUserItemsAvailable = false;
     for (var i = 0; i < notesBox.length; i++) {
       if (loggedInUserId == notesBox.getAt(i).ownerId) {
         kUserItemsAvailable = true;
