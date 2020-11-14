@@ -12,6 +12,10 @@ class HiveMethods {
         await path_provider.getApplicationDocumentsDirectory();
     Hive.init(appDocumentDir.path);
     Hive.registerAdapter(NoteAdapter());
+    await openBoxes();
+  }
+
+  Future openBoxes() async {
     await Hive.openBox('user');
     await Hive.openBox<Note>(
       'notes',

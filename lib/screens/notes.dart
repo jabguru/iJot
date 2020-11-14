@@ -73,10 +73,4 @@ class _NotesState extends State<Notes> {
       },
     );
   }
-
-  @override
-  void dispose() {
-    Hive.close();
-    super.dispose();
-  }
 }

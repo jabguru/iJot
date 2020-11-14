@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -56,16 +58,19 @@ class _LoginState extends State<Login> {
           await FirebaseMethods().cloudToLocal();
           await HiveMethods().checkForUserItems();
 
+          setState(() {
+            _isLoading = false;
+          });
+
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => Notes()));
         }
       } catch (e) {
+        setState(() {
+          _isLoading = false;
+        });
         showErrorSnackbar(context, message: e.message);
       }
-
-      setState(() {
-        _isLoading = false;
-      });
     }
   }
 
@@ -91,7 +96,6 @@ class _LoginState extends State<Login> {
 
       loggedInUserId = userId;
 
-      userBox = Hive.box('user');
       userBox.put('userId', userId);
       await FirebaseMethods().cloudToLocal();
       await HiveMethods().checkForUserItems();

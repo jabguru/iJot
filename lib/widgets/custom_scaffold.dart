@@ -98,7 +98,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                                       child: FlatButton(
                                         onPressed: () async {
                                           await userBox.clear();
-                                          Navigator.push(
+                                          Navigator.pushReplacement(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
@@ -145,6 +145,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                       )
                     : SizedBox.shrink(),
                 Expanded(child: widget.child),
+                SizedBox(height: 8.0),
                 widget.hasBottomBars
                     ? Stack(
                         alignment: Alignment.center,
@@ -153,7 +154,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                             padding: const EdgeInsets.only(top: 50.0),
                             child: Container(
                               margin: EdgeInsets.symmetric(horizontal: 8.0),
-                              height: 20.0,
+                              height: 29.0,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.only(
@@ -165,7 +166,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                           ),
                           AnimatedPositioned(
                             duration: Duration(milliseconds: 700),
-                            bottom: notAnimated ? 1.0 : 6.0,
+                            bottom: notAnimated ? 1.0 : 15.0,
                             curve: Curves.bounceInOut,
                             child: GestureDetector(
                               onTap: widget.onTap,
