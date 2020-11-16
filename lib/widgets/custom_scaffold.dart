@@ -64,6 +64,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
               // - automatically sync notes from other devices without signing in and out
               // - multilanguage support
               // - enabled Password reset
+              // - privacy policy update
               // - etc like that for playstore
               // TODO: an avenue for snapping and adding to notes
               // TODO: UPDATE ALL NOTES WITH CURRENT LANGUAGE CATEGORY AFTER LANGUAGE CHANGE

@@ -11,6 +11,13 @@ const kTitleTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
+const kNormalUnderlineTextStyle = TextStyle(
+  fontSize: 15.0,
+  color: Colors.white,
+  decoration: TextDecoration.underline,
+  fontFamily: 'Cabin',
+);
+
 const kCircularBorderRadius = 8.0;
 
 LinearGradient kLinearGradient = LinearGradient(

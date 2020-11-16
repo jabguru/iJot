@@ -1,11 +1,8 @@
-import 'dart:async';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:hive/hive.dart';
 import 'package:iJot/constants/constants.dart';
 import 'package:iJot/constants/firebase.dart';
 import 'package:iJot/constants/hive.dart';
@@ -15,6 +12,7 @@ import 'package:iJot/screens/notes.dart';
 import 'package:iJot/screens/register.dart';
 import 'package:iJot/widgets/custom_scaffold.dart';
 import 'package:iJot/widgets/password_reset.dart';
+import 'package:iJot/widgets/privacy_policy.dart';
 import 'package:iJot/widgets/progress.dart';
 import 'package:iJot/widgets/snackbar.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
@@ -228,11 +226,7 @@ class _LoginState extends State<Login> {
                                   showForgotPasswordBottomSheet(context),
                               child: Text(
                                 'forgot_password'.tr(),
-                                style: TextStyle(
-                                  fontSize: 15.0,
-                                  color: Colors.white,
-                                  decoration: TextDecoration.underline,
-                                ),
+                                style: kNormalUnderlineTextStyle,
                               ),
                             ),
                             SizedBox(height: 8.0),
@@ -312,14 +306,10 @@ class _LoginState extends State<Login> {
                                     fontFamily: 'Cabin',
                                   ),
                                 ),
+                                TextSpan(text: ' '),
                                 TextSpan(
                                   text: 'register'.tr(),
-                                  style: TextStyle(
-                                    fontSize: 15.0,
-                                    color: Colors.white,
-                                    decoration: TextDecoration.underline,
-                                    fontFamily: 'Cabin',
-                                  ),
+                                  style: kNormalUnderlineTextStyle,
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () => Navigator.push(
                                           context,
@@ -332,7 +322,16 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                         ],
-                      )
+                      ),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.07),
+                      GestureDetector(
+                        onTap: () => showPrivacyPolicyBottomSheet(context),
+                        child: Text(
+                          'privacy_policy_title'.tr(),
+                          style: kNormalUnderlineTextStyle,
+                        ),
+                      ),
                     ],
                   ),
                 ),

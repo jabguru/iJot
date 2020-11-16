@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iJot/constants/constants.dart';
@@ -7,6 +8,7 @@ import 'package:iJot/constants/hive.dart';
 import 'package:iJot/screens/login.dart';
 import 'package:iJot/screens/notes.dart';
 import 'package:iJot/widgets/custom_scaffold.dart';
+import 'package:iJot/widgets/privacy_policy.dart';
 import 'package:iJot/widgets/progress.dart';
 import 'package:iJot/widgets/snackbar.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
@@ -191,34 +193,42 @@ class _RegisterState extends State<Register> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 50.0),
-                      Column(
-                        children: [
-                          Text(
-                            'already_have_an_account'.tr(),
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              color: Colors.white,
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Login(),
-                              ),
-                            ),
-                            child: Text(
-                              'sign_in'.tr(),
+                      SizedBox(height: 8.0),
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: 'already_have_an_account'.tr(),
                               style: TextStyle(
                                 fontSize: 15.0,
                                 color: Colors.white,
-                                decoration: TextDecoration.underline,
+                                fontFamily: 'Cabin',
                               ),
                             ),
-                          ),
-                        ],
-                      )
+                            TextSpan(text: ' '),
+                            TextSpan(
+                              text: 'sign_in'.tr(),
+                              style: kNormalUnderlineTextStyle,
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Login(),
+                                      ),
+                                    ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.07),
+                      GestureDetector(
+                        onTap: () => showPrivacyPolicyBottomSheet(context),
+                        child: Text(
+                          'privacy_policy_title'.tr(),
+                          style: kNormalUnderlineTextStyle,
+                        ),
+                      ),
                     ],
                   ),
                 ),
