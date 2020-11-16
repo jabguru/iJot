@@ -6,11 +6,13 @@ class CustomButton extends StatelessWidget {
   final Color textColor;
   final String text;
   final Function onTap;
+  final Widget child;
   CustomButton({
     @required this.buttonColor,
-    @required this.text,
-    @required this.textColor,
+    this.text,
+    this.textColor,
     @required this.onTap,
+    this.child,
   });
   @override
   Widget build(BuildContext context) {
@@ -23,13 +25,15 @@ class CustomButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(kCircularBorderRadius),
         ),
         child: Center(
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: 20.0,
-              color: textColor,
-            ),
-          ),
+          child: child == null
+              ? Text(
+                  text,
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: textColor,
+                  ),
+                )
+              : child,
         ),
       ),
     );

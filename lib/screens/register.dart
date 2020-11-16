@@ -7,6 +7,7 @@ import 'package:iJot/constants/firebase.dart';
 import 'package:iJot/constants/hive.dart';
 import 'package:iJot/screens/login.dart';
 import 'package:iJot/screens/notes.dart';
+import 'package:iJot/widgets/button.dart';
 import 'package:iJot/widgets/custom_scaffold.dart';
 import 'package:iJot/widgets/privacy_policy.dart';
 import 'package:iJot/widgets/progress.dart';
@@ -169,27 +170,12 @@ class _RegisterState extends State<Register> {
                               ),
                             ),
                             SizedBox(height: 8.0),
-                            GestureDetector(
+                            CustomButton(
+                              buttonColor: Theme.of(context).primaryColor,
                               onTap: handleSignUp,
-                              child: Container(
-                                height: 48.0,
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: Theme.of(context).primaryColor,
-                                  borderRadius: BorderRadius.circular(
-                                      kCircularBorderRadius),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'sign_up'.tr(),
-                                    style: TextStyle(
-                                      fontSize: 20.0,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
+                              text: 'sign_up'.tr(),
+                              textColor: Colors.white,
+                            )
                           ],
                         ),
                       ),

@@ -10,6 +10,7 @@ import 'package:iJot/methods/firebase.dart';
 import 'package:iJot/methods/hive.dart';
 import 'package:iJot/screens/notes.dart';
 import 'package:iJot/screens/register.dart';
+import 'package:iJot/widgets/button.dart';
 import 'package:iJot/widgets/custom_scaffold.dart';
 import 'package:iJot/widgets/password_reset.dart';
 import 'package:iJot/widgets/privacy_policy.dart';
@@ -230,26 +231,11 @@ class _LoginState extends State<Login> {
                               ),
                             ),
                             SizedBox(height: 8.0),
-                            GestureDetector(
+                            CustomButton(
+                              buttonColor: Theme.of(context).primaryColor,
+                              text: 'sign_in'.tr(),
+                              textColor: Colors.white,
                               onTap: handleSignIn,
-                              child: Container(
-                                height: 48.0,
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: Theme.of(context).primaryColor,
-                                  borderRadius: BorderRadius.circular(
-                                      kCircularBorderRadius),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'sign_in'.tr(),
-                                    style: TextStyle(
-                                      fontSize: 20.0,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ),
                             ),
                             SizedBox(height: 8.0),
                             Text(
@@ -260,33 +246,25 @@ class _LoginState extends State<Login> {
                               ),
                             ),
                             SizedBox(height: 8.0),
-                            GestureDetector(
+                            CustomButton(
+                              buttonColor: Colors.white,
                               onTap: _handleGoogleSignIn,
-                              child: Container(
-                                height: 48.0,
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(
-                                      kCircularBorderRadius),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image.asset(
-                                      'assets/images/google-logo.png',
-                                      width: 30.0,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    'assets/images/google-logo.png',
+                                    width: 30.0,
+                                  ),
+                                  SizedBox(width: 8.0),
+                                  Text(
+                                    'sign_in'.tr(),
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: Theme.of(context).primaryColor,
                                     ),
-                                    SizedBox(width: 8.0),
-                                    Text(
-                                      'sign_in'.tr(),
-                                      style: TextStyle(
-                                        fontSize: 20.0,
-                                        color: Theme.of(context).primaryColor,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
