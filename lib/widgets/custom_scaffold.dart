@@ -61,7 +61,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
             decoration: BoxDecoration(
               gradient: kLinearGradient,
               // - bug fixes
-              // - automatically sync notes from other devices without signing in and out
+              // - automatically sync notes from other devices without signing out and in
               // - multilanguage support
               // - enabled Password reset
               // - privacy policy update
