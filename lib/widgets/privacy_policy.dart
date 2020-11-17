@@ -39,7 +39,9 @@ showPrivacyPolicyBottomSheet(BuildContext context) {
                   children: [
                     Text(
                       'privacy_policy_title'.tr(),
-                      style: kTitleTextStyle,
+                      style: kTitleTextStyle.copyWith(
+                        decoration: TextDecoration.underline,
+                      ),
                     ),
                     SizedBox(height: 16.0),
                     Text(
