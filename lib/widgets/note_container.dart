@@ -4,7 +4,6 @@ import 'package:iJot/constants/constants.dart';
 import 'package:iJot/methods/hive.dart';
 import 'package:iJot/models/note.dart';
 import 'package:iJot/screens/single_note.dart';
-import 'package:intl/intl.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class NoteContainer extends StatefulWidget {

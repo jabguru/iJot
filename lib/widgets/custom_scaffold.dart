@@ -96,7 +96,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                                         borderRadius: BorderRadius.circular(
                                             kCircularBorderRadius),
                                       ),
-                                      child: FlatButton(
+                                      child: TextButton(
                                         onPressed: () async {
                                           await userBox.clear();
                                           Navigator.pushReplacement(
@@ -110,9 +110,9 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 16.0,
+                                            color: Colors.white,
                                           ),
                                         ),
-                                        textColor: Colors.white,
                                       ),
                                     ),
                                     SizedBox(width: 6.0),

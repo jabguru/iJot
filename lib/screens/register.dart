@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:iJot/constants/constants.dart';
 import 'package:iJot/constants/firebase.dart';
 import 'package:iJot/constants/hive.dart';
