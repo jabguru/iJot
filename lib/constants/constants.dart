@@ -29,5 +29,21 @@ LinearGradient kLinearGradient = LinearGradient(
   end: Alignment.bottomCenter,
 );
 
+var kModalBoxDecoration = BoxDecoration(
+  borderRadius: BorderRadius.only(
+    topLeft: Radius.circular(16.0),
+    topRight: Radius.circular(16.0),
+  ),
+  color: Colors.white,
+);
+
+var kModalBoxDecorationGradient = BoxDecoration(
+  borderRadius: BorderRadius.only(
+    topLeft: Radius.circular(16.0),
+    topRight: Radius.circular(16.0),
+  ),
+  gradient: kLinearGradient,
+);
+
 bool kUserItemsAvailable = false;
 String loggedInUserId;

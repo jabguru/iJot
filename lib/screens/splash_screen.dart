@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:iJot/constants/constants.dart';
 import 'package:iJot/constants/hive.dart';
+import 'package:iJot/constants/routes.dart';
 import 'package:iJot/methods/firebase.dart';
 import 'package:iJot/methods/hive.dart';
-import 'package:iJot/screens/change_language.dart';
-import 'package:iJot/screens/login.dart';
-import 'package:iJot/screens/notes.dart';
 import 'package:iJot/widgets/custom_scaffold.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -26,19 +25,14 @@ class _SplashScreenState extends State<SplashScreen> {
     String userId = userBox.get('userId');
     if (userId == null) {
       if (firstTimeBox.isEmpty) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ChangeLanguage(
-              isFirstOpen: true,
-            ),
-          ),
+        await context.vxNav.replace(
+          Uri.parse(MyRoutes.languageRoute),
+          params: {
+            'isFirstOpen': true,
+          },
         );
       } else {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => Login()),
-        );
+        await context.vxNav.replace(Uri.parse(MyRoutes.loginRoute));
       }
     } else {
       loggedInUserId = userId;
@@ -46,8 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
       await HiveMethods().checkForUserItems();
       // not awaiting cloudtolocal so as not to delay moving to screen
       FirebaseMethods().cloudToLocal();
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => Notes()));
+      await context.vxNav.replace(Uri.parse(MyRoutes.notesRoute));
     }
   }
 

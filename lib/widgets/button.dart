@@ -18,22 +18,25 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        height: 48.0,
-        decoration: BoxDecoration(
-          color: buttonColor,
-          borderRadius: BorderRadius.circular(kCircularBorderRadius),
-        ),
-        child: Center(
-          child: child == null
-              ? Text(
-                  text,
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: textColor,
-                  ),
-                )
-              : child,
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: Container(
+          height: 48.0,
+          decoration: BoxDecoration(
+            color: buttonColor,
+            borderRadius: BorderRadius.circular(kCircularBorderRadius),
+          ),
+          child: Center(
+            child: child == null
+                ? Text(
+                    text,
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      color: textColor,
+                    ),
+                  )
+                : child,
+          ),
         ),
       ),
     );

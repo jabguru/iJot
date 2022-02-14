@@ -15,11 +15,27 @@
       },
       "oauth_client": [
         {
-          "client_id": "777445836697-jr2oaaio13jhne94g0ltji0i3iuj7rjs.apps.googleusercontent.com",
+          "client_id": "777445836697-103k8e3j2s2th2dv2kbuer28dht1qvi5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.jabguru.iJot",
-            "certificate_hash": "f770dc5db5353fc5e035aaa951a13812a7eec3f8"
+            "certificate_hash": "0861aac1e902e9196a9cadf77863d8d12eed08a5"
+          }
+        },
+        {
+          "client_id": "777445836697-hbqgu9nq4kc7e0ahti1uf4i7p0is7n39.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jabguru.iJot",
+            "certificate_hash": "5ad21fbdbe2f4a34382a47a63bd4c99a95e56334"
+          }
+        },
+        {
+          "client_id": "777445836697-srcntqj6sftaerqiqv9r2j5lvqj87fi6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jabguru.iJot",
+            "certificate_hash": "959b5a0f933a57d480a160e77cac36ff3269207a"
           }
         },
         {
@@ -38,6 +54,13 @@
             {
               "client_id": "777445836697-chb3qgcamv92t6hpi7koldskg49m7s5n.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "777445836697-u2l83kqj1h6tccgovnmd3nskjqpidpus.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jabguru.iJot"
+              }
             }
           ]
         }

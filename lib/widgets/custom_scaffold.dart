@@ -1,10 +1,11 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:iJot/constants/constants.dart';
 import 'package:iJot/constants/hive.dart';
-import 'package:iJot/screens/change_language.dart';
-import 'package:iJot/screens/splash_screen.dart';
+import 'package:iJot/constants/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class CustomScaffold extends StatefulWidget {
   final Widget child;
@@ -38,13 +39,16 @@ class _CustomScaffoldState extends State<CustomScaffold> {
   }
 
   animateButton() {
-    setState(() {
-      notAnimated = false;
-    });
+    if (this.mounted) {
+      setState(() {
+        notAnimated = false;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    bool screenGreaterThan700 = MediaQuery.of(context).size.width > 700;
     return Scaffold(
       resizeToAvoidBottomInset: widget.shouldShrink,
       body: Stack(
@@ -78,7 +82,12 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsets.fromLTRB(16.0, 40.0, 16.0, 8.0),
+                            padding: EdgeInsets.fromLTRB(
+                              screenGreaterThan700 ? 40.0 : 16.0,
+                              kIsWeb ? 20.0 : 40.0,
+                              screenGreaterThan700 ? 40.0 : 16.0,
+                              8.0,
+                            ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -90,7 +99,6 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                                 Row(
                                   children: [
                                     Container(
-                                      height: 36.0,
                                       decoration: BoxDecoration(
                                         color: Color(0x4D410E61),
                                         borderRadius: BorderRadius.circular(
@@ -99,32 +107,35 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                                       child: TextButton(
                                         onPressed: () async {
                                           await userBox.clear();
-                                          Navigator.pushReplacement(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      SplashScreen()));
+                                          context.vxNav.replace(
+                                              Uri.parse(MyRoutes.loginRoute));
                                         },
-                                        child: Text(
-                                          'sign_out'.tr(),
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16.0,
-                                            color: Colors.white,
+                                        child: Padding(
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: 10.0,
+                                            vertical: 5.0,
+                                          ),
+                                          child: Text(
+                                            'sign_out'.tr(),
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16.0,
+                                              color: Colors.white,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
                                     SizedBox(width: 6.0),
                                     GestureDetector(
-                                      onTap: () => Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ChangeLanguage())),
-                                      child: Icon(Icons.language,
-                                          color:
-                                              Theme.of(context).primaryColor),
+                                      onTap: () => context.vxNav.push(
+                                          Uri.parse(MyRoutes.languageRoute)),
+                                      child: MouseRegion(
+                                        cursor: SystemMouseCursors.click,
+                                        child: Icon(Icons.language,
+                                            color:
+                                                Theme.of(context).primaryColor),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -133,7 +144,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                           ),
                           Padding(
                             padding: EdgeInsets.only(
-                              left: 16.0,
+                              left: screenGreaterThan700 ? 40.0 : 16.0,
                               right: 16.0,
                               bottom: 6.0,
                             ),
@@ -149,54 +160,71 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                         ],
                       )
                     : SizedBox.shrink(),
-                Expanded(child: widget.child),
+                Expanded(
+                  child: Scrollbar(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: screenGreaterThan700 ? 40.0 : 0.0),
+                      child: widget.child,
+                    ),
+                    thickness: screenGreaterThan700 ? 8.0 : 0.0,
+                  ),
+                ),
                 SizedBox(height: 8.0),
                 widget.hasBottomBars
-                    ? Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 50.0),
-                            child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 8.0),
-                              height: 29.0,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(100.0),
-                                  topRight: Radius.circular(100.0),
-                                ),
-                              ),
-                            ),
-                          ),
-                          AnimatedPositioned(
-                            duration: Duration(milliseconds: 700),
-                            bottom: notAnimated ? 1.0 : 15.0,
-                            curve: Curves.easeInOut,
-                            child: GestureDetector(
-                              onTap: widget.onTap,
+                    ? Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: screenGreaterThan700 ? 40.0 : 0.0),
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 50.0),
                               child: Container(
-                                width: 64.0,
-                                height: 64.0,
+                                margin: EdgeInsets.symmetric(horizontal: 8.0),
+                                height: 29.0,
                                 decoration: BoxDecoration(
-                                    color: Color(0xFF410E61),
-                                    borderRadius: BorderRadius.circular(32.0),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Color(0x4D410E61),
-                                        blurRadius: 8.0,
-                                        offset: Offset(0, 4),
-                                      )
-                                    ]),
-                                child: Icon(
-                                  widget.editMode ? Icons.check : Icons.add,
                                   color: Colors.white,
-                                  size: 30.0,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(100.0),
+                                    topRight: Radius.circular(100.0),
+                                  ),
                                 ),
                               ),
                             ),
-                          )
-                        ],
+                            AnimatedPositioned(
+                              duration: Duration(milliseconds: 700),
+                              bottom: notAnimated ? 1.0 : 15.0,
+                              curve: Curves.easeInOut,
+                              child: GestureDetector(
+                                onTap: widget.onTap,
+                                child: MouseRegion(
+                                  cursor: SystemMouseCursors.click,
+                                  child: Container(
+                                    width: 64.0,
+                                    height: 64.0,
+                                    decoration: BoxDecoration(
+                                        color: Color(0xFF410E61),
+                                        borderRadius:
+                                            BorderRadius.circular(32.0),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Color(0x4D410E61),
+                                            blurRadius: 8.0,
+                                            offset: Offset(0, 4),
+                                          )
+                                        ]),
+                                    child: Icon(
+                                      widget.editMode ? Icons.check : Icons.add,
+                                      color: Colors.white,
+                                      size: 30.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       )
                     : SizedBox.shrink(),
               ],

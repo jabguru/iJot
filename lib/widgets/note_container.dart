@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iJot/constants/category.dart';
 import 'package:iJot/constants/constants.dart';
+import 'package:iJot/constants/routes.dart';
 import 'package:iJot/methods/hive.dart';
 import 'package:iJot/models/note.dart';
-import 'package:iJot/screens/single_note.dart';
+import 'package:velocity_x/velocity_x.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class NoteContainer extends StatefulWidget {
@@ -102,114 +103,124 @@ class _NoteContainerState extends State<NoteContainer> {
 
   @override
   Widget build(BuildContext context) {
+    bool screenGreaterThan700 = MediaQuery.of(context).size.width > 700;
+
     return GestureDetector(
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => SingleNote(
-            updateMode: true,
-            note: widget.note,
-            noteIndex: widget.noteIndex,
-          ),
-        ),
+      onTap: () => context.vxNav.push(
+        Uri(path: MyRoutes.noteRoute, queryParameters: {
+          "id": widget.noteIndex.toString(),
+        }),
+        params: {
+          'updateMode': true,
+          'note': widget.note,
+          'noteIndex': widget.noteIndex,
+        },
       ),
-      child: Container(
-          margin: EdgeInsets.only(bottom: 8.0),
-          padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-          height: 100.0,
-          width: double.infinity,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(kCircularBorderRadius),
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 4.0,
-                  offset: Offset(2, 2),
-                  color: Color(0x40000000),
-                )
-              ]),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                backgroundColor: categoryColor(widget.note.category),
-                radius: 10.0,
-              ),
-              SizedBox(
-                width: 16.0,
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: Text(
-                                widget.note.title,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 1,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20.0,
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: Container(
+            margin: EdgeInsets.only(
+              bottom: screenGreaterThan700 ? 20.0 : 8.0,
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+            height: 100.0,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(kCircularBorderRadius),
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 4.0,
+                    offset: Offset(2, 2),
+                    color: Color(0x40000000),
+                  )
+                ]),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  backgroundColor: categoryColor(widget.note.category),
+                  radius: 10.0,
+                ),
+                SizedBox(
+                  width: 16.0,
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    // mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  widget.note.title,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20.0,
+                                  ),
                                 ),
                               ),
-                            ),
-                            SizedBox(width: 6.0),
-                            GestureDetector(
-                              onTap: () => _showDeleteModal(context),
-                              child: Image.asset(
-                                'assets/images/delete.png',
-                                height: 16.0,
+                              SizedBox(width: 6.0),
+                              GestureDetector(
+                                onTap: () => _showDeleteModal(context),
+                                child: Image.asset(
+                                  'assets/images/delete.png',
+                                  height: 16.0,
+                                ),
                               ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 4.0,
+                          ),
+                          Text(
+                            widget.note.details,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 11.0,
+                              height: 1.18,
                             ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 4.0,
-                        ),
-                        Text(
-                          widget.note.details,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 11.0,
-                            height: 1.18,
                           ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          widget.note.category,
-                          style: TextStyle(
-                            fontSize: 12.0,
-                            color: categoryColor(widget.note.category),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            widget.note.category,
+                            style: TextStyle(
+                              fontSize: 12.0,
+                              color: categoryColor(widget.note.category),
+                            ),
                           ),
-                        ),
-                        Text(
-                          DateFormat(
-                            'd MMM y',
-                            context.locale.languageCode,
-                          ).format(DateTime.parse(widget.note.dateTime)),
-                          style: TextStyle(
-                            fontSize: 12.0,
+                          Text(
+                            DateFormat(
+                              'd MMM y',
+                              BuildContextEasyLocalizationExtension(context)
+                                  .locale
+                                  .languageCode,
+                            ).format(DateTime.parse(widget.note.dateTime)),
+                            style: TextStyle(
+                              fontSize: 12.0,
+                            ),
                           ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              )
-            ],
-          )),
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
+            )),
+      ),
     );
   }
 }

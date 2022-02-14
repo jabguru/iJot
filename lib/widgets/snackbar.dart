@@ -1,4 +1,4 @@
-import 'package:flushbar/flushbar.dart';
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 
 // class ErrorContainer extends StatelessWidget {
@@ -29,7 +29,7 @@ void showSuccessSnackbar(BuildContext context, {String title, String message}) {
   Flushbar(
     margin: EdgeInsets.all(20.0),
     padding: EdgeInsets.all(20.0),
-    borderRadius: 15.0,
+    borderRadius: BorderRadius.circular(15.0),
     title: title,
     message: message,
     backgroundColor: Theme.of(context).primaryColor.withOpacity(0.9),
@@ -45,7 +45,7 @@ void showErrorSnackbar(BuildContext context, {String title, String message}) {
   Flushbar(
     margin: EdgeInsets.all(20.0),
     padding: EdgeInsets.all(20.0),
-    borderRadius: 15.0,
+    borderRadius: BorderRadius.circular(15.0),
     message: message,
     backgroundColor: Theme.of(context).primaryColor.withOpacity(0.9),
     icon: Icon(

@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:iJot/constants/constants.dart';
+import 'package:iJot/constants/routes.dart';
 import 'package:iJot/models/note.dart';
-import 'package:iJot/screens/single_note.dart';
 import 'package:iJot/widgets/custom_scaffold.dart';
 import 'package:iJot/widgets/note_container.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class Notes extends StatefulWidget {
   @override
@@ -41,18 +42,39 @@ class _NotesState extends State<Notes> {
       valueListenable: Hive.box<Note>('notes').listenable(),
       builder: (BuildContext context, Box<Note> notesBox, _) {
         return kUserItemsAvailable && notesBox.length > 0
-            ? ListView.builder(
-                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                itemCount: notesBox.length,
-                itemBuilder: (BuildContext context, int index) {
-                  int noteIndex = notesBox.length - index - 1;
-                  final note = notesBox.getAt(noteIndex);
-                  if (note.ownerId == loggedInUserId) {
-                    return NoteContainer(note, noteIndex);
-                  }
-                  return SizedBox.shrink();
-                },
-              )
+            ? LayoutBuilder(builder: (context, constraints) {
+                if (constraints.maxWidth > 700) {
+                  return GridView.builder(
+                      padding: EdgeInsets.only(right: 8.0),
+                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 300,
+                        mainAxisExtent: 120.0,
+                        crossAxisSpacing: 20.0,
+                      ),
+                      itemCount: notesBox.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        int noteIndex = notesBox.length - index - 1;
+                        final note = notesBox.getAt(noteIndex);
+                        if (note.ownerId == loggedInUserId) {
+                          return NoteContainer(note, noteIndex);
+                        }
+                        return SizedBox.shrink();
+                      });
+                }
+                return ListView.builder(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  itemCount: notesBox.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    int noteIndex = notesBox.length - index - 1;
+                    final note = notesBox.getAt(noteIndex);
+                    if (note.ownerId == loggedInUserId) {
+                      return NoteContainer(note, noteIndex);
+                    }
+                    return SizedBox.shrink();
+                  },
+                );
+              })
             : noContent();
       },
     );
@@ -64,12 +86,7 @@ class _NotesState extends State<Notes> {
       title: 'notes'.tr(),
       child: _buildListView(),
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => SingleNote(),
-          ),
-        );
+        context.vxNav.push(Uri.parse(MyRoutes.noteRoute));
       },
     );
   }

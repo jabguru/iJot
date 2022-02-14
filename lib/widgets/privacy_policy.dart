@@ -8,62 +8,72 @@ showPrivacyPolicyBottomSheet(BuildContext context) {
       backgroundColor: Colors.transparent,
       context: context,
       builder: (context) {
-        return Stack(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16.0),
-                  topRight: Radius.circular(16.0),
+        return LayoutBuilder(builder: (context, constraints) {
+          return Stack(
+            alignment: AlignmentDirectional.center,
+            children: [
+              Container(
+                decoration: kModalBoxDecoration,
+                width: constraints.maxWidth > 700 ? 400 : double.infinity,
+              ),
+              Container(
+                padding: EdgeInsets.fromLTRB(
+                  24.0,
+                  24.0,
+                  24.0,
+                  MediaQuery.of(context).viewInsets.bottom + 24.0,
                 ),
-                color: Colors.white,
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.fromLTRB(
-                24.0,
-                24.0,
-                24.0,
-                MediaQuery.of(context).viewInsets.bottom + 24.0,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16.0),
-                  topRight: Radius.circular(16.0),
-                ),
-                gradient: kLinearGradient,
-              ),
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      'privacy_policy_title'.tr(),
-                      style: kTitleTextStyle.copyWith(
-                        decoration: TextDecoration.underline,
+                decoration: kModalBoxDecorationGradient,
+                width: constraints.maxWidth > 700 ? 400 : double.infinity,
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'privacy_policy_title'.tr(),
+                        style: kTitleTextStyle.copyWith(
+                          decoration: TextDecoration.underline,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 16.0),
-                    Text(
-                      'privacy_policy'.tr(namedArgs: {
-                        'name': "Julius Alibrown",
-                      }),
-                      style: TextStyle(
-                        color: Color(0xFF1D062A),
+                      SizedBox(height: 16.0),
+                      Text(
+                        'privacy_policy'.tr(namedArgs: {
+                          'name': "Julius Alibrown",
+                        }),
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 24.0),
-                    CustomButton(
-                      buttonColor: Theme.of(context).primaryColor,
-                      text: "language_done".tr(),
-                      textColor: Colors.white,
-                      onTap: () => Navigator.pop(context),
-                    ),
-                  ],
+                      SizedBox(height: 24.0),
+                      CustomButton(
+                        buttonColor: Theme.of(context).primaryColor,
+                        text: "language_done".tr(),
+                        textColor: Colors.white,
+                        onTap: () => Navigator.pop(context),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
-        );
+            ],
+          );
+        });
       });
+}
+
+class PrivacyPolicyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => showPrivacyPolicyBottomSheet(context),
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: Text(
+          'privacy_policy_title'.tr(),
+          style: kNormalUnderlineTextStyle,
+        ),
+      ),
+    );
+  }
 }

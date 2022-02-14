@@ -75,11 +75,15 @@ class _SingleNoteState extends State<SingleNote> {
 
   @override
   Widget build(BuildContext context) {
+    bool screenGreaterThan700 = MediaQuery.of(context).size.width > 700;
+
     return CustomScaffold(
       title: widget.updateMode ? 'note_edit'.tr() : 'note_new'.tr(),
       editMode: true,
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        margin: screenGreaterThan700
+            ? null
+            : EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         padding: EdgeInsets.all(16.0),
         width: double.infinity,
         decoration: BoxDecoration(
