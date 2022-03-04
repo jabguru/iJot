@@ -1,15 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:iJot/constants/routes.dart';
-import 'package:iJot/constants/supported_locales.dart';
-import 'package:iJot/methods/hive.dart';
-import 'package:iJot/screens/change_language.dart';
-import 'package:iJot/screens/login.dart';
-import 'package:iJot/screens/notes.dart';
-import 'package:iJot/screens/register.dart';
-import 'package:iJot/screens/single_note.dart';
-import 'package:iJot/screens/splash_screen.dart';
+import 'package:ijot/constants/routes.dart';
+import 'package:ijot/constants/supported_locales.dart';
+import 'package:ijot/methods/hive.dart';
+import 'package:ijot/screens/change_language.dart';
+import 'package:ijot/screens/login.dart';
+import 'package:ijot/screens/notes.dart';
+import 'package:ijot/screens/register.dart';
+import 'package:ijot/screens/single_note.dart';
+import 'package:ijot/screens/splash_screen.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:velocity_x/velocity_x.dart'
     show VxInformationParser, VxNavigator;

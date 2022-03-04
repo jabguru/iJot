@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:iJot/constants/category.dart';
-import 'package:iJot/constants/constants.dart';
-import 'package:iJot/methods/hive.dart';
-import 'package:iJot/models/note.dart';
-import 'package:iJot/widgets/custom_scaffold.dart';
-import 'package:iJot/widgets/snackbar.dart';
+import 'package:ijot/constants/category.dart';
+import 'package:ijot/constants/constants.dart';
+import 'package:ijot/methods/hive.dart';
+import 'package:ijot/models/note.dart';
+import 'package:ijot/widgets/custom_scaffold.dart';
+import 'package:ijot/widgets/snackbar.dart';
 import 'package:uuid/uuid.dart';
 import 'package:easy_localization/easy_localization.dart';
 

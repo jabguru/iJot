@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:iJot/constants/constants.dart';
-import 'package:iJot/constants/hive.dart';
-import 'package:iJot/constants/routes.dart';
+import 'package:ijot/constants/constants.dart';
+import 'package:ijot/constants/hive.dart';
+import 'package:ijot/constants/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:velocity_x/velocity_x.dart';
 

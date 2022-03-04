@@ -1,11 +1,11 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:iJot/constants/constants.dart';
-import 'package:iJot/constants/hive.dart';
-import 'package:iJot/constants/languages.dart';
-import 'package:iJot/constants/routes.dart';
-import 'package:iJot/widgets/button.dart';
-import 'package:iJot/widgets/custom_scaffold.dart';
+import 'package:ijot/constants/constants.dart';
+import 'package:ijot/constants/hive.dart';
+import 'package:ijot/constants/languages.dart';
+import 'package:ijot/constants/routes.dart';
+import 'package:ijot/widgets/button.dart';
+import 'package:ijot/widgets/custom_scaffold.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:velocity_x/velocity_x.dart';
 

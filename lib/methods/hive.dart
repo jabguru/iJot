@@ -1,8 +1,8 @@
 import 'package:hive/hive.dart';
-import 'package:iJot/constants/constants.dart';
-import 'package:iJot/constants/hive.dart';
-import 'package:iJot/methods/firebase.dart';
-import 'package:iJot/models/note.dart';
+import 'package:ijot/constants/constants.dart';
+import 'package:ijot/constants/hive.dart';
+import 'package:ijot/methods/firebase.dart';
+import 'package:ijot/models/note.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:flutter/foundation.dart' show kIsWeb;
 

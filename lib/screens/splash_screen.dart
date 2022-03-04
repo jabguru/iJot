@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:iJot/constants/constants.dart';
-import 'package:iJot/constants/hive.dart';
-import 'package:iJot/constants/routes.dart';
-import 'package:iJot/methods/firebase.dart';
-import 'package:iJot/methods/hive.dart';
-import 'package:iJot/widgets/custom_scaffold.dart';
+import 'package:ijot/constants/constants.dart';
+import 'package:ijot/constants/hive.dart';
+import 'package:ijot/constants/routes.dart';
+import 'package:ijot/methods/firebase.dart';
+import 'package:ijot/methods/hive.dart';
+import 'package:ijot/widgets/custom_scaffold.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class SplashScreen extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:iJot/constants/constants.dart';
-import 'package:iJot/widgets/button.dart';
+import 'package:ijot/constants/constants.dart';
+import 'package:ijot/widgets/button.dart';
 
 showPrivacyPolicyBottomSheet(BuildContext context) {
   return showModalBottomSheet(

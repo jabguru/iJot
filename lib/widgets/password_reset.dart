@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:iJot/constants/constants.dart';
-import 'package:iJot/constants/firebase.dart';
-import 'package:iJot/widgets/button.dart';
-import 'package:iJot/widgets/progress.dart';
-import 'package:iJot/widgets/snackbar.dart';
+import 'package:ijot/constants/constants.dart';
+import 'package:ijot/constants/firebase.dart';
+import 'package:ijot/widgets/button.dart';
+import 'package:ijot/widgets/progress.dart';
+import 'package:ijot/widgets/snackbar.dart';
 
 showForgotPasswordBottomSheet(BuildContext context) {
   final _forgotPassFormKey = GlobalKey<FormState>();

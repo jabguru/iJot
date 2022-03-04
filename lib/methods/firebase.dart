@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:iJot/constants/constants.dart';
-import 'package:iJot/constants/firebase.dart';
-import 'package:iJot/constants/hive.dart';
-import 'package:iJot/models/note.dart';
+import 'package:ijot/constants/constants.dart';
+import 'package:ijot/constants/firebase.dart';
+import 'package:ijot/constants/hive.dart';
+import 'package:ijot/models/note.dart';
 
 class FirebaseMethods {
   Future syncNote(Note note) async {
