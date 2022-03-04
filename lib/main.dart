@@ -14,6 +14,9 @@ import 'package:url_strategy/url_strategy.dart';
 import 'package:velocity_x/velocity_x.dart'
     show VxInformationParser, VxNavigator;
 
+// TODO: SORT THE NOTES BY DATE, SO WHEN A NOTE IS UPDATED IT COMES UP
+// TODO: SYNC DELETE ACROSS DEVICES, CHECK cloudToLocal AND DELETE ID THAT DOESN'T EXIST
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
