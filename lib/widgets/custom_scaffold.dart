@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ijot/constants/constants.dart';
@@ -145,16 +146,38 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                           Padding(
                             padding: EdgeInsets.only(
                               left: screenGreaterThan700 ? 40.0 : 16.0,
-                              right: 16.0,
+                              right: screenGreaterThan700 ? 40.0 : 16.0,
                               bottom: 6.0,
                             ),
-                            child: Text(
-                              widget.title,
-                              style: TextStyle(
-                                color: Color(0xFF1D062A),
-                                fontSize: 32.0,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  widget.title,
+                                  style: TextStyle(
+                                    color: Color(0xFF1D062A),
+                                    fontSize: 32.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                if (Platform.isMacOS &&
+                                    Navigator.canPop(context))
+                                  MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    child: Tooltip(
+                                      // TODO: RETRANSLATE JSON FILES
+                                      message: 'close'.tr(),
+                                      child: GestureDetector(
+                                        onTap: () => Navigator.pop(context),
+                                        child: Icon(
+                                          Icons.close,
+                                          size: 36.0,
+                                          color: Color(0xFF1D062A),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                              ],
                             ),
                           ),
                         ],

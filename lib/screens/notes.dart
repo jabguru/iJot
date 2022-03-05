@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/routes.dart';
