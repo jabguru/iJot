@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/firebase.dart';
@@ -12,7 +14,7 @@ class FirebaseMethods {
         'title': note.title,
         'details': note.details,
         'category': note.category,
-        'dateTime': DateTime.parse(note.dateTime),
+        'dateTime': DateTime.parse(note.dateTime!),
         'ownerId': note.ownerId,
       });
     } catch (e) {
@@ -27,7 +29,7 @@ class FirebaseMethods {
           'title': note.title,
           'details': note.details,
           'category': note.category,
-          'dateTime': DateTime.parse(note.dateTime),
+          'dateTime': DateTime.parse(note.dateTime!),
         },
       );
     } catch (e) {
@@ -60,18 +62,18 @@ class FirebaseMethods {
           .orderBy('dateTime')
           .get();
 
-      snapshot.docs.forEach((doc) {
+      for (var doc in snapshot.docs) {
         bool isContained = false;
         Note cloudNote = Note.fromDocument(doc);
         for (var i = 0; i < notesBox.length; i++) {
-          if (loggedInUserId == notesBox.getAt(i).ownerId) {
-            if (cloudNote.id == notesBox.getAt(i).id) {
+          if (loggedInUserId == notesBox.getAt(i)!.ownerId) {
+            if (cloudNote.id == notesBox.getAt(i)!.id) {
               isContained = true;
             }
           }
         }
         if (!isContained) notesBox.add(cloudNote);
-      });
+      }
     } catch (e) {
       print(e.toString);
     }

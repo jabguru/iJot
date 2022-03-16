@@ -8,6 +8,8 @@ import 'package:ijot/widgets/custom_scaffold.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -16,13 +18,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
       handleNavigation();
     });
   }
 
   handleNavigation() async {
-    String userId = userBox.get('userId');
+    String? userId = userBox.get('userId');
     if (userId == null) {
       if (firstTimeBox.isEmpty) {
         await context.vxNav.replace(

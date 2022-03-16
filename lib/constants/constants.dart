@@ -20,7 +20,7 @@ const kNormalUnderlineTextStyle = TextStyle(
 
 const kCircularBorderRadius = 8.0;
 
-LinearGradient kLinearGradient = LinearGradient(
+LinearGradient kLinearGradient = const LinearGradient(
   colors: [
     Color(0x80EEAAC2),
     Color(0x80410E61),
@@ -29,7 +29,7 @@ LinearGradient kLinearGradient = LinearGradient(
   end: Alignment.bottomCenter,
 );
 
-var kModalBoxDecoration = BoxDecoration(
+var kModalBoxDecoration = const BoxDecoration(
   borderRadius: BorderRadius.only(
     topLeft: Radius.circular(16.0),
     topRight: Radius.circular(16.0),
@@ -38,7 +38,7 @@ var kModalBoxDecoration = BoxDecoration(
 );
 
 var kModalBoxDecorationGradient = BoxDecoration(
-  borderRadius: BorderRadius.only(
+  borderRadius: const BorderRadius.only(
     topLeft: Radius.circular(16.0),
     topRight: Radius.circular(16.0),
   ),
@@ -46,4 +46,4 @@ var kModalBoxDecorationGradient = BoxDecoration(
 );
 
 bool kUserItemsAvailable = false;
-String loggedInUserId;
+String? loggedInUserId;

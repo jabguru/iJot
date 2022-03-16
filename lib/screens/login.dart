@@ -13,25 +13,27 @@ import 'package:ijot/widgets/password_reset.dart';
 import 'package:ijot/widgets/privacy_policy.dart';
 import 'package:ijot/widgets/progress.dart';
 import 'package:ijot/widgets/snackbar.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:modal_progress_hud_alt/modal_progress_hud_alt.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Login extends StatefulWidget {
+  const Login({Key? key}) : super(key: key);
+
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
   bool _hidePassword = true;
-  String _emailInput;
-  String _passwordInput;
+  String? _emailInput;
+  String? _passwordInput;
   bool _isLoading = false;
 
   final _formKey = GlobalKey<FormState>();
 
   handleSignIn() async {
-    final form = _formKey.currentState;
+    final form = _formKey.currentState!;
 
     if (form.validate()) {
       setState(() {
@@ -40,28 +42,26 @@ class _LoginState extends State<Login> {
       form.save();
 
       try {
-        final authUser = await fireBaseAuth.signInWithEmailAndPassword(
-          email: _emailInput.trim(),
-          password: _passwordInput.trim(),
+        await fireBaseAuth.signInWithEmailAndPassword(
+          email: _emailInput!.trim(),
+          password: _passwordInput!.trim(),
         );
-        if (authUser != null) {
-          final User currentUser = fireBaseAuth.currentUser;
-          String userId = currentUser.uid;
+        final User currentUser = fireBaseAuth.currentUser!;
+        String userId = currentUser.uid;
 
-          loggedInUserId = userId;
+        loggedInUserId = userId;
 
-          userBox.put('userId', userId);
+        userBox.put('userId', userId);
 
-          await FirebaseMethods().cloudToLocal();
-          await HiveMethods().checkForUserItems();
+        await FirebaseMethods().cloudToLocal();
+        await HiveMethods().checkForUserItems();
 
-          setState(() {
-            _isLoading = false;
-          });
+        setState(() {
+          _isLoading = false;
+        });
 
-          context.vxNav.replace(Uri.parse(MyRoutes.notesRoute));
-        }
-      } catch (e) {
+        context.vxNav.replace(Uri.parse(MyRoutes.notesRoute));
+      } on FirebaseException catch (e) {
         setState(() {
           _isLoading = false;
         });
@@ -74,7 +74,7 @@ class _LoginState extends State<Login> {
     try {
       googleSignIn.signIn();
     } catch (e) {
-      print('Error Signing in: $e');
+      // print('Error Signing in: $e');
       showErrorSnackbar(context,
           message: 'Unable to Sign in with Google, try again.');
     }
@@ -87,7 +87,7 @@ class _LoginState extends State<Login> {
       setState(() {
         _isLoading = true;
       });
-      final GoogleSignInAccount currentUser = googleSignIn.currentUser;
+      final GoogleSignInAccount currentUser = googleSignIn.currentUser!;
       String userId = currentUser.id;
 
       loggedInUserId = userId;
@@ -101,7 +101,7 @@ class _LoginState extends State<Login> {
       });
       context.vxNav.replace(Uri.parse(MyRoutes.notesRoute));
     }, onError: (error) {
-      print('Error Signing in: $error');
+      // print('Error Signing in: $error');
       showErrorSnackbar(context,
           message: 'Unable to Sign in with Google, try again.');
     });
@@ -132,9 +132,9 @@ class _LoginState extends State<Login> {
             Center(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: EdgeInsets.all(38.0),
+                  padding: const EdgeInsets.all(38.0),
                   child: LayoutBuilder(builder: (context, constraints) {
-                    return Container(
+                    return SizedBox(
                       width: constraints.maxWidth > 700 ? 400 : double.infinity,
                       child: Column(
                         children: [
@@ -142,7 +142,7 @@ class _LoginState extends State<Login> {
                             'assets/images/logo-with-circle.png',
                             height: 115.0,
                           ),
-                          SizedBox(height: 55.0),
+                          const SizedBox(height: 55.0),
                           Form(
                             key: _formKey,
                             child: Column(
@@ -152,7 +152,7 @@ class _LoginState extends State<Login> {
                                       kCircularBorderRadius),
                                   child: TextFormField(
                                     validator: (val) {
-                                      if (val.trim().isEmpty) {
+                                      if (val!.trim().isEmpty) {
                                         return 'validation_email'.tr();
                                       } else if (!val.trim().contains(RegExp(
                                           r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)",
@@ -176,13 +176,13 @@ class _LoginState extends State<Login> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 8.0),
+                                const SizedBox(height: 8.0),
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(
                                       kCircularBorderRadius),
                                   child: TextFormField(
                                     validator: (val) {
-                                      if (val.trim().isEmpty) {
+                                      if (val!.trim().isEmpty) {
                                         return 'validation_password'.tr();
                                       } else if (val.trim().length < 6) {
                                         return 'validation_password_2'.tr();
@@ -223,7 +223,7 @@ class _LoginState extends State<Login> {
                                     obscureText: _hidePassword,
                                   ),
                                 ),
-                                SizedBox(height: 8.0),
+                                const SizedBox(height: 8.0),
                                 GestureDetector(
                                   onTap: () =>
                                       showForgotPasswordBottomSheet(context),
@@ -235,22 +235,22 @@ class _LoginState extends State<Login> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 8.0),
+                                const SizedBox(height: 8.0),
                                 CustomButton(
                                   buttonColor: Theme.of(context).primaryColor,
                                   text: 'sign_in'.tr(),
                                   textColor: Colors.white,
                                   onTap: handleSignIn,
                                 ),
-                                SizedBox(height: 8.0),
+                                const SizedBox(height: 8.0),
                                 Text(
                                   'or'.tr(),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Color(0x80FFFFFF),
                                     fontSize: 12.0,
                                   ),
                                 ),
-                                SizedBox(height: 8.0),
+                                const SizedBox(height: 8.0),
                                 CustomButton(
                                   buttonColor: Colors.white,
                                   onTap: _handleGoogleSignIn,
@@ -261,7 +261,7 @@ class _LoginState extends State<Login> {
                                         'assets/images/google-logo.png',
                                         width: 30.0,
                                       ),
-                                      SizedBox(width: 8.0),
+                                      const SizedBox(width: 8.0),
                                       Text(
                                         'sign_in'.tr(),
                                         style: TextStyle(
@@ -275,13 +275,13 @@ class _LoginState extends State<Login> {
                               ],
                             ),
                           ),
-                          SizedBox(height: 8.0),
+                          const SizedBox(height: 8.0),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
                                 'dont_have_an_account'.tr() + " ",
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 15.0,
                                   color: Colors.white,
                                   fontFamily: 'Cabin',
@@ -303,7 +303,7 @@ class _LoginState extends State<Login> {
                           SizedBox(
                               height:
                                   MediaQuery.of(context).size.height * 0.07),
-                          PrivacyPolicyWidget(),
+                          const PrivacyPolicyWidget(),
                         ],
                       ),
                     );

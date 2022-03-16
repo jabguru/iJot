@@ -1,16 +1,21 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
+
 import 'package:ijot/constants/category.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/methods/hive.dart';
 import 'package:ijot/models/note.dart';
-import 'package:velocity_x/velocity_x.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class NoteContainer extends StatefulWidget {
   final Note note;
   final int noteIndex;
-  NoteContainer(this.note, this.noteIndex);
+  const NoteContainer(
+    this.note,
+    this.noteIndex, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   _NoteContainerState createState() => _NoteContainerState();
@@ -37,22 +42,22 @@ class _NoteContainerState extends State<NoteContainer> {
                     Text(
                       'delete_note_undone'.tr(),
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Color(0xFF444444),
                         fontSize: 12.0,
                       ),
                     ),
-                    SizedBox(height: 26.0),
+                    const SizedBox(height: 26.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         GestureDetector(
                           onTap: () => Navigator.pop(context),
                           child: Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 21.0, vertical: 8.0),
                             decoration: BoxDecoration(
-                              color: Color(0x4D410E61),
+                              color: const Color(0x4D410E61),
                               borderRadius:
                                   BorderRadius.circular(kCircularBorderRadius),
                             ),
@@ -74,7 +79,7 @@ class _NoteContainerState extends State<NoteContainer> {
                             Navigator.pop(context);
                           },
                           child: Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 21.0, vertical: 8.0),
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -84,7 +89,7 @@ class _NoteContainerState extends State<NoteContainer> {
                             ),
                             child: Text(
                               'delete'.tr(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.red,
                                 fontSize: 16.0,
                               ),
@@ -122,13 +127,14 @@ class _NoteContainerState extends State<NoteContainer> {
             margin: EdgeInsets.only(
               bottom: screenGreaterThan700 ? 20.0 : 8.0,
             ),
-            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
             height: 100.0,
             width: double.infinity,
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(kCircularBorderRadius),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     blurRadius: 4.0,
                     offset: Offset(2, 2),
@@ -142,7 +148,7 @@ class _NoteContainerState extends State<NoteContainer> {
                   backgroundColor: categoryColor(widget.note.category),
                   radius: 10.0,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 16.0,
                 ),
                 Expanded(
@@ -159,16 +165,16 @@ class _NoteContainerState extends State<NoteContainer> {
                             children: [
                               Expanded(
                                 child: Text(
-                                  widget.note.title,
+                                  widget.note.title!,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 1,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20.0,
                                   ),
                                 ),
                               ),
-                              SizedBox(width: 6.0),
+                              const SizedBox(width: 6.0),
                               GestureDetector(
                                 onTap: () => _showDeleteModal(context),
                                 child: Image.asset(
@@ -178,14 +184,14 @@ class _NoteContainerState extends State<NoteContainer> {
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 4.0,
                           ),
                           Text(
-                            widget.note.details,
+                            widget.note.details!,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 11.0,
                               height: 1.18,
                             ),
@@ -196,7 +202,7 @@ class _NoteContainerState extends State<NoteContainer> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            widget.note.category,
+                            widget.note.category!,
                             style: TextStyle(
                               fontSize: 12.0,
                               color: categoryColor(widget.note.category),
@@ -208,8 +214,8 @@ class _NoteContainerState extends State<NoteContainer> {
                               BuildContextEasyLocalizationExtension(context)
                                   .locale
                                   .languageCode,
-                            ).format(DateTime.parse(widget.note.dateTime)),
-                            style: TextStyle(
+                            ).format(DateTime.parse(widget.note.dateTime!)),
+                            style: const TextStyle(
                               fontSize: 12.0,
                             ),
                           ),

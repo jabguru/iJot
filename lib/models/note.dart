@@ -5,22 +5,22 @@ part 'note.g.dart';
 @HiveType(typeId: 1)
 class Note {
   @HiveField(0)
-  final String id;
+  final String? id;
 
   @HiveField(1)
-  final String title;
+  final String? title;
 
   @HiveField(2)
-  final String details;
+  final String? details;
 
   @HiveField(3)
-  final String category;
+  final String? category;
 
   @HiveField(4)
-  final String dateTime;
+  final String? dateTime;
 
   @HiveField(5)
-  final String ownerId;
+  final String? ownerId;
 
   Note({
     this.id,

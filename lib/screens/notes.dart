@@ -9,6 +9,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Notes extends StatefulWidget {
+  const Notes({Key? key}) : super(key: key);
+
   @override
   _NotesState createState() => _NotesState();
 }
@@ -24,10 +26,10 @@ class _NotesState extends State<Notes> {
           'assets/images/not_found.png',
           height: 177.0,
         )),
-        SizedBox(height: 8.0),
+        const SizedBox(height: 8.0),
         Text(
           'no_notes_yet'.tr(),
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 24.0,
           ),
@@ -44,8 +46,9 @@ class _NotesState extends State<Notes> {
             ? LayoutBuilder(builder: (context, constraints) {
                 if (constraints.maxWidth > 700) {
                   return GridView.builder(
-                      padding: EdgeInsets.only(right: 8.0),
-                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
                         maxCrossAxisExtent: 300,
                         mainAxisExtent: 120.0,
                         crossAxisSpacing: 20.0,
@@ -53,24 +56,24 @@ class _NotesState extends State<Notes> {
                       itemCount: notesBox.length,
                       itemBuilder: (BuildContext context, int index) {
                         int noteIndex = notesBox.length - index - 1;
-                        final note = notesBox.getAt(noteIndex);
+                        final note = notesBox.getAt(noteIndex)!;
                         if (note.ownerId == loggedInUserId) {
                           return NoteContainer(note, noteIndex);
                         }
-                        return SizedBox.shrink();
+                        return const SizedBox.shrink();
                       });
                 }
                 return ListView.builder(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0, vertical: 8.0),
                   itemCount: notesBox.length,
                   itemBuilder: (BuildContext context, int index) {
                     int noteIndex = notesBox.length - index - 1;
-                    final note = notesBox.getAt(noteIndex);
+                    final note = notesBox.getAt(noteIndex)!;
                     if (note.ownerId == loggedInUserId) {
                       return NoteContainer(note, noteIndex);
                     }
-                    return SizedBox.shrink();
+                    return const SizedBox.shrink();
                   },
                 );
               })

@@ -14,12 +14,12 @@ class NoteAdapter extends TypeAdapter<Note> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Note(
-      id: fields[0] as String,
-      title: fields[1] as String,
-      details: fields[2] as String,
-      category: fields[3] as String,
-      dateTime: fields[4] as String,
-      ownerId: fields[5] as String,
+      id: fields[0] as String?,
+      title: fields[1] as String?,
+      details: fields[2] as String?,
+      category: fields[3] as String?,
+      dateTime: fields[4] as String?,
+      ownerId: fields[5] as String?,
     );
   }
 

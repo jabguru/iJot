@@ -31,7 +31,7 @@ class HiveMethods {
   Future checkForUserItems() async {
     kUserItemsAvailable = false;
     for (var i = 0; i < notesBox.length; i++) {
-      if (loggedInUserId == notesBox.getAt(i).ownerId) {
+      if (loggedInUserId == notesBox.getAt(i)!.ownerId) {
         kUserItemsAvailable = true;
       }
     }
@@ -46,13 +46,13 @@ class HiveMethods {
     FirebaseMethods().syncNote(note);
   }
 
-  Future updateNote({Note note, index}) async {
+  Future updateNote({required Note note, required index}) async {
     final notesBox = Hive.box<Note>('notes');
     notesBox.putAt(index, note);
     FirebaseMethods().updateNote(note);
   }
 
-  Future deleteNote({Note note, index}) async {
+  Future deleteNote({required Note note, required index}) async {
     final noteBox = Hive.box<Note>('notes');
     noteBox.deleteAt(index);
     FirebaseMethods().deleteNote(note);

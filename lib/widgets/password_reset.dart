@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/firebase.dart';
@@ -9,7 +10,7 @@ import 'package:ijot/widgets/snackbar.dart';
 showForgotPasswordBottomSheet(BuildContext context) {
   final _forgotPassFormKey = GlobalKey<FormState>();
   bool _isLoading = false;
-  String _resetEmail;
+  String? _resetEmail;
 
   return showModalBottomSheet(
       backgroundColor: Colors.transparent,
@@ -46,7 +47,7 @@ showForgotPasswordBottomSheet(BuildContext context) {
                               'reset_password_title'.tr(),
                               style: kTitleTextStyle,
                             ),
-                            SizedBox(height: 16.0),
+                            const SizedBox(height: 16.0),
                             Form(
                               key: _forgotPassFormKey,
                               child: ClipRRect(
@@ -54,7 +55,7 @@ showForgotPasswordBottomSheet(BuildContext context) {
                                     kCircularBorderRadius),
                                 child: TextFormField(
                                   validator: (val) {
-                                    if (val.trim().isEmpty) {
+                                    if (val!.trim().isEmpty) {
                                       return 'validation_email'.tr();
                                     } else if (!val.trim().contains(RegExp(
                                         r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)",
@@ -79,7 +80,7 @@ showForgotPasswordBottomSheet(BuildContext context) {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 8.0),
+                            const SizedBox(height: 8.0),
                             _isLoading
                                 ? circularProgress()
                                 : Row(
@@ -92,8 +93,8 @@ showForgotPasswordBottomSheet(BuildContext context) {
                                           text: 'reset'.tr(),
                                           textColor: Colors.white,
                                           onTap: () async {
-                                            final form =
-                                                _forgotPassFormKey.currentState;
+                                            final form = _forgotPassFormKey
+                                                .currentState!;
 
                                             if (form.validate()) {
                                               setState(() {
@@ -104,13 +105,13 @@ showForgotPasswordBottomSheet(BuildContext context) {
                                               try {
                                                 await fireBaseAuth
                                                     .sendPasswordResetEmail(
-                                                        email: _resetEmail);
+                                                        email: _resetEmail!);
                                                 Navigator.pop(context);
                                                 showSuccessSnackbar(context,
                                                     message:
                                                         "password_reset_successful"
                                                             .tr());
-                                              } catch (e) {
+                                              } on FirebaseException catch (e) {
                                                 showErrorSnackbar(context,
                                                     message: e.message);
                                               }
@@ -122,7 +123,7 @@ showForgotPasswordBottomSheet(BuildContext context) {
                                           },
                                         ),
                                       ),
-                                      SizedBox(width: 8.0),
+                                      const SizedBox(width: 8.0),
                                       Expanded(
                                         child: CustomButton(
                                           buttonColor: Colors.white,

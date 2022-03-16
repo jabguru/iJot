@@ -1,32 +1,38 @@
 import 'dart:math';
+
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
+
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/hive.dart';
 import 'package:ijot/constants/languages.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/widgets/button.dart';
 import 'package:ijot/widgets/custom_scaffold.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class ChangeLanguage extends StatefulWidget {
-  final bool isFirstOpen;
-  ChangeLanguage({this.isFirstOpen = false});
+  final bool? isFirstOpen;
+  const ChangeLanguage({
+    Key? key,
+    this.isFirstOpen,
+  }) : super(key: key);
   @override
   _ChangeLanguageState createState() => _ChangeLanguageState();
 }
 
 class _ChangeLanguageState extends State<ChangeLanguage> {
-  String _language;
+  String? _language;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     try {
-      if (widget.isFirstOpen) {
+      if (widget.isFirstOpen!) {
         context.setLocale(Locale(context.deviceLocale.languageCode));
       }
     } catch (e) {
+      // ignore: avoid_print
       print(e);
     }
     _language =
@@ -54,10 +60,10 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
           Center(
             child: SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.all(38.0),
+                padding: const EdgeInsets.all(38.0),
                 child: LayoutBuilder(
                   builder: (context, constraints) {
-                    return Container(
+                    return SizedBox(
                       width: constraints.maxWidth > 700 ? 400 : double.infinity,
                       child: Column(
                         children: [
@@ -65,34 +71,34 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
                             'assets/images/logo-with-circle.png',
                             height: 115.0,
                           ),
-                          SizedBox(height: 55.0),
+                          const SizedBox(height: 55.0),
                           Text(
-                            widget.isFirstOpen
+                            widget.isFirstOpen!
                                 ? 'select_language'.tr()
                                 : 'change_language'.tr(),
                             style: kTitleTextStyle,
                           ),
-                          SizedBox(height: 16.0),
+                          const SizedBox(height: 16.0),
                           ClipRRect(
                             borderRadius:
                                 BorderRadius.circular(kCircularBorderRadius),
                             child: DropdownButtonFormField(
                               dropdownColor: Colors.white,
                               value: _language,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 filled: true,
                                 fillColor: Colors.white,
                                 border: InputBorder.none,
                               ),
                               icon: Transform.rotate(
                                   angle: pi / 2,
-                                  child: Icon(Icons.chevron_right)),
+                                  child: const Icon(Icons.chevron_right)),
                               items: languages
                                   .map(
                                     (lang) => DropdownMenuItem(
                                       child: Text(
                                         lang.split(" - ")[1],
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 16.0,
                                         ),
                                       ),
@@ -100,19 +106,19 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
                                     ),
                                   )
                                   .toList(),
-                              onChanged: (String value) {
+                              onChanged: (String? value) {
                                 setState(() {
                                   _language = value;
-                                  context.setLocale(Locale(value));
+                                  context.setLocale(Locale(value!));
                                 });
                               },
                             ),
                           ),
-                          SizedBox(height: 16.0),
+                          const SizedBox(height: 16.0),
                           CustomButton(
                             buttonColor: Theme.of(context).primaryColor,
                             textColor: Colors.white,
-                            onTap: widget.isFirstOpen
+                            onTap: widget.isFirstOpen!
                                 ? () {
                                     firstTimeBox.add('opened');
                                     context.vxNav.replace(
@@ -122,7 +128,7 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
                                     context.vxNav.replace(
                                         Uri.parse(MyRoutes.notesRoute));
                                   },
-                            text: widget.isFirstOpen
+                            text: widget.isFirstOpen!
                                 ? 'language_continue'.tr()
                                 : 'language_done'.tr(),
                           ),

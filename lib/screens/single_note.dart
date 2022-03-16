@@ -1,44 +1,46 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
+
 import 'package:ijot/constants/category.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/methods/hive.dart';
 import 'package:ijot/models/note.dart';
 import 'package:ijot/widgets/custom_scaffold.dart';
 import 'package:ijot/widgets/snackbar.dart';
-import 'package:uuid/uuid.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class SingleNote extends StatefulWidget {
-  final bool updateMode;
-  final Note note;
-  final int noteIndex;
+  final bool? updateMode;
+  final Note? note;
+  final int? noteIndex;
 
-  SingleNote({
+  const SingleNote({
+    Key? key,
     this.updateMode = false,
     this.note,
     this.noteIndex,
-  });
+  }) : super(key: key);
 
   @override
   _SingleNoteState createState() => _SingleNoteState();
 }
 
 class _SingleNoteState extends State<SingleNote> {
-  String _noteCat;
-  String _noteTitle;
-  String _noteDetails;
+  String? _noteCat;
+  String? _noteTitle;
+  String? _noteDetails;
 
   @override
   void initState() {
-    _noteCat = widget.updateMode
-        ? widget.note.category
+    _noteCat = widget.updateMode!
+        ? widget.note!.category
         : 'note_cat_uncategorized'.tr();
-    _noteTitle = widget.updateMode ? widget.note.title : '';
-    _noteDetails = widget.updateMode ? widget.note.details : '';
+    _noteTitle = widget.updateMode! ? widget.note!.title : '';
+    _noteDetails = widget.updateMode! ? widget.note!.details : '';
     super.initState();
   }
 
-  var _categories = [
+  final _categories = [
     'note_cat_uncategorized'.tr(),
     'note_cat_study'.tr(),
     'note_cat_personal'.tr(),
@@ -56,7 +58,7 @@ class _SingleNoteState extends State<SingleNote> {
                   radius: 10.0,
                   backgroundColor: categoryColor(cat),
                 ),
-                SizedBox(width: 6.0),
+                const SizedBox(width: 6.0),
                 Text(
                   cat,
                   style: TextStyle(
@@ -78,18 +80,18 @@ class _SingleNoteState extends State<SingleNote> {
     bool screenGreaterThan700 = MediaQuery.of(context).size.width > 700;
 
     return CustomScaffold(
-      title: widget.updateMode ? 'note_edit'.tr() : 'note_new'.tr(),
+      title: widget.updateMode! ? 'note_edit'.tr() : 'note_new'.tr(),
       editMode: true,
       child: Container(
         margin: screenGreaterThan700
             ? null
-            : EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-        padding: EdgeInsets.all(16.0),
+            : const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        padding: const EdgeInsets.all(16.0),
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(kCircularBorderRadius),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 4.0,
               offset: Offset(2, 2),
@@ -110,13 +112,13 @@ class _SingleNoteState extends State<SingleNote> {
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.zero,
                       hintText: 'note_add_title'.tr(),
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFFE5E5E5),
                       ),
                     ),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 24.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -125,9 +127,10 @@ class _SingleNoteState extends State<SingleNote> {
                     },
                   ),
                 ),
-                SizedBox(width: 16.0),
+                const SizedBox(width: 16.0),
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 6.0, vertical: 4.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 6.0, vertical: 4.0),
                   height: 28.0,
                   decoration: BoxDecoration(
                     color: categoryColor(_noteCat).withOpacity(0.3),
@@ -135,7 +138,7 @@ class _SingleNoteState extends State<SingleNote> {
                   ),
                   child: PopupMenuButton(
                     itemBuilder: _buildPopUpMenuItems,
-                    onSelected: (value) {
+                    onSelected: (dynamic value) {
                       setState(() {
                         _noteCat = value;
                       });
@@ -146,9 +149,9 @@ class _SingleNoteState extends State<SingleNote> {
                           radius: 10.0,
                           backgroundColor: categoryColor(_noteCat),
                         ),
-                        SizedBox(width: 6.0),
+                        const SizedBox(width: 6.0),
                         Text(
-                          _noteCat,
+                          _noteCat!,
                           style: TextStyle(
                             color: categoryColor(_noteCat),
                             fontSize: 12.0,
@@ -170,7 +173,7 @@ class _SingleNoteState extends State<SingleNote> {
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.zero,
                   hintText: 'note_add_details'.tr(),
-                  hintStyle: TextStyle(
+                  hintStyle: const TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.bold,
                     color: Color(0xFFE5E5E5),
@@ -185,10 +188,10 @@ class _SingleNoteState extends State<SingleNote> {
         ),
       ),
       onTap: () {
-        if (_noteTitle.isNotEmpty) {
-          var id = Uuid().v4();
+        if (_noteTitle!.isNotEmpty) {
+          var id = const Uuid().v4();
           Note newNote = Note(
-            id: widget.updateMode ? widget.note.id : id,
+            id: widget.updateMode! ? widget.note!.id : id,
             title: _noteTitle,
             details: _noteDetails,
             category: _noteCat,
@@ -196,7 +199,7 @@ class _SingleNoteState extends State<SingleNote> {
             ownerId: loggedInUserId,
           );
 
-          widget.updateMode
+          widget.updateMode!
               ? HiveMethods().updateNote(note: newNote, index: widget.noteIndex)
               : HiveMethods().addNote(newNote);
           Navigator.pop(context);

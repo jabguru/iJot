@@ -36,16 +36,16 @@ showPrivacyPolicyBottomSheet(BuildContext context) {
                           color: Colors.white,
                         ),
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       Text(
                         'privacy_policy'.tr(namedArgs: {
                           'name': "Julius Alibrown",
                         }),
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                         ),
                       ),
-                      SizedBox(height: 24.0),
+                      const SizedBox(height: 24.0),
                       CustomButton(
                         buttonColor: Theme.of(context).primaryColor,
                         text: "language_done".tr(),
@@ -63,6 +63,8 @@ showPrivacyPolicyBottomSheet(BuildContext context) {
 }
 
 class PrivacyPolicyWidget extends StatelessWidget {
+  const PrivacyPolicyWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

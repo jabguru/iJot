@@ -9,47 +9,46 @@ import 'package:ijot/widgets/custom_scaffold.dart';
 import 'package:ijot/widgets/privacy_policy.dart';
 import 'package:ijot/widgets/progress.dart';
 import 'package:ijot/widgets/snackbar.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:modal_progress_hud_alt/modal_progress_hud_alt.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Register extends StatefulWidget {
+  const Register({Key? key}) : super(key: key);
+
   @override
   _RegisterState createState() => _RegisterState();
 }
 
 class _RegisterState extends State<Register> {
   bool _hidePassword = true;
-  String _emailInput;
-  String _passwordInput;
+  String? _emailInput;
+  String? _passwordInput;
   bool _isLoading = false;
 
   final _formKey = GlobalKey<FormState>();
 
   handleSignUp() async {
-    final form = _formKey.currentState;
+    final form = _formKey.currentState!;
 
     if (form.validate()) {
       setState(() {
         _isLoading = true;
       });
       form.save();
-      print(_emailInput + _passwordInput);
 
       try {
-        final newUser = await fireBaseAuth.createUserWithEmailAndPassword(
-            email: _emailInput.trim(), password: _passwordInput.trim());
-        if (newUser != null) {
-          final User currentUser = fireBaseAuth.currentUser;
-          String userId = currentUser.uid;
+        await fireBaseAuth.createUserWithEmailAndPassword(
+            email: _emailInput!.trim(), password: _passwordInput!.trim());
+        final User currentUser = fireBaseAuth.currentUser!;
+        String userId = currentUser.uid;
 
-          loggedInUserId = userId;
+        loggedInUserId = userId;
 
-          userBox.put('userId', userId);
+        userBox.put('userId', userId);
 
-          context.vxNav.replace(Uri.parse(MyRoutes.notesRoute));
-        }
-      } catch (e) {
+        context.vxNav.replace(Uri.parse(MyRoutes.notesRoute));
+      } on FirebaseException catch (e) {
         showErrorSnackbar(context, message: e.message);
       }
 
@@ -83,15 +82,15 @@ class _RegisterState extends State<Register> {
             Center(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: EdgeInsets.all(38.0),
+                  padding: const EdgeInsets.all(38.0),
                   child: LayoutBuilder(builder: (context, constraints) {
-                    return Container(
+                    return SizedBox(
                       width: constraints.maxWidth > 700 ? 400 : double.infinity,
                       child: Column(
                         children: [
                           Image.asset('assets/images/logo-with-circle.png',
                               height: 115.0),
-                          SizedBox(height: 55.0),
+                          const SizedBox(height: 55.0),
                           Form(
                             key: _formKey,
                             child: Column(
@@ -101,7 +100,7 @@ class _RegisterState extends State<Register> {
                                       kCircularBorderRadius),
                                   child: TextFormField(
                                     validator: (val) {
-                                      if (val.trim().isEmpty) {
+                                      if (val!.trim().isEmpty) {
                                         return 'validation_email'.tr();
                                       } else if (!val.trim().contains(RegExp(
                                           r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)",
@@ -125,13 +124,13 @@ class _RegisterState extends State<Register> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 8.0),
+                                const SizedBox(height: 8.0),
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(
                                       kCircularBorderRadius),
                                   child: TextFormField(
                                     validator: (val) {
-                                      if (val.trim().isEmpty) {
+                                      if (val!.trim().isEmpty) {
                                         return 'validation_password'.tr();
                                       } else if (val.trim().length < 6) {
                                         return 'validation_password_2'.tr();
@@ -169,7 +168,7 @@ class _RegisterState extends State<Register> {
                                     obscureText: _hidePassword,
                                   ),
                                 ),
-                                SizedBox(height: 8.0),
+                                const SizedBox(height: 8.0),
                                 CustomButton(
                                   buttonColor: Theme.of(context).primaryColor,
                                   onTap: handleSignUp,
@@ -179,13 +178,13 @@ class _RegisterState extends State<Register> {
                               ],
                             ),
                           ),
-                          SizedBox(height: 8.0),
+                          const SizedBox(height: 8.0),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
                                 'already_have_an_account'.tr() + " ",
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 15.0,
                                   color: Colors.white,
                                   fontFamily: 'Cabin',
@@ -207,7 +206,7 @@ class _RegisterState extends State<Register> {
                           SizedBox(
                               height:
                                   MediaQuery.of(context).size.height * 0.07),
-                          PrivacyPolicyWidget(),
+                          const PrivacyPolicyWidget(),
                         ],
                       ),
                     );

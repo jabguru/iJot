@@ -27,12 +27,14 @@ void main() async {
     EasyLocalization(
       path: 'assets/translations',
       supportedLocales: supportedLocales,
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
       title: 'iJot',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Color(0xFF410E61),
+        primaryColor: const Color(0xFF410E61),
         primarySwatch: Colors.purple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'cabin',
@@ -51,11 +53,13 @@ class MyApp extends StatelessWidget {
       // home: SplashScreen(),
       routeInformationParser: VxInformationParser(),
       routerDelegate: VxNavigator(routes: {
-        "/": (uri, params) => MaterialPage(child: SplashScreen()),
-        MyRoutes.loginRoute: (uri, params) => MaterialPage(child: Login()),
+        "/": (uri, params) => const MaterialPage(child: SplashScreen()),
+        MyRoutes.loginRoute: (uri, params) =>
+            const MaterialPage(child: Login()),
         MyRoutes.registerRoute: (uri, params) =>
-            MaterialPage(child: Register()),
-        MyRoutes.notesRoute: (uri, params) => MaterialPage(child: Notes()),
+            const MaterialPage(child: Register()),
+        MyRoutes.notesRoute: (uri, params) =>
+            const MaterialPage(child: Notes()),
         MyRoutes.noteRoute: (uri, params) {
           return MaterialPage(
             child: params != null
@@ -64,7 +68,7 @@ class MyApp extends StatelessWidget {
                     note: params['note'],
                     noteIndex: params['noteIndex'],
                   )
-                : SingleNote(),
+                : const SingleNote(),
           );
         },
         MyRoutes.languageRoute: (uri, params) {
@@ -73,7 +77,7 @@ class MyApp extends StatelessWidget {
                 ? ChangeLanguage(
                     isFirstOpen: params['isFirstOpen'],
                   )
-                : ChangeLanguage(),
+                : const ChangeLanguage(),
           );
         },
       }),

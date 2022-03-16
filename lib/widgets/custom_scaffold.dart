@@ -1,30 +1,33 @@
 import 'dart:async';
 import 'dart:io';
+
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
+
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/hive.dart';
 import 'package:ijot/constants/routes.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class CustomScaffold extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final bool hasTopBars;
   final bool hasBottomBars;
   final String title;
   final bool editMode;
-  final Function onTap;
+  final Function? onTap;
   final bool shouldShrink;
-  CustomScaffold({
+  const CustomScaffold({
+    Key? key,
     this.child,
     this.hasTopBars = true,
     this.hasBottomBars = true,
-    @required this.title,
+    required this.title,
     this.editMode = false,
     this.onTap,
     this.shouldShrink = true,
-  });
+  }) : super(key: key);
 
   @override
   _CustomScaffoldState createState() => _CustomScaffoldState();
@@ -36,11 +39,11 @@ class _CustomScaffoldState extends State<CustomScaffold> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(milliseconds: 200), animateButton);
+    Timer(const Duration(milliseconds: 200), animateButton);
   }
 
   animateButton() {
-    if (this.mounted) {
+    if (mounted) {
       setState(() {
         notAnimated = false;
       });
@@ -101,7 +104,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                                   children: [
                                     Container(
                                       decoration: BoxDecoration(
-                                        color: Color(0x4D410E61),
+                                        color: const Color(0x4D410E61),
                                         borderRadius: BorderRadius.circular(
                                             kCircularBorderRadius),
                                       ),
@@ -112,13 +115,13 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                                               Uri.parse(MyRoutes.loginRoute));
                                         },
                                         child: Padding(
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                             horizontal: 10.0,
                                             vertical: 5.0,
                                           ),
                                           child: Text(
                                             'sign_out'.tr(),
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 16.0,
                                               color: Colors.white,
@@ -127,7 +130,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(width: 6.0),
+                                    const SizedBox(width: 6.0),
                                     GestureDetector(
                                       onTap: () => context.vxNav.push(
                                           Uri.parse(MyRoutes.languageRoute)),
@@ -154,7 +157,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                               children: [
                                 Text(
                                   widget.title,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Color(0xFF1D062A),
                                     fontSize: 32.0,
                                     fontWeight: FontWeight.bold,
@@ -169,7 +172,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                                       message: 'close'.tr(),
                                       child: GestureDetector(
                                         onTap: () => Navigator.pop(context),
-                                        child: Icon(
+                                        child: const Icon(
                                           Icons.close,
                                           size: 36.0,
                                           color: Color(0xFF1D062A),
@@ -182,7 +185,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                           ),
                         ],
                       )
-                    : SizedBox.shrink(),
+                    : const SizedBox.shrink(),
                 Expanded(
                   child: Scrollbar(
                     child: Padding(
@@ -193,7 +196,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                     thickness: screenGreaterThan700 ? 8.0 : 0.0,
                   ),
                 ),
-                SizedBox(height: 8.0),
+                const SizedBox(height: 8.0),
                 widget.hasBottomBars
                     ? Padding(
                         padding: EdgeInsets.symmetric(
@@ -204,9 +207,10 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                             Padding(
                               padding: const EdgeInsets.only(top: 50.0),
                               child: Container(
-                                margin: EdgeInsets.symmetric(horizontal: 8.0),
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
                                 height: 29.0,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(100.0),
@@ -216,21 +220,21 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                               ),
                             ),
                             AnimatedPositioned(
-                              duration: Duration(milliseconds: 700),
+                              duration: const Duration(milliseconds: 700),
                               bottom: notAnimated ? 1.0 : 15.0,
                               curve: Curves.easeInOut,
                               child: GestureDetector(
-                                onTap: widget.onTap,
+                                onTap: widget.onTap as void Function()?,
                                 child: MouseRegion(
                                   cursor: SystemMouseCursors.click,
                                   child: Container(
                                     width: 64.0,
                                     height: 64.0,
                                     decoration: BoxDecoration(
-                                        color: Color(0xFF410E61),
+                                        color: const Color(0xFF410E61),
                                         borderRadius:
                                             BorderRadius.circular(32.0),
-                                        boxShadow: [
+                                        boxShadow: const [
                                           BoxShadow(
                                             color: Color(0x4D410E61),
                                             blurRadius: 8.0,
@@ -249,7 +253,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                           ],
                         ),
                       )
-                    : SizedBox.shrink(),
+                    : const SizedBox.shrink(),
               ],
             ),
           ),
