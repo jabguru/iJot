@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:ijot/constants/colors.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'package:ijot/constants/constants.dart';
@@ -226,7 +227,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                                     width: 64.0,
                                     height: 64.0,
                                     decoration: BoxDecoration(
-                                        color: const Color(0xFF410E61),
+                                        color: kPrimaryColor,
                                         borderRadius:
                                             BorderRadius.circular(32.0),
                                         boxShadow: const [

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ijot/constants/colors.dart';
 
 Color categoryColor(String? category) {
   if (category == 'note_cat_uncategorized'.tr()) {
-    return const Color(0xFF410E61);
+    return kPrimaryColor;
   } else if (category == 'note_cat_study'.tr()) {
     return const Color(0xFF2E8E16);
   } else if (category == 'note_cat_personal'.tr()) {
@@ -13,5 +14,5 @@ Color categoryColor(String? category) {
   } else if (category == 'note_cat_todo'.tr()) {
     return const Color(0xFF8E1D16);
   }
-  return const Color(0xFF410E61);
+  return kPrimaryColor;
 }

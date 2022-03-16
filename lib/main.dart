@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:ijot/constants/colors.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/constants/supported_locales.dart';
 import 'package:ijot/methods/hive.dart';
@@ -15,7 +16,6 @@ import 'package:velocity_x/velocity_x.dart'
     show VxInformationParser, VxNavigator;
 
 // TODO: SORT THE NOTES BY DATE, SO WHEN A NOTE IS UPDATED IT COMES UP
-// TODO: SYNC DELETE ACROSS DEVICES, CHECK cloudToLocal AND DELETE ID THAT DOESN'T EXIST
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
       title: 'iJot',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: const Color(0xFF410E61),
+        primaryColor: kPrimaryColor,
         primarySwatch: Colors.purple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'cabin',
