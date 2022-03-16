@@ -42,6 +42,8 @@ class _SplashScreenState extends State<SplashScreen> {
       await HiveMethods().checkForUserItems();
       // not awaiting cloudtolocal so as not to delay moving to screen
       FirebaseMethods().cloudToLocal();
+      // delete notes that have been deleted from other devices
+      FirebaseMethods().deleteNotesDeletedFromOtherDevices();
       await context.vxNav.replace(Uri.parse(MyRoutes.notesRoute));
     }
   }

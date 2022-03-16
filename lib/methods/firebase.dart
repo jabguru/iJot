@@ -78,4 +78,26 @@ class FirebaseMethods {
       print(e.toString);
     }
   }
+
+  deleteNotesDeletedFromOtherDevices() async {
+    QuerySnapshot snapshot = await notesRef
+        .doc(loggedInUserId)
+        .collection('userNotes')
+        .orderBy('dateTime')
+        .get();
+
+    List<Note> cloudNotes = snapshot.docs
+        .map((QueryDocumentSnapshot doc) => Note.fromDocument(doc))
+        .toList();
+
+    for (var i = 0; i < notesBox.length; i++) {
+      if (loggedInUserId == notesBox.getAt(i)!.ownerId) {
+        Iterable<Note> containedNotes =
+            cloudNotes.where((Note note) => note.id == notesBox.getAt(i)!.id);
+        if (containedNotes.isEmpty) {
+          notesBox.deleteAt(i);
+        }
+      }
+    }
+  }
 }

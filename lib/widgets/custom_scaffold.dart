@@ -68,12 +68,6 @@ class _CustomScaffoldState extends State<CustomScaffold> {
             alignment: Alignment.center,
             decoration: BoxDecoration(
               gradient: kLinearGradient,
-              // - bug fixes
-              // - automatically sync notes from other devices without signing out and in
-              // - multilanguage support
-              // - enabled Password reset
-              // - privacy policy update
-              // - etc like that for playstore
               // TODO: an avenue for snapping and adding to notes
               // TODO: UPDATE ALL NOTES WITH CURRENT LANGUAGE CATEGORY AFTER LANGUAGE CHANGE
               color: Colors.white,
@@ -112,7 +106,8 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                                         onPressed: () async {
                                           await userBox.clear();
                                           context.vxNav.replace(
-                                              Uri.parse(MyRoutes.loginRoute));
+                                            Uri.parse(MyRoutes.loginRoute),
+                                          );
                                         },
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(
