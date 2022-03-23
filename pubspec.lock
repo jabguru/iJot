@@ -43,13 +43,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.8.2"
-  auto_size_text_pk:
-    dependency: transitive
+  beamer:
+    dependency: "direct main"
     description:
-      name: auto_size_text_pk
+      name: beamer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0"
+    version: "1.4.0+1"
   boolean_selector:
     dependency: transitive
     description:
@@ -782,20 +782,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
-  velocity_x:
-    dependency: "direct main"
-    description:
-      name: velocity_x
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.4.0"
-  vxstate:
-    dependency: transitive
-    description:
-      name: vxstate
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.0"
   watcher:
     dependency: transitive
     description:

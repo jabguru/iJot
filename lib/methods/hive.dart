@@ -13,8 +13,17 @@ class HiveMethods {
           await path_provider.getApplicationDocumentsDirectory();
       Hive.init(appDocumentDir.path);
     }
+
     Hive.registerAdapter(NoteAdapter());
     await openBoxes();
+    String? userId = userBox.get('userId');
+
+    if (userId != null) {
+      loggedInUserId = userId;
+      await checkForUserItems();
+      FirebaseMethods().cloudToLocal();
+      FirebaseMethods().deleteNotesDeletedFromOtherDevices();
+    }
   }
 
   Future openBoxes() async {

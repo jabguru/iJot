@@ -1,3 +1,4 @@
+import 'package:beamer/beamer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -15,7 +16,6 @@ import 'package:ijot/widgets/progress.dart';
 import 'package:ijot/widgets/snackbar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:modal_progress_hud_alt/modal_progress_hud_alt.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -60,7 +60,7 @@ class _LoginState extends State<Login> {
           _isLoading = false;
         });
 
-        context.vxNav.replace(Uri.parse(MyRoutes.notesRoute));
+        context.beamToReplacementNamed(MyRoutes.notesRoute);
       } on FirebaseException catch (e) {
         setState(() {
           _isLoading = false;
@@ -99,7 +99,8 @@ class _LoginState extends State<Login> {
       setState(() {
         _isLoading = false;
       });
-      context.vxNav.replace(Uri.parse(MyRoutes.notesRoute));
+
+      context.beamToReplacementNamed(MyRoutes.notesRoute);
     }, onError: (error) {
       // print('Error Signing in: $error');
       showErrorSnackbar(context,
@@ -109,209 +110,217 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScaffold(
-      hasTopBars: false,
-      hasBottomBars: false,
-      title: 'sign_in'.tr(),
-      shouldShrink: false,
-      child: ModalProgressHUD(
-        inAsyncCall: _isLoading,
-        color: Theme.of(context).primaryColor,
-        progressIndicator: circularProgress(),
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            Positioned(
-              bottom: 0.0,
-              child: Image.asset(
-                'assets/images/watermark.png',
-                fit: BoxFit.cover,
-                width: MediaQuery.of(context).size.width,
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: CustomScaffold(
+        hasTopBars: false,
+        hasBottomBars: false,
+        title: 'sign_in'.tr(),
+        shouldShrink: false,
+        child: ModalProgressHUD(
+          inAsyncCall: _isLoading,
+          color: Theme.of(context).primaryColor,
+          progressIndicator: circularProgress(),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Positioned(
+                bottom: 0.0,
+                child: Image.asset(
+                  'assets/images/watermark.png',
+                  fit: BoxFit.cover,
+                  width: MediaQuery.of(context).size.width,
+                ),
               ),
-            ),
-            Center(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(38.0),
-                  child: LayoutBuilder(builder: (context, constraints) {
-                    return SizedBox(
-                      width: constraints.maxWidth > 700 ? 400 : double.infinity,
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            'assets/images/logo-with-circle.png',
-                            height: 115.0,
-                          ),
-                          const SizedBox(height: 55.0),
-                          Form(
-                            key: _formKey,
-                            child: Column(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(
-                                      kCircularBorderRadius),
-                                  child: TextFormField(
-                                    validator: (val) {
-                                      if (val!.trim().isEmpty) {
-                                        return 'validation_email'.tr();
-                                      } else if (!val.trim().contains(RegExp(
-                                          r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)",
-                                          caseSensitive: false))) {
-                                        return 'validation_email_2'.tr();
-                                      } else {
-                                        return null;
-                                      }
-                                    },
-                                    onSaved: (value) => _emailInput = value,
-                                    style: kInputTextStyle,
-                                    keyboardType: TextInputType.emailAddress,
-                                    decoration: InputDecoration(
-                                      hintText: 'email'.tr(),
-                                      filled: true,
-                                      fillColor: Colors.white,
-                                      border: InputBorder.none,
-                                      errorStyle: TextStyle(
-                                        color: Theme.of(context).primaryColor,
+              Center(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(38.0),
+                    child: LayoutBuilder(builder: (context, constraints) {
+                      return SizedBox(
+                        width:
+                            constraints.maxWidth > 700 ? 400 : double.infinity,
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              'assets/images/logo-with-circle.png',
+                              height: 115.0,
+                            ),
+                            const SizedBox(height: 55.0),
+                            Form(
+                              key: _formKey,
+                              child: Column(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(
+                                        kCircularBorderRadius),
+                                    child: TextFormField(
+                                      validator: (val) {
+                                        if (val!.trim().isEmpty) {
+                                          return 'validation_email'.tr();
+                                        } else if (!val.trim().contains(RegExp(
+                                            r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)",
+                                            caseSensitive: false))) {
+                                          return 'validation_email_2'.tr();
+                                        } else {
+                                          return null;
+                                        }
+                                      },
+                                      onSaved: (value) => _emailInput = value,
+                                      style: kInputTextStyle,
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: InputDecoration(
+                                        hintText: 'email'.tr(),
+                                        filled: true,
+                                        fillColor: Colors.white,
+                                        border: InputBorder.none,
+                                        errorStyle: TextStyle(
+                                          color: Theme.of(context).primaryColor,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                const SizedBox(height: 8.0),
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(
-                                      kCircularBorderRadius),
-                                  child: TextFormField(
-                                    validator: (val) {
-                                      if (val!.trim().isEmpty) {
-                                        return 'validation_password'.tr();
-                                      } else if (val.trim().length < 6) {
-                                        return 'validation_password_2'.tr();
-                                      } else {
-                                        return null;
-                                      }
-                                    },
-                                    onSaved: (value) => _passwordInput = value,
-                                    style: kInputTextStyle,
-                                    decoration: InputDecoration(
-                                      hintText: 'password'.tr(),
-                                      filled: true,
-                                      fillColor: Colors.white,
-                                      border: InputBorder.none,
-                                      errorStyle: TextStyle(
-                                        color: Theme.of(context).primaryColor,
-                                      ),
-                                      suffixIcon: GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            _hidePassword = !_hidePassword;
-                                          });
-                                        },
-                                        child: MouseRegion(
-                                          cursor: SystemMouseCursors.click,
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 20.0),
-                                            child: Image.asset(
-                                              'assets/images/show_password.png',
-                                              width: 24.0,
-                                              height: 24.0,
+                                  const SizedBox(height: 8.0),
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(
+                                        kCircularBorderRadius),
+                                    child: TextFormField(
+                                      validator: (val) {
+                                        if (val!.trim().isEmpty) {
+                                          return 'validation_password'.tr();
+                                        } else if (val.trim().length < 6) {
+                                          return 'validation_password_2'.tr();
+                                        } else {
+                                          return null;
+                                        }
+                                      },
+                                      onSaved: (value) =>
+                                          _passwordInput = value,
+                                      style: kInputTextStyle,
+                                      decoration: InputDecoration(
+                                        hintText: 'password'.tr(),
+                                        filled: true,
+                                        fillColor: Colors.white,
+                                        border: InputBorder.none,
+                                        errorStyle: TextStyle(
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                        suffixIcon: GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              _hidePassword = !_hidePassword;
+                                            });
+                                          },
+                                          child: MouseRegion(
+                                            cursor: SystemMouseCursors.click,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 20.0),
+                                              child: Image.asset(
+                                                'assets/images/show_password.png',
+                                                width: 24.0,
+                                                height: 24.0,
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
+                                      obscureText: _hidePassword,
                                     ),
-                                    obscureText: _hidePassword,
+                                  ),
+                                  const SizedBox(height: 8.0),
+                                  GestureDetector(
+                                    onTap: () =>
+                                        showForgotPasswordBottomSheet(context),
+                                    child: MouseRegion(
+                                      cursor: SystemMouseCursors.click,
+                                      child: Text(
+                                        'forgot_password'.tr(),
+                                        style: kNormalUnderlineTextStyle,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8.0),
+                                  CustomButton(
+                                    buttonColor: Theme.of(context).primaryColor,
+                                    text: 'sign_in'.tr(),
+                                    textColor: Colors.white,
+                                    onTap: handleSignIn,
+                                  ),
+                                  const SizedBox(height: 8.0),
+                                  Text(
+                                    'or'.tr(),
+                                    style: const TextStyle(
+                                      color: Color(0x80FFFFFF),
+                                      fontSize: 12.0,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8.0),
+                                  CustomButton(
+                                    buttonColor: Colors.white,
+                                    onTap: _handleGoogleSignIn,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Image.asset(
+                                          'assets/images/google-logo.png',
+                                          width: 30.0,
+                                        ),
+                                        const SizedBox(width: 8.0),
+                                        Text(
+                                          'sign_in'.tr(),
+                                          style: TextStyle(
+                                            fontSize: 20.0,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 8.0),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'dont_have_an_account'.tr() + " ",
+                                  style: const TextStyle(
+                                    fontSize: 15.0,
+                                    color: Colors.white,
+                                    fontFamily: 'Cabin',
                                   ),
                                 ),
-                                const SizedBox(height: 8.0),
                                 GestureDetector(
-                                  onTap: () =>
-                                      showForgotPasswordBottomSheet(context),
+                                  onTap: () => context
+                                      .beamToNamed(MyRoutes.registerRoute),
                                   child: MouseRegion(
                                     cursor: SystemMouseCursors.click,
                                     child: Text(
-                                      'forgot_password'.tr(),
+                                      'register'.tr(),
                                       style: kNormalUnderlineTextStyle,
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 8.0),
-                                CustomButton(
-                                  buttonColor: Theme.of(context).primaryColor,
-                                  text: 'sign_in'.tr(),
-                                  textColor: Colors.white,
-                                  onTap: handleSignIn,
-                                ),
-                                const SizedBox(height: 8.0),
-                                Text(
-                                  'or'.tr(),
-                                  style: const TextStyle(
-                                    color: Color(0x80FFFFFF),
-                                    fontSize: 12.0,
-                                  ),
-                                ),
-                                const SizedBox(height: 8.0),
-                                CustomButton(
-                                  buttonColor: Colors.white,
-                                  onTap: _handleGoogleSignIn,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Image.asset(
-                                        'assets/images/google-logo.png',
-                                        width: 30.0,
-                                      ),
-                                      const SizedBox(width: 8.0),
-                                      Text(
-                                        'sign_in'.tr(),
-                                        style: TextStyle(
-                                          fontSize: 20.0,
-                                          color: Theme.of(context).primaryColor,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
                               ],
                             ),
-                          ),
-                          const SizedBox(height: 8.0),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'dont_have_an_account'.tr() + " ",
-                                style: const TextStyle(
-                                  fontSize: 15.0,
-                                  color: Colors.white,
-                                  fontFamily: 'Cabin',
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () => context.vxNav
-                                    .push(Uri.parse(MyRoutes.registerRoute)),
-                                child: MouseRegion(
-                                  cursor: SystemMouseCursors.click,
-                                  child: Text(
-                                    'register'.tr(),
-                                    style: kNormalUnderlineTextStyle,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.07),
-                          const PrivacyPolicyWidget(),
-                        ],
-                      ),
-                    );
-                  }),
+                            SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.07),
+                            const PrivacyPolicyWidget(),
+                          ],
+                        ),
+                      );
+                    }),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

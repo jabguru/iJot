@@ -1,6 +1,6 @@
+import 'package:beamer/beamer.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 import 'package:ijot/constants/category.dart';
 import 'package:ijot/constants/constants.dart';
@@ -111,15 +111,15 @@ class _NoteContainerState extends State<NoteContainer> {
     bool screenGreaterThan700 = MediaQuery.of(context).size.width > 700;
 
     return GestureDetector(
-      onTap: () => context.vxNav.push(
-        Uri(path: MyRoutes.noteRoute, queryParameters: {
-          "id": widget.noteIndex.toString(),
-        }),
-        params: {
+      onTap: () => context.beamToNamed(
+        MyRoutes.noteRoute + '/${widget.noteIndex}',
+        data: {
           'updateMode': true,
           'note': widget.note,
           'noteIndex': widget.noteIndex,
         },
+        beamBackOnPop: true,
+        popToNamed: MyRoutes.notesRoute,
       ),
       child: MouseRegion(
         cursor: SystemMouseCursors.click,

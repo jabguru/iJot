@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:beamer/beamer.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ijot/constants/colors.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/hive.dart';
@@ -106,9 +106,8 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                                       child: TextButton(
                                         onPressed: () async {
                                           await userBox.clear();
-                                          context.vxNav.replace(
-                                            Uri.parse(MyRoutes.loginRoute),
-                                          );
+                                          context.beamToReplacementNamed(
+                                              MyRoutes.loginRoute);
                                         },
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(
@@ -128,13 +127,16 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                                     ),
                                     const SizedBox(width: 6.0),
                                     GestureDetector(
-                                      onTap: () => context.vxNav.push(
-                                          Uri.parse(MyRoutes.languageRoute)),
+                                      onTap: () => context.beamToNamed(
+                                        MyRoutes.languageRoute,
+                                        beamBackOnPop: true,
+                                      ),
                                       child: MouseRegion(
                                         cursor: SystemMouseCursors.click,
-                                        child: Icon(Icons.language,
-                                            color:
-                                                Theme.of(context).primaryColor),
+                                        child: Icon(
+                                          Icons.language,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -159,7 +161,8 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                if (Platform.isMacOS &&
+                                if (!kIsWeb &&
+                                    Platform.isMacOS &&
                                     Navigator.canPop(context))
                                   MouseRegion(
                                     cursor: SystemMouseCursors.click,

@@ -1,3 +1,4 @@
+import 'package:beamer/beamer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ijot/constants/constants.dart';
@@ -11,7 +12,6 @@ import 'package:ijot/widgets/progress.dart';
 import 'package:ijot/widgets/snackbar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:modal_progress_hud_alt/modal_progress_hud_alt.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -47,7 +47,7 @@ class _RegisterState extends State<Register> {
 
         userBox.put('userId', userId);
 
-        context.vxNav.replace(Uri.parse(MyRoutes.notesRoute));
+        context.beamToReplacementNamed(MyRoutes.notesRoute);
       } on FirebaseException catch (e) {
         showErrorSnackbar(context, message: e.message);
       }
@@ -191,8 +191,8 @@ class _RegisterState extends State<Register> {
                                 ),
                               ),
                               GestureDetector(
-                                onTap: () => context.vxNav
-                                    .push(Uri.parse(MyRoutes.loginRoute)),
+                                onTap: () =>
+                                    context.beamToNamed(MyRoutes.loginRoute),
                                 child: MouseRegion(
                                   cursor: SystemMouseCursors.click,
                                   child: Text(
