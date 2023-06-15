@@ -47,3 +47,6 @@ var kModalBoxDecorationGradient = BoxDecoration(
 
 bool kUserItemsAvailable = false;
 String? loggedInUserId;
+
+GlobalKey<NavigatorState> navigatorKey =
+    GlobalKey(debugLabel: "Main Navigator");

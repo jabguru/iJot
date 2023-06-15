@@ -8,10 +8,10 @@ class FirstScreenSelector extends StatefulWidget {
   const FirstScreenSelector({Key? key}) : super(key: key);
 
   @override
-  _FirstScreenSelectorState createState() => _FirstScreenSelectorState();
+  FirstScreenSelectorState createState() => FirstScreenSelectorState();
 }
 
-class _FirstScreenSelectorState extends State<FirstScreenSelector> {
+class FirstScreenSelectorState extends State<FirstScreenSelector> {
   Widget getWidgetToShow() {
     String? userId = userBox.get('userId');
     if (userId == null) {

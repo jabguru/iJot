@@ -6,10 +6,8 @@ import 'package:ijot/constants/colors.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/constants/supported_locales.dart';
 import 'package:ijot/firebase_options.dart';
-import 'package:ijot/methods/hive.dart';
+import 'package:ijot/services/hive.dart';
 import 'package:url_strategy/url_strategy.dart';
-
-// TODO: SORT THE NOTES BY DATE, SO WHEN A NOTE IS UPDATED IT COMES UP
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +15,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await HiveMethods().initialize();
+  await HiveService().initialize();
   setPathUrlStrategy();
   runApp(
     EasyLocalization(

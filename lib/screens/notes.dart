@@ -12,10 +12,10 @@ class Notes extends StatefulWidget {
   const Notes({Key? key}) : super(key: key);
 
   @override
-  _NotesState createState() => _NotesState();
+  NotesState createState() => NotesState();
 }
 
-class _NotesState extends State<Notes> {
+class NotesState extends State<Notes> {
   Widget noContent() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,

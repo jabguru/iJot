@@ -6,7 +6,7 @@ class CustomButton extends StatelessWidget {
   final Color buttonColor;
   final Color? textColor;
   final String? text;
-  final Function onTap;
+  final VoidCallback onTap;
   final Widget? child;
   const CustomButton({
     Key? key,
@@ -19,7 +19,7 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap as void Function()?,
+      onTap: onTap,
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: Container(

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:hive/hive.dart';
 part 'note.g.dart';
 
@@ -40,5 +41,22 @@ class Note {
       dateTime: (doc['dateTime'] as Timestamp).toDate().toString(),
       ownerId: doc['ownerId'],
     );
+  }
+
+  String get getCategoryString {
+    switch (category) {
+      case 'Uncategorized':
+        return 'note_cat_uncategorized'.tr();
+      case 'Study':
+        return 'note_cat_study'.tr();
+      case 'Personal':
+        return 'note_cat_personal'.tr();
+      case 'Work':
+        return 'note_cat_work'.tr();
+      case 'Todo':
+        return 'note_cat_todo'.tr();
+      default:
+        return 'note_cat_uncategorized'.tr();
+    }
   }
 }

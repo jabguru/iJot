@@ -4,7 +4,7 @@ import 'package:uuid/uuid.dart';
 
 import 'package:ijot/constants/category.dart';
 import 'package:ijot/constants/constants.dart';
-import 'package:ijot/methods/hive.dart';
+import 'package:ijot/services/hive.dart';
 import 'package:ijot/models/note.dart';
 import 'package:ijot/widgets/custom_scaffold.dart';
 import 'package:ijot/widgets/snackbar.dart';
@@ -20,49 +20,47 @@ class SingleNote extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _SingleNoteState createState() => _SingleNoteState();
+  SingleNoteState createState() => SingleNoteState();
 }
 
-class _SingleNoteState extends State<SingleNote> {
+class SingleNoteState extends State<SingleNote> {
   String? _noteCat;
   String? _noteTitle;
   String? _noteDetails;
 
   @override
   void initState() {
-    _noteCat = widget.updateMode!
-        ? widget.note!.category
-        : 'note_cat_uncategorized'.tr();
+    _noteCat = widget.updateMode! ? widget.note!.category : 'Uncategorized';
     _noteTitle = widget.updateMode! ? widget.note!.title : '';
     _noteDetails = widget.updateMode! ? widget.note!.details : '';
     super.initState();
   }
 
   final _categories = [
-    'note_cat_uncategorized'.tr(),
-    'note_cat_study'.tr(),
-    'note_cat_personal'.tr(),
-    'note_cat_work'.tr(),
-    'note_cat_todo'.tr(),
+    {'name': 'note_cat_uncategorized'.tr(), 'value': "Uncategorized"},
+    {'name': 'note_cat_study'.tr(), 'value': "Study"},
+    {'name': 'note_cat_personal'.tr(), 'value': "Personal"},
+    {'name': 'note_cat_work'.tr(), 'value': "Work"},
+    {'name': 'note_cat_todo'.tr(), 'value': "Todo"},
   ];
 
   List<PopupMenuEntry> _buildPopUpMenuItems(BuildContext context) {
     return _categories
         .map(
           (cat) => PopupMenuItem(
-            value: cat,
+            value: cat['value'],
             height: 30.0,
             child: Row(
               children: [
                 CircleAvatar(
                   radius: 10.0,
-                  backgroundColor: categoryColor(cat),
+                  backgroundColor: categoryColor(cat['value']),
                 ),
                 const SizedBox(width: 6.0),
                 Text(
-                  cat,
+                  cat['name']!,
                   style: TextStyle(
-                    color: categoryColor(cat),
+                    color: categoryColor(cat['value']),
                     fontSize: 12.0,
                   ),
                 ),
@@ -149,7 +147,7 @@ class _SingleNoteState extends State<SingleNote> {
                         ),
                         const SizedBox(width: 6.0),
                         Text(
-                          _noteCat!,
+                          getCategoryString(_noteCat!),
                           style: TextStyle(
                             color: categoryColor(_noteCat),
                             fontSize: 12.0,
@@ -198,9 +196,9 @@ class _SingleNoteState extends State<SingleNote> {
           );
 
           if (widget.updateMode!) {
-            HiveMethods().updateNote(note: newNote);
+            HiveService().updateNote(note: newNote);
           } else {
-            HiveMethods().addNote(newNote);
+            HiveService().addNote(newNote);
           }
 
           Navigator.pop(context);

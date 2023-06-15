@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:ijot/constants/category.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/routes.dart';
-import 'package:ijot/methods/hive.dart';
+import 'package:ijot/services/hive.dart';
 import 'package:ijot/models/note.dart';
 
 class NoteContainer extends StatefulWidget {
@@ -18,10 +18,10 @@ class NoteContainer extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _NoteContainerState createState() => _NoteContainerState();
+  NoteContainerState createState() => NoteContainerState();
 }
 
-class _NoteContainerState extends State<NoteContainer> {
+class NoteContainerState extends State<NoteContainer> {
   _showDeleteModal(BuildContext context) {
     showDialog(
         context: context,
@@ -72,7 +72,7 @@ class _NoteContainerState extends State<NoteContainer> {
                         ),
                         GestureDetector(
                           onTap: () async {
-                            HiveMethods().deleteNote(
+                            HiveService().deleteNote(
                               note: widget.note,
                             );
                             Navigator.pop(context);
@@ -200,7 +200,7 @@ class _NoteContainerState extends State<NoteContainer> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            widget.note.category!,
+                            widget.note.getCategoryString,
                             style: TextStyle(
                               fontSize: 12.0,
                               color: categoryColor(widget.note.category),

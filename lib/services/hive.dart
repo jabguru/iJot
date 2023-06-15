@@ -1,12 +1,12 @@
 import 'package:hive/hive.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/hive.dart';
-import 'package:ijot/methods/firebase.dart';
+import 'package:ijot/services/firebase.dart';
 import 'package:ijot/models/note.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:flutter/foundation.dart' show kIsWeb;
 
-class HiveMethods {
+class HiveService {
   Future initialize() async {
     if (!kIsWeb) {
       final appDocumentDir =
@@ -23,7 +23,7 @@ class HiveMethods {
     if (userId != null) {
       loggedInUserId = userId;
       await checkForUserItems();
-      FirebaseMethods().cloudToLocal();
+      FirebaseService().cloudToLocal();
       // FirebaseMethods().deleteNotesDeletedFromOtherDevices();
     }
   }
@@ -55,20 +55,20 @@ class HiveMethods {
       kUserItemsAvailable = true;
     }
     if (sync) {
-      FirebaseMethods().syncNote(note);
+      FirebaseService().syncNote(note);
     }
   }
 
   Future updateNote({required Note note}) async {
     final notesBox = Hive.box<Note>('notes');
     await notesBox.put(note.id, note);
-    FirebaseMethods().updateNote(note);
+    FirebaseService().updateNote(note);
   }
 
   Future deleteNote({required Note note}) async {
     final noteBox = Hive.box<Note>('notes');
     noteBox.delete(note.id);
-    FirebaseMethods().deleteNote(note);
+    FirebaseService().deleteNote(note);
   }
 
   Future updateNoteBoxForOldBuilds() async {

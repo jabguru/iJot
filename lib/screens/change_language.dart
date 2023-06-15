@@ -18,10 +18,10 @@ class ChangeLanguage extends StatefulWidget {
     required this.isFirstOpen,
   }) : super(key: key);
   @override
-  _ChangeLanguageState createState() => _ChangeLanguageState();
+  ChangeLanguageState createState() => ChangeLanguageState();
 }
 
-class _ChangeLanguageState extends State<ChangeLanguage> {
+class ChangeLanguageState extends State<ChangeLanguage> {
   String? _language;
 
   @override

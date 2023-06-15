@@ -6,8 +6,8 @@ import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/firebase.dart';
 import 'package:ijot/constants/hive.dart';
 import 'package:ijot/constants/routes.dart';
-import 'package:ijot/methods/firebase.dart';
-import 'package:ijot/methods/hive.dart';
+import 'package:ijot/services/firebase.dart';
+import 'package:ijot/services/hive.dart';
 import 'package:ijot/widgets/button.dart';
 import 'package:ijot/widgets/custom_scaffold.dart';
 import 'package:ijot/widgets/password_reset.dart';
@@ -21,10 +21,10 @@ class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
   @override
-  _LoginState createState() => _LoginState();
+  LoginState createState() => LoginState();
 }
 
-class _LoginState extends State<Login> {
+class LoginState extends State<Login> {
   bool _hidePassword = true;
   String? _emailInput;
   String? _passwordInput;
@@ -53,8 +53,8 @@ class _LoginState extends State<Login> {
 
         userBox.put('userId', userId);
 
-        await FirebaseMethods().cloudToLocal();
-        await HiveMethods().checkForUserItems();
+        await FirebaseService().cloudToLocal();
+        await HiveService().checkForUserItems();
 
         setState(() {
           _isLoading = false;
@@ -93,8 +93,8 @@ class _LoginState extends State<Login> {
       loggedInUserId = userId;
 
       userBox.put('userId', userId);
-      await FirebaseMethods().cloudToLocal();
-      await HiveMethods().checkForUserItems();
+      await FirebaseService().cloudToLocal();
+      await HiveService().checkForUserItems();
 
       setState(() {
         _isLoading = false;

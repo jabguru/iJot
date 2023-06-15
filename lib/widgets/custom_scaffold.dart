@@ -17,7 +17,7 @@ class CustomScaffold extends StatefulWidget {
   final bool hasBottomBars;
   final String title;
   final bool editMode;
-  final Function? onTap;
+  final VoidCallback? onTap;
   final bool shouldShrink;
   const CustomScaffold({
     Key? key,
@@ -31,10 +31,10 @@ class CustomScaffold extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _CustomScaffoldState createState() => _CustomScaffoldState();
+  CustomScaffoldState createState() => CustomScaffoldState();
 }
 
-class _CustomScaffoldState extends State<CustomScaffold> {
+class CustomScaffoldState extends State<CustomScaffold> {
   bool notAnimated = true;
 
   @override
@@ -70,7 +70,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
             decoration: BoxDecoration(
               gradient: kLinearGradient,
               // TODO: an avenue for snapping and adding to notes
-              // TODO: UPDATE ALL NOTES WITH CURRENT LANGUAGE CATEGORY AFTER LANGUAGE CHANGE
+              // TODO: ADD TEXT DECORATION BOLD, UNDERLINE, ETC
               color: Colors.white,
             ),
             child: Column(
@@ -223,7 +223,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                               bottom: notAnimated ? 1.0 : 15.0,
                               curve: Curves.easeInOut,
                               child: GestureDetector(
-                                onTap: widget.onTap as void Function()?,
+                                onTap: widget.onTap,
                                 child: MouseRegion(
                                   cursor: SystemMouseCursors.click,
                                   child: Container(
