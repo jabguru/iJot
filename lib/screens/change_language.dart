@@ -42,7 +42,7 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async => (!widget.isFirstOpen),
+      onWillPop: () async => !widget.isFirstOpen,
       child: CustomScaffold(
         hasTopBars: false,
         hasBottomBars: false,
@@ -99,13 +99,13 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
                                 items: languages
                                     .map(
                                       (lang) => DropdownMenuItem(
+                                        value: lang.split(" - ")[0],
                                         child: Text(
                                           lang.split(" - ")[1],
                                           style: const TextStyle(
                                             fontSize: 16.0,
                                           ),
                                         ),
-                                        value: lang.split(" - ")[0],
                                       ),
                                     )
                                     .toList(),

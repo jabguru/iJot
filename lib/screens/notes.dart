@@ -22,10 +22,11 @@ class _NotesState extends State<Notes> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Center(
-            child: Image.asset(
-          'assets/images/not_found.png',
-          height: 177.0,
-        )),
+          child: Image.asset(
+            'assets/images/not_found.png',
+            height: 177.0,
+          ),
+        ),
         const SizedBox(height: 8.0),
         Text(
           'no_notes_yet'.tr(),
@@ -38,14 +39,31 @@ class _NotesState extends State<Notes> {
     );
   }
 
+  Widget noteItemBuilder({
+    required BuildContext context,
+    required Box<Note> notesBox,
+    required int index,
+  }) {
+    List<Note> allNotes = notesBox.values.toList();
+    allNotes.sort(((a, b) => b.dateTime!.compareTo(a.dateTime!)));
+
+    // int noteIndex = notesBox.length - index - 1;
+    final note = allNotes[index];
+    if (note.ownerId == loggedInUserId) {
+      return NoteContainer(note, index);
+    }
+    return const SizedBox.shrink();
+  }
+
   Widget _buildListView() {
     return ValueListenableBuilder(
       valueListenable: Hive.box<Note>('notes').listenable(),
       builder: (BuildContext context, Box<Note> notesBox, _) {
         return kUserItemsAvailable && notesBox.length > 0
-            ? LayoutBuilder(builder: (context, constraints) {
-                if (constraints.maxWidth > 700) {
-                  return GridView.builder(
+            ? LayoutBuilder(
+                builder: (context, constraints) {
+                  if (constraints.maxWidth > 700) {
+                    return GridView.builder(
                       padding: const EdgeInsets.only(right: 8.0),
                       gridDelegate:
                           const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -54,29 +72,27 @@ class _NotesState extends State<Notes> {
                         crossAxisSpacing: 20.0,
                       ),
                       itemCount: notesBox.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        int noteIndex = notesBox.length - index - 1;
-                        final note = notesBox.getAt(noteIndex)!;
-                        if (note.ownerId == loggedInUserId) {
-                          return NoteContainer(note, noteIndex);
-                        }
-                        return const SizedBox.shrink();
-                      });
-                }
-                return ListView.builder(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0, vertical: 8.0),
-                  itemCount: notesBox.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    int noteIndex = notesBox.length - index - 1;
-                    final note = notesBox.getAt(noteIndex)!;
-                    if (note.ownerId == loggedInUserId) {
-                      return NoteContainer(note, noteIndex);
-                    }
-                    return const SizedBox.shrink();
-                  },
-                );
-              })
+                      itemBuilder: (BuildContext context, int index) =>
+                          noteItemBuilder(
+                        context: context,
+                        notesBox: notesBox,
+                        index: index,
+                      ),
+                    );
+                  }
+                  return ListView.builder(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 8.0),
+                    itemCount: notesBox.length,
+                    itemBuilder: (BuildContext context, int index) =>
+                        noteItemBuilder(
+                      context: context,
+                      notesBox: notesBox,
+                      index: index,
+                    ),
+                  );
+                },
+              )
             : noContent();
       },
     );

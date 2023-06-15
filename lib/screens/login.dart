@@ -288,7 +288,7 @@ class _LoginState extends State<Login> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'dont_have_an_account'.tr() + " ",
+                                  "${'dont_have_an_account'.tr()} ",
                                   style: const TextStyle(
                                     fontSize: 15.0,
                                     color: Colors.white,

@@ -15,14 +15,16 @@ class HiveMethods {
     }
 
     Hive.registerAdapter(NoteAdapter());
-    await openBoxes();
-    String? userId = userBox.get('userId');
 
+    await openBoxes();
+    await updateNoteBoxForOldBuilds();
+
+    String? userId = userBox.get('userId');
     if (userId != null) {
       loggedInUserId = userId;
       await checkForUserItems();
       FirebaseMethods().cloudToLocal();
-      FirebaseMethods().deleteNotesDeletedFromOtherDevices();
+      // FirebaseMethods().deleteNotesDeletedFromOtherDevices();
     }
   }
 
@@ -46,24 +48,43 @@ class HiveMethods {
     }
   }
 
-  Future addNote(Note note) async {
+  Future addNote(Note note, {bool sync = true}) async {
     final notesBox = Hive.box<Note>('notes');
-    notesBox.add(note);
+    notesBox.put(note.id, note);
     if (!kUserItemsAvailable) {
       kUserItemsAvailable = true;
     }
-    FirebaseMethods().syncNote(note);
+    if (sync) {
+      FirebaseMethods().syncNote(note);
+    }
   }
 
-  Future updateNote({required Note note, required index}) async {
+  Future updateNote({required Note note}) async {
     final notesBox = Hive.box<Note>('notes');
-    notesBox.putAt(index, note);
+    await notesBox.put(note.id, note);
     FirebaseMethods().updateNote(note);
   }
 
-  Future deleteNote({required Note note, required index}) async {
+  Future deleteNote({required Note note}) async {
     final noteBox = Hive.box<Note>('notes');
-    noteBox.deleteAt(index);
+    noteBox.delete(note.id);
     FirebaseMethods().deleteNote(note);
+  }
+
+  Future updateNoteBoxForOldBuilds() async {
+    bool? hasUpdatedNoteBoxForOldBuilds =
+        userBox.get('hasUpdatedNoteBoxForOldBuilds');
+
+    if (!(hasUpdatedNoteBoxForOldBuilds != null &&
+        hasUpdatedNoteBoxForOldBuilds)) {
+      List<Note> allNotes = notesBox.values.toList();
+      if (allNotes.isNotEmpty) {
+        notesBox.clear();
+        for (Note note in allNotes) {
+          addNote(note, sync: false);
+        }
+      }
+      userBox.put('hasUpdatedNoteBoxForOldBuilds', true);
+    }
   }
 }

@@ -12,13 +12,11 @@ import 'package:ijot/widgets/snackbar.dart';
 class SingleNote extends StatefulWidget {
   final bool? updateMode;
   final Note? note;
-  final int? noteIndex;
 
   const SingleNote({
     Key? key,
     this.updateMode = false,
     this.note,
-    this.noteIndex,
   }) : super(key: key);
 
   @override
@@ -52,6 +50,8 @@ class _SingleNoteState extends State<SingleNote> {
     return _categories
         .map(
           (cat) => PopupMenuItem(
+            value: cat,
+            height: 30.0,
             child: Row(
               children: [
                 CircleAvatar(
@@ -68,8 +68,6 @@ class _SingleNoteState extends State<SingleNote> {
                 ),
               ],
             ),
-            value: cat,
-            height: 30.0,
           ),
         )
         .toList();
@@ -199,9 +197,12 @@ class _SingleNoteState extends State<SingleNote> {
             ownerId: loggedInUserId,
           );
 
-          widget.updateMode!
-              ? HiveMethods().updateNote(note: newNote, index: widget.noteIndex)
-              : HiveMethods().addNote(newNote);
+          if (widget.updateMode!) {
+            HiveMethods().updateNote(note: newNote);
+          } else {
+            HiveMethods().addNote(newNote);
+          }
+
           Navigator.pop(context);
         } else {
           showErrorSnackbar(context,

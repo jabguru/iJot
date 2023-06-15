@@ -187,12 +187,12 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                     : const SizedBox.shrink(),
                 Expanded(
                   child: Scrollbar(
+                    thickness: screenGreaterThan700 ? 8.0 : 0.0,
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: screenGreaterThan700 ? 40.0 : 0.0),
                       child: widget.child,
                     ),
-                    thickness: screenGreaterThan700 ? 8.0 : 0.0,
                   ),
                 ),
                 const SizedBox(height: 8.0),

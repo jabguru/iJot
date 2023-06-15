@@ -74,7 +74,6 @@ class _NoteContainerState extends State<NoteContainer> {
                           onTap: () async {
                             HiveMethods().deleteNote(
                               note: widget.note,
-                              index: widget.noteIndex,
                             );
                             Navigator.pop(context);
                           },
@@ -112,11 +111,10 @@ class _NoteContainerState extends State<NoteContainer> {
 
     return GestureDetector(
       onTap: () => context.beamToNamed(
-        MyRoutes.noteRoute + '/${widget.noteIndex}',
+        '${MyRoutes.noteRoute}/${widget.noteIndex}',
         data: {
           'updateMode': true,
           'note': widget.note,
-          'noteIndex': widget.noteIndex,
         },
         beamBackOnPop: true,
         popToNamed: MyRoutes.notesRoute,

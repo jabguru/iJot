@@ -22,13 +22,12 @@ class MyRoutes {
         registerRoute: (context, state, data) => const Register(),
         notesRoute: (context, state, data) => const Notes(),
         noteRoute: (context, state, data) => const SingleNote(),
-        noteRoute + '/:noteId': (context, state, data) {
+        '$noteRoute/:noteId': (context, state, data) {
           if (data != null) {
             Map params = data as Map;
             return SingleNote(
               updateMode: params['updateMode'],
               note: params['note'],
-              noteIndex: params['noteIndex'],
             );
           }
           return const SingleNote();

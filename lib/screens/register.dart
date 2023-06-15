@@ -183,7 +183,7 @@ class _RegisterState extends State<Register> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                'already_have_an_account'.tr() + " ",
+                                "${'already_have_an_account'.tr()} ",
                                 style: const TextStyle(
                                   fontSize: 15.0,
                                   color: Colors.white,

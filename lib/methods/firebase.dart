@@ -72,7 +72,7 @@ class FirebaseMethods {
             }
           }
         }
-        if (!isContained) notesBox.add(cloudNote);
+        if (!isContained) notesBox.put(cloudNote.id, cloudNote);
       }
     } catch (e) {
       print(e.toString);

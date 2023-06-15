@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:ijot/constants/colors.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/constants/supported_locales.dart';
+import 'package:ijot/firebase_options.dart';
 import 'package:ijot/methods/hive.dart';
 import 'package:url_strategy/url_strategy.dart';
 
@@ -13,7 +14,9 @@ import 'package:url_strategy/url_strategy.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await HiveMethods().initialize();
   setPathUrlStrategy();
   runApp(

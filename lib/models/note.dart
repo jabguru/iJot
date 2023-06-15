@@ -5,7 +5,7 @@ part 'note.g.dart';
 @HiveType(typeId: 1)
 class Note {
   @HiveField(0)
-  final String? id;
+  final String id;
 
   @HiveField(1)
   final String? title;
@@ -23,7 +23,7 @@ class Note {
   final String? ownerId;
 
   Note({
-    this.id,
+    required this.id,
     this.title,
     this.details,
     this.category,

@@ -8,9 +8,9 @@ import 'package:ijot/widgets/progress.dart';
 import 'package:ijot/widgets/snackbar.dart';
 
 showForgotPasswordBottomSheet(BuildContext context) {
-  final _forgotPassFormKey = GlobalKey<FormState>();
-  bool _isLoading = false;
-  String? _resetEmail;
+  final forgotPassFormKey = GlobalKey<FormState>();
+  bool isLoading = false;
+  String? resetEmail;
 
   return showModalBottomSheet(
       backgroundColor: Colors.transparent,
@@ -49,7 +49,7 @@ showForgotPasswordBottomSheet(BuildContext context) {
                             ),
                             const SizedBox(height: 16.0),
                             Form(
-                              key: _forgotPassFormKey,
+                              key: forgotPassFormKey,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(
                                     kCircularBorderRadius),
@@ -65,7 +65,7 @@ showForgotPasswordBottomSheet(BuildContext context) {
                                       return null;
                                     }
                                   },
-                                  onSaved: (value) => _resetEmail = value,
+                                  onSaved: (value) => resetEmail = value,
                                   style: kInputTextStyle,
                                   keyboardType: TextInputType.emailAddress,
                                   decoration: InputDecoration(
@@ -81,7 +81,7 @@ showForgotPasswordBottomSheet(BuildContext context) {
                               ),
                             ),
                             const SizedBox(height: 8.0),
-                            _isLoading
+                            isLoading
                                 ? circularProgress()
                                 : Row(
                                     children: [
@@ -93,19 +93,19 @@ showForgotPasswordBottomSheet(BuildContext context) {
                                           text: 'reset'.tr(),
                                           textColor: Colors.white,
                                           onTap: () async {
-                                            final form = _forgotPassFormKey
+                                            final form = forgotPassFormKey
                                                 .currentState!;
 
                                             if (form.validate()) {
                                               setState(() {
-                                                _isLoading = true;
+                                                isLoading = true;
                                               });
                                               form.save();
 
                                               try {
                                                 await fireBaseAuth
                                                     .sendPasswordResetEmail(
-                                                        email: _resetEmail!);
+                                                        email: resetEmail!);
                                                 Navigator.pop(context);
                                                 showSuccessSnackbar(context,
                                                     message:
@@ -117,7 +117,7 @@ showForgotPasswordBottomSheet(BuildContext context) {
                                               }
 
                                               setState(() {
-                                                _isLoading = false;
+                                                isLoading = false;
                                               });
                                             }
                                           },
