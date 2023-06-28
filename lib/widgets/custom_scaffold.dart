@@ -19,6 +19,7 @@ class CustomScaffold extends StatefulWidget {
   final bool editMode;
   final VoidCallback? onTap;
   final bool shouldShrink;
+  final ScrollController? scrollController;
   const CustomScaffold({
     Key? key,
     this.child,
@@ -28,6 +29,7 @@ class CustomScaffold extends StatefulWidget {
     this.editMode = false,
     this.onTap,
     this.shouldShrink = true,
+    this.scrollController,
   }) : super(key: key);
 
   @override
@@ -106,8 +108,10 @@ class CustomScaffoldState extends State<CustomScaffold> {
                                       child: TextButton(
                                         onPressed: () async {
                                           await userBox.clear();
-                                          context.beamToReplacementNamed(
-                                              MyRoutes.loginRoute);
+                                          if (context.mounted) {
+                                            context.beamToReplacementNamed(
+                                                MyRoutes.loginRoute);
+                                          }
                                         },
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(
@@ -187,6 +191,7 @@ class CustomScaffoldState extends State<CustomScaffold> {
                     : const SizedBox.shrink(),
                 Expanded(
                   child: Scrollbar(
+                    controller: widget.scrollController,
                     thickness: screenGreaterThan700 ? 8.0 : 0.0,
                     child: Padding(
                       padding: EdgeInsets.symmetric(

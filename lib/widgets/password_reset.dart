@@ -93,8 +93,8 @@ showForgotPasswordBottomSheet(BuildContext context) {
                                           text: 'reset'.tr(),
                                           textColor: Colors.white,
                                           onTap: () async {
-                                            final form = forgotPassFormKey
-                                                .currentState!;
+                                            final form =
+                                                forgotPassFormKey.currentState!;
 
                                             if (form.validate()) {
                                               setState(() {
@@ -106,11 +106,13 @@ showForgotPasswordBottomSheet(BuildContext context) {
                                                 await fireBaseAuth
                                                     .sendPasswordResetEmail(
                                                         email: resetEmail!);
-                                                Navigator.pop(context);
-                                                showSuccessSnackbar(context,
-                                                    message:
-                                                        "password_reset_successful"
-                                                            .tr());
+                                                if (context.mounted) {
+                                                  Navigator.pop(context);
+                                                  showSuccessSnackbar(context,
+                                                      message:
+                                                          "password_reset_successful"
+                                                              .tr());
+                                                }
                                               } on FirebaseException catch (e) {
                                                 showErrorSnackbar(context,
                                                     message: e.message);

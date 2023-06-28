@@ -60,7 +60,9 @@ class LoginState extends State<Login> {
           _isLoading = false;
         });
 
-        context.beamToReplacementNamed(MyRoutes.notesRoute);
+        if (context.mounted) {
+          context.beamToReplacementNamed(MyRoutes.notesRoute);
+        }
       } on FirebaseException catch (e) {
         setState(() {
           _isLoading = false;
@@ -99,8 +101,9 @@ class LoginState extends State<Login> {
       setState(() {
         _isLoading = false;
       });
-
-      context.beamToReplacementNamed(MyRoutes.notesRoute);
+      if (context.mounted) {
+        context.beamToReplacementNamed(MyRoutes.notesRoute);
+      }
     }, onError: (error) {
       // print('Error Signing in: $error');
       showErrorSnackbar(context,

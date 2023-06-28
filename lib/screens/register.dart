@@ -47,7 +47,9 @@ class RegisterState extends State<Register> {
 
         userBox.put('userId', userId);
 
-        context.beamToReplacementNamed(MyRoutes.notesRoute);
+        if (context.mounted) {
+          context.beamToReplacementNamed(MyRoutes.notesRoute);
+        }
       } on FirebaseException catch (e) {
         showErrorSnackbar(context, message: e.message);
       }
