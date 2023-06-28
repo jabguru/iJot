@@ -25,6 +25,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.3.1"
+  animated_search_bar:
+    dependency: "direct main"
+    description:
+      name: animated_search_bar
+      sha256: "045b13a465434a3772c1b7b4137cced9c6fc322622ed4451410db29b35dbed49"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.5.0"
   another_flushbar:
     dependency: "direct main"
     description:

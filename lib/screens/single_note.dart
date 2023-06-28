@@ -77,6 +77,8 @@ class SingleNoteState extends State<SingleNote> {
 
     return CustomScaffold(
       title: widget.updateMode! ? 'note_edit'.tr() : 'note_new'.tr(),
+      hasTopBars: true,
+      hasBottomBars: true,
       editMode: true,
       child: Container(
         margin: screenGreaterThan700

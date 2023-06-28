@@ -9,8 +9,10 @@ import 'package:ijot/widgets/button.dart';
 import 'package:ijot/widgets/custom_scaffold.dart';
 import 'package:ijot/widgets/privacy_policy.dart';
 import 'package:ijot/widgets/progress.dart';
+import 'package:ijot/widgets/show_password.dart';
 import 'package:ijot/widgets/snackbar.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ijot/widgets/textfield.dart';
 import 'package:modal_progress_hud_alt/modal_progress_hud_alt.dart';
 
 class Register extends StatefulWidget {
@@ -64,8 +66,6 @@ class RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return CustomScaffold(
       title: 'register'.tr(),
-      hasTopBars: false,
-      hasBottomBars: false,
       child: ModalProgressHUD(
         inAsyncCall: _isLoading,
         color: Theme.of(context).primaryColor,
@@ -97,77 +97,24 @@ class RegisterState extends State<Register> {
                             key: _formKey,
                             child: Column(
                               children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(
-                                      kCircularBorderRadius),
-                                  child: TextFormField(
-                                    validator: (val) {
-                                      if (val!.trim().isEmpty) {
-                                        return 'validation_email'.tr();
-                                      } else if (!val.trim().contains(RegExp(
-                                          r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)",
-                                          caseSensitive: false))) {
-                                        return 'validation_email_2'.tr();
-                                      } else {
-                                        return null;
-                                      }
-                                    },
-                                    onSaved: (value) => _emailInput = value,
-                                    style: kInputTextStyle,
-                                    keyboardType: TextInputType.emailAddress,
-                                    decoration: InputDecoration(
-                                      hintText: 'email'.tr(),
-                                      filled: true,
-                                      fillColor: Colors.white,
-                                      border: InputBorder.none,
-                                      errorStyle: TextStyle(
-                                        color: Theme.of(context).primaryColor,
-                                      ),
-                                    ),
-                                  ),
+                                TextFieldWidget(
+                                  validator: kEmailValidator,
+                                  onSaved: (value) => _emailInput = value,
+                                  hintText: 'email'.tr(),
+                                  keyboardType: TextInputType.emailAddress,
                                 ),
                                 const SizedBox(height: 8.0),
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(
-                                      kCircularBorderRadius),
-                                  child: TextFormField(
-                                    validator: (val) {
-                                      if (val!.trim().isEmpty) {
-                                        return 'validation_password'.tr();
-                                      } else if (val.trim().length < 6) {
-                                        return 'validation_password_2'.tr();
-                                      } else {
-                                        return null;
-                                      }
+                                TextFieldWidget(
+                                  validator: kPasswordValidator,
+                                  onSaved: (value) => _passwordInput = value,
+                                  hintText: 'password'.tr(),
+                                  obscureText: _hidePassword,
+                                  suffixIcon: ShowPasswordWidget(
+                                    onTap: () {
+                                      setState(() {
+                                        _hidePassword = !_hidePassword;
+                                      });
                                     },
-                                    onSaved: (value) => _passwordInput = value,
-                                    style: kInputTextStyle,
-                                    decoration: InputDecoration(
-                                      hintText: 'password'.tr(),
-                                      filled: true,
-                                      fillColor: Colors.white,
-                                      border: InputBorder.none,
-                                      errorStyle: TextStyle(
-                                        color: Theme.of(context).primaryColor,
-                                      ),
-                                      suffixIcon: GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            _hidePassword = !_hidePassword;
-                                          });
-                                        },
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 20.0),
-                                          child: Image.asset(
-                                            'assets/images/show_password.png',
-                                            width: 24.0,
-                                            height: 24.0,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    obscureText: _hidePassword,
                                   ),
                                 ),
                                 const SizedBox(height: 8.0),

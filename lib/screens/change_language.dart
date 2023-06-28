@@ -44,8 +44,6 @@ class ChangeLanguageState extends State<ChangeLanguage> {
     return WillPopScope(
       onWillPop: () async => !widget.isFirstOpen,
       child: CustomScaffold(
-        hasTopBars: false,
-        hasBottomBars: false,
         title: 'change_language'.tr(),
         shouldShrink: false,
         child: Stack(

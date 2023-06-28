@@ -7,22 +7,18 @@ import 'package:ijot/widgets/notes/no_content.dart';
 
 class NotesListWidget extends StatelessWidget {
   final ScrollController? scrollController;
+  final String? searchText;
 
   const NotesListWidget({
-    this.scrollController,
+    required this.scrollController,
+    required this.searchText,
     super.key,
   });
 
   Widget noteItemBuilder({
-    required BuildContext context,
-    required Box<Note> notesBox,
+    required Note note,
     required int index,
   }) {
-    List<Note> allNotes = notesBox.values.toList();
-    allNotes.sort(((a, b) => b.dateTime!.compareTo(a.dateTime!)));
-
-    // int noteIndex = notesBox.length - index - 1;
-    final note = allNotes[index];
     if (note.ownerId == loggedInUserId) {
       return NoteContainer(note, index);
     }
@@ -34,7 +30,21 @@ class NotesListWidget extends StatelessWidget {
     return ValueListenableBuilder(
       valueListenable: Hive.box<Note>('notes').listenable(),
       builder: (BuildContext context, Box<Note> notesBox, _) {
-        return kUserItemsAvailable && notesBox.length > 0
+        List<Note> allNotes = notesBox.values.toList();
+        if (searchText != null && searchText!.isNotEmpty) {
+          allNotes = allNotes
+              .where((Note note) => (note.title!
+                      .toLowerCase()
+                      .contains(searchText!.toLowerCase()) ||
+                  note.details!
+                      .toLowerCase()
+                      .contains(searchText!.toLowerCase())))
+              .toList();
+        }
+
+        allNotes.sort(((a, b) => b.dateTime!.compareTo(a.dateTime!)));
+
+        return kUserItemsAvailable && allNotes.isNotEmpty
             ? LayoutBuilder(
                 builder: (context, constraints) {
                   if (constraints.maxWidth > 700) {
@@ -51,11 +61,10 @@ class NotesListWidget extends StatelessWidget {
                           mainAxisExtent: 120.0,
                           crossAxisSpacing: 20.0,
                         ),
-                        itemCount: notesBox.length,
+                        itemCount: allNotes.length,
                         itemBuilder: (BuildContext context, int index) =>
                             noteItemBuilder(
-                          context: context,
-                          notesBox: notesBox,
+                          note: allNotes[index],
                           index: index,
                         ),
                       ),
@@ -64,17 +73,18 @@ class NotesListWidget extends StatelessWidget {
                   return ListView.builder(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 16.0, vertical: 8.0),
-                    itemCount: notesBox.length,
+                    itemCount: allNotes.length,
                     itemBuilder: (BuildContext context, int index) =>
                         noteItemBuilder(
-                      context: context,
-                      notesBox: notesBox,
+                      note: allNotes[index],
                       index: index,
                     ),
                   );
                 },
               )
-            : const NoContentWidget();
+            : NoContentWidget(
+                searchText: searchText,
+              );
       },
     );
   }

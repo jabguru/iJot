@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:ijot/constants/colors.dart';
 
 const kInputTextStyle = TextStyle(
   fontSize: 20.0,
@@ -50,3 +52,34 @@ String? loggedInUserId;
 
 GlobalKey<NavigatorState> navigatorKey =
     GlobalKey(debugLabel: "Main Navigator");
+
+String? Function(String?)? kEmailValidator = (val) {
+  if (val!.trim().isEmpty) {
+    return 'validation_email'.tr();
+  } else if (!val.trim().contains(RegExp(
+      r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)",
+      caseSensitive: false))) {
+    return 'validation_email_2'.tr();
+  } else {
+    return null;
+  }
+};
+
+String? Function(String?)? kPasswordValidator = (val) {
+  if (val!.trim().isEmpty) {
+    return 'validation_password'.tr();
+  } else if (val.trim().length < 6) {
+    return 'validation_password_2'.tr();
+  } else {
+    return null;
+  }
+};
+
+InputDecoration kTextFieldDecoration = const InputDecoration(
+  filled: true,
+  fillColor: Colors.white,
+  border: InputBorder.none,
+  errorStyle: TextStyle(
+    color: kPrimaryColor,
+  ),
+);

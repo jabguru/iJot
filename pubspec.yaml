@@ -21,6 +21,7 @@ environment:
   sdk: '>=3.0.5 <4.0.0'
 
 dependencies:
+  animated_search_bar: ^2.5.0
   another_flushbar: ^1.12.30
   beamer: ^1.5.5
   cloud_firestore: ^4.8.1
