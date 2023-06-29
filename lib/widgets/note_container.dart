@@ -113,7 +113,6 @@ class NoteContainerState extends State<NoteContainer> {
       onTap: () => context.beamToNamed(
         '${MyRoutes.noteRoute}/${widget.noteIndex}',
         data: {
-          'updateMode': true,
           'note': widget.note,
         },
         beamBackOnPop: true,

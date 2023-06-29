@@ -15,6 +15,7 @@ class FirebaseService {
         'details': note.details,
         'category': note.category,
         'dateTime': DateTime.parse(note.dateTime!),
+        'detailsJSON': note.detailsJSON,
         'ownerId': note.ownerId,
       });
     } catch (e) {
@@ -30,6 +31,7 @@ class FirebaseService {
           'details': note.details,
           'category': note.category,
           'dateTime': DateTime.parse(note.dateTime!),
+          'detailsJSON': note.detailsJSON,
         },
       );
     } catch (e) {

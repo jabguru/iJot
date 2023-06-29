@@ -23,6 +23,9 @@ class Note {
   @HiveField(5)
   final String? ownerId;
 
+  @HiveField(6)
+  final String? detailsJSON;
+
   Note({
     required this.id,
     this.title,
@@ -30,6 +33,7 @@ class Note {
     this.category,
     this.dateTime,
     this.ownerId,
+    this.detailsJSON,
   });
 
   factory Note.fromDocument(DocumentSnapshot doc) {
@@ -40,6 +44,9 @@ class Note {
       category: doc['category'],
       dateTime: (doc['dateTime'] as Timestamp).toDate().toString(),
       ownerId: doc['ownerId'],
+      detailsJSON: doc.data().toString().contains('detailsJSON')
+          ? doc['detailsJSON']
+          : null,
     );
   }
 

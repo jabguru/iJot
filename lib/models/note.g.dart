@@ -8,10 +8,13 @@ part of 'note.dart';
 
 class NoteAdapter extends TypeAdapter<Note> {
   @override
+  final int typeId = 1;
+
+  @override
   Note read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Note(
       id: fields[0] as String,
@@ -20,13 +23,14 @@ class NoteAdapter extends TypeAdapter<Note> {
       category: fields[3] as String?,
       dateTime: fields[4] as String?,
       ownerId: fields[5] as String?,
+      detailsJSON: fields[6] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Note obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -38,9 +42,18 @@ class NoteAdapter extends TypeAdapter<Note> {
       ..writeByte(4)
       ..write(obj.dateTime)
       ..writeByte(5)
-      ..write(obj.ownerId);
+      ..write(obj.ownerId)
+      ..writeByte(6)
+      ..write(obj.detailsJSON);
   }
 
   @override
-  int get typeId => 0;
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is NoteAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }

@@ -26,7 +26,6 @@ class MyRoutes {
           if (data != null) {
             Map params = data as Map;
             return SingleNote(
-              updateMode: params['updateMode'],
               note: params['note'],
             );
           }
