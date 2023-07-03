@@ -6,7 +6,7 @@ import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/firebase.dart';
 import 'package:ijot/constants/hive.dart';
 import 'package:ijot/constants/routes.dart';
-import 'package:ijot/services/firebase.dart';
+import 'package:ijot/services/firebase_firestore.dart';
 import 'package:ijot/services/hive.dart';
 import 'package:ijot/widgets/button.dart';
 import 'package:ijot/widgets/custom_scaffold.dart';
@@ -55,7 +55,7 @@ class LoginState extends State<Login> {
 
         userBox.put('userId', userId);
 
-        await FirebaseService().cloudToLocal();
+        await FirebaseFirestoreService().cloudToLocal();
         await HiveService().checkForUserItems();
 
         setState(() {
@@ -97,7 +97,7 @@ class LoginState extends State<Login> {
       loggedInUserId = userId;
 
       userBox.put('userId', userId);
-      await FirebaseService().cloudToLocal();
+      await FirebaseFirestoreService().cloudToLocal();
       await HiveService().checkForUserItems();
 
       setState(() {

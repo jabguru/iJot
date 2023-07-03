@@ -41,7 +41,7 @@ class TopBarWidget extends StatelessWidget {
               ),
               Row(
                 children: [
-                  if (extraWidget != null) extraWidget!,
+                  if (extraWidget != null && screenGreaterThan700) extraWidget!,
                   Container(
                     decoration: BoxDecoration(
                       color: const Color(0x4D410E61),
@@ -107,6 +107,12 @@ class TopBarWidget extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              if (!screenGreaterThan700 && extraWidget != null) ...[
+                const SizedBox(
+                  width: 32.0,
+                ),
+                Expanded(child: extraWidget!),
+              ],
               if (!kIsWeb && Platform.isMacOS && Navigator.canPop(context))
                 MouseRegion(
                   cursor: SystemMouseCursors.click,

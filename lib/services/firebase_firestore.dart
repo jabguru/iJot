@@ -6,7 +6,7 @@ import 'package:ijot/constants/firebase.dart';
 import 'package:ijot/constants/hive.dart';
 import 'package:ijot/models/note.dart';
 
-class FirebaseService {
+class FirebaseFirestoreService {
   Future syncNote(Note note) async {
     try {
       notesRef.doc(loggedInUserId).collection('userNotes').doc(note.id).set({

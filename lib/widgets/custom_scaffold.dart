@@ -51,7 +51,6 @@ class CustomScaffoldState extends State<CustomScaffold> {
             alignment: Alignment.center,
             decoration: BoxDecoration(
               gradient: kLinearGradient,
-              // TODO: an avenue for snapping and adding to notes
               // TODO: ADD TEXT DECORATION BOLD, UNDERLINE, ETC
               color: Colors.white,
             ),
