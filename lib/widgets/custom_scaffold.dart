@@ -33,6 +33,24 @@ class CustomScaffold extends StatefulWidget {
 }
 
 class CustomScaffoldState extends State<CustomScaffold> {
+  Widget _buildMainContent(bool screenGreaterThan700) {
+    Widget child = Padding(
+      padding:
+          EdgeInsets.symmetric(horizontal: screenGreaterThan700 ? 40.0 : 0.0),
+      child: widget.child,
+    );
+
+    if (widget.scrollController != null) {
+      return Scrollbar(
+        controller: widget.scrollController,
+        thickness: screenGreaterThan700 ? 8.0 : 0.0,
+        child: child,
+      );
+    }
+
+    return child;
+  }
+
   @override
   Widget build(BuildContext context) {
     bool screenGreaterThan700 = MediaQuery.of(context).size.width > 700;
@@ -64,15 +82,7 @@ class CustomScaffoldState extends State<CustomScaffold> {
                     extraWidget: widget.extraTopBarWidget,
                   ),
                 Expanded(
-                  child: Scrollbar(
-                    controller: widget.scrollController,
-                    thickness: screenGreaterThan700 ? 8.0 : 0.0,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: screenGreaterThan700 ? 40.0 : 0.0),
-                      child: widget.child,
-                    ),
-                  ),
+                  child: _buildMainContent(screenGreaterThan700),
                 ),
                 const SizedBox(height: 8.0),
                 if (widget.hasBottomBars)

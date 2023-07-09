@@ -415,6 +415,7 @@ class SingleNoteState extends State<SingleNote> {
     toolbar = quill.QuillToolbar.basic(
       controller: _quillController,
       multiRowsDisplay: false,
+      showFontFamily: false,
       embedButtons: FlutterQuillEmbeds.buttons(
         // provide a callback to enable picking images from device.
         // if omit, "image" button only allows adding images from url.
@@ -434,6 +435,7 @@ class SingleNoteState extends State<SingleNote> {
     if (kIsWeb) {
       toolbar = quill.QuillToolbar.basic(
         controller: _quillController,
+        showFontFamily: false,
         embedButtons: FlutterQuillEmbeds.buttons(
           // ? COMMENTED THIS OUT FOR WEB BECAUSE WEB DOESN'T SUPPORT ADDING LOCAL FILES, ISSUE WITH DART IO AND PATH PROVIDER ON WEB, CHECK FOR WHEN QUILL IS NOW SUPPORTED ON WEB
           // onImagePickCallback: _onImagePickCallback,
@@ -448,6 +450,7 @@ class SingleNoteState extends State<SingleNote> {
     if (_isDesktop) {
       toolbar = quill.QuillToolbar.basic(
         controller: _quillController,
+        showFontFamily: false,
         embedButtons: FlutterQuillEmbeds.buttons(
           onImagePickCallback: _onImagePickCallback,
           filePickImpl: openFileSystemPickerForDesktop,

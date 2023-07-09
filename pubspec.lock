@@ -582,12 +582,11 @@ packages:
   flutter_quill_extensions:
     dependency: "direct main"
     description:
-      path: flutter_quill_extensions
-      ref: master
-      resolved-ref: "8e54adee875caf2eccb757d2863c6d7059883509"
-      url: "https://github.com/singerdmx/flutter-quill.git/"
-    source: git
-    version: "0.3.3"
+      name: flutter_quill_extensions
+      sha256: "4d109e638d763ac266d8fa5436c1ab2aec4928e41d65977b5731849a25255241"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.4"
   flutter_spinkit:
     dependency: "direct main"
     description:
