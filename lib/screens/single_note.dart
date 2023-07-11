@@ -145,12 +145,14 @@ class SingleNoteState extends State<SingleNote> {
   bool get _isDesktop => !kIsWeb && !Platform.isAndroid && !Platform.isIOS;
 
   Future<String> _onImagePaste(Uint8List imageBytes) async {
-    // Saves the image to applications directory
     final appDocDir = await getApplicationDocumentsDirectory();
     final file = await File(
             '${appDocDir.path}/${path.basename('${DateTime.now().millisecondsSinceEpoch}.png')}')
         .writeAsBytes(imageBytes, flush: true);
-    return file.path.toString();
+
+    String fileURL = await _onImagePickCallback(file);
+
+    return fileURL;
   }
 
   bool _onTripleClickSelection() {
