@@ -234,7 +234,10 @@ class SingleNoteState extends State<SingleNote> {
       await imageFSS.uploadFile(
         uid: loggedInUserId!,
         file: file,
-        imageName: path.basename(file.path),
+        imageName: path
+                .basenameWithoutExtension(file.path)
+                .replaceAll(RegExp('[^A-Za-z0-9]'), '_') +
+            path.extension(file.path),
       );
 
       if (imageFSS.url != null) {

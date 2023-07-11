@@ -5,6 +5,7 @@ import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/firebase.dart';
 import 'package:ijot/constants/hive.dart';
 import 'package:ijot/models/note.dart';
+import 'package:ijot/services/note.dart';
 
 class FirebaseFirestoreService {
   Future syncNote(Note note) async {
@@ -49,6 +50,7 @@ class FirebaseFirestoreService {
           .then((doc) {
         if (doc.exists) {
           doc.reference.delete();
+          NoteService.deletePhotos(note);
         }
       });
     } catch (e) {
@@ -66,15 +68,19 @@ class FirebaseFirestoreService {
 
       for (var doc in snapshot.docs) {
         bool isContained = false;
+        bool isUnchanged = false;
         Note cloudNote = Note.fromDocument(doc);
         for (var i = 0; i < notesBox.length; i++) {
           if (loggedInUserId == notesBox.getAt(i)!.ownerId) {
             if (cloudNote.id == notesBox.getAt(i)!.id) {
               isContained = true;
             }
+            if (cloudNote == notesBox.getAt(i)) {
+              isUnchanged = true;
+            }
           }
         }
-        if (!isContained) notesBox.put(cloudNote.id, cloudNote);
+        if (!isContained || !isUnchanged) notesBox.put(cloudNote.id, cloudNote);
       }
     } catch (e) {
       print(e.toString);

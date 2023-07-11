@@ -7,6 +7,7 @@ import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/services/hive.dart';
 import 'package:ijot/models/note.dart';
+import 'package:ijot/widgets/button.dart';
 
 class NoteContainer extends StatefulWidget {
   final Note note;
@@ -51,49 +52,23 @@ class NoteContainerState extends State<NoteContainer> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        GestureDetector(
+                        CustomButton2(
                           onTap: () => Navigator.pop(context),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 21.0, vertical: 8.0),
-                            decoration: BoxDecoration(
-                              color: const Color(0x4D410E61),
-                              borderRadius:
-                                  BorderRadius.circular(kCircularBorderRadius),
-                            ),
-                            child: Text(
-                              'delete_cancel'.tr(),
-                              style: TextStyle(
-                                color: Theme.of(context).primaryColor,
-                                fontSize: 16.0,
-                              ),
-                            ),
-                          ),
+                          text: 'delete_cancel'.tr(),
+                          textColor: Theme.of(context).primaryColor,
+                          buttonColor: const Color(0x4D410E61),
                         ),
-                        GestureDetector(
+                        CustomButton2(
                           onTap: () async {
                             HiveService().deleteNote(
                               note: widget.note,
                             );
                             Navigator.pop(context);
                           },
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 21.0, vertical: 8.0),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.circular(kCircularBorderRadius),
-                              border: Border.all(color: Colors.red),
-                            ),
-                            child: Text(
-                              'delete'.tr(),
-                              style: const TextStyle(
-                                color: Colors.red,
-                                fontSize: 16.0,
-                              ),
-                            ),
-                          ),
+                          text: 'delete'.tr(),
+                          textColor: Colors.red,
+                          buttonColor: Colors.white,
+                          border: Border.all(color: Colors.red),
                         ),
                       ],
                     ),

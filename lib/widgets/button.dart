@@ -43,3 +43,43 @@ class CustomButton extends StatelessWidget {
     );
   }
 }
+
+class CustomButton2 extends StatelessWidget {
+  final Color buttonColor;
+  final Color? textColor;
+  final String text;
+  final VoidCallback onTap;
+  final BoxBorder? border;
+  const CustomButton2({
+    Key? key,
+    required this.buttonColor,
+    required this.textColor,
+    required this.text,
+    required this.onTap,
+    this.border,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: Container(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 21.0, vertical: 8.0),
+            decoration: BoxDecoration(
+              color: buttonColor,
+              borderRadius: BorderRadius.circular(kCircularBorderRadius),
+              border: border,
+            ),
+            child: Text(
+              text,
+              style: TextStyle(
+                color: textColor,
+                fontSize: 16.0,
+              ),
+            ),
+          )),
+    );
+  }
+}

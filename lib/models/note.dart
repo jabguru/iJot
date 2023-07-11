@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 part 'note.g.dart';
 
 @HiveType(typeId: 1)
-class Note {
+class Note extends Equatable {
   @HiveField(0)
   final String id;
 
@@ -26,7 +27,7 @@ class Note {
   @HiveField(6)
   final String? detailsJSON;
 
-  Note({
+  const Note({
     required this.id,
     this.title,
     this.details,
@@ -66,4 +67,15 @@ class Note {
         return 'note_cat_uncategorized'.tr();
     }
   }
+
+  @override
+  List<Object?> get props => [
+        id,
+        title,
+        details,
+        category,
+        dateTime,
+        ownerId,
+        detailsJSON,
+      ];
 }

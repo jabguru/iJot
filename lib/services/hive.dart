@@ -24,7 +24,7 @@ class HiveService {
       loggedInUserId = userId;
       await checkForUserItems();
       FirebaseFirestoreService().cloudToLocal();
-      // FirebaseMethods().deleteNotesDeletedFromOtherDevices();
+      FirebaseFirestoreService().deleteNotesDeletedFromOtherDevices();
     }
   }
 
