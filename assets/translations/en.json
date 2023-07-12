@@ -64,6 +64,10 @@
     "gallery": "Gallery",
     "link": "Link",
     "capture_a_photo": "Capture a photo",
-    "capture_a_video": "Capture a video"
+    "capture_a_video": "Capture a video",
+
+    "copy_for_whatsapp": "Copy",
+    "copy_for_whatsapp_success": "Text copied to clipboard",
+    "copy_for_whatsapp_failed": "Failed to copy text"
 
 }

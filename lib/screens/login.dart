@@ -6,6 +6,7 @@ import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/firebase.dart';
 import 'package:ijot/constants/hive.dart';
 import 'package:ijot/constants/routes.dart';
+import 'package:ijot/constants/spaces.dart';
 import 'package:ijot/services/firebase_firestore.dart';
 import 'package:ijot/services/hive.dart';
 import 'package:ijot/widgets/button.dart';
@@ -149,7 +150,7 @@ class LoginState extends State<Login> {
                               'assets/images/logo-with-circle.png',
                               height: 115.0,
                             ),
-                            const SizedBox(height: 55.0),
+                            kVLargeVSpace,
                             Form(
                               key: _formKey,
                               child: Column(
@@ -160,7 +161,7 @@ class LoginState extends State<Login> {
                                     hintText: 'email'.tr(),
                                     keyboardType: TextInputType.emailAddress,
                                   ),
-                                  const SizedBox(height: 8.0),
+                                  kHalfVSpace,
                                   TextFieldWidget(
                                     validator: kPasswordValidator,
                                     onSaved: (value) => _passwordInput = value,
@@ -174,7 +175,7 @@ class LoginState extends State<Login> {
                                       },
                                     ),
                                   ),
-                                  const SizedBox(height: 8.0),
+                                  kHalfVSpace,
                                   GestureDetector(
                                     onTap: () =>
                                         showForgotPasswordBottomSheet(context),
@@ -186,14 +187,14 @@ class LoginState extends State<Login> {
                                       ),
                                     ),
                                   ),
-                                  const SizedBox(height: 8.0),
+                                  kHalfVSpace,
                                   CustomButton(
                                     buttonColor: Theme.of(context).primaryColor,
                                     text: 'sign_in'.tr(),
                                     textColor: Colors.white,
                                     onTap: handleSignIn,
                                   ),
-                                  const SizedBox(height: 8.0),
+                                  kHalfVSpace,
                                   Text(
                                     'or'.tr(),
                                     style: const TextStyle(
@@ -201,7 +202,7 @@ class LoginState extends State<Login> {
                                       fontSize: 12.0,
                                     ),
                                   ),
-                                  const SizedBox(height: 8.0),
+                                  kHalfVSpace,
                                   CustomButton(
                                     buttonColor: Colors.white,
                                     onTap: _handleGoogleSignIn,
@@ -213,7 +214,7 @@ class LoginState extends State<Login> {
                                           'assets/images/google-logo.png',
                                           width: 30.0,
                                         ),
-                                        const SizedBox(width: 8.0),
+                                        kHalfHSpace,
                                         Text(
                                           'sign_in'.tr(),
                                           style: TextStyle(
@@ -228,7 +229,7 @@ class LoginState extends State<Login> {
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 8.0),
+                            kHalfVSpace,
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [

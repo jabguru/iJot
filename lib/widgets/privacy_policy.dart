@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ijot/constants/constants.dart';
+import 'package:ijot/constants/spaces.dart';
 import 'package:ijot/widgets/button.dart';
 
 showPrivacyPolicyBottomSheet(BuildContext context) {
@@ -36,7 +37,7 @@ showPrivacyPolicyBottomSheet(BuildContext context) {
                           color: Colors.white,
                         ),
                       ),
-                      const SizedBox(height: 16.0),
+                      kFullVSpace,
                       Text(
                         'privacy_policy'.tr(namedArgs: {
                           'name': "Julius Alibrown",
@@ -45,7 +46,7 @@ showPrivacyPolicyBottomSheet(BuildContext context) {
                           color: Colors.white,
                         ),
                       ),
-                      const SizedBox(height: 24.0),
+                      kVSpace24,
                       CustomButton(
                         buttonColor: Theme.of(context).primaryColor,
                         text: "language_done".tr(),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:ijot/constants/constants.dart';
+import 'package:ijot/constants/spaces.dart';
 import 'package:ijot/widgets/bottom_bar.dart';
 import 'package:ijot/widgets/top_bar.dart';
 
@@ -69,7 +70,6 @@ class CustomScaffoldState extends State<CustomScaffold> {
             alignment: Alignment.center,
             decoration: BoxDecoration(
               gradient: kLinearGradient,
-              // TODO: ADD TEXT DECORATION BOLD, UNDERLINE, ETC
               color: Colors.white,
             ),
             child: Column(
@@ -84,7 +84,7 @@ class CustomScaffoldState extends State<CustomScaffold> {
                 Expanded(
                   child: _buildMainContent(screenGreaterThan700),
                 ),
-                const SizedBox(height: 8.0),
+                kHalfVSpace,
                 if (widget.hasBottomBars)
                   BottomBarWidget(
                     screenGreaterThan700: screenGreaterThan700,

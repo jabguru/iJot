@@ -9,9 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_quill/flutter_quill.dart' as quill;
 import 'package:flutter_quill_extensions/flutter_quill_extensions.dart';
+import 'package:ijot/constants/spaces.dart';
 import 'package:ijot/services/firebase_storage.dart';
 import 'package:ijot/widgets/note/time_stamp_embed_widget.dart';
 import 'package:ijot/widgets/note/universal_ui/universal_ui.dart';
+import 'package:ijot/widgets/note/whatsapp_copy.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
@@ -126,7 +128,7 @@ class SingleNoteState extends State<SingleNote> {
                   radius: 10.0,
                   backgroundColor: categoryColor(cat['value']),
                 ),
-                const SizedBox(width: 6.0),
+                kHSpace6,
                 Text(
                   cat['name']!,
                   style: TextStyle(
@@ -523,7 +525,7 @@ class SingleNoteState extends State<SingleNote> {
                     },
                   ),
                 ),
-                const SizedBox(width: 16.0),
+                kFullHSpace,
                 Container(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 6.0, vertical: 4.0),
@@ -545,7 +547,7 @@ class SingleNoteState extends State<SingleNote> {
                           radius: 10.0,
                           backgroundColor: categoryColor(_noteCat),
                         ),
-                        const SizedBox(width: 6.0),
+                        kHSpace6,
                         Text(
                           getCategoryString(_noteCat),
                           style: TextStyle(
@@ -559,17 +561,28 @@ class SingleNoteState extends State<SingleNote> {
                 )
               ],
             ),
-            const SizedBox(
-              height: 16.0,
-            ),
+            kFullVSpace,
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  toolbar,
-                  const SizedBox(
-                    height: 16.0,
+                  Row(
+                    children: [
+                      Expanded(
+                        // ? PUT THIS COLUMN HERE BECAUSE OF ALIGNMENT ISSUES
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            toolbar,
+                          ],
+                        ),
+                      ),
+                      WhatsappCopyButton(
+                        quillController: _quillController,
+                      ),
+                    ],
                   ),
+                  kFullVSpace,
                   Expanded(
                     child: quillEditor,
                   )

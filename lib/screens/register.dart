@@ -5,6 +5,7 @@ import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/firebase.dart';
 import 'package:ijot/constants/hive.dart';
 import 'package:ijot/constants/routes.dart';
+import 'package:ijot/constants/spaces.dart';
 import 'package:ijot/widgets/button.dart';
 import 'package:ijot/widgets/custom_scaffold.dart';
 import 'package:ijot/widgets/privacy_policy.dart';
@@ -92,7 +93,7 @@ class RegisterState extends State<Register> {
                         children: [
                           Image.asset('assets/images/logo-with-circle.png',
                               height: 115.0),
-                          const SizedBox(height: 55.0),
+                          kVLargeVSpace,
                           Form(
                             key: _formKey,
                             child: Column(
@@ -103,7 +104,7 @@ class RegisterState extends State<Register> {
                                   hintText: 'email'.tr(),
                                   keyboardType: TextInputType.emailAddress,
                                 ),
-                                const SizedBox(height: 8.0),
+                                kHalfVSpace,
                                 TextFieldWidget(
                                   validator: kPasswordValidator,
                                   onSaved: (value) => _passwordInput = value,
@@ -117,7 +118,7 @@ class RegisterState extends State<Register> {
                                     },
                                   ),
                                 ),
-                                const SizedBox(height: 8.0),
+                                kHalfVSpace,
                                 CustomButton(
                                   buttonColor: Theme.of(context).primaryColor,
                                   onTap: handleSignUp,
@@ -127,7 +128,7 @@ class RegisterState extends State<Register> {
                               ],
                             ),
                           ),
-                          const SizedBox(height: 8.0),
+                          kHalfVSpace,
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

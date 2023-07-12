@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:ijot/constants/spaces.dart';
 
 class NoContentWidget extends StatelessWidget {
   const NoContentWidget({
@@ -20,7 +21,7 @@ class NoContentWidget extends StatelessWidget {
             height: 177.0,
           ),
         ),
-        const SizedBox(height: 8.0),
+        kHalfVSpace,
         Text(
           searchText != null && searchText!.isNotEmpty
               ? 'no_content_search'.tr(namedArgs: {'searchText': searchText!})

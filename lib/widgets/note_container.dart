@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:ijot/constants/category.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/routes.dart';
+import 'package:ijot/constants/spaces.dart';
 import 'package:ijot/services/hive.dart';
 import 'package:ijot/models/note.dart';
 import 'package:ijot/widgets/button.dart';
@@ -48,7 +49,7 @@ class NoteContainerState extends State<NoteContainer> {
                         fontSize: 12.0,
                       ),
                     ),
-                    const SizedBox(height: 26.0),
+                    kVSpace26,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -120,9 +121,7 @@ class NoteContainerState extends State<NoteContainer> {
                   backgroundColor: categoryColor(widget.note.category),
                   radius: 10.0,
                 ),
-                const SizedBox(
-                  width: 16.0,
-                ),
+                kFullVSpace,
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,7 +145,7 @@ class NoteContainerState extends State<NoteContainer> {
                                   ),
                                 ),
                               ),
-                              const SizedBox(width: 6.0),
+                              kHSpace6,
                               GestureDetector(
                                 onTap: () => _showDeleteModal(context),
                                 child: Image.asset(
@@ -156,9 +155,7 @@ class NoteContainerState extends State<NoteContainer> {
                               ),
                             ],
                           ),
-                          const SizedBox(
-                            height: 4.0,
-                          ),
+                          kQuarterVSpace,
                           Text(
                             widget.note.details!,
                             maxLines: 2,

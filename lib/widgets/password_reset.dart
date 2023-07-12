@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/firebase.dart';
+import 'package:ijot/constants/spaces.dart';
 import 'package:ijot/widgets/button.dart';
 import 'package:ijot/widgets/progress.dart';
 import 'package:ijot/widgets/snackbar.dart';
@@ -47,7 +48,7 @@ showForgotPasswordBottomSheet(BuildContext context) {
                               'reset_password_title'.tr(),
                               style: kTitleTextStyle,
                             ),
-                            const SizedBox(height: 16.0),
+                            kFullVSpace,
                             Form(
                               key: forgotPassFormKey,
                               child: ClipRRect(
@@ -80,7 +81,7 @@ showForgotPasswordBottomSheet(BuildContext context) {
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 8.0),
+                            kHalfVSpace,
                             isLoading
                                 ? circularProgress()
                                 : Row(
@@ -125,7 +126,7 @@ showForgotPasswordBottomSheet(BuildContext context) {
                                           },
                                         ),
                                       ),
-                                      const SizedBox(width: 8.0),
+                                      kHalfHSpace,
                                       Expanded(
                                         child: CustomButton(
                                           buttonColor: Colors.white,

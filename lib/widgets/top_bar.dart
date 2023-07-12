@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/hive.dart';
 import 'package:ijot/constants/routes.dart';
+import 'package:ijot/constants/spaces.dart';
 
 class TopBarWidget extends StatelessWidget {
   const TopBarWidget({
@@ -71,7 +72,7 @@ class TopBarWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 6.0),
+                  kHSpace6,
                   GestureDetector(
                     onTap: () => context.beamToNamed(
                       MyRoutes.languageRoute,
@@ -108,9 +109,7 @@ class TopBarWidget extends StatelessWidget {
                 ),
               ),
               if (!screenGreaterThan700 && extraWidget != null) ...[
-                const SizedBox(
-                  width: 32.0,
-                ),
+                kLargeHSpace,
                 Expanded(child: extraWidget!),
               ],
               if (!kIsWeb && Platform.isMacOS && Navigator.canPop(context))

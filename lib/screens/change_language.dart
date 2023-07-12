@@ -8,6 +8,7 @@ import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/hive.dart';
 import 'package:ijot/constants/languages.dart';
 import 'package:ijot/constants/routes.dart';
+import 'package:ijot/constants/spaces.dart';
 import 'package:ijot/widgets/button.dart';
 import 'package:ijot/widgets/custom_scaffold.dart';
 
@@ -72,14 +73,14 @@ class ChangeLanguageState extends State<ChangeLanguage> {
                               'assets/images/logo-with-circle.png',
                               height: 115.0,
                             ),
-                            const SizedBox(height: 55.0),
+                            kVLargeVSpace,
                             Text(
                               widget.isFirstOpen
                                   ? 'select_language'.tr()
                                   : 'change_language'.tr(),
                               style: kTitleTextStyle,
                             ),
-                            const SizedBox(height: 16.0),
+                            kFullVSpace,
                             ClipRRect(
                               borderRadius:
                                   BorderRadius.circular(kCircularBorderRadius),
@@ -115,7 +116,7 @@ class ChangeLanguageState extends State<ChangeLanguage> {
                                 },
                               ),
                             ),
-                            const SizedBox(height: 16.0),
+                            kFullVSpace,
                             CustomButton(
                               buttonColor: Theme.of(context).primaryColor,
                               textColor: Colors.white,
