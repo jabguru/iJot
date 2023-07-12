@@ -44,6 +44,7 @@ class TopBarWidget extends StatelessWidget {
                 children: [
                   if (extraWidget != null && screenGreaterThan700) extraWidget!,
                   Container(
+                    height: 35.0,
                     decoration: BoxDecoration(
                       color: const Color(0x4D410E61),
                       borderRadius:
@@ -58,8 +59,7 @@ class TopBarWidget extends StatelessWidget {
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 10.0,
-                          vertical: 5.0,
+                          horizontal: 6.0,
                         ),
                         child: Text(
                           'sign_out'.tr(),
