@@ -566,17 +566,15 @@ class SingleNoteState extends State<SingleNote> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
+                  Wrap(
                     children: [
-                      Expanded(
-                        // ? PUT THIS COLUMN HERE BECAUSE OF ALIGNMENT ISSUES
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            toolbar,
-                          ],
-                        ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          toolbar,
+                        ],
                       ),
+                      kQuarterHSpace,
                       WhatsappCopyButton(
                         quillController: _quillController,
                       ),

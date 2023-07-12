@@ -13,50 +13,54 @@ class WhatsappCopyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    return TextButton(
-      style: TextButton.styleFrom(
-        backgroundColor: theme.canvasColor,
-      ),
-      onPressed: () {
-        final String formattedText = formatText(quillController);
-
-        Clipboard.setData(ClipboardData(text: formattedText)).then(
-          (result) {
-            showSuccessSnackbar(
-              context,
-              message: 'copy_for_whatsapp_success'.tr(),
-            );
-          },
-          onError: (error) {
-            showErrorSnackbar(
-              context,
-              message: 'copy_for_whatsapp_failed'.tr(),
-            );
-          },
-        );
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 6.0,
-          vertical: 6.0,
+    return SizedBox(
+      width: 81.0,
+      height: 32.0,
+      child: TextButton(
+        style: TextButton.styleFrom(
+          backgroundColor: theme.canvasColor,
         ),
-        child: Row(
-          children: [
-            Image.asset(
-              'assets/images/whatsapp-icon.png',
-              height: 18.0,
-              width: 18.0,
-              color: theme.iconTheme.color,
-            ),
-            kQuarterHSpace,
-            Text(
-              'copy_for_whatsapp'.tr(),
-              style: TextStyle(
-                fontSize: 14.0,
+        onPressed: () {
+          final String formattedText = formatText(quillController);
+
+          Clipboard.setData(ClipboardData(text: formattedText)).then(
+            (result) {
+              showSuccessSnackbar(
+                context,
+                message: 'copy_for_whatsapp_success'.tr(),
+              );
+            },
+            onError: (error) {
+              showErrorSnackbar(
+                context,
+                message: 'copy_for_whatsapp_failed'.tr(),
+              );
+            },
+          );
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 6.0,
+            vertical: 6.0,
+          ),
+          child: Row(
+            children: [
+              Image.asset(
+                'assets/images/whatsapp-icon.png',
+                height: 18.0,
+                width: 18.0,
                 color: theme.iconTheme.color,
               ),
-            ),
-          ],
+              kQuarterHSpace,
+              Text(
+                'copy_for_whatsapp'.tr(),
+                style: TextStyle(
+                  fontSize: 14.0,
+                  color: theme.iconTheme.color,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
