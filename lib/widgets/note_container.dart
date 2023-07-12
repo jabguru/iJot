@@ -121,7 +121,7 @@ class NoteContainerState extends State<NoteContainer> {
                   backgroundColor: categoryColor(widget.note.category),
                   radius: 10.0,
                 ),
-                kFullVSpace,
+                kFullHSpace,
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

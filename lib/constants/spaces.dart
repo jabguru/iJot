@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const kFullVSpace = SizedBox(height: 16.0);
 const kHalfVSpace = SizedBox(height: 8.0);
-const kQuarterVSpace = SizedBox(height: 8.0);
+const kQuarterVSpace = SizedBox(height: 4.0);
 const kLargeVSpace = SizedBox(height: 32.0);
 const kVSpace24 = SizedBox(height: 24.0);
 const kVSpace26 = SizedBox(height: 26.0);
