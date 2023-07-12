@@ -14,35 +14,31 @@ class WhatsappCopyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return SizedBox(
-      width: 81.0,
-      height: 32.0,
-      child: TextButton(
-        style: TextButton.styleFrom(
-          backgroundColor: theme.canvasColor,
-        ),
-        onPressed: () {
-          final String formattedText = formatText(quillController);
-
-          Clipboard.setData(ClipboardData(text: formattedText)).then(
-            (result) {
-              showSuccessSnackbar(
-                context,
-                message: 'copy_for_whatsapp_success'.tr(),
-              );
-            },
-            onError: (error) {
-              showErrorSnackbar(
-                context,
-                message: 'copy_for_whatsapp_failed'.tr(),
-              );
-            },
-          );
-        },
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 6.0,
-            vertical: 6.0,
+      width: 70.0,
+      child: Tooltip(
+        message: 'copy_for_whatsapp'.tr(),
+        child: TextButton(
+          style: TextButton.styleFrom(
+            backgroundColor: theme.canvasColor,
           ),
+          onPressed: () {
+            final String formattedText = formatText(quillController);
+
+            Clipboard.setData(ClipboardData(text: formattedText)).then(
+              (result) {
+                showSuccessSnackbar(
+                  context,
+                  message: 'copy_for_whatsapp_success'.tr(),
+                );
+              },
+              onError: (error) {
+                showErrorSnackbar(
+                  context,
+                  message: 'copy_for_whatsapp_failed'.tr(),
+                );
+              },
+            );
+          },
           child: Row(
             children: [
               Image.asset(
@@ -53,7 +49,7 @@ class WhatsappCopyButton extends StatelessWidget {
               ),
               kQuarterHSpace,
               Text(
-                'copy_for_whatsapp'.tr(),
+                'copy'.tr(),
                 style: TextStyle(
                   fontSize: 14.0,
                   color: theme.iconTheme.color,

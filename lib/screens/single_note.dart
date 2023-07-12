@@ -442,6 +442,7 @@ class SingleNoteState extends State<SingleNote> {
     if (kIsWeb) {
       toolbar = quill.QuillToolbar.basic(
         controller: _quillController,
+        multiRowsDisplay: false,
         showFontFamily: false,
         embedButtons: FlutterQuillEmbeds.buttons(
           // ? COMMENTED THIS OUT FOR WEB BECAUSE WEB DOESN'T SUPPORT ADDING LOCAL FILES, ISSUE WITH DART IO AND PATH PROVIDER ON WEB, CHECK FOR WHEN QUILL IS NOW SUPPORTED ON WEB
@@ -457,6 +458,7 @@ class SingleNoteState extends State<SingleNote> {
     if (_isDesktop) {
       toolbar = quill.QuillToolbar.basic(
         controller: _quillController,
+        multiRowsDisplay: false,
         showFontFamily: false,
         embedButtons: FlutterQuillEmbeds.buttons(
           onImagePickCallback: _onImagePickCallback,
@@ -566,24 +568,18 @@ class SingleNoteState extends State<SingleNote> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Wrap(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          toolbar,
-                        ],
-                      ),
-                      kQuarterHSpace,
-                      WhatsappCopyButton(
-                        quillController: _quillController,
-                      ),
-                    ],
-                  ),
+                  toolbar,
                   kFullVSpace,
                   Expanded(
                     child: quillEditor,
-                  )
+                  ),
+                  kHalfVSpace,
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: WhatsappCopyButton(
+                      quillController: _quillController,
+                    ),
+                  ),
                 ],
               ),
             ),
