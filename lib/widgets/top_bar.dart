@@ -116,7 +116,6 @@ class TopBarWidget extends StatelessWidget {
                 MouseRegion(
                   cursor: SystemMouseCursors.click,
                   child: Tooltip(
-                    // TODO: RETRANSLATE JSON FILES
                     message: 'close'.tr(),
                     child: GestureDetector(
                       onTap: () => Navigator.pop(context),

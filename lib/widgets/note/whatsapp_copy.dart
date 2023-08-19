@@ -13,50 +13,48 @@ class WhatsappCopyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    return SizedBox(
-      width: 70.0,
-      child: Tooltip(
-        message: 'copy_for_whatsapp'.tr(),
-        child: TextButton(
-          style: TextButton.styleFrom(
-            backgroundColor: theme.canvasColor,
-          ),
-          onPressed: () {
-            final String formattedText = formatText(quillController);
+    return Tooltip(
+      message: 'copy_for_whatsapp'.tr(),
+      child: TextButton(
+        style: TextButton.styleFrom(
+          backgroundColor: theme.canvasColor,
+        ),
+        onPressed: () {
+          final String formattedText = formatText(quillController);
 
-            Clipboard.setData(ClipboardData(text: formattedText)).then(
-              (result) {
-                showSuccessSnackbar(
-                  context,
-                  message: 'copy_for_whatsapp_success'.tr(),
-                );
-              },
-              onError: (error) {
-                showErrorSnackbar(
-                  context,
-                  message: 'copy_for_whatsapp_failed'.tr(),
-                );
-              },
-            );
-          },
-          child: Row(
-            children: [
-              Image.asset(
-                'assets/images/whatsapp-icon.png',
-                height: 18.0,
-                width: 18.0,
+          Clipboard.setData(ClipboardData(text: formattedText)).then(
+            (result) {
+              showSuccessSnackbar(
+                context,
+                message: 'copy_for_whatsapp_success'.tr(),
+              );
+            },
+            onError: (error) {
+              showErrorSnackbar(
+                context,
+                message: 'copy_for_whatsapp_failed'.tr(),
+              );
+            },
+          );
+        },
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset(
+              'assets/images/whatsapp-icon.png',
+              height: 18.0,
+              width: 18.0,
+              color: theme.iconTheme.color,
+            ),
+            kQuarterHSpace,
+            Text(
+              'copy'.tr(),
+              style: TextStyle(
+                fontSize: 14.0,
                 color: theme.iconTheme.color,
               ),
-              kQuarterHSpace,
-              Text(
-                'copy'.tr(),
-                style: TextStyle(
-                  fontSize: 14.0,
-                  color: theme.iconTheme.color,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

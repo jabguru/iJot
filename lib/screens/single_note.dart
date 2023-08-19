@@ -80,7 +80,7 @@ class SingleNoteState extends State<SingleNote> {
   }
 
   void _saveNote() {
-    if (_noteTitle!.isNotEmpty) {
+    if (_noteTitle != null && _noteTitle!.isNotEmpty) {
       String json = jsonEncode(_quillController.document.toDelta().toJson());
       _noteDetails = _quillController.plainTextEditingValue.text;
 
@@ -565,17 +565,21 @@ class SingleNoteState extends State<SingleNote> {
             ),
             kFullVSpace,
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Stack(
                 children: [
-                  toolbar,
-                  kFullVSpace,
-                  Expanded(
-                    child: quillEditor,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      toolbar,
+                      kFullVSpace,
+                      Expanded(
+                        child: quillEditor,
+                      ),
+                    ],
                   ),
-                  kHalfVSpace,
-                  Align(
-                    alignment: Alignment.centerRight,
+                  Positioned(
+                    right: 0,
+                    bottom: 0,
                     child: WhatsappCopyButton(
                       quillController: _quillController,
                     ),

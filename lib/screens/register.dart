@@ -54,7 +54,9 @@ class RegisterState extends State<Register> {
           context.beamToReplacementNamed(MyRoutes.notesRoute);
         }
       } on FirebaseException catch (e) {
-        showErrorSnackbar(context, message: e.message);
+        if (context.mounted) {
+          showErrorSnackbar(context, message: e.message);
+        }
       }
 
       setState(() {

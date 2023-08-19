@@ -115,8 +115,10 @@ showForgotPasswordBottomSheet(BuildContext context) {
                                                               .tr());
                                                 }
                                               } on FirebaseException catch (e) {
-                                                showErrorSnackbar(context,
-                                                    message: e.message);
+                                                if (context.mounted) {
+                                                  showErrorSnackbar(context,
+                                                      message: e.message);
+                                                }
                                               }
 
                                               setState(() {

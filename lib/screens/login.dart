@@ -70,7 +70,9 @@ class LoginState extends State<Login> {
         setState(() {
           _isLoading = false;
         });
-        showErrorSnackbar(context, message: e.message);
+        if (context.mounted) {
+          showErrorSnackbar(context, message: e.message);
+        }
       }
     }
   }
