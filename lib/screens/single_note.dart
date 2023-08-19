@@ -479,10 +479,15 @@ class SingleNoteState extends State<SingleNote> {
     return CustomScaffold(
       title: _isUpdateMode ? 'note_edit'.tr() : 'note_new'.tr(),
       hasTopBars: true,
-      hasBottomBars: true,
+      hasBottomBars: !kIsWeb &&
+              (Platform.isIOS || Platform.isAndroid) &&
+              MediaQuery.of(context).viewInsets.bottom != 0
+          ? false
+          : true,
       editMode: true,
       onTap: _saveNote,
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
         margin: screenGreaterThan700
             ? null
             : const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),

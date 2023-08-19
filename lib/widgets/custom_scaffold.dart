@@ -65,44 +65,35 @@ class CustomScaffoldState extends State<CustomScaffold> {
       },
       child: Scaffold(
         resizeToAvoidBottomInset: widget.shouldShrink,
-        body: Stack(
-          children: [
-            Container(
-              height: double.infinity,
-              width: double.infinity,
-              color: Colors.white,
-            ),
-            Container(
-              height: double.infinity,
-              width: double.infinity,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                gradient: kLinearGradient,
-                color: Colors.white,
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            gradient: kLinearGradient,
+            color: Colors.white,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (widget.hasTopBars)
+                TopBarWidget(
+                  title: widget.title,
+                  screenGreaterThan700: screenGreaterThan700,
+                  extraWidget: widget.extraTopBarWidget,
+                ),
+              Expanded(
+                child: _buildMainContent(screenGreaterThan700),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (widget.hasTopBars)
-                    TopBarWidget(
-                      title: widget.title,
-                      screenGreaterThan700: screenGreaterThan700,
-                      extraWidget: widget.extraTopBarWidget,
-                    ),
-                  Expanded(
-                    child: _buildMainContent(screenGreaterThan700),
-                  ),
-                  kHalfVSpace,
-                  if (widget.hasBottomBars)
-                    BottomBarWidget(
-                      screenGreaterThan700: screenGreaterThan700,
-                      editMode: widget.editMode,
-                      onTap: widget.onTap,
-                    )
-                ],
-              ),
-            ),
-          ],
+              kHalfVSpace,
+              if (widget.hasBottomBars)
+                BottomBarWidget(
+                  screenGreaterThan700: screenGreaterThan700,
+                  editMode: widget.editMode,
+                  onTap: widget.onTap,
+                )
+            ],
+          ),
         ),
       ),
     );
