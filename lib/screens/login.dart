@@ -2,6 +2,7 @@ import 'package:beamer/beamer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:ijot/constants/colors.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/firebase.dart';
 import 'package:ijot/constants/hive.dart';
@@ -200,7 +201,7 @@ class LoginState extends State<Login> {
                                   Text(
                                     'or'.tr(),
                                     style: const TextStyle(
-                                      color: Color(0x80FFFFFF),
+                                      color: kGrey2,
                                       fontSize: 12.0,
                                     ),
                                   ),

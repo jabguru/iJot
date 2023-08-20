@@ -73,7 +73,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                       borderRadius: BorderRadius.circular(32.0),
                       boxShadow: const [
                         BoxShadow(
-                          color: Color(0x4D410E61),
+                          color: kPurple1,
                           blurRadius: 8.0,
                           offset: Offset(0, 4),
                         )

@@ -4,6 +4,7 @@ import 'package:beamer/beamer.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:ijot/constants/colors.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/hive.dart';
 import 'package:ijot/constants/routes.dart';
@@ -43,35 +44,36 @@ class TopBarWidget extends StatelessWidget {
               Row(
                 children: [
                   if (extraWidget != null && screenGreaterThan700) extraWidget!,
-                  Container(
-                    height: 35.0,
-                    decoration: BoxDecoration(
-                      color: const Color(0x4D410E61),
-                      borderRadius:
-                          BorderRadius.circular(kCircularBorderRadius),
-                    ),
-                    child: TextButton(
-                      onPressed: () async {
-                        await userBox.clear();
-                        if (context.mounted) {
-                          context.beamToReplacementNamed(MyRoutes.loginRoute);
-                        }
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 6.0,
-                        ),
-                        child: Text(
-                          'sign_out'.tr(),
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16.0,
-                            color: Colors.white,
+                  if (userBox.get('userId') != null)
+                    Container(
+                      height: 35.0,
+                      decoration: BoxDecoration(
+                        color: kPurple1,
+                        borderRadius:
+                            BorderRadius.circular(kCircularBorderRadius),
+                      ),
+                      child: TextButton(
+                        onPressed: () async {
+                          await userBox.clear();
+                          if (context.mounted) {
+                            context.beamToReplacementNamed(MyRoutes.loginRoute);
+                          }
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 6.0,
+                          ),
+                          child: Text(
+                            'sign_out'.tr(),
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16.0,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
                   kHSpace6,
                   GestureDetector(
                     onTap: () => context.beamToNamed(
@@ -103,7 +105,7 @@ class TopBarWidget extends StatelessWidget {
               Text(
                 title,
                 style: const TextStyle(
-                  color: Color(0xFF1D062A),
+                  color: kPurpleDark1,
                   fontSize: 32.0,
                   fontWeight: FontWeight.bold,
                 ),
@@ -122,7 +124,7 @@ class TopBarWidget extends StatelessWidget {
                       child: const Icon(
                         Icons.close,
                         size: 36.0,
-                        color: Color(0xFF1D062A),
+                        color: kPurpleDark1,
                       ),
                     ),
                   ),

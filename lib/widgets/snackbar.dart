@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 //     return Container(
 //       width: 240.0,
 //       decoration: BoxDecoration(
-//         color: Color(0xFF444444),
+//         color: kGrey1,
 //         borderRadius: BorderRadius.circular(kCircularBorderRadius),
 //       ),
 //       padding: EdgeInsets.symmetric(horizontal: 43.0, vertical: 15.0),
@@ -25,7 +25,8 @@ import 'package:flutter/material.dart';
 //   }
 // }
 
-void showSuccessSnackbar(BuildContext context, {String? title, String? message}) {
+void showSuccessSnackbar(BuildContext context,
+    {String? title, String? message}) {
   Flushbar(
     margin: const EdgeInsets.all(20.0),
     padding: const EdgeInsets.all(20.0),

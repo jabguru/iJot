@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_quill/flutter_quill.dart' as quill;
 import 'package:flutter_quill_extensions/flutter_quill_extensions.dart';
+import 'package:ijot/constants/colors.dart';
 import 'package:ijot/constants/spaces.dart';
 import 'package:ijot/services/firebase_storage.dart';
 import 'package:ijot/widgets/note/time_stamp_embed_widget.dart';
@@ -499,7 +500,7 @@ class SingleNoteState extends State<SingleNote> {
             BoxShadow(
               blurRadius: 4.0,
               offset: Offset(2, 2),
-              color: Color(0x40000000),
+              color: kBlackColor,
             ),
           ],
         ),
@@ -519,7 +520,7 @@ class SingleNoteState extends State<SingleNote> {
                       hintStyle: const TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFFE5E5E5),
+                        color: kPink1,
                       ),
                     ),
                     style: const TextStyle(

@@ -6,13 +6,13 @@ Color categoryColor(String? category) {
   if (category == 'Uncategorized') {
     return kPrimaryColor;
   } else if (category == 'Study') {
-    return const Color(0xFF2E8E16);
+    return kStudyColor;
   } else if (category == 'Personal') {
-    return const Color(0xFF166A8E);
+    return kPersonalColor;
   } else if (category == 'Work') {
-    return const Color(0xFFC88B15);
+    return kWorkColor;
   } else if (category == 'Todo') {
-    return const Color(0xFF8E1D16);
+    return kTodoColor;
   }
   return kPrimaryColor;
 }

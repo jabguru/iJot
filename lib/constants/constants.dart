@@ -4,11 +4,11 @@ import 'package:ijot/constants/colors.dart';
 
 const kInputTextStyle = TextStyle(
   fontSize: 20.0,
-  color: Color(0xFFBEBEBE),
+  color: kGrey3,
 );
 
 const kTitleTextStyle = TextStyle(
-  color: Color(0xFF1D062A),
+  color: kPurpleDark1,
   fontSize: 20.0,
   fontWeight: FontWeight.bold,
 );

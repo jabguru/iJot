@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ijot/constants/category.dart';
+import 'package:ijot/constants/colors.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/constants/spaces.dart';
@@ -45,7 +46,7 @@ class NoteContainerState extends State<NoteContainer> {
                       'delete_note_undone'.tr(),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                        color: Color(0xFF444444),
+                        color: kGrey1,
                         fontSize: 12.0,
                       ),
                     ),
@@ -57,7 +58,7 @@ class NoteContainerState extends State<NoteContainer> {
                           onTap: () => Navigator.pop(context),
                           text: 'delete_cancel'.tr(),
                           textColor: Theme.of(context).primaryColor,
-                          buttonColor: const Color(0x4D410E61),
+                          buttonColor: kPurple1,
                         ),
                         CustomButton2(
                           onTap: () async {
@@ -111,7 +112,7 @@ class NoteContainerState extends State<NoteContainer> {
                   BoxShadow(
                     blurRadius: 4.0,
                     offset: Offset(2, 2),
-                    color: Color(0x40000000),
+                    color: kBlackColor,
                   )
                 ]),
             child: Row(
