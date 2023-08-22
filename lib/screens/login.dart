@@ -22,7 +22,11 @@ import 'package:ijot/widgets/textfield.dart';
 import 'package:modal_progress_hud_alt/modal_progress_hud_alt.dart';
 
 class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({
+    Key? key,
+    this.redirectToDeleteAccount = false,
+  }) : super(key: key);
+  final bool redirectToDeleteAccount;
 
   @override
   LoginState createState() => LoginState();
@@ -35,6 +39,16 @@ class LoginState extends State<Login> {
   bool _isLoading = false;
 
   final _formKey = GlobalKey<FormState>();
+
+  _naviagateToScreenOnSuccess() {
+    if (context.mounted) {
+      context.beamToReplacementNamed(
+        widget.redirectToDeleteAccount
+            ? MyRoutes.deleteAccountRoute
+            : MyRoutes.notesRoute,
+      );
+    }
+  }
 
   handleSignIn() async {
     final form = _formKey.currentState!;
@@ -64,9 +78,7 @@ class LoginState extends State<Login> {
           _isLoading = false;
         });
 
-        if (context.mounted) {
-          context.beamToReplacementNamed(MyRoutes.notesRoute);
-        }
+        _naviagateToScreenOnSuccess();
       } on FirebaseException catch (e) {
         setState(() {
           _isLoading = false;
@@ -107,9 +119,7 @@ class LoginState extends State<Login> {
       setState(() {
         _isLoading = false;
       });
-      if (context.mounted) {
-        context.beamToReplacementNamed(MyRoutes.notesRoute);
-      }
+      _naviagateToScreenOnSuccess();
     }, onError: (error) {
       // print('Error Signing in: $error');
       showErrorSnackbar(context,

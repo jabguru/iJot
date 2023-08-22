@@ -6,9 +6,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ijot/constants/colors.dart';
 import 'package:ijot/constants/constants.dart';
-import 'package:ijot/constants/hive.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/constants/spaces.dart';
+import 'package:ijot/services/account.dart';
 
 class TopBarWidget extends StatelessWidget {
   const TopBarWidget({
@@ -37,14 +37,21 @@ class TopBarWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(
-                'assets/images/logo.png',
-                height: 38.0,
+              MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                  onTap: () =>
+                      kIsWeb ? context.beamToNamed(MyRoutes.homeRoute) : null,
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    height: 38.0,
+                  ),
+                ),
               ),
               Row(
                 children: [
                   if (extraWidget != null && screenGreaterThan700) extraWidget!,
-                  if (userBox.get('userId') != null)
+                  if (AccountService.userId != null)
                     Container(
                       height: 35.0,
                       decoration: BoxDecoration(
@@ -54,7 +61,7 @@ class TopBarWidget extends StatelessWidget {
                       ),
                       child: TextButton(
                         onPressed: () async {
-                          await userBox.clear();
+                          await AccountService.logout();
                           if (context.mounted) {
                             context.beamToReplacementNamed(MyRoutes.loginRoute);
                           }

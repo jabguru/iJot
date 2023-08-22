@@ -15,6 +15,7 @@ class CustomScaffold extends StatefulWidget {
   final bool shouldShrink;
   final ScrollController? scrollController;
   final Widget? extraTopBarWidget;
+  final bool mainContentPadding;
 
   const CustomScaffold({
     Key? key,
@@ -27,6 +28,7 @@ class CustomScaffold extends StatefulWidget {
     this.shouldShrink = true,
     this.scrollController,
     this.extraTopBarWidget,
+    this.mainContentPadding = false,
   }) : super(key: key);
 
   @override
@@ -36,8 +38,13 @@ class CustomScaffold extends StatefulWidget {
 class CustomScaffoldState extends State<CustomScaffold> {
   Widget _buildMainContent(bool screenGreaterThan700) {
     Widget child = Padding(
-      padding:
-          EdgeInsets.symmetric(horizontal: screenGreaterThan700 ? 40.0 : 0.0),
+      padding: EdgeInsets.symmetric(
+        horizontal: screenGreaterThan700
+            ? 40.0
+            : widget.mainContentPadding
+                ? 16.0
+                : 0.0,
+      ),
       child: widget.child,
     );
 

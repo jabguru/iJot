@@ -1,6 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/hive.dart';
+import 'package:ijot/services/account.dart';
 import 'package:ijot/services/firebase_firestore.dart';
 import 'package:ijot/models/note.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
@@ -19,7 +20,7 @@ class HiveService {
     await openBoxes();
     await updateNoteBoxForOldBuilds();
 
-    String? userId = userBox.get('userId');
+    String? userId = AccountService.userId;
     if (userId != null) {
       loggedInUserId = userId;
       await checkForUserItems();

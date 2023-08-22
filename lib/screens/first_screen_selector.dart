@@ -3,6 +3,7 @@ import 'package:ijot/constants/hive.dart';
 import 'package:ijot/screens/change_language.dart';
 import 'package:ijot/screens/login.dart';
 import 'package:ijot/screens/notes.dart';
+import 'package:ijot/services/account.dart';
 
 class FirstScreenSelector extends StatefulWidget {
   const FirstScreenSelector({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class FirstScreenSelector extends StatefulWidget {
 
 class FirstScreenSelectorState extends State<FirstScreenSelector> {
   Widget getWidgetToShow() {
-    String? userId = userBox.get('userId');
+    String? userId = AccountService.userId;
     if (userId == null) {
       if (firstTimeBox.isEmpty) {
         return const ChangeLanguage(isFirstOpen: true);

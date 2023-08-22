@@ -69,6 +69,11 @@
     "copy": "Copy",
     "copy_for_whatsapp": "Copy for WhatsApp",
     "copy_for_whatsapp_success": "Text copied to clipboard",
-    "copy_for_whatsapp_failed": "Failed to copy text"
+    "copy_for_whatsapp_failed": "Failed to copy text",
 
+    "delete_account": "Delete My Account",
+    "delete_account_confirmation": "Are you sure you want to delete your account?",
+    "delete_account_confirmation_details": "All your notes will be lost and you will be required to register a new account to use iJOT.",
+    "delete_account_not_logged_in": "You are not logged In. Please login to delete your account."
+    
 }
