@@ -51,5 +51,12 @@
     "copy": "কপি",
     "copy_for_whatsapp": "হোয়াটসঅ্যাপের জন্য অনুলিপি করুন",
     "copy_for_whatsapp_success": "ক্লিপবোর্ডে পাঠ্য অনুলিপি করা হয়েছে৷",
-    "copy_for_whatsapp_failed": "টেক্সট কপি করতে ব্যর্থ হয়েছে"
+    "copy_for_whatsapp_failed": "টেক্সট কপি করতে ব্যর্থ হয়েছে",
+    "note_cat_all": "সব",
+    "delete_account": "আমার হিসাব মুছে দিন",
+    "delete_account_confirmation": "আপনি আপনার অ্যাকাউন্ট মুছে ফেলতে চান আপনি কি নিশ্চিত?",
+    "delete_account_confirmation_details": "আপনার সমস্ত নোট হারিয়ে যাবে এবং iJOT ব্যবহার করার জন্য আপনাকে একটি নতুন অ্যাকাউন্ট নিবন্ধন করতে হবে।",
+    "delete_account_sucessful": "অ্যাকাউন্ট সফলভাবে মুছে ফেলা হয়েছে!",
+    "delete_account_error": "অ্যাকাউন্ট মুছে ফেলার সময় ত্রুটি! আবার সাইন ইন করুন.",
+    "sort_notes": "নোট সাজান"
 }

@@ -51,5 +51,12 @@
     "copy": "Kopya",
     "copy_for_whatsapp": "Kopyahin para sa WhatsApp",
     "copy_for_whatsapp_success": "Nakopya ang teksto sa clipboard",
-    "copy_for_whatsapp_failed": "Nabigong kopyahin ang teksto"
+    "copy_for_whatsapp_failed": "Nabigong kopyahin ang teksto",
+    "note_cat_all": "Lahat",
+    "delete_account": "Tanggalin ang Aking Account",
+    "delete_account_confirmation": "Sigurado ka bang gusto mong tanggalin ang iyong account?",
+    "delete_account_confirmation_details": "Mawawala ang lahat ng iyong mga tala at kakailanganin mong magrehistro ng bagong account para magamit ang iJOT.",
+    "delete_account_sucessful": "Matagumpay na Natanggal ang Account!",
+    "delete_account_error": "Error sa Pagtanggal ng Account! Mag-sign in Muli.",
+    "sort_notes": "Pagbukud-bukurin ang mga tala"
 }

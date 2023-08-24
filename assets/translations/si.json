@@ -51,5 +51,12 @@
     "copy": "පිටපත් කරන්න",
     "copy_for_whatsapp": "WhatsApp සඳහා පිටපත් කරන්න",
     "copy_for_whatsapp_success": "පෙළ පසුරු පුවරුවට පිටපත් කරන ලදී",
-    "copy_for_whatsapp_failed": "පෙළ පිටපත් කිරීමට අසමත් විය"
+    "copy_for_whatsapp_failed": "පෙළ පිටපත් කිරීමට අසමත් විය",
+    "note_cat_all": "සෑම",
+    "delete_account": "මගේ ගිණුම මකන්න",
+    "delete_account_confirmation": "ඔබට ඔබගේ ගිණුම මැකීමට අවශ්‍ය බව විශ්වාසද?",
+    "delete_account_confirmation_details": "ඔබගේ සියලු සටහන් නැති වී යන අතර iJOT භාවිතා කිරීමට ඔබට නව ගිණුමක් ලියාපදිංචි කිරීමට අවශ්‍ය වනු ඇත.",
+    "delete_account_sucessful": "ගිණුම සාර්ථකව මකා ඇත!",
+    "delete_account_error": "ගිණුම මකා දැමීමේ දෝෂයක්! නැවත පුරන්න.",
+    "sort_notes": "සටහන් වර්ග කරන්න"
 }

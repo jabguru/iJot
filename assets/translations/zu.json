@@ -51,5 +51,12 @@
     "copy": "Kopisha",
     "copy_for_whatsapp": "Kopisha ku-WhatsApp",
     "copy_for_whatsapp_success": "Umbhalo ukopishwe ebhodini lokunamathisela",
-    "copy_for_whatsapp_failed": "Yehlulekile ukukopisha umbhalo"
+    "copy_for_whatsapp_failed": "Yehlulekile ukukopisha umbhalo",
+    "note_cat_all": "Konke",
+    "delete_account": "Susa i-akhawunti yami",
+    "delete_account_confirmation": "Uqinisekile ukuthi ufuna ukususa i-akhawunti yakho?",
+    "delete_account_confirmation_details": "Wonke amanothi akho azolahleka futhi kuzodingeka ubhalise i-akhawunti entsha ukuze usebenzise i-iJOT.",
+    "delete_account_sucessful": "Ususe I-akhawunti Ngempumelelo!",
+    "delete_account_error": "Iphutha Lokususa I-akhawunti! Ngena ngemvume futhi.",
+    "sort_notes": "Hlunga amanothi"
 }

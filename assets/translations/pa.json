@@ -51,5 +51,12 @@
     "copy": "ਕਾਪੀ ਕਰੋ",
     "copy_for_whatsapp": "WhatsApp ਲਈ ਕਾਪੀ ਕਰੋ",
     "copy_for_whatsapp_success": "ਲਿਖਤ ਨੂੰ ਕਲਿੱਪਬੋਰਡ 'ਤੇ ਕਾਪੀ ਕੀਤਾ ਗਿਆ",
-    "copy_for_whatsapp_failed": "ਟੈਕਸਟ ਕਾਪੀ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
+    "copy_for_whatsapp_failed": "ਟੈਕਸਟ ਕਾਪੀ ਕਰਨ ਵਿੱਚ ਅਸਫਲ",
+    "note_cat_all": "ਸਾਰੇ",
+    "delete_account": "ਮੇਰਾ ਖਾਤਾ ਮਿਟਾਓ",
+    "delete_account_confirmation": "ਕੀ ਤੁਸੀਂ ਯਕੀਨੀ ਤੌਰ 'ਤੇ ਆਪਣਾ ਖਾਤਾ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+    "delete_account_confirmation_details": "ਤੁਹਾਡੇ ਸਾਰੇ ਨੋਟ ਗੁੰਮ ਹੋ ਜਾਣਗੇ ਅਤੇ ਤੁਹਾਨੂੰ iJOT ਦੀ ਵਰਤੋਂ ਕਰਨ ਲਈ ਇੱਕ ਨਵਾਂ ਖਾਤਾ ਰਜਿਸਟਰ ਕਰਨ ਦੀ ਲੋੜ ਹੋਵੇਗੀ।",
+    "delete_account_sucessful": "ਖਾਤਾ ਸਫਲਤਾਪੂਰਵਕ ਮਿਟਾਇਆ ਗਿਆ!",
+    "delete_account_error": "ਖਾਤਾ ਮਿਟਾਉਣ ਵਿੱਚ ਤਰੁੱਟੀ! ਦੁਬਾਰਾ ਸਾਈਨ ਇਨ ਕਰੋ।",
+    "sort_notes": "ਨੋਟਾਂ ਦੀ ਛਾਂਟੀ ਕਰੋ"
 }

@@ -51,5 +51,12 @@
     "copy": "ကော်ပီ",
     "copy_for_whatsapp": "WhatsApp အတွက် ကူးယူပါ။",
     "copy_for_whatsapp_success": "စာသားကို ကလစ်ဘုတ်သို့ ကူးယူထားသည်။",
-    "copy_for_whatsapp_failed": "စာသားကို ကူးယူ၍မရပါ။"
+    "copy_for_whatsapp_failed": "စာသားကို ကူးယူ၍မရပါ။",
+    "note_cat_all": "အားလုံး",
+    "delete_account": "ကျွန်ုပ်၏အကောင့်ကိုဖျက်ပါ။",
+    "delete_account_confirmation": "သင့်အကောင့်ကို ဖျက်လိုသည်မှာ သေချာပါသလား။",
+    "delete_account_confirmation_details": "သင့်မှတ်စုများအားလုံး ပျောက်ဆုံးသွားမည်ဖြစ်ပြီး iJOT ကို အသုံးပြုရန်အတွက် အကောင့်အသစ်တစ်ခု မှတ်ပုံတင်ရန် လိုအပ်မည်ဖြစ်သည်။",
+    "delete_account_sucessful": "အကောင့်ကို အောင်မြင်စွာ ဖျက်လိုက်ပါပြီ။",
+    "delete_account_error": "အကောင့်ဖျက်ခြင်းအမှား။ ထပ်မံဝင်ရောက်ပါ။",
+    "sort_notes": "မှတ်စုများကို စီပါ။"
 }

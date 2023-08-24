@@ -51,5 +51,12 @@
     "copy": "Másolat",
     "copy_for_whatsapp": "Másolás a WhatsApp számára",
     "copy_for_whatsapp_success": "A szöveg a vágólapra másolva",
-    "copy_for_whatsapp_failed": "Nem sikerült a szöveg másolása"
+    "copy_for_whatsapp_failed": "Nem sikerült a szöveg másolása",
+    "note_cat_all": "Minden",
+    "delete_account": "A fiókom törlése",
+    "delete_account_confirmation": "Biztosan törölni szeretné fiókját?",
+    "delete_account_confirmation_details": "Minden jegyzete elveszik, és az iJOT használatához új fiókot kell regisztrálnia.",
+    "delete_account_sucessful": "A fiók sikeresen törölve!",
+    "delete_account_error": "Hiba a fiók törlésekor! Jelentkezzen be újra.",
+    "sort_notes": "Jegyzetek rendezése"
 }

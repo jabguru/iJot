@@ -51,5 +51,12 @@
     "copy": "പകർത്തുക",
     "copy_for_whatsapp": "WhatsApp-നായി പകർത്തുക",
     "copy_for_whatsapp_success": "ടെക്സ്റ്റ് ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത്തി",
-    "copy_for_whatsapp_failed": "വാചകം പകർത്തുന്നതിൽ പരാജയപ്പെട്ടു"
+    "copy_for_whatsapp_failed": "വാചകം പകർത്തുന്നതിൽ പരാജയപ്പെട്ടു",
+    "note_cat_all": "എല്ലാം",
+    "delete_account": "എന്റെ അക്കൗണ്ട് ഇല്ലാതാക്കുക",
+    "delete_account_confirmation": "നിങ്ങളുടെ അക്കൗണ്ട് ഇല്ലാതാക്കണമെന്ന് തീർച്ചയാണോ?",
+    "delete_account_confirmation_details": "നിങ്ങളുടെ എല്ലാ കുറിപ്പുകളും നഷ്‌ടപ്പെടും, iJOT ഉപയോഗിക്കുന്നതിന് നിങ്ങൾ ഒരു പുതിയ അക്കൗണ്ട് രജിസ്റ്റർ ചെയ്യേണ്ടതുണ്ട്.",
+    "delete_account_sucessful": "അക്കൗണ്ട് ഇല്ലാതാക്കി!",
+    "delete_account_error": "അക്കൗണ്ട് ഇല്ലാതാക്കുന്നതിൽ പിശക്! വീണ്ടും സൈൻ ഇൻ ചെയ്യുക.",
+    "sort_notes": "കുറിപ്പുകൾ അടുക്കുക"
 }

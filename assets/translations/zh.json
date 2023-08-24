@@ -51,5 +51,12 @@
     "copy": "复制",
     "copy_for_whatsapp": "复制 WhatsApp",
     "copy_for_whatsapp_success": "文本已复制到剪贴板",
-    "copy_for_whatsapp_failed": "复制文本失败"
+    "copy_for_whatsapp_failed": "复制文本失败",
+    "note_cat_all": "全部",
+    "delete_account": "删除我的账户",
+    "delete_account_confirmation": "您确定要删除您的帐户吗？",
+    "delete_account_confirmation_details": "您的所有笔记都将丢失，并且您需要注册一个新帐户才能使用 iJOT。",
+    "delete_account_sucessful": "删除账户成功！",
+    "delete_account_error": "删除帐户时出错！再次登录。",
+    "sort_notes": "对笔记进行排序"
 }

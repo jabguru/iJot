@@ -51,5 +51,12 @@
     "copy": "Sao chép",
     "copy_for_whatsapp": "Sao chép cho WhatsApp",
     "copy_for_whatsapp_success": "Đã sao chép văn bản vào khay nhớ tạm",
-    "copy_for_whatsapp_failed": "Không thể sao chép văn bản"
+    "copy_for_whatsapp_failed": "Không thể sao chép văn bản",
+    "note_cat_all": "Tất cả",
+    "delete_account": "Xóa tài khoản của tôi đi",
+    "delete_account_confirmation": "Bạn có chắc rằng bạn muốn xóa tài khoản của bạn?",
+    "delete_account_confirmation_details": "Tất cả ghi chú của bạn sẽ bị mất và bạn sẽ được yêu cầu đăng ký tài khoản mới để sử dụng iJOT.",
+    "delete_account_sucessful": "Đã xóa tài khoản thành công!",
+    "delete_account_error": "Lỗi khi xóa tài khoản! Đăng nhập lại.",
+    "sort_notes": "Sắp xếp ghi chú"
 }

@@ -51,5 +51,12 @@
     "copy": "ನಕಲು ಮಾಡಿ",
     "copy_for_whatsapp": "WhatsApp ಗಾಗಿ ನಕಲಿಸಿ",
     "copy_for_whatsapp_success": "ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ಪಠ್ಯವನ್ನು ನಕಲಿಸಲಾಗಿದೆ",
-    "copy_for_whatsapp_failed": "ಪಠ್ಯವನ್ನು ನಕಲಿಸಲು ವಿಫಲವಾಗಿದೆ"
+    "copy_for_whatsapp_failed": "ಪಠ್ಯವನ್ನು ನಕಲಿಸಲು ವಿಫಲವಾಗಿದೆ",
+    "note_cat_all": "ಎಲ್ಲಾ",
+    "delete_account": "ನನ್ನ ಖಾತೆಯನ್ನು ಅಳಿಸಿ",
+    "delete_account_confirmation": "ನಿಮ್ಮ ಖಾತೆಯನ್ನು ಅಳಿಸಲು ನೀವು ಖಚಿತವಾಗಿ ಬಯಸುವಿರಾ?",
+    "delete_account_confirmation_details": "ನಿಮ್ಮ ಎಲ್ಲಾ ಟಿಪ್ಪಣಿಗಳು ಕಳೆದುಹೋಗುತ್ತವೆ ಮತ್ತು iJOT ಅನ್ನು ಬಳಸಲು ನೀವು ಹೊಸ ಖಾತೆಯನ್ನು ನೋಂದಾಯಿಸುವ ಅಗತ್ಯವಿದೆ.",
+    "delete_account_sucessful": "ಖಾತೆಯನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಅಳಿಸಲಾಗಿದೆ!",
+    "delete_account_error": "ಖಾತೆಯನ್ನು ಅಳಿಸುವಲ್ಲಿ ದೋಷ! ಮತ್ತೆ ಸೈನ್ ಇನ್ ಮಾಡಿ.",
+    "sort_notes": "ಟಿಪ್ಪಣಿಗಳನ್ನು ವಿಂಗಡಿಸಿ"
 }

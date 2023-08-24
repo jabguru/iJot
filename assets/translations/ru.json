@@ -51,5 +51,12 @@
     "copy": "Копировать",
     "copy_for_whatsapp": "Копировать для WhatsApp",
     "copy_for_whatsapp_success": "Текст скопирован в буфер обмена",
-    "copy_for_whatsapp_failed": "Не удалось скопировать текст"
+    "copy_for_whatsapp_failed": "Не удалось скопировать текст",
+    "note_cat_all": "Все",
+    "delete_account": "Удалите мой аккаунт",
+    "delete_account_confirmation": "Вы уверены, что хотите удалить свою учетную запись?",
+    "delete_account_confirmation_details": "Все ваши заметки будут потеряны, и вам потребуется зарегистрировать новую учетную запись, чтобы использовать iJOT.",
+    "delete_account_sucessful": "Аккаунт успешно удален!",
+    "delete_account_error": "Ошибка удаления аккаунта! Войдите снова.",
+    "sort_notes": "Сортировка заметок"
 }

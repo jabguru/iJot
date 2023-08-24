@@ -51,5 +51,12 @@
     "copy": "kopyala",
     "copy_for_whatsapp": "WhatsApp için kopyala",
     "copy_for_whatsapp_success": "Metin panoya kopyalandı",
-    "copy_for_whatsapp_failed": "Metin kopyalanamadı"
+    "copy_for_whatsapp_failed": "Metin kopyalanamadı",
+    "note_cat_all": "Tüm",
+    "delete_account": "Hesabımı sil",
+    "delete_account_confirmation": "Hesabınızı silmek istediğinizden emin misiniz?",
+    "delete_account_confirmation_details": "Tüm notlarınız kaybolacak ve iJOT'u kullanmak için yeni bir hesap açmanız gerekecek.",
+    "delete_account_sucessful": "Hesap Başarıyla Silindi!",
+    "delete_account_error": "Hesap Silinirken Hata! Tekrar Oturum Açın.",
+    "sort_notes": "Notları sırala"
 }

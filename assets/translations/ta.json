@@ -51,5 +51,12 @@
     "copy": "நகலெடுக்கவும்",
     "copy_for_whatsapp": "WhatsApp க்கு நகல்",
     "copy_for_whatsapp_success": "உரை கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது",
-    "copy_for_whatsapp_failed": "உரையை நகலெடுக்க முடியவில்லை"
+    "copy_for_whatsapp_failed": "உரையை நகலெடுக்க முடியவில்லை",
+    "note_cat_all": "அனைத்து",
+    "delete_account": "எனது கணக்கை நீக்கு",
+    "delete_account_confirmation": "உங்கள் கணக்கை நிச்சயமாக நீக்க விரும்புகிறீர்களா?",
+    "delete_account_confirmation_details": "உங்கள் குறிப்புகள் அனைத்தும் தொலைந்துவிடும், மேலும் iJOT ஐப் பயன்படுத்த நீங்கள் ஒரு புதிய கணக்கைப் பதிவு செய்ய வேண்டும்.",
+    "delete_account_sucessful": "கணக்கு வெற்றிகரமாக நீக்கப்பட்டது!",
+    "delete_account_error": "கணக்கை நீக்குவதில் பிழை! மீண்டும் உள்நுழைக.",
+    "sort_notes": "குறிப்புகளை வரிசைப்படுத்தவும்"
 }

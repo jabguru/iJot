@@ -51,5 +51,12 @@
     "copy": "Көчүрмө",
     "copy_for_whatsapp": "WhatsApp үчүн көчүрүү",
     "copy_for_whatsapp_success": "Текст алмашуу буферине көчүрүлдү",
-    "copy_for_whatsapp_failed": "Текст көчүрүлбөй калды"
+    "copy_for_whatsapp_failed": "Текст көчүрүлбөй калды",
+    "note_cat_all": "Баары",
+    "delete_account": "Менин аккаунтумду жок кылуу",
+    "delete_account_confirmation": "Каттоо эсебиңизди чын эле жок кылгыңыз келеби?",
+    "delete_account_confirmation_details": "Бардык жазууларыңыз жоголот жана сизден iJOTти колдонуу үчүн жаңы каттоо эсебин каттоо талап кылынат.",
+    "delete_account_sucessful": "Каттоо эсеби ийгиликтүү жок кылынды!",
+    "delete_account_error": "Каттоо эсебин жок кылууда ката кетти! Кайра кириңиз.",
+    "sort_notes": "Ноталарды иреттөө"
 }

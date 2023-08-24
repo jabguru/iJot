@@ -51,5 +51,12 @@
     "copy": "Kopēt",
     "copy_for_whatsapp": "Kopēt vietnei WhatsApp",
     "copy_for_whatsapp_success": "Teksts ir kopēts starpliktuvē",
-    "copy_for_whatsapp_failed": "Neizdevās nokopēt tekstu"
+    "copy_for_whatsapp_failed": "Neizdevās nokopēt tekstu",
+    "note_cat_all": "Visi",
+    "delete_account": "Dzēst manu kontu",
+    "delete_account_confirmation": "Vai tiešām vēlaties dzēst savu kontu?",
+    "delete_account_confirmation_details": "Visas jūsu piezīmes tiks zaudētas, un jums būs jāreģistrē jauns konts, lai izmantotu iJOT.",
+    "delete_account_sucessful": "Konts ir veiksmīgi izdzēsts!",
+    "delete_account_error": "Dzēšot kontu, radās kļūda! Pierakstieties vēlreiz.",
+    "sort_notes": "Kārtot piezīmes"
 }

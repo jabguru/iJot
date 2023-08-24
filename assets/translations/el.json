@@ -51,5 +51,12 @@
     "copy": "αντίγραφο",
     "copy_for_whatsapp": "Αντιγραφή για WhatsApp",
     "copy_for_whatsapp_success": "Το κείμενο αντιγράφηκε στο πρόχειρο",
-    "copy_for_whatsapp_failed": "Αποτυχία αντιγραφής κειμένου"
+    "copy_for_whatsapp_failed": "Αποτυχία αντιγραφής κειμένου",
+    "note_cat_all": "Ολα",
+    "delete_account": "Διάγραψε τον λογαριασμό μου",
+    "delete_account_confirmation": "Είστε βέβαιοι ότι θέλετε να διαγράψετε τον λογαριασμό σας;",
+    "delete_account_confirmation_details": "Όλες οι σημειώσεις σας θα χαθούν και θα σας ζητηθεί να εγγραφείτε νέο λογαριασμό για να χρησιμοποιήσετε το iJOT.",
+    "delete_account_sucessful": "Ο λογαριασμός διαγράφηκε με επιτυχία!",
+    "delete_account_error": "Σφάλμα κατά τη διαγραφή λογαριασμού! Συνδεθείτε ξανά.",
+    "sort_notes": "Ταξινόμηση σημειώσεων"
 }

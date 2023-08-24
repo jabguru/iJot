@@ -51,5 +51,12 @@
     "copy": "Kopirati",
     "copy_for_whatsapp": "Kopiraj za WhatsApp",
     "copy_for_whatsapp_success": "Besedilo kopirano v odložišče",
-    "copy_for_whatsapp_failed": "Besedila ni bilo mogoče kopirati"
+    "copy_for_whatsapp_failed": "Besedila ni bilo mogoče kopirati",
+    "note_cat_all": "Vse",
+    "delete_account": "Izbriši moj račun",
+    "delete_account_confirmation": "Ali ste prepričani, da želite izbrisati svoj račun?",
+    "delete_account_confirmation_details": "Vsi vaši zapiski bodo izgubljeni in za uporabo iJOT boste morali registrirati nov račun.",
+    "delete_account_sucessful": "Račun je bil uspešno izbrisan!",
+    "delete_account_error": "Napaka pri brisanju računa! Prijavite se znova.",
+    "sort_notes": "Razvrsti zapiske"
 }

@@ -51,5 +51,12 @@
     "copy": "प्रतिलिपि",
     "copy_for_whatsapp": "व्हाट्सएप के लिए कॉपी करें",
     "copy_for_whatsapp_success": "पाठ को क्लिपबोर्ड पर कॉपी किया गया",
-    "copy_for_whatsapp_failed": "पाठ की प्रतिलिपि बनाने में विफल"
+    "copy_for_whatsapp_failed": "पाठ की प्रतिलिपि बनाने में विफल",
+    "note_cat_all": "सभी",
+    "delete_account": "मेरा एकाउंट हटा दो",
+    "delete_account_confirmation": "क्या आप इस खाते को हटाने के लिए सुनिश्चित हैं?",
+    "delete_account_confirmation_details": "आपके सभी नोट खो जाएंगे और आपको iJOT का उपयोग करने के लिए एक नया खाता पंजीकृत करना होगा।",
+    "delete_account_sucessful": "खाता सफलतापूर्वक हटा दिया गया!",
+    "delete_account_error": "खाता हटाने में त्रुटि! पुनः साइन इन करें.",
+    "sort_notes": "नोट्स क्रमबद्ध करें"
 }

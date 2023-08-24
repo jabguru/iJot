@@ -51,5 +51,12 @@
     "copy": "కాపీ చేయండి",
     "copy_for_whatsapp": "WhatsApp కోసం కాపీ చేయండి",
     "copy_for_whatsapp_success": "టెక్స్ట్ క్లిప్‌బోర్డ్‌కి కాపీ చేయబడింది",
-    "copy_for_whatsapp_failed": "వచనాన్ని కాపీ చేయడంలో విఫలమైంది"
+    "copy_for_whatsapp_failed": "వచనాన్ని కాపీ చేయడంలో విఫలమైంది",
+    "note_cat_all": "అన్నీ",
+    "delete_account": "నా ఖాతాను తొలగించు",
+    "delete_account_confirmation": "మీరు ఖచ్చితంగా మీ ఖాతాను తొలగించాలనుకుంటున్నారా?",
+    "delete_account_confirmation_details": "మీ గమనికలన్నీ పోతాయి మరియు iJOTని ఉపయోగించడానికి మీరు కొత్త ఖాతాను నమోదు చేసుకోవాలి.",
+    "delete_account_sucessful": "ఖాతా విజయవంతంగా తొలగించబడింది!",
+    "delete_account_error": "ఖాతాను తొలగించడంలో లోపం! మళ్లీ సైన్ ఇన్ చేయండి.",
+    "sort_notes": "గమనికలను క్రమబద్ధీకరించండి"
 }

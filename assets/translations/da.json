@@ -51,5 +51,12 @@
     "copy": "Kopi",
     "copy_for_whatsapp": "Kopiér til WhatsApp",
     "copy_for_whatsapp_success": "Tekst kopieret til udklipsholder",
-    "copy_for_whatsapp_failed": "Teksten kunne ikke kopieres"
+    "copy_for_whatsapp_failed": "Teksten kunne ikke kopieres",
+    "note_cat_all": "Alle",
+    "delete_account": "Slet min konto",
+    "delete_account_confirmation": "Er du sikker på, at du vil slette din konto?",
+    "delete_account_confirmation_details": "Alle dine noter vil gå tabt, og du bliver bedt om at registrere en ny konto for at bruge iJOT.",
+    "delete_account_sucessful": "Kontoen blev slettet!",
+    "delete_account_error": "Fejl ved sletning af konto! Log ind igen.",
+    "sort_notes": "Sorter noter"
 }

@@ -51,5 +51,12 @@
     "copy": "Kopjo",
     "copy_for_whatsapp": "Kopjo për WhatsApp",
     "copy_for_whatsapp_success": "Teksti u kopjua në kujtesën e fragmenteve",
-    "copy_for_whatsapp_failed": "Kopjimi i tekstit dështoi"
+    "copy_for_whatsapp_failed": "Kopjimi i tekstit dështoi",
+    "note_cat_all": "Të gjitha",
+    "delete_account": "Fshi llogarinë time",
+    "delete_account_confirmation": "Jeni i sigurt që dëshironi të fshini llogarinë tuaj?",
+    "delete_account_confirmation_details": "Të gjitha shënimet tuaja do të humbasin dhe do t'ju kërkohet të regjistroni një llogari të re për të përdorur iJOT.",
+    "delete_account_sucessful": "Llogaria u fshi me sukses!",
+    "delete_account_error": "Gabim gjatë fshirjes së llogarisë! Hyni përsëri.",
+    "sort_notes": "Rendit shënimet"
 }

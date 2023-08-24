@@ -51,5 +51,12 @@
     "copy": "Хуулах",
     "copy_for_whatsapp": "WhatsApp-д хуулах",
     "copy_for_whatsapp_success": "Текстийг санах ой руу хуулсан",
-    "copy_for_whatsapp_failed": "Текстийг хуулж чадсангүй"
+    "copy_for_whatsapp_failed": "Текстийг хуулж чадсангүй",
+    "note_cat_all": "Бүгд",
+    "delete_account": "Миний бүртгэлийг устгах",
+    "delete_account_confirmation": "Та бүртгэлээ устгахдаа итгэлтэй байна уу?",
+    "delete_account_confirmation_details": "Таны бүх тэмдэглэл устах бөгөөд та iJOT ашиглахын тулд шинэ бүртгэл бүртгүүлэх шаардлагатай болно.",
+    "delete_account_sucessful": "Бүртгэлийг амжилттай устгалаа!",
+    "delete_account_error": "Бүртгэлийг устгахад алдаа гарлаа! Дахин нэвтэрнэ үү.",
+    "sort_notes": "Тэмдэглэлүүдийг эрэмбэлэх"
 }

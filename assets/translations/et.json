@@ -51,5 +51,12 @@
     "copy": "Kopeeri",
     "copy_for_whatsapp": "Kopeeri WhatsAppi jaoks",
     "copy_for_whatsapp_success": "Tekst kopeeriti lõikelauale",
-    "copy_for_whatsapp_failed": "Teksti kopeerimine ebaõnnestus"
+    "copy_for_whatsapp_failed": "Teksti kopeerimine ebaõnnestus",
+    "note_cat_all": "Kõik",
+    "delete_account": "Kustuta minu konto",
+    "delete_account_confirmation": "Kas olete kindel, et soovite oma konto kustutada?",
+    "delete_account_confirmation_details": "Kõik teie märkmed lähevad kaotsi ja iJOT-i kasutamiseks peate registreerima uue konto.",
+    "delete_account_sucessful": "Konto kustutamine õnnestus!",
+    "delete_account_error": "Viga konto kustutamisel! Logige uuesti sisse.",
+    "sort_notes": "Sorteeri märkmeid"
 }

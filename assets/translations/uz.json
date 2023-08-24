@@ -51,5 +51,12 @@
     "copy": "Nusxalash",
     "copy_for_whatsapp": "WhatsApp uchun nusxa ko'chiring",
     "copy_for_whatsapp_success": "Matn vaqtinchalik xotiraga nusxalandi",
-    "copy_for_whatsapp_failed": "Matnni nusxalab bo‘lmadi"
+    "copy_for_whatsapp_failed": "Matnni nusxalab bo‘lmadi",
+    "note_cat_all": "Hammasi",
+    "delete_account": "Mening hisobimni o'chirish",
+    "delete_account_confirmation": "Hisobingizni oʻchirib tashlamoqchimisiz?",
+    "delete_account_confirmation_details": "Barcha qaydlaringiz yo'qoladi va sizdan iJOT-dan foydalanish uchun yangi hisob qaydnomasini ro'yxatdan o'tkazish talab qilinadi.",
+    "delete_account_sucessful": "Hisob muvaffaqiyatli o'chirildi!",
+    "delete_account_error": "Hisobni oʻchirishda xatolik yuz berdi! Qaytadan kiring.",
+    "sort_notes": "Eslatmalarni tartiblash"
 }

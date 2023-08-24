@@ -51,5 +51,12 @@
     "copy": "Kopio",
     "copy_for_whatsapp": "Kopioi WhatsAppiin",
     "copy_for_whatsapp_success": "Teksti kopioitu leikepöydälle",
-    "copy_for_whatsapp_failed": "Tekstin kopioiminen epäonnistui"
+    "copy_for_whatsapp_failed": "Tekstin kopioiminen epäonnistui",
+    "note_cat_all": "Kaikki",
+    "delete_account": "Poista minun tilini",
+    "delete_account_confirmation": "Haluatko varmasti poistaa tilisi?",
+    "delete_account_confirmation_details": "Kaikki muistiinpanosi menetetään ja sinun on rekisteröitävä uusi tili käyttääksesi iJOTia.",
+    "delete_account_sucessful": "Tilin poistaminen onnistui!",
+    "delete_account_error": "Virhe poistettaessa tiliä! Kirjaudu uudelleen sisään.",
+    "sort_notes": "Lajittele muistiinpanot"
 }

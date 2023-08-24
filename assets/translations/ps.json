@@ -51,5 +51,12 @@
     "copy": "کاپي",
     "copy_for_whatsapp": "د WhatsApp لپاره کاپي",
     "copy_for_whatsapp_success": "متن کلپ بورډ ته کاپي شوی",
-    "copy_for_whatsapp_failed": "د متن کاپي کولو کې پاتې راغلی"
+    "copy_for_whatsapp_failed": "د متن کاپي کولو کې پاتې راغلی",
+    "note_cat_all": "ټول",
+    "delete_account": "زما حساب ړنګ کړئ",
+    "delete_account_confirmation": "ایا تاسو ډاډه یاست چې تاسو غواړئ خپل حساب حذف کړئ؟",
+    "delete_account_confirmation_details": "ستاسو ټول نوټونه به ورک شي او تاسو به د iJOT کارولو لپاره د نوي حساب راجستر کولو ته اړتیا ولرئ.",
+    "delete_account_sucessful": "حساب په بریالیتوب سره ړنګ شو!",
+    "delete_account_error": "د حساب ړنګولو تېروتنه! بیا ننوتل.",
+    "sort_notes": "نوټونه ترتیب کړئ"
 }

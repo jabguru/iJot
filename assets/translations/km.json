@@ -51,5 +51,12 @@
     "copy": "ចម្លង",
     "copy_for_whatsapp": "ចម្លងសម្រាប់ WhatsApp",
     "copy_for_whatsapp_success": "អត្ថបទត្រូវបានចម្លងទៅក្ដារតម្បៀតខ្ទាស់",
-    "copy_for_whatsapp_failed": "បានបរាជ័យក្នុងការចម្លងអត្ថបទ"
+    "copy_for_whatsapp_failed": "បានបរាជ័យក្នុងការចម្លងអត្ថបទ",
+    "note_cat_all": "ទាំងអស់។",
+    "delete_account": "លុបគណនីរបស់ខ្ញុំ",
+    "delete_account_confirmation": "តើអ្នកប្រាកដថាចង់លុបគណនីរបស់អ្នកមែនទេ?",
+    "delete_account_confirmation_details": "រាល់កំណត់ត្រារបស់អ្នកនឹងត្រូវបាត់បង់ ហើយអ្នកនឹងត្រូវចុះឈ្មោះគណនីថ្មីដើម្បីប្រើប្រាស់ iJOT។",
+    "delete_account_sucessful": "លុបគណនីដោយជោគជ័យ!",
+    "delete_account_error": "កំហុសក្នុងការលុបគណនី! ចូលម្តងទៀត។",
+    "sort_notes": "តម្រៀបកំណត់ចំណាំ"
 }

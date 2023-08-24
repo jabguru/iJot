@@ -51,5 +51,12 @@
     "copy": "Kopieer",
     "copy_for_whatsapp": "Kopieer vir WhatsApp",
     "copy_for_whatsapp_success": "Teks is na knipbord gekopieer",
-    "copy_for_whatsapp_failed": "Kon nie teks kopieer nie"
+    "copy_for_whatsapp_failed": "Kon nie teks kopieer nie",
+    "note_cat_all": "Almal",
+    "delete_account": "Vee my rekening uit",
+    "delete_account_confirmation": "Is jy seker jy wil jou rekening uitvee?",
+    "delete_account_confirmation_details": "Al jou notas sal verlore gaan en daar sal van jou verwag word om 'n nuwe rekening te registreer om iJOT te gebruik.",
+    "delete_account_sucessful": "Rekening is suksesvol uitgevee!",
+    "delete_account_error": "Kon nie rekening uitvee nie! Meld weer aan.",
+    "sort_notes": "Sorteer notas"
 }

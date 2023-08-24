@@ -51,5 +51,12 @@
     "copy": "コピー",
     "copy_for_whatsapp": "WhatsApp 用のコピー",
     "copy_for_whatsapp_success": "クリップボードにコピーされたテキスト",
-    "copy_for_whatsapp_failed": "テキストのコピーに失敗しました"
+    "copy_for_whatsapp_failed": "テキストのコピーに失敗しました",
+    "note_cat_all": "全て",
+    "delete_account": "アカウントを削除します",
+    "delete_account_confirmation": "アカウントを削除してもよろしいですか?",
+    "delete_account_confirmation_details": "すべてのメモは失われ、iJOT を使用するには新しいアカウントを登録する必要があります。",
+    "delete_account_sucessful": "アカウントが正常に削除されました。",
+    "delete_account_error": "アカウント削除エラー!再度サインインします。",
+    "sort_notes": "メモを並べ替える"
 }

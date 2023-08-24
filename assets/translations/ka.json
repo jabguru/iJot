@@ -51,5 +51,12 @@
     "copy": "კოპირება",
     "copy_for_whatsapp": "დააკოპირეთ WhatsApp-ისთვის",
     "copy_for_whatsapp_success": "ტექსტი კოპირებულია ბუფერში",
-    "copy_for_whatsapp_failed": "ტექსტის კოპირება ვერ მოხერხდა"
+    "copy_for_whatsapp_failed": "ტექსტის კოპირება ვერ მოხერხდა",
+    "note_cat_all": "ყველა",
+    "delete_account": "წაშალე ჩემი ანგარიში",
+    "delete_account_confirmation": "დარწმუნებული ხართ, რომ გსურთ თქვენი ანგარიშის წაშლა?",
+    "delete_account_confirmation_details": "ყველა თქვენი ჩანაწერი დაიკარგება და iJOT-ის გამოსაყენებლად მოგიწევთ ახალი ანგარიშის რეგისტრაცია.",
+    "delete_account_sucessful": "ანგარიში წარმატებით წაიშალა!",
+    "delete_account_error": "შეცდომა ანგარიშის წაშლისას! ხელახლა შედით.",
+    "sort_notes": "შენიშვნების დალაგება"
 }

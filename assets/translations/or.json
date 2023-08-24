@@ -51,5 +51,12 @@
     "copy": "କପି କରନ୍ତୁ |",
     "copy_for_whatsapp": "ହ୍ ats ାଟସ୍ ଆପ୍ ପାଇଁ କପି କରନ୍ତୁ |",
     "copy_for_whatsapp_success": "ପାଠ୍ୟ କ୍ଲିପବୋର୍ଡରେ କପି ହୋଇଛି |",
-    "copy_for_whatsapp_failed": "ପାଠ କପି କରିବାରେ ବିଫଳ |"
+    "copy_for_whatsapp_failed": "ପାଠ କପି କରିବାରେ ବିଫଳ |",
+    "note_cat_all": "ସମସ୍ତ",
+    "delete_account": "ମୋ ଖାତା ବିଲୋପ କରନ୍ତୁ |",
+    "delete_account_confirmation": "ଆପଣ ନିଶ୍ଚିତ କି ଆପଣ ଆପଣଙ୍କର ଖାତା ବିଲୋପ କରିବାକୁ ଚାହୁଁଛନ୍ତି?",
+    "delete_account_confirmation_details": "ଆପଣଙ୍କର ସମସ୍ତ ନୋଟ୍ ନଷ୍ଟ ହୋଇଯିବ ଏବଂ iJOT ବ୍ୟବହାର କରିବାକୁ ଆପଣଙ୍କୁ ଏକ ନୂତନ ଆକାଉଣ୍ଟ୍ ପଞ୍ଜିକରଣ କରିବାକୁ ପଡିବ |",
+    "delete_account_sucessful": "ସଫଳତାର ସହିତ ଡିଲିଟ୍ ହୋଇଛି!",
+    "delete_account_error": "ଖାତା ବିଲୋପ କରିବାରେ ତ୍ରୁଟି! ପୁନର୍ବାର ସାଇନ୍ ଇନ୍ କରନ୍ତୁ |",
+    "sort_notes": "ଟିପ୍ପଣୀଗୁଡିକ ସର୍ଟ କରନ୍ତୁ |"
 }

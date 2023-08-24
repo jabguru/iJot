@@ -51,5 +51,12 @@
     "copy": "Còpia",
     "copy_for_whatsapp": "Còpia per WhatsApp",
     "copy_for_whatsapp_success": "S'ha copiat el text al porta-retalls",
-    "copy_for_whatsapp_failed": "No s'ha pogut copiar el text"
+    "copy_for_whatsapp_failed": "No s'ha pogut copiar el text",
+    "note_cat_all": "Tots",
+    "delete_account": "Suprimeix el meu compte",
+    "delete_account_confirmation": "Esteu segur que voleu suprimir el vostre compte?",
+    "delete_account_confirmation_details": "Es perdran totes les vostres notes i se us demanarà que registreu un compte nou per utilitzar iJOT.",
+    "delete_account_sucessful": "Compte suprimit correctament!",
+    "delete_account_error": "S'ha produït un error en suprimir el compte! Torna a iniciar la sessió.",
+    "sort_notes": "Ordena les notes"
 }

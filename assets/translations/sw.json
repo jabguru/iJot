@@ -51,5 +51,12 @@
     "copy": "Nakili",
     "copy_for_whatsapp": "Nakili kwa WhatsApp",
     "copy_for_whatsapp_success": "Maandishi yamenakiliwa kwenye ubao wa kunakili",
-    "copy_for_whatsapp_failed": "Imeshindwa kunakili maandishi"
+    "copy_for_whatsapp_failed": "Imeshindwa kunakili maandishi",
+    "note_cat_all": "Wote",
+    "delete_account": "Futa Akaunti Yangu",
+    "delete_account_confirmation": "Je, una uhakika unataka kufuta akaunti yako?",
+    "delete_account_confirmation_details": "Noti zako zote zitapotea na utahitajika kusajili akaunti mpya ili kutumia iJOT.",
+    "delete_account_sucessful": "Imefuta Akaunti!",
+    "delete_account_error": "Hitilafu katika Kufuta Akaunti! Ingia Tena.",
+    "sort_notes": "Panga madokezo"
 }

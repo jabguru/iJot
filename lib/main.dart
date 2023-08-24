@@ -42,7 +42,6 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   // TODO: WRITE TESTS
-  // TODO: UPDATE TRANSLATION
   // TODO: CONSIDER DEEPLINKING ON MOBILE, SHARE NOTES URLS
 
   // This widget is the root of your application.

@@ -51,5 +51,12 @@
     "copy": "Kopiatu",
     "copy_for_whatsapp": "Kopiatu WhatsApp-erako",
     "copy_for_whatsapp_success": "Testua arbelean kopiatu da",
-    "copy_for_whatsapp_failed": "Ezin izan da kopiatu testua"
+    "copy_for_whatsapp_failed": "Ezin izan da kopiatu testua",
+    "note_cat_all": "Denak",
+    "delete_account": "Ezabatu Nire kontua",
+    "delete_account_confirmation": "Ziur zure kontua ezabatu nahi duzula?",
+    "delete_account_confirmation_details": "Zure ohar guztiak galduko dira eta iJOT erabiltzeko kontu berri bat erregistratu beharko duzu.",
+    "delete_account_sucessful": "Ezabatu da kontua!",
+    "delete_account_error": "Errore bat gertatu da kontua ezabatzean! Hasi saioa berriro.",
+    "sort_notes": "Ordenatu oharrak"
 }

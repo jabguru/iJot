@@ -51,5 +51,12 @@
     "copy": "Copie",
     "copy_for_whatsapp": "Copiați pentru WhatsApp",
     "copy_for_whatsapp_success": "Text copiat în clipboard",
-    "copy_for_whatsapp_failed": "Nu s-a putut copia textul"
+    "copy_for_whatsapp_failed": "Nu s-a putut copia textul",
+    "note_cat_all": "Toate",
+    "delete_account": "Sterge contul meu",
+    "delete_account_confirmation": "Sigur doriți să vă ștergeți contul?",
+    "delete_account_confirmation_details": "Toate notele tale se vor pierde și vi se va cere să înregistrați un cont nou pentru a utiliza iJOT.",
+    "delete_account_sucessful": "Cont a fost șters cu succes!",
+    "delete_account_error": "Eroare la ștergerea contului! Conectați-vă din nou.",
+    "sort_notes": "Sortați notele"
 }

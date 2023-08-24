@@ -51,5 +51,12 @@
     "copy": "Копирај",
     "copy_for_whatsapp": "Копирај за ВхатсАпп",
     "copy_for_whatsapp_success": "Текст је копиран у међуспремник",
-    "copy_for_whatsapp_failed": "Копирање текста није успело"
+    "copy_for_whatsapp_failed": "Копирање текста није успело",
+    "note_cat_all": "Све",
+    "delete_account": "Обриши мој профил",
+    "delete_account_confirmation": "Да ли сте сигурни да желите да избришете свој налог?",
+    "delete_account_confirmation_details": "Све ваше белешке ће бити изгубљене и од вас ће се тражити да региструјете нови налог да бисте користили иЈОТ.",
+    "delete_account_sucessful": "Налог је успешно избрисан!",
+    "delete_account_error": "Грешка при брисању налога! Пријавите се поново.",
+    "sort_notes": "Разврстај белешке"
 }

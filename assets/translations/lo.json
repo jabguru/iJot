@@ -51,5 +51,12 @@
     "copy": "ສຳເນົາ",
     "copy_for_whatsapp": "ສຳເນົາສຳລັບ WhatsApp",
     "copy_for_whatsapp_success": "ສຳເນົາຂໍ້ຄວາມໃສ່ຄລິບບອດແລ້ວ",
-    "copy_for_whatsapp_failed": "ສຳເນົາຂໍ້ຄວາມບໍ່ສຳເລັດ"
+    "copy_for_whatsapp_failed": "ສຳເນົາຂໍ້ຄວາມບໍ່ສຳເລັດ",
+    "note_cat_all": "ທັງໝົດ",
+    "delete_account": "ລຶບບັນຊີຂອງຂ້ອຍ",
+    "delete_account_confirmation": "ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລຶບບັນຊີຂອງທ່ານ?",
+    "delete_account_confirmation_details": "ບັນ​ທຶກ​ທັງ​ຫມົດ​ຂອງ​ທ່ານ​ຈະ​ສູນ​ເສຍ​ໄປ​ແລະ​ທ່ານ​ຈະ​ຖືກ​ຕ້ອງ​ການ​ລົງ​ທະ​ບຽນ​ບັນ​ຊີ​ໃຫມ່​ເພື່ອ​ນໍາ​ໃຊ້ iJOT​.",
+    "delete_account_sucessful": "ລຶບບັນຊີສຳເລັດແລ້ວ!",
+    "delete_account_error": "ເກີດຄວາມຜິດພາດໃນການລຶບບັນຊີ! ເຂົ້າສູ່ລະບົບອີກຄັ້ງ.",
+    "sort_notes": "ຈັດຮຽງບັນທຶກ"
 }

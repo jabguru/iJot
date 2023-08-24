@@ -51,5 +51,12 @@
     "copy": "Պատճենել",
     "copy_for_whatsapp": "Պատճենել WhatsApp-ի համար",
     "copy_for_whatsapp_success": "Տեքստը պատճենվեց սեղմատախտակին",
-    "copy_for_whatsapp_failed": "Չհաջողվեց պատճենել տեքստը"
+    "copy_for_whatsapp_failed": "Չհաջողվեց պատճենել տեքստը",
+    "note_cat_all": "Բոլորը",
+    "delete_account": "Ջնջել իմ հաշիվը",
+    "delete_account_confirmation": "Իսկապե՞ս ուզում եք ջնջել ձեր հաշիվը:",
+    "delete_account_confirmation_details": "Ձեր բոլոր նշումները կկորչեն, և ձեզանից կպահանջվի գրանցել նոր հաշիվ՝ iJOT-ից օգտվելու համար:",
+    "delete_account_sucessful": "Հաշիվը հաջողությամբ ջնջվեց:",
+    "delete_account_error": "Սխալ՝ հաշիվը ջնջելիս: Կրկին մուտք գործեք:",
+    "sort_notes": "Տեսակավորել նշումները"
 }

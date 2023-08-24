@@ -51,5 +51,12 @@
     "copy": "สำเนา",
     "copy_for_whatsapp": "คัดลอกสำหรับ WhatsApp",
     "copy_for_whatsapp_success": "ข้อความที่คัดลอกไปยังคลิปบอร์ด",
-    "copy_for_whatsapp_failed": "ไม่สามารถคัดลอกข้อความ"
+    "copy_for_whatsapp_failed": "ไม่สามารถคัดลอกข้อความ",
+    "note_cat_all": "ทั้งหมด",
+    "delete_account": "ลบบัญชีของฉัน",
+    "delete_account_confirmation": "คุณแน่ใจหรือไม่ว่าต้องการลบบัญชีของคุณ?",
+    "delete_account_confirmation_details": "บันทึกทั้งหมดของคุณจะหายไปและคุณจะต้องลงทะเบียนบัญชีใหม่เพื่อใช้ iJOT",
+    "delete_account_sucessful": "ลบบัญชีเรียบร้อยแล้ว!",
+    "delete_account_error": "เกิดข้อผิดพลาดในการลบบัญชี! ลงชื่อเข้าใช้อีกครั้ง",
+    "sort_notes": "เรียงลำดับบันทึกย่อ"
 }

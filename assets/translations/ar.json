@@ -51,5 +51,12 @@
     "copy": "ينسخ",
     "copy_for_whatsapp": "نسخ لتطبيق WhatsApp",
     "copy_for_whatsapp_success": "تم نسخ النص إلى الحافظة",
-    "copy_for_whatsapp_failed": "فشل نسخ النص"
+    "copy_for_whatsapp_failed": "فشل نسخ النص",
+    "note_cat_all": "الجميع",
+    "delete_account": "احذف حسابي",
+    "delete_account_confirmation": "هل انت متأكد انك تريد حذف حسابك؟",
+    "delete_account_confirmation_details": "سيتم فقدان جميع ملاحظاتك وسيُطلب منك تسجيل حساب جديد لاستخدام iJOT.",
+    "delete_account_sucessful": "تم حذف الحساب بنجاح!",
+    "delete_account_error": "حدث خطأ أثناء حذف الحساب! تسجيل الدخول مرة أخرى.",
+    "sort_notes": "فرز الملاحظات"
 }

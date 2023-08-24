@@ -51,5 +51,12 @@
     "copy": "Көшіру",
     "copy_for_whatsapp": "WhatsApp үшін көшіріңіз",
     "copy_for_whatsapp_success": "Мәтін алмасу буферіне көшірілді",
-    "copy_for_whatsapp_failed": "Мәтінді көшіру мүмкін болмады"
+    "copy_for_whatsapp_failed": "Мәтінді көшіру мүмкін болмады",
+    "note_cat_all": "Барлық",
+    "delete_account": "Менің тіркелгімді жою",
+    "delete_account_confirmation": "Есептік жазбаңызды шынымен жойғыңыз келе ме?",
+    "delete_account_confirmation_details": "Барлық жазбаларыңыз жоғалады және сізден iJOT пайдалану үшін жаңа есептік жазбаны тіркеу қажет болады.",
+    "delete_account_sucessful": "Есептік жазба сәтті жойылды!",
+    "delete_account_error": "Есептік жазбаны жою қатесі! Қайтадан кіру.",
+    "sort_notes": "Жазбаларды сұрыптау"
 }

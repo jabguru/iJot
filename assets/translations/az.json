@@ -51,5 +51,12 @@
     "copy": "Kopyalayın",
     "copy_for_whatsapp": "WhatsApp üçün kopyalayın",
     "copy_for_whatsapp_success": "Mətn buferə kopyalandı",
-    "copy_for_whatsapp_failed": "Mətni kopyalamaq alınmadı"
+    "copy_for_whatsapp_failed": "Mətni kopyalamaq alınmadı",
+    "note_cat_all": "Hamısı",
+    "delete_account": "Hesabımı Sil",
+    "delete_account_confirmation": "Hesabınızı silmək istədiyinizə əminsiniz?",
+    "delete_account_confirmation_details": "Bütün qeydləriniz itəcək və sizdən iJOT-dan istifadə etmək üçün yeni hesab qeydiyyatdan keçirməyiniz tələb olunacaq.",
+    "delete_account_sucessful": "Hesab Uğurla Silindi!",
+    "delete_account_error": "Hesabı silərkən xəta baş verdi! Yenidən daxil olun.",
+    "sort_notes": "Qeydləri çeşidləyin"
 }

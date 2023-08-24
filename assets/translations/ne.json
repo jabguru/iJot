@@ -51,5 +51,12 @@
     "copy": "कापी",
     "copy_for_whatsapp": "WhatsApp को लागी प्रतिलिपि गर्नुहोस्",
     "copy_for_whatsapp_success": "क्लिपबोर्डमा पाठ प्रतिलिपि गरियो",
-    "copy_for_whatsapp_failed": "पाठ प्रतिलिपि गर्न असफल भयो"
+    "copy_for_whatsapp_failed": "पाठ प्रतिलिपि गर्न असफल भयो",
+    "note_cat_all": "सबै",
+    "delete_account": "मेरो खाता मेटाउनुहोस्",
+    "delete_account_confirmation": "के तपाइँ तपाइँको खाता मेटाउन निश्चित हुनुहुन्छ?",
+    "delete_account_confirmation_details": "तपाईंका सबै नोटहरू हराउनेछन् र तपाईंलाई iJOT प्रयोग गर्नको लागि नयाँ खाता दर्ता गर्न आवश्यक हुनेछ।",
+    "delete_account_sucessful": "खाता सफलतापूर्वक मेटियो!",
+    "delete_account_error": "खाता मेटाउँदा त्रुटि भयो! फेरि साइन इन गर्नुहोस्।",
+    "sort_notes": "नोटहरू क्रमबद्ध गर्नुहोस्"
 }

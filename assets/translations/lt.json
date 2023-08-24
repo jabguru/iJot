@@ -51,5 +51,12 @@
     "copy": "Kopijuoti",
     "copy_for_whatsapp": "Kopijuoti į WhatsApp",
     "copy_for_whatsapp_success": "Tekstas nukopijuotas į mainų sritį",
-    "copy_for_whatsapp_failed": "Nepavyko nukopijuoti teksto"
+    "copy_for_whatsapp_failed": "Nepavyko nukopijuoti teksto",
+    "note_cat_all": "Visi",
+    "delete_account": "Ištrinti mano paskyrą",
+    "delete_account_confirmation": "Ar tikrai norite ištrinti savo paskyrą?",
+    "delete_account_confirmation_details": "Visi jūsų užrašai bus prarasti ir turėsite užregistruoti naują paskyrą, kad galėtumėte naudoti iJOT.",
+    "delete_account_sucessful": "Paskyra sėkmingai ištrinta!",
+    "delete_account_error": "Klaida ištrinant paskyrą! Prisijunkite dar kartą.",
+    "sort_notes": "Rūšiuoti užrašus"
 }

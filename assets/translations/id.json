@@ -51,5 +51,12 @@
     "copy": "Menyalin",
     "copy_for_whatsapp": "Salin untuk WhatsApp",
     "copy_for_whatsapp_success": "Teks disalin ke papan klip",
-    "copy_for_whatsapp_failed": "Gagal menyalin teks"
+    "copy_for_whatsapp_failed": "Gagal menyalin teks",
+    "note_cat_all": "Semua",
+    "delete_account": "Hapus akun Saya",
+    "delete_account_confirmation": "Apakah Anda yakin ingin menghapus akun Anda?",
+    "delete_account_confirmation_details": "Semua catatan Anda akan hilang dan Anda diharuskan mendaftarkan akun baru untuk menggunakan iJOT.",
+    "delete_account_sucessful": "Akun Berhasil Dihapus!",
+    "delete_account_error": "Kesalahan Saat Menghapus Akun! Masuk Lagi.",
+    "sort_notes": "Urutkan catatan"
 }

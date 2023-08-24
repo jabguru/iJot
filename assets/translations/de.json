@@ -51,5 +51,12 @@
     "copy": "Kopieren",
     "copy_for_whatsapp": "Für WhatsApp kopieren",
     "copy_for_whatsapp_success": "Text in die Zwischenablage kopiert",
-    "copy_for_whatsapp_failed": "Text konnte nicht kopiert werden"
+    "copy_for_whatsapp_failed": "Text konnte nicht kopiert werden",
+    "note_cat_all": "Alle",
+    "delete_account": "Mein Konto löschen",
+    "delete_account_confirmation": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten?",
+    "delete_account_confirmation_details": "Alle Ihre Notizen gehen verloren und Sie müssen ein neues Konto registrieren, um iJOT nutzen zu können.",
+    "delete_account_sucessful": "Konto erfolgreich gelöscht!",
+    "delete_account_error": "Fehler beim Löschen des Kontos! Melden Sie sich erneut an.",
+    "sort_notes": "Notizen sortieren"
 }

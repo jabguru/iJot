@@ -51,5 +51,12 @@
     "copy": "cópia de",
     "copy_for_whatsapp": "Copiar para WhatsApp",
     "copy_for_whatsapp_success": "Texto copiado para a área de transferência",
-    "copy_for_whatsapp_failed": "Falha ao copiar o texto"
+    "copy_for_whatsapp_failed": "Falha ao copiar o texto",
+    "note_cat_all": "Todos",
+    "delete_account": "Deletar minha conta",
+    "delete_account_confirmation": "Tem certeza de que deseja excluir sua conta?",
+    "delete_account_confirmation_details": "Todas as suas anotações serão perdidas e você será solicitado a registrar uma nova conta para usar o iJOT.",
+    "delete_account_sucessful": "Conta excluída com sucesso!",
+    "delete_account_error": "Erro ao excluir conta! Faça login novamente.",
+    "sort_notes": "Classificar notas"
 }

@@ -51,5 +51,12 @@
     "copy": "Salinan",
     "copy_for_whatsapp": "Salin untuk WhatsApp",
     "copy_for_whatsapp_success": "Teks disalin ke papan keratan",
-    "copy_for_whatsapp_failed": "Gagal menyalin teks"
+    "copy_for_whatsapp_failed": "Gagal menyalin teks",
+    "note_cat_all": "Semua",
+    "delete_account": "Padamkan akaun saya",
+    "delete_account_confirmation": "Adakah anda pasti mahu memadamkan akaun anda?",
+    "delete_account_confirmation_details": "Semua nota anda akan hilang dan anda akan dikehendaki mendaftar akaun baharu untuk menggunakan iJOT.",
+    "delete_account_sucessful": "Akaun Berjaya Dipadamkan!",
+    "delete_account_error": "Ralat Memadam Akaun! Log masuk Lagi.",
+    "sort_notes": "Isih nota"
 }

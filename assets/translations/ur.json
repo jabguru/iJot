@@ -51,5 +51,12 @@
     "copy": "کاپی",
     "copy_for_whatsapp": "واٹس ایپ کے لیے کاپی کریں۔",
     "copy_for_whatsapp_success": "متن کلپ بورڈ پر کاپی ہو گیا۔",
-    "copy_for_whatsapp_failed": "متن کاپی کرنے میں ناکام"
+    "copy_for_whatsapp_failed": "متن کاپی کرنے میں ناکام",
+    "note_cat_all": "تمام",
+    "delete_account": "میرا اکاؤنٹ حذف کریں۔",
+    "delete_account_confirmation": "کیا آپ واقعی اپنا اکاؤنٹ حذف کرنا چاہتے ہیں؟",
+    "delete_account_confirmation_details": "آپ کے تمام نوٹ ضائع ہو جائیں گے اور آپ کو iJOT استعمال کرنے کے لیے ایک نیا اکاؤنٹ رجسٹر کرنے کی ضرورت ہوگی۔",
+    "delete_account_sucessful": "اکاؤنٹ کامیابی سے حذف کر دیا گیا!",
+    "delete_account_error": "اکاؤنٹ حذف کرنے میں خرابی! دوبارہ سائن ان کریں۔",
+    "sort_notes": "نوٹ چھانٹیں۔"
 }

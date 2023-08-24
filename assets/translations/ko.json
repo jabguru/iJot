@@ -51,5 +51,12 @@
     "copy": "복사",
     "copy_for_whatsapp": "WhatsApp에 복사",
     "copy_for_whatsapp_success": "클립보드에 복사된 텍스트",
-    "copy_for_whatsapp_failed": "텍스트를 복사하지 못했습니다."
+    "copy_for_whatsapp_failed": "텍스트를 복사하지 못했습니다.",
+    "note_cat_all": "모두",
+    "delete_account": "계정을 삭제하다",
+    "delete_account_confirmation": "정말로 계정을 삭제하시겠습니까?",
+    "delete_account_confirmation_details": "모든 메모가 손실되며 iJOT을 사용하려면 새 계정을 등록해야 합니다.",
+    "delete_account_sucessful": "계정이 삭제되었습니다!",
+    "delete_account_error": "계정 삭제 중 오류가 발생했습니다! 다시 로그인하세요.",
+    "sort_notes": "메모 정렬"
 }

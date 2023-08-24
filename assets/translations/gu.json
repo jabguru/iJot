@@ -51,5 +51,12 @@
     "copy": "નકલ કરો",
     "copy_for_whatsapp": "WhatsApp માટે નકલ કરો",
     "copy_for_whatsapp_success": "ટેક્સ્ટ ક્લિપબોર્ડ પર કૉપિ કર્યો",
-    "copy_for_whatsapp_failed": "ટેક્સ્ટ કૉપિ કરવામાં નિષ્ફળ"
+    "copy_for_whatsapp_failed": "ટેક્સ્ટ કૉપિ કરવામાં નિષ્ફળ",
+    "note_cat_all": "બધા",
+    "delete_account": "મારું એકાઉન્ટ કાઢી નાખો",
+    "delete_account_confirmation": "શું તમે ખરેખર તમારું એકાઉન્ટ કાઢી નાખવા માંગો છો?",
+    "delete_account_confirmation_details": "તમારી બધી નોંધો ખોવાઈ જશે અને તમારે iJOT નો ઉપયોગ કરવા માટે નવું એકાઉન્ટ રજીસ્ટર કરાવવું પડશે.",
+    "delete_account_sucessful": "એકાઉન્ટ સફળતાપૂર્વક કાઢી નાખ્યું!",
+    "delete_account_error": "એકાઉન્ટ કાઢી નાખવામાં ભૂલ! ફરીથી સાઇન ઇન કરો.",
+    "sort_notes": "નોંધો સૉર્ટ કરો"
 }

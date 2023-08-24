@@ -51,5 +51,12 @@
     "copy": "Kopiëren",
     "copy_for_whatsapp": "Kopiëren voor WhatsApp",
     "copy_for_whatsapp_success": "Tekst gekopieerd naar klembord",
-    "copy_for_whatsapp_failed": "Kan tekst niet kopiëren"
+    "copy_for_whatsapp_failed": "Kan tekst niet kopiëren",
+    "note_cat_all": "Alle",
+    "delete_account": "Verwijder mijn account",
+    "delete_account_confirmation": "Weet u zeker dat u uw account wilt verwijderen?",
+    "delete_account_confirmation_details": "Al uw aantekeningen gaan verloren en u moet een nieuw account registreren om iJOT te kunnen gebruiken.",
+    "delete_account_sucessful": "Account succesvol verwijderd!",
+    "delete_account_error": "Fout bij verwijderen van account! Meld u opnieuw aan.",
+    "sort_notes": "Sorteer notities"
 }

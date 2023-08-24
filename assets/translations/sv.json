@@ -51,5 +51,12 @@
     "copy": "Kopiera",
     "copy_for_whatsapp": "Kopiera för WhatsApp",
     "copy_for_whatsapp_success": "Text kopierad till urklipp",
-    "copy_for_whatsapp_failed": "Det gick inte att kopiera text"
+    "copy_for_whatsapp_failed": "Det gick inte att kopiera text",
+    "note_cat_all": "Allt",
+    "delete_account": "Ta bort mitt konto",
+    "delete_account_confirmation": "Är du säker på att du vill ta bort ditt konto?",
+    "delete_account_confirmation_details": "Alla dina anteckningar kommer att gå förlorade och du kommer att behöva registrera ett nytt konto för att använda iJOT.",
+    "delete_account_sucessful": "Kontot har raderats!",
+    "delete_account_error": "Fel vid borttagning av konto! Logga in igen.",
+    "sort_notes": "Sortera anteckningar"
 }

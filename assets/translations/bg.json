@@ -51,5 +51,12 @@
     "copy": "копие",
     "copy_for_whatsapp": "Копиране за WhatsApp",
     "copy_for_whatsapp_success": "Текстът е копиран в клипборда",
-    "copy_for_whatsapp_failed": "Неуспешно копиране на текст"
+    "copy_for_whatsapp_failed": "Неуспешно копиране на текст",
+    "note_cat_all": "всичко",
+    "delete_account": "Изтрий моя акаунт",
+    "delete_account_confirmation": "Сигурни ли сте, че искате да изтриете акаунта си?",
+    "delete_account_confirmation_details": "Всички ваши бележки ще бъдат загубени и ще трябва да регистрирате нов акаунт, за да използвате iJOT.",
+    "delete_account_sucessful": "Акаунтът е изтрит успешно!",
+    "delete_account_error": "Грешка при изтриване на акаунт! Влезте отново.",
+    "sort_notes": "Сортиране на бележки"
 }

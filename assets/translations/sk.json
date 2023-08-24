@@ -51,5 +51,12 @@
     "copy": "Kopírovať",
     "copy_for_whatsapp": "Kopírovať pre WhatsApp",
     "copy_for_whatsapp_success": "Text bol skopírovaný do schránky",
-    "copy_for_whatsapp_failed": "Text sa nepodarilo skopírovať"
+    "copy_for_whatsapp_failed": "Text sa nepodarilo skopírovať",
+    "note_cat_all": "Všetky",
+    "delete_account": "Odstrániť môj účet",
+    "delete_account_confirmation": "Naozaj chcete odstrániť svoj účet?",
+    "delete_account_confirmation_details": "Všetky vaše poznámky sa stratia a budete musieť zaregistrovať nový účet, aby ste mohli používať iJOT.",
+    "delete_account_sucessful": "Účet bol úspešne odstránený!",
+    "delete_account_error": "Chyba pri odstraňovaní účtu! Prihláste sa znova.",
+    "sort_notes": "Zoradiť poznámky"
 }

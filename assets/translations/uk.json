@@ -51,5 +51,12 @@
     "copy": "Копія",
     "copy_for_whatsapp": "Копіювати для WhatsApp",
     "copy_for_whatsapp_success": "Текст скопійовано в буфер обміну",
-    "copy_for_whatsapp_failed": "Не вдалося скопіювати текст"
+    "copy_for_whatsapp_failed": "Не вдалося скопіювати текст",
+    "note_cat_all": "все",
+    "delete_account": "Видалити мій обліковий запис",
+    "delete_account_confirmation": "Ви впевнені, що хочете видалити свій обліковий запис?",
+    "delete_account_confirmation_details": "Усі ваші нотатки буде втрачено, і вам потрібно буде зареєструвати новий обліковий запис, щоб використовувати iJOT.",
+    "delete_account_sucessful": "Обліковий запис успішно видалено!",
+    "delete_account_error": "Помилка видалення облікового запису! Увійдіть ще раз.",
+    "sort_notes": "Сортувати нотатки"
 }

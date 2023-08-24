@@ -51,5 +51,12 @@
     "copy": "कॉपी करा",
     "copy_for_whatsapp": "WhatsApp साठी कॉपी करा",
     "copy_for_whatsapp_success": "क्लिपबोर्डवर मजकूर कॉपी केला",
-    "copy_for_whatsapp_failed": "मजकूर कॉपी करण्यात अयशस्वी"
+    "copy_for_whatsapp_failed": "मजकूर कॉपी करण्यात अयशस्वी",
+    "note_cat_all": "सर्व",
+    "delete_account": "माझे खाते हटवा",
+    "delete_account_confirmation": "तुमची खात्री आहे की तुम्ही तुमचे खाते हटवू इच्छिता?",
+    "delete_account_confirmation_details": "तुमच्या सर्व नोट्स हरवल्या जातील आणि तुम्हाला iJOT वापरण्यासाठी नवीन खाते नोंदवावे लागेल.",
+    "delete_account_sucessful": "खाते यशस्वीरित्या हटवले!",
+    "delete_account_error": "खाते हटवताना त्रुटी! पुन्हा साइन इन करा.",
+    "sort_notes": "नोट्स क्रमवारी लावा"
 }

@@ -51,5 +51,12 @@
     "copy": "Afrita",
     "copy_for_whatsapp": "Afritaðu fyrir WhatsApp",
     "copy_for_whatsapp_success": "Texti afritaður á klippiborð",
-    "copy_for_whatsapp_failed": "Mistókst að afrita texta"
+    "copy_for_whatsapp_failed": "Mistókst að afrita texta",
+    "note_cat_all": "Allt",
+    "delete_account": "Eyða reikningnum mínum",
+    "delete_account_confirmation": "Ertu viss um að þú viljir eyða reikningnum þínum?",
+    "delete_account_confirmation_details": "Allar athugasemdir þínar munu glatast og þú verður að skrá nýjan reikning til að nota iJOT.",
+    "delete_account_sucessful": "Reikningi eytt!",
+    "delete_account_error": "Villa við að eyða reikningi! Skráðu þig inn aftur.",
+    "sort_notes": "Raða glósum"
 }

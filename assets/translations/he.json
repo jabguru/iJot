@@ -51,5 +51,12 @@
     "copy": "עותק",
     "copy_for_whatsapp": "העתק לוואטסאפ",
     "copy_for_whatsapp_success": "הטקסט הועתק ללוח",
-    "copy_for_whatsapp_failed": "העתקת הטקסט נכשלה"
+    "copy_for_whatsapp_failed": "העתקת הטקסט נכשלה",
+    "note_cat_all": "את כל",
+    "delete_account": "מחק את חשבוני",
+    "delete_account_confirmation": "האם אתה בטוח שברצונך למחוק את חשבונך?",
+    "delete_account_confirmation_details": "כל ההערות שלך יאבדו ותידרש לרשום חשבון חדש כדי להשתמש ב-iJOT.",
+    "delete_account_sucessful": "חשבון נמחק בהצלחה!",
+    "delete_account_error": "שגיאה במחיקת חשבון! היכנס שוב.",
+    "sort_notes": "מיין הערות"
 }
