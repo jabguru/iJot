@@ -10,7 +10,10 @@ import 'package:flutter_quill/flutter_quill.dart' as quill;
 import 'package:flutter_quill_extensions/flutter_quill_extensions.dart';
 import 'package:ijot/constants/colors.dart';
 import 'package:ijot/constants/spaces.dart';
+import 'package:ijot/services/account.dart';
+import 'package:ijot/services/firebase_firestore.dart';
 import 'package:ijot/services/firebase_storage.dart';
+import 'package:ijot/services/note.dart';
 import 'package:ijot/widgets/note/time_stamp_embed_widget.dart';
 import 'package:ijot/widgets/note/universal_ui/universal_ui.dart';
 import 'package:ijot/widgets/note/whatsapp_copy.dart';
@@ -91,14 +94,19 @@ class SingleNoteState extends State<SingleNote> {
         details: _noteDetails,
         category: _noteCat,
         dateTime: DateTime.now().toString(),
-        ownerId: loggedInUserId,
+        ownerId: AccountService.loggedInUserId,
         detailsJSON: json,
       );
 
+      NoteService noteService = NoteService(
+          hiveService: HiveService(),
+          firebaseFirestoreService: FirebaseFirestoreService(),
+          loggedInUserId: AccountService.loggedInUserId);
+
       if (_isUpdateMode) {
-        HiveService().updateNote(note: newNote);
+        noteService.updateNote(note: newNote);
       } else {
-        HiveService().addNote(newNote);
+        noteService.addNote(newNote);
       }
 
       Navigator.pop(context);
@@ -236,7 +244,7 @@ class SingleNoteState extends State<SingleNote> {
     if (_checkFileSize(file)) {
       FirebaseStorageService imageFSS = FirebaseStorageService();
       await imageFSS.uploadFile(
-        uid: loggedInUserId!,
+        uid: AccountService.loggedInUserId!,
         file: file,
         imageName: path
                 .basenameWithoutExtension(file.path)

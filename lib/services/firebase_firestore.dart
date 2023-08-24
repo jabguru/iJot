@@ -1,15 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ijot/constants/constants.dart';
-import 'package:ijot/constants/firebase.dart';
-import 'package:ijot/constants/hive.dart';
 import 'package:ijot/models/note.dart';
-import 'package:ijot/services/note.dart';
 import 'dart:developer';
 
 class FirebaseFirestoreService {
-  Future syncNote(Note note) async {
+  final notesRef = FirebaseFirestore.instance.collection('notes');
+
+  Future syncNote({required Note note, required String userId}) async {
     try {
-      notesRef.doc(loggedInUserId).collection('userNotes').doc(note.id).set({
+      notesRef.doc(userId).collection('userNotes').doc(note.id).set({
         'id': note.id,
         'title': note.title,
         'details': note.details,
@@ -23,9 +21,9 @@ class FirebaseFirestoreService {
     }
   }
 
-  updateNote(Note note) {
+  updateNote({required Note note, required String userId}) {
     try {
-      notesRef.doc(loggedInUserId).collection('userNotes').doc(note.id).update(
+      notesRef.doc(userId).collection('userNotes').doc(note.id).update(
         {
           'title': note.title,
           'details': note.details,
@@ -39,17 +37,16 @@ class FirebaseFirestoreService {
     }
   }
 
-  deleteNote(Note note) {
+  deleteNote({required Note note, required String userId}) {
     try {
       notesRef
-          .doc(loggedInUserId)
+          .doc(userId)
           .collection('userNotes')
           .doc(note.id)
           .get()
           .then((doc) {
         if (doc.exists) {
           doc.reference.delete();
-          NoteService.deletePhotos(note);
         }
       });
     } catch (e) {
@@ -57,54 +54,17 @@ class FirebaseFirestoreService {
     }
   }
 
-  cloudToLocal() async {
-    try {
-      QuerySnapshot snapshot = await notesRef
-          .doc(loggedInUserId)
-          .collection('userNotes')
-          .orderBy('dateTime')
-          .get();
-
-      for (var doc in snapshot.docs) {
-        bool isContained = false;
-        bool isUnchanged = false;
-        Note cloudNote = Note.fromDocument(doc);
-        for (var i = 0; i < notesBox.length; i++) {
-          if (loggedInUserId == notesBox.getAt(i)!.ownerId) {
-            if (cloudNote.id == notesBox.getAt(i)!.id) {
-              isContained = true;
-            }
-            if (cloudNote == notesBox.getAt(i)) {
-              isUnchanged = true;
-            }
-          }
-        }
-        if (!isContained || !isUnchanged) notesBox.put(cloudNote.id, cloudNote);
-      }
-    } catch (e) {
-      log(e.toString());
-    }
+  deleteDocument(userId) async {
+    await notesRef.doc(userId).delete();
   }
 
-  deleteNotesDeletedFromOtherDevices() async {
+  Future<QuerySnapshot> getUserNotes(String userId) async {
     QuerySnapshot snapshot = await notesRef
-        .doc(loggedInUserId)
+        .doc(userId)
         .collection('userNotes')
         .orderBy('dateTime')
         .get();
 
-    List<Note> cloudNotes = snapshot.docs
-        .map((QueryDocumentSnapshot doc) => Note.fromDocument(doc))
-        .toList();
-
-    for (var i = 0; i < notesBox.length; i++) {
-      if (loggedInUserId == notesBox.getAt(i)!.ownerId) {
-        Iterable<Note> containedNotes =
-            cloudNotes.where((Note note) => note.id == notesBox.getAt(i)!.id);
-        if (containedNotes.isEmpty) {
-          notesBox.deleteAt(i);
-        }
-      }
-    }
+    return snapshot;
   }
 }

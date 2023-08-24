@@ -1,16 +1,35 @@
 import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:ijot/constants/firebase.dart';
-import 'package:ijot/constants/hive.dart';
+import 'package:ijot/services/firebase_firestore.dart';
+import 'package:ijot/services/hive.dart';
+import 'package:ijot/services/note.dart';
 
 class AccountService {
-  static String? get userId => userBox.get('userId');
+  static HiveService hiveService = HiveService();
+  static final fireBaseAuth = FirebaseAuth.instance;
+
+  static String? get loggedInUserId => hiveService.userBox.get('userId');
+
   static User? get currentUser => fireBaseAuth.currentUser;
-  static bool get canDeleteAccount => userId != null && currentUser != null;
+  static bool get canDeleteAccount =>
+      loggedInUserId != null && currentUser != null;
+
   static logout() async {
-    await userBox.clear();
+    await hiveService.userBox.clear();
     await fireBaseAuth.signOut();
+  }
+
+  static login(String userId) async {
+    await hiveService.userBox.put('userId', userId);
+    FirebaseFirestoreService firebaseFirestoreService =
+        FirebaseFirestoreService();
+    NoteService noteService = NoteService(
+      hiveService: hiveService,
+      firebaseFirestoreService: firebaseFirestoreService,
+      loggedInUserId: userId,
+    );
+    await noteService.cloudToLocal();
+    await noteService.checkForUserItems();
   }
 
   static Future<bool> deleteAccount() async {
@@ -18,9 +37,9 @@ class AccountService {
       if (canDeleteAccount) {
         // delete all notes
         // from firestore
-        await notesRef.doc(userId).delete();
+        await FirebaseFirestoreService().deleteDocument(loggedInUserId);
         // from localdb
-        await notesBox.clear();
+        await HiveService().clearUserBox();
 
         // delete account
         await currentUser!.delete();

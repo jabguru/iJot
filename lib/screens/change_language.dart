@@ -4,10 +4,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ijot/constants/constants.dart';
-import 'package:ijot/constants/hive.dart';
 import 'package:ijot/constants/languages.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/constants/spaces.dart';
+import 'package:ijot/services/hive.dart';
 import 'package:ijot/widgets/button.dart';
 import 'package:ijot/widgets/custom_scaffold.dart';
 
@@ -120,7 +120,7 @@ class ChangeLanguageState extends State<ChangeLanguage> {
                               textColor: Colors.white,
                               onTap: widget.isFirstOpen
                                   ? () {
-                                      firstTimeBox.add('opened');
+                                      HiveService.firstTimeBox.add('opened');
                                       context.go(MyRoutes.loginRoute());
                                     }
                                   : () {

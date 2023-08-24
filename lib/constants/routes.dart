@@ -1,5 +1,4 @@
 import 'package:go_router/go_router.dart';
-import 'package:ijot/constants/hive.dart';
 import 'package:ijot/screens/change_language.dart';
 import 'package:ijot/screens/delete_account.dart';
 import 'package:ijot/screens/login.dart';
@@ -8,6 +7,7 @@ import 'package:ijot/screens/privacy_policy.dart';
 import 'package:ijot/screens/register.dart';
 import 'package:ijot/screens/single_note.dart';
 import 'package:ijot/services/account.dart';
+import 'package:ijot/services/hive.dart';
 
 class MyRoutes {
   static String homeRoute = '/';
@@ -46,9 +46,8 @@ class MyRoutes {
             ),
           ],
           redirect: (context, state) {
-            String? userId = AccountService.userId;
-            if (userId == null) {
-              if (firstTimeBox.isEmpty) {
+            if (AccountService.loggedInUserId == null) {
+              if (HiveService.firstTimeBox.isEmpty) {
                 return languageRoute(firstOpen: true);
               } else {
                 return loginRoute();

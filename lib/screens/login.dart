@@ -4,12 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ijot/constants/colors.dart';
 import 'package:ijot/constants/constants.dart';
-import 'package:ijot/constants/firebase.dart';
-import 'package:ijot/constants/hive.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/constants/spaces.dart';
-import 'package:ijot/services/firebase_firestore.dart';
-import 'package:ijot/services/hive.dart';
+import 'package:ijot/services/account.dart';
 import 'package:ijot/widgets/button.dart';
 import 'package:ijot/widgets/custom_scaffold.dart';
 import 'package:ijot/widgets/password_reset.dart';
@@ -39,6 +36,7 @@ class LoginState extends State<Login> {
   bool _isLoading = false;
 
   final _formKey = GlobalKey<FormState>();
+  final GoogleSignIn googleSignIn = GoogleSignIn();
 
   _naviagateToScreenOnSuccess() {
     if (context.mounted) {
@@ -60,6 +58,7 @@ class LoginState extends State<Login> {
       form.save();
 
       try {
+        final fireBaseAuth = FirebaseAuth.instance;
         await fireBaseAuth.signInWithEmailAndPassword(
           email: _emailInput!.trim(),
           password: _passwordInput!.trim(),
@@ -67,12 +66,7 @@ class LoginState extends State<Login> {
         final User currentUser = fireBaseAuth.currentUser!;
         String userId = currentUser.uid;
 
-        loggedInUserId = userId;
-
-        userBox.put('userId', userId);
-
-        await FirebaseFirestoreService().cloudToLocal();
-        await HiveService().checkForUserItems();
+        await AccountService.login(userId);
 
         setState(() {
           _isLoading = false;
@@ -110,11 +104,7 @@ class LoginState extends State<Login> {
       final GoogleSignInAccount currentUser = googleSignIn.currentUser!;
       String userId = currentUser.id;
 
-      loggedInUserId = userId;
-
-      userBox.put('userId', userId);
-      await FirebaseFirestoreService().cloudToLocal();
-      await HiveService().checkForUserItems();
+      await AccountService.login(userId);
 
       setState(() {
         _isLoading = false;

@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ijot/constants/constants.dart';
-import 'package:ijot/constants/firebase.dart';
 import 'package:ijot/constants/spaces.dart';
 import 'package:ijot/widgets/button.dart';
 import 'package:ijot/widgets/progress.dart';
@@ -104,6 +103,8 @@ showForgotPasswordBottomSheet(BuildContext context) {
                                               form.save();
 
                                               try {
+                                                final fireBaseAuth =
+                                                    FirebaseAuth.instance;
                                                 await fireBaseAuth
                                                     .sendPasswordResetEmail(
                                                         email: resetEmail!);

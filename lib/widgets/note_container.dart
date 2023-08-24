@@ -7,8 +7,11 @@ import 'package:ijot/constants/colors.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/constants/spaces.dart';
+import 'package:ijot/services/account.dart';
+import 'package:ijot/services/firebase_firestore.dart';
 import 'package:ijot/services/hive.dart';
 import 'package:ijot/models/note.dart';
+import 'package:ijot/services/note.dart';
 import 'package:ijot/widgets/button.dart';
 
 class NoteContainer extends StatefulWidget {
@@ -62,7 +65,12 @@ class NoteContainerState extends State<NoteContainer> {
                         ),
                         CustomButton2(
                           onTap: () async {
-                            HiveService().deleteNote(
+                            NoteService(
+                              hiveService: HiveService(),
+                              firebaseFirestoreService:
+                                  FirebaseFirestoreService(),
+                              loggedInUserId: AccountService.loggedInUserId,
+                            ).deleteNote(
                               note: widget.note,
                             );
                             Navigator.pop(context);

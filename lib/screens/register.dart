@@ -2,10 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ijot/constants/constants.dart';
-import 'package:ijot/constants/firebase.dart';
-import 'package:ijot/constants/hive.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/constants/spaces.dart';
+import 'package:ijot/services/account.dart';
 import 'package:ijot/widgets/button.dart';
 import 'package:ijot/widgets/custom_scaffold.dart';
 import 'package:ijot/widgets/privacy_policy.dart';
@@ -41,14 +40,13 @@ class RegisterState extends State<Register> {
       form.save();
 
       try {
+        final fireBaseAuth = FirebaseAuth.instance;
         await fireBaseAuth.createUserWithEmailAndPassword(
             email: _emailInput!.trim(), password: _passwordInput!.trim());
         final User currentUser = fireBaseAuth.currentUser!;
         String userId = currentUser.uid;
 
-        loggedInUserId = userId;
-
-        userBox.put('userId', userId);
+        await AccountService.login(userId);
 
         if (context.mounted) {
           context.go(MyRoutes.homeRoute);

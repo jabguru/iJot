@@ -50,7 +50,7 @@ class TopBarWidget extends StatelessWidget {
                 children: [
                   if (extraWidget != null && screenGreaterThan700) extraWidget!,
                   kFullHSpace,
-                  if (AccountService.userId != null)
+                  if (AccountService.loggedInUserId != null)
                     Container(
                       height: 35.0,
                       decoration: BoxDecoration(

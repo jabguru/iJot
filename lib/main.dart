@@ -7,7 +7,9 @@ import 'package:ijot/constants/colors.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/constants/supported_locales.dart';
 import 'package:ijot/firebase_options.dart';
+import 'package:ijot/services/account.dart';
 import 'package:ijot/services/hive.dart';
+import 'package:ijot/services/note.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 void main() async {
@@ -16,12 +18,15 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   await HiveService().initialize();
+  await NoteService.initialize(AccountService.loggedInUserId);
 
   // ? CRASHLYTICS
   FlutterError.onError = (errorDetails) {
     FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
   };
+
   // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
   PlatformDispatcher.instance.onError = (error, stack) {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);

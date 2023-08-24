@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:ijot/constants/constants.dart';
 import 'package:ijot/models/note.dart';
+import 'package:ijot/services/account.dart';
+import 'package:ijot/services/note.dart';
 import 'package:ijot/widgets/note_container.dart';
 import 'package:ijot/widgets/notes/no_content.dart';
 
@@ -21,7 +22,7 @@ class NotesListWidget extends StatelessWidget {
     required Note note,
     required int index,
   }) {
-    if (note.ownerId == loggedInUserId) {
+    if (note.ownerId == AccountService.loggedInUserId) {
       return NoteContainer(note, index);
     }
     return const SizedBox.shrink();
@@ -50,7 +51,7 @@ class NotesListWidget extends StatelessWidget {
 
         allNotes.sort(((a, b) => b.dateTime!.compareTo(a.dateTime!)));
 
-        return kUserItemsAvailable && allNotes.isNotEmpty
+        return NoteService.userItemsAvailable && allNotes.isNotEmpty
             ? LayoutBuilder(
                 builder: (context, constraints) {
                   if (constraints.maxWidth > 700) {
