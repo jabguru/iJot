@@ -1,11 +1,10 @@
-// ignore_for_file: avoid_print
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/firebase.dart';
 import 'package:ijot/constants/hive.dart';
 import 'package:ijot/models/note.dart';
 import 'package:ijot/services/note.dart';
+import 'dart:developer';
 
 class FirebaseFirestoreService {
   Future syncNote(Note note) async {
@@ -20,7 +19,7 @@ class FirebaseFirestoreService {
         'ownerId': note.ownerId,
       });
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
     }
   }
 
@@ -36,7 +35,7 @@ class FirebaseFirestoreService {
         },
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
     }
   }
 
@@ -54,7 +53,7 @@ class FirebaseFirestoreService {
         }
       });
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
     }
   }
 
@@ -83,7 +82,7 @@ class FirebaseFirestoreService {
         if (!isContained || !isUnchanged) notesBox.put(cloudNote.id, cloudNote);
       }
     } catch (e) {
-      print(e.toString);
+      log(e.toString());
     }
   }
 

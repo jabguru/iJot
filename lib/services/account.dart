@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ijot/constants/firebase.dart';
 import 'package:ijot/constants/hive.dart';
@@ -12,19 +14,23 @@ class AccountService {
   }
 
   static Future<bool> deleteAccount() async {
-    if (canDeleteAccount) {
-      // delete all notes
-      // from firestore
-      await notesRef.doc(userId).delete();
-      // from localdb
-      await notesBox.clear();
+    try {
+      if (canDeleteAccount) {
+        // delete all notes
+        // from firestore
+        await notesRef.doc(userId).delete();
+        // from localdb
+        await notesBox.clear();
 
-      // delete account
-      await currentUser!.delete();
+        // delete account
+        await currentUser!.delete();
 
-      // logout
-      await logout();
-      return true;
+        // logout
+        await logout();
+        return true;
+      }
+    } catch (e) {
+      log(e.toString());
     }
     return false;
   }

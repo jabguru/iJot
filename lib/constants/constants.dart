@@ -20,6 +20,11 @@ const kNormalUnderlineTextStyle = TextStyle(
   fontFamily: 'Cabin',
 );
 
+const kPrimaryTextStyle = TextStyle(
+  fontSize: 16.0,
+  color: kPrimaryColor,
+);
+
 const kCircularBorderRadius = 8.0;
 
 LinearGradient kLinearGradient = const LinearGradient(

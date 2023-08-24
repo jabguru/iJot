@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:developer' as dev;
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -31,8 +32,7 @@ class ChangeLanguageState extends State<ChangeLanguage> {
         context.setLocale(Locale(context.deviceLocale.languageCode));
       }
     } catch (e) {
-      // ignore: avoid_print
-      print(e);
+      dev.log(e.toString());
     }
     _language =
         BuildContextEasyLocalizationExtension(context).locale.languageCode;

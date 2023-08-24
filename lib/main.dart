@@ -42,6 +42,7 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   // TODO: WRITE TESTS
+  // TODO: UPDATE TRANSLATION
   // TODO: SORT NOTES BY TAGS
   // TODO: CONSIDER DEEPLINKING ON MOBILE, SHARE NOTES URLS
 

@@ -307,21 +307,42 @@ class SingleNoteState extends State<SingleNote> {
         context: context,
         builder: (ctx) => AlertDialog(
           contentPadding: EdgeInsets.zero,
-          content: Column(
+          content: Row(
             mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextButton.icon(
-                icon: const Icon(Icons.collections),
-                label: Text(
-                  'gallery'.tr(),
-                  style: kInputTextStyle,
+              Expanded(
+                child: TextButton.icon(
+                  icon: const Icon(
+                    Icons.collections,
+                    color: kPrimaryColor,
+                  ),
+                  label: Text(
+                    'gallery'.tr(),
+                    style: kPrimaryTextStyle,
+                  ),
+                  onPressed: () => Navigator.pop(ctx, MediaPickSetting.Gallery),
                 ),
-                onPressed: () => Navigator.pop(ctx, MediaPickSetting.Gallery),
               ),
-              TextButton.icon(
-                icon: const Icon(Icons.link),
-                label: Text('link'.tr()),
-                onPressed: () => Navigator.pop(ctx, MediaPickSetting.Link),
+              kHalfHSpace,
+              Container(
+                height: 20.0,
+                width: 1.0,
+                color: kGrey1,
+              ),
+              kHalfHSpace,
+              Expanded(
+                child: TextButton.icon(
+                  icon: const Icon(
+                    Icons.link,
+                    color: kPrimaryColor,
+                  ),
+                  label: Text(
+                    'link'.tr(),
+                    style: kPrimaryTextStyle,
+                  ),
+                  onPressed: () => Navigator.pop(ctx, MediaPickSetting.Link),
+                ),
               )
             ],
           ),
@@ -337,15 +358,21 @@ class SingleNoteState extends State<SingleNote> {
             mainAxisSize: MainAxisSize.min,
             children: [
               TextButton.icon(
-                icon: const Icon(Icons.camera),
-                label: Text('capture_a_photo'.tr()),
+                icon: const Icon(
+                  Icons.camera,
+                  color: kPrimaryColor,
+                ),
+                label: Text(
+                  'capture_a_photo'.tr(),
+                  style: kPrimaryTextStyle,
+                ),
                 onPressed: () => Navigator.pop(ctx, MediaPickSetting.Camera),
               ),
-              TextButton.icon(
-                icon: const Icon(Icons.video_call),
-                label: Text('capture_a_video'.tr()),
-                onPressed: () => Navigator.pop(ctx, MediaPickSetting.Video),
-              )
+              // TextButton.icon(
+              //   icon: const Icon(Icons.video_call),
+              //   label: Text('capture_a_video'.tr()),
+              //   onPressed: () => Navigator.pop(ctx, MediaPickSetting.Video),
+              // )
             ],
           ),
         ),
@@ -430,7 +457,10 @@ class SingleNoteState extends State<SingleNote> {
         showVideoButton: false,
         showFormulaButton: true,
         onImagePickCallback: _onImagePickCallback,
-        // onVideoPickCallback: _onVideoPickCallback,
+        onVideoPickCallback: (File file) async {
+          // not support video
+          return '';
+        },
         // uncomment to provide a custom "pick from" dialog.
         mediaPickSettingSelector: _selectMediaPickSetting,
         // uncomment to provide a custom "pick from" dialog.
