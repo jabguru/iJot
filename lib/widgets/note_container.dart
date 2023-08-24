@@ -1,6 +1,6 @@
-import 'package:beamer/beamer.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:ijot/constants/category.dart';
 import 'package:ijot/constants/colors.dart';
@@ -87,13 +87,11 @@ class NoteContainerState extends State<NoteContainer> {
     bool screenGreaterThan700 = MediaQuery.of(context).size.width > 700;
 
     return GestureDetector(
-      onTap: () => context.beamToNamed(
-        '${MyRoutes.noteRoute}/${widget.noteIndex}',
-        data: {
+      onTap: () => context.go(
+        '/${MyRoutes.noteRoute}/${widget.noteIndex}',
+        extra: {
           'note': widget.note,
         },
-        beamBackOnPop: true,
-        popToNamed: MyRoutes.notesRoute,
       ),
       child: MouseRegion(
         cursor: SystemMouseCursors.click,

@@ -1,9 +1,7 @@
 import 'dart:math';
-
-import 'package:beamer/beamer.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
+import 'package:go_router/go_router.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/hive.dart';
 import 'package:ijot/constants/languages.dart';
@@ -123,12 +121,10 @@ class ChangeLanguageState extends State<ChangeLanguage> {
                               onTap: widget.isFirstOpen
                                   ? () {
                                       firstTimeBox.add('opened');
-                                      context.beamToReplacementNamed(
-                                          MyRoutes.loginRoute);
+                                      context.go(MyRoutes.loginRoute());
                                     }
                                   : () {
-                                      context.beamToReplacementNamed(
-                                          MyRoutes.notesRoute);
+                                      context.go(MyRoutes.homeRoute);
                                     },
                               text: widget.isFirstOpen
                                   ? 'language_continue'.tr()

@@ -8,10 +8,11 @@ class AccountService {
   static bool get canDeleteAccount => userId != null && currentUser != null;
   static logout() async {
     await userBox.clear();
+    await fireBaseAuth.signOut();
   }
 
   static Future<bool> deleteAccount() async {
-    if (userId != null && currentUser != null) {
+    if (canDeleteAccount) {
       // delete all notes
       // from firestore
       await notesRef.doc(userId).delete();

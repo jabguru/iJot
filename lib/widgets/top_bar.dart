@@ -1,9 +1,8 @@
 import 'dart:io';
-
-import 'package:beamer/beamer.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ijot/constants/colors.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/routes.dart';
@@ -40,8 +39,7 @@ class TopBarWidget extends StatelessWidget {
               MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
-                  onTap: () =>
-                      kIsWeb ? context.beamToNamed(MyRoutes.homeRoute) : null,
+                  onTap: () => kIsWeb ? context.go(MyRoutes.homeRoute) : null,
                   child: Image.asset(
                     'assets/images/logo.png',
                     height: 38.0,
@@ -63,7 +61,7 @@ class TopBarWidget extends StatelessWidget {
                         onPressed: () async {
                           await AccountService.logout();
                           if (context.mounted) {
-                            context.beamToReplacementNamed(MyRoutes.loginRoute);
+                            context.go(MyRoutes.loginRoute());
                           }
                         },
                         child: Padding(
@@ -83,9 +81,8 @@ class TopBarWidget extends StatelessWidget {
                     ),
                   kHSpace6,
                   GestureDetector(
-                    onTap: () => context.beamToNamed(
-                      MyRoutes.languageRoute,
-                      beamBackOnPop: true,
+                    onTap: () => context.go(
+                      MyRoutes.languageRoute(),
                     ),
                     child: MouseRegion(
                       cursor: SystemMouseCursors.click,

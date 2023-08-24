@@ -1,6 +1,6 @@
-import 'package:beamer/beamer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ijot/constants/colors.dart';
 import 'package:ijot/constants/constants.dart';
@@ -42,10 +42,10 @@ class LoginState extends State<Login> {
 
   _naviagateToScreenOnSuccess() {
     if (context.mounted) {
-      context.beamToReplacementNamed(
+      context.go(
         widget.redirectToDeleteAccount
             ? MyRoutes.deleteAccountRoute
-            : MyRoutes.notesRoute,
+            : MyRoutes.homeRoute,
       );
     }
   }
@@ -255,8 +255,8 @@ class LoginState extends State<Login> {
                                   ),
                                 ),
                                 GestureDetector(
-                                  onTap: () => context
-                                      .beamToNamed(MyRoutes.registerRoute),
+                                  onTap: () =>
+                                      context.go(MyRoutes.registerRoute),
                                   child: MouseRegion(
                                     cursor: SystemMouseCursors.click,
                                     child: Text(

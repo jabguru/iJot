@@ -1,6 +1,6 @@
-import 'package:beamer/beamer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/firebase.dart';
 import 'package:ijot/constants/hive.dart';
@@ -51,7 +51,7 @@ class RegisterState extends State<Register> {
         userBox.put('userId', userId);
 
         if (context.mounted) {
-          context.beamToReplacementNamed(MyRoutes.notesRoute);
+          context.go(MyRoutes.homeRoute);
         }
       } on FirebaseException catch (e) {
         if (context.mounted) {
@@ -143,8 +143,7 @@ class RegisterState extends State<Register> {
                                 ),
                               ),
                               GestureDetector(
-                                onTap: () =>
-                                    context.beamToNamed(MyRoutes.loginRoute),
+                                onTap: () => context.go(MyRoutes.loginRoute()),
                                 child: MouseRegion(
                                   cursor: SystemMouseCursors.click,
                                   child: Text(

@@ -1,4 +1,3 @@
-import 'package:beamer/beamer.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -42,6 +41,10 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  // TODO: WRITE TESTS
+  // TODO: SORT NOTES BY TAGS
+  // TODO: CONSIDER DEEPLINKING ON MOBILE, SHARE NOTES URLS
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -57,11 +60,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      // home: SplashScreen(),
-      routeInformationParser: BeamerParser(),
-      routerDelegate: MyRoutes.routerDelegate,
-      backButtonDispatcher:
-          BeamerBackButtonDispatcher(delegate: MyRoutes.routerDelegate),
+      routerConfig: MyRoutes.router,
     );
   }
 }

@@ -1,8 +1,7 @@
 import 'dart:io';
-
-import 'package:beamer/beamer.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/widgets/custom_scaffold.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -50,10 +49,7 @@ class NotesState extends State<Notes> {
             searchText: _searchText,
           ),
           onTap: () {
-            context.beamToNamed(
-              MyRoutes.noteRoute,
-              beamBackOnPop: true,
-            );
+            context.go('/${MyRoutes.noteRoute}');
           },
         ),
       ),
