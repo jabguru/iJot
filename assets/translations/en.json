@@ -32,6 +32,7 @@
     "note_cat_personal": "Personal",
     "note_cat_work": "Work",
     "note_cat_todo": "Todo",
+    "note_cat_all": "All",
 
 
     "delete_note": "Do you want to Delete this Note?",
@@ -75,6 +76,6 @@
     "delete_account_confirmation": "Are you sure you want to delete your account?",
     "delete_account_confirmation_details": "All your notes will be lost and you will be required to register a new account to use iJOT.",
     "delete_account_sucessful": "Deleted Account Successfully!",
-    "delete_account_error": "Error Deleting Account! Sign in Again."
-    
+    "delete_account_error": "Error Deleting Account! Sign in Again.",
+    "sort_notes": "Sort notes"
 }

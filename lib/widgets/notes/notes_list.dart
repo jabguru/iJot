@@ -8,10 +8,12 @@ import 'package:ijot/widgets/notes/no_content.dart';
 class NotesListWidget extends StatelessWidget {
   final ScrollController? scrollController;
   final String? searchText;
+  final String category;
 
   const NotesListWidget({
     required this.scrollController,
     required this.searchText,
+    required this.category,
     super.key,
   });
 
@@ -31,6 +33,10 @@ class NotesListWidget extends StatelessWidget {
       valueListenable: Hive.box<Note>('notes').listenable(),
       builder: (BuildContext context, Box<Note> notesBox, _) {
         List<Note> allNotes = notesBox.values.toList();
+        if (category != 'All') {
+          allNotes =
+              allNotes.where((Note note) => note.category == category).toList();
+        }
         if (searchText != null && searchText!.isNotEmpty) {
           allNotes = allNotes
               .where((Note note) => (note.title!

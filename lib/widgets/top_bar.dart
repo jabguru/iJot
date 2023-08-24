@@ -49,6 +49,7 @@ class TopBarWidget extends StatelessWidget {
               Row(
                 children: [
                   if (extraWidget != null && screenGreaterThan700) extraWidget!,
+                  kFullHSpace,
                   if (AccountService.userId != null)
                     Container(
                       height: 35.0,

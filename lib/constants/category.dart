@@ -13,6 +13,8 @@ Color categoryColor(String? category) {
     return kWorkColor;
   } else if (category == 'Todo') {
     return kTodoColor;
+  } else if (category == 'All') {
+    return kGrey1;
   }
   return kPrimaryColor;
 }
@@ -29,6 +31,8 @@ String getCategoryString(String? category) {
       return 'note_cat_work'.tr();
     case 'Todo':
       return 'note_cat_todo'.tr();
+    case 'All':
+      return 'note_cat_all'.tr();
     default:
       return 'note_cat_uncategorized'.tr();
   }
