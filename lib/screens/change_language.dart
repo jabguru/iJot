@@ -34,8 +34,7 @@ class ChangeLanguageState extends State<ChangeLanguage> {
     } catch (e) {
       dev.log(e.toString());
     }
-    _language =
-        BuildContextEasyLocalizationExtension(context).locale.languageCode;
+    _language = context.locale.languageCode;
   }
 
   @override
@@ -82,7 +81,7 @@ class ChangeLanguageState extends State<ChangeLanguage> {
                             ClipRRect(
                               borderRadius:
                                   BorderRadius.circular(kCircularBorderRadius),
-                              child: DropdownButtonFormField(
+                              child: DropdownButtonFormField<String>(
                                 dropdownColor: Colors.white,
                                 value: _language,
                                 decoration: const InputDecoration(

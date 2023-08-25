@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:ijot/models/note.dart';
-import 'package:ijot/services/account.dart';
 import 'package:ijot/services/note.dart';
 import 'package:ijot/widgets/note_container.dart';
 import 'package:ijot/widgets/notes/no_content.dart';
@@ -10,11 +9,13 @@ class NotesListWidget extends StatelessWidget {
   final ScrollController? scrollController;
   final String? searchText;
   final String category;
+  final String? loggedInUserId;
 
   const NotesListWidget({
     required this.scrollController,
     required this.searchText,
     required this.category,
+    required this.loggedInUserId,
     super.key,
   });
 
@@ -22,7 +23,7 @@ class NotesListWidget extends StatelessWidget {
     required Note note,
     required int index,
   }) {
-    if (note.ownerId == AccountService.loggedInUserId) {
+    if (note.ownerId == loggedInUserId) {
       return NoteContainer(note, index);
     }
     return const SizedBox.shrink();

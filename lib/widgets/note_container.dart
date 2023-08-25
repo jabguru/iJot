@@ -184,12 +184,11 @@ class NoteContainerState extends State<NoteContainer> {
                               color: categoryColor(widget.note.category),
                             ),
                           ),
+                          kHalfHSpace,
                           Text(
                             DateFormat(
                               'd MMM y',
-                              BuildContextEasyLocalizationExtension(context)
-                                  .locale
-                                  .languageCode,
+                              context.locale.languageCode,
                             ).format(DateTime.parse(widget.note.dateTime!)),
                             style: const TextStyle(
                               fontSize: 12.0,

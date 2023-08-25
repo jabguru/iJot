@@ -48,8 +48,8 @@ class SingleNoteState extends State<SingleNote> {
   late final bool _isUpdateMode = widget.note != null;
 
   late quill.QuillController _quillController;
-  late Widget quillEditor;
-  late Widget toolbar;
+  late quill.QuillEditor quillEditor;
+  late quill.QuillToolbar toolbar;
   final FocusNode _focusNode = FocusNode();
   Timer? _selectAllTimer;
   _SelectionType _selectionType = _SelectionType.none;
@@ -580,7 +580,7 @@ class SingleNoteState extends State<SingleNote> {
                     color: categoryColor(_noteCat).withOpacity(0.3),
                     borderRadius: BorderRadius.circular(18.0),
                   ),
-                  child: PopupMenuButton(
+                  child: PopupMenuButton<dynamic>(
                     itemBuilder: _buildPopUpMenuItems,
                     onSelected: (dynamic value) {
                       setState(() {

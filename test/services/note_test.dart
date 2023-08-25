@@ -16,38 +16,32 @@ void main() {
   late MockFirebaseService mockFirebaseService;
   late NoteService sut;
   late Note testNote;
-  bool firstRun = true;
 
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  setUp(() async {
-    if (firstRun) {
-      // delete the hive box
-      hiveService = HiveService();
-      await hiveService.initialize(isTest: true);
+  setUpAll(() async {
+    hiveService = HiveService();
+    await hiveService.initialize(isTest: true);
 
-      mockFirebaseService = MockFirebaseService();
+    mockFirebaseService = MockFirebaseService();
 
-      sut = NoteService(
-        hiveService: hiveService,
-        firebaseFirestoreService: mockFirebaseService,
-        loggedInUserId: 'testUserId',
-      );
+    sut = NoteService(
+      hiveService: hiveService,
+      firebaseFirestoreService: mockFirebaseService,
+      loggedInUserId: 'testUserId',
+    );
 
-      testNote = Note(
-        id: 'testNoteId',
-        title: 'Note Title',
-        details: 'Note Details',
-        category: 'Note Category',
-        dateTime: DateTime.now().toString(),
-        ownerId: 'testUserId',
-        detailsJSON: jsonEncode([
-          {'note': 'Note Details'}
-        ]),
-      );
-
-      firstRun = false;
-    }
+    testNote = Note(
+      id: 'testNoteId',
+      title: 'Note Title',
+      details: 'Note Details',
+      category: 'Note Category',
+      dateTime: DateTime.now().toString(),
+      ownerId: 'testUserId',
+      detailsJSON: jsonEncode([
+        {'note': 'Note Details'}
+      ]),
+    );
   });
 
   group('Testing Note Service', () {
