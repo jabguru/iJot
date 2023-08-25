@@ -99,9 +99,10 @@ class SingleNoteState extends State<SingleNote> {
       );
 
       NoteService noteService = NoteService(
-          hiveService: HiveService(),
-          firebaseFirestoreService: FirebaseFirestoreService(),
-          loggedInUserId: AccountService.loggedInUserId);
+        hiveService: HiveService(),
+        firebaseFirestoreService: FirebaseFirestoreService(),
+        loggedInUserId: AccountService.loggedInUserId,
+      );
 
       if (_isUpdateMode) {
         noteService.updateNote(note: newNote);

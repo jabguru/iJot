@@ -58,13 +58,13 @@ class FirebaseFirestoreService {
     await notesRef.doc(userId).delete();
   }
 
-  Future<QuerySnapshot> getUserNotes(String userId) async {
+  Future<List> getUserNotes(String userId) async {
     QuerySnapshot snapshot = await notesRef
         .doc(userId)
         .collection('userNotes')
         .orderBy('dateTime')
         .get();
 
-    return snapshot;
+    return snapshot.docs;
   }
 }

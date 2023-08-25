@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
+
 part 'note.g.dart';
 
 @HiveType(typeId: 1)
@@ -37,7 +38,20 @@ class Note extends Equatable {
     this.detailsJSON,
   });
 
-  factory Note.fromDocument(DocumentSnapshot doc) {
+  static String? _getDetaisJson(var doc) {
+    if (doc is Map) {
+      if (doc.containsKey('detailsJSON')) {
+        return doc['detailsJSON'];
+      }
+    } else {
+      if (doc.data().toString().contains('detailsJSON')) {
+        return doc['detailsJSON'];
+      }
+    }
+    return null;
+  }
+
+  factory Note.fromDocument(var doc) {
     return Note(
       id: doc['id'],
       title: doc['title'],
@@ -45,9 +59,7 @@ class Note extends Equatable {
       category: doc['category'],
       dateTime: (doc['dateTime'] as Timestamp).toDate().toString(),
       ownerId: doc['ownerId'],
-      detailsJSON: doc.data().toString().contains('detailsJSON')
-          ? doc['detailsJSON']
-          : null,
+      detailsJSON: _getDetaisJson(doc),
     );
   }
 
@@ -78,4 +90,22 @@ class Note extends Equatable {
         ownerId,
         detailsJSON,
       ];
+
+  Note copyWith({
+    String? title,
+    String? details,
+    String? category,
+    String? dateTime,
+    String? detailsJSON,
+  }) {
+    return Note(
+      id: id,
+      title: title ?? this.title,
+      details: details ?? this.details,
+      category: category ?? this.category,
+      dateTime: dateTime ?? this.dateTime,
+      ownerId: ownerId,
+      detailsJSON: detailsJSON ?? this.detailsJSON,
+    );
+  }
 }

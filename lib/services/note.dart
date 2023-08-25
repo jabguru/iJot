@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hive/hive.dart';
 import 'package:ijot/models/note.dart';
 import 'package:ijot/services/firebase_firestore.dart';
@@ -114,10 +113,10 @@ class NoteService {
   cloudToLocal() async {
     try {
       if (loggedInUserId != null) {
-        QuerySnapshot snapshot =
+        final docs =
             await firebaseFirestoreService.getUserNotes(loggedInUserId!);
 
-        for (var doc in snapshot.docs) {
+        for (var doc in docs) {
           bool isContained = false;
           bool isUnchanged = false;
           Note cloudNote = Note.fromDocument(doc);
@@ -142,12 +141,10 @@ class NoteService {
   }
 
   deleteNotesDeletedFromOtherDevices() async {
-    QuerySnapshot snapshot =
-        await firebaseFirestoreService.getUserNotes(loggedInUserId!);
+    final docs = await firebaseFirestoreService.getUserNotes(loggedInUserId!);
 
-    List<Note> cloudNotes = snapshot.docs
-        .map((QueryDocumentSnapshot doc) => Note.fromDocument(doc))
-        .toList();
+    List<Note> cloudNotes =
+        docs.map((var doc) => Note.fromDocument(doc)).toList();
 
     for (var i = 0; i < notesBox.length; i++) {
       if (loggedInUserId == notesBox.getAt(i)!.ownerId) {

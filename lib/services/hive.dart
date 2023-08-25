@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:hive/hive.dart';
 import 'package:ijot/models/note.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
@@ -8,11 +10,24 @@ class HiveService {
   Box get userBox => Hive.box('user');
   Box<Note> get notesBox => Hive.box<Note>('notes');
 
-  Future initialize() async {
+  Future initialize({bool isTest = false}) async {
     if (!kIsWeb) {
-      final appDocumentDir =
-          await path_provider.getApplicationDocumentsDirectory();
-      Hive.init(appDocumentDir.path);
+      late String fullPath;
+      if (isTest) {
+        var path = Directory.current.path;
+        fullPath = '$path/test/hive_testing_path';
+
+        // delete the hive box if it exits first
+        final Directory dir = Directory(fullPath);
+        if (dir.existsSync()) {
+          dir.deleteSync(recursive: true);
+        }
+      } else {
+        final appDocumentDir =
+            await path_provider.getApplicationDocumentsDirectory();
+        fullPath = appDocumentDir.path;
+      }
+      Hive.init(fullPath);
     }
 
     Hive.registerAdapter(NoteAdapter());
