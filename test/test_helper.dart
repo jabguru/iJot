@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ijot/constants/supported_locales.dart';
 // ignore: depend_on_referenced_packages
 import 'package:shared_preferences/shared_preferences.dart';
@@ -16,6 +17,18 @@ class TestHelper {
           // localizationsDelegates: context.localizationDelegates,
           // supportedLocales: context.supportedLocales,
           // locale: context.locale,
+        ),
+      ),
+    );
+  }
+
+  static Widget createScreenWithGoRouter(GoRouter router) {
+    return EasyLocalization(
+      path: 'assets/translations',
+      supportedLocales: supportedLocales,
+      child: Builder(
+        builder: (context) => MaterialApp.router(
+          routerConfig: router,
         ),
       ),
     );

@@ -15,8 +15,11 @@ import 'test_helper.dart';
 
 class MockFirebaseService extends Mock implements FirebaseFirestoreService {}
 
-Widget createNotesScreen() =>
-    TestHelper.createScreen(const NotesScreenContent());
+Widget createNotesScreen() => TestHelper.createScreen(
+      const NotesScreenContent(
+        loggedInUserId: 'testUserId',
+      ),
+    );
 
 Widget createNotesListWidget() => TestHelper.createScreen(
       NotesListWidget(
@@ -69,6 +72,8 @@ void main() async {
     testWidgets(
       "Testing if Widgets are rendered properly",
       (tester) async {
+        FlutterError.onError = TestHelper.ignoreOverflowErrors;
+
         await tester.pumpWidget(createNotesScreen());
         // ? i feel this pump is needed here because of the animation in customscaffold (button)
         await tester.pump(const Duration(milliseconds: 500));

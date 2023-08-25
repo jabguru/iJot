@@ -26,14 +26,19 @@ class Notes extends StatelessWidget {
               ? UpgradeDialogStyle.cupertino
               : UpgradeDialogStyle.material,
         ),
-        child: const NotesScreenContent(),
+        child:
+            NotesScreenContent(loggedInUserId: AccountService.loggedInUserId),
       ),
     );
   }
 }
 
 class NotesScreenContent extends StatefulWidget {
-  const NotesScreenContent({super.key});
+  final String? loggedInUserId;
+  const NotesScreenContent({
+    super.key,
+    required this.loggedInUserId,
+  });
 
   @override
   State<NotesScreenContent> createState() => _NotesScreenContentState();
@@ -79,7 +84,7 @@ class _NotesScreenContentState extends State<NotesScreenContent> {
         scrollController: _notesScrollController,
         searchText: _searchText,
         category: _category,
-        loggedInUserId: AccountService.loggedInUserId,
+        loggedInUserId: widget.loggedInUserId,
       ),
       onTap: () {
         context.go('/${MyRoutes.noteRoute}');
