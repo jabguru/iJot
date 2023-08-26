@@ -1,0 +1,5 @@
+- Bug fixes
+- Automatically sync notes from other devices without signing out and in
+- Multilingual support
+- Enabled password reset
+- Privacy policy update
