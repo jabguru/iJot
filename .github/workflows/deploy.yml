@@ -102,7 +102,7 @@ jobs:
         
         - name: Get Flutter Version
           run: |
-            versionName=`cat pubspec.yaml | grep -o 'version:[^:]*' | cut -f2 -d":" | xargs`
+            versionName=`cat pubspec.yaml | grep -m 1 -o 'version:[^:]*' | cut -f2 -d":" | xargs`
             echo "VERSION_NAME=v$versionName" >> $GITHUB_ENV
         
         - name: Create Tag and Release
