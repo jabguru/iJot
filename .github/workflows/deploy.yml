@@ -24,7 +24,7 @@ jobs:
             echo "keyPassword=${{ secrets.KEY_PASSWORD }}" > android/key.properties
             echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> android/key.properties
             echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
-            echo "${{ secrets.STORE_FILE_CONTENT }}" | base64 --decode > android/private/key.jks
+            echo "${{ secrets.STORE_FILE_CONTENT }}" | base64 --decode > android/key.jks
         
         - name: Set up local.properties
           run: |
@@ -32,7 +32,7 @@ jobs:
         
         - name: Set up Play Store Secret
           run: |
-            echo "${{ secrets.PLAY_STORE_SECRET }}" | base64 --decode > android/private/playstore-credentials.json
+            echo "${{ secrets.PLAY_STORE_SECRET }}" | base64 --decode > android/playstore-credentials.json
         
         - name: Setup Fastlane
           uses: ruby/setup-ruby@v1
