@@ -1,4 +1,4 @@
-- Access your notes seamlessly across mobile devices.
+- Access your notes seamlessly across mobile devices and on the web.
 - Store your notes both offline and online and access them anywhere.
 - Works without internet connection (after first sign in) and saves your notes to cloud when internet connection is available.
 - Notes are stored silently to cloud without depriving you of a seamless experience.
