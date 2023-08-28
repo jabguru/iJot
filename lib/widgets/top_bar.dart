@@ -46,54 +46,59 @@ class TopBarWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              Row(
-                children: [
-                  if (extraWidget != null && screenGreaterThan700) extraWidget!,
-                  kFullHSpace,
-                  if (AccountService.loggedInUserId != null)
-                    Container(
-                      height: 35.0,
-                      decoration: BoxDecoration(
-                        color: kPurple1,
-                        borderRadius:
-                            BorderRadius.circular(kCircularBorderRadius),
-                      ),
-                      child: TextButton(
-                        onPressed: () async {
-                          await AccountService.logout();
-                          if (context.mounted) {
-                            context.go(MyRoutes.loginRoute());
-                          }
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 6.0,
-                          ),
-                          child: Text(
-                            'sign_out'.tr(),
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16.0,
-                              color: Colors.white,
+              kLargeHSpace,
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    if (extraWidget != null && screenGreaterThan700)
+                      Expanded(child: extraWidget!),
+                    kFullHSpace,
+                    if (AccountService.loggedInUserId != null)
+                      Container(
+                        height: 35.0,
+                        decoration: BoxDecoration(
+                          color: kPurple1,
+                          borderRadius:
+                              BorderRadius.circular(kCircularBorderRadius),
+                        ),
+                        child: TextButton(
+                          onPressed: () async {
+                            await AccountService.logout();
+                            if (context.mounted) {
+                              context.go(MyRoutes.loginRoute());
+                            }
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 6.0,
+                            ),
+                            child: Text(
+                              'sign_out'.tr(),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16.0,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  kHSpace6,
-                  GestureDetector(
-                    onTap: () => context.go(
-                      MyRoutes.languageRoute(),
-                    ),
-                    child: MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: Icon(
-                        Icons.language,
-                        color: Theme.of(context).primaryColor,
+                    kHSpace6,
+                    GestureDetector(
+                      onTap: () => context.go(
+                        MyRoutes.languageRoute(),
+                      ),
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: Icon(
+                          Icons.language,
+                          color: Theme.of(context).primaryColor,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),

@@ -1,0 +1,3 @@
+- Full-fledged text editor - Add Images, Code, Links, List Items, Text Formatting and decorations
+- Search Notes
+- Sort notes by category

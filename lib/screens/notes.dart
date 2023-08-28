@@ -65,12 +65,14 @@ class _NotesScreenContentState extends State<NotesScreenContent> {
       extraTopBarWidget: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          SearchWidget(
-            onChanged: (String text) {
-              setState(() {
-                _searchText = text;
-              });
-            },
+          Expanded(
+            child: SearchWidget(
+              onChanged: (String text) {
+                setState(() {
+                  _searchText = text;
+                });
+              },
+            ),
           ),
           kHalfHSpace,
           SortNoteWidget(
