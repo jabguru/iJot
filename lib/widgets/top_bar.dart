@@ -71,23 +71,23 @@ class TopBarWidget extends StatelessWidget {
                               BorderRadius.circular(kCircularBorderRadius),
                         ),
                         child: TextButton(
+                          style: TextButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12.0,
+                            ),
+                          ),
                           onPressed: () async {
                             await AccountService.logout();
                             if (context.mounted) {
                               context.go(MyRoutes.loginRoute());
                             }
                           },
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 6.0,
-                            ),
-                            child: Text(
-                              'sign_out'.tr(),
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16.0,
-                                color: Colors.white,
-                              ),
+                          child: Text(
+                            'sign_out'.tr(),
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16.0,
+                              color: Colors.white,
                             ),
                           ),
                         ),
@@ -129,7 +129,7 @@ class TopBarWidget extends StatelessWidget {
                 ),
               ),
               AnimatedScale(
-                duration: const Duration(milliseconds: 700),
+                duration: const Duration(milliseconds: 500),
                 scale: showTopSaveButton ? 1.0 : 0.0,
                 child: SaveButton(
                   editMode: editMode,
