@@ -128,6 +128,15 @@ class TopBarWidget extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              AnimatedScale(
+                duration: const Duration(milliseconds: 700),
+                scale: showTopSaveButton ? 1.0 : 0.0,
+                child: SaveButton(
+                  editMode: editMode,
+                  onTap: onTap,
+                  isSmall: true,
+                ),
+              ),
               if (!screenGreaterThan700 && extraWidget != null) ...[
                 kLargeHSpace,
                 Expanded(child: extraWidget!),
@@ -147,15 +156,6 @@ class TopBarWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-              AnimatedScale(
-                duration: const Duration(milliseconds: 700),
-                scale: showTopSaveButton ? 1.0 : 0.0,
-                child: SaveButton(
-                  editMode: editMode,
-                  onTap: onTap,
-                  isSmall: true,
-                ),
-              ),
             ],
           ),
         ),

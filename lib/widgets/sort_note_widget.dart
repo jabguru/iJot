@@ -51,6 +51,8 @@ class SortNoteWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
+      color: Colors.white,
+      surfaceTintColor: Colors.white,
       itemBuilder: _buildPopUpMenuItems,
       onSelected: onSelected,
       tooltip: 'sort_notes'.tr(),

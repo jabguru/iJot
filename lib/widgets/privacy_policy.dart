@@ -35,6 +35,7 @@ showPrivacyPolicyBottomSheet(BuildContext context) {
                         style: kTitleTextStyle.copyWith(
                           decoration: TextDecoration.underline,
                           color: Colors.white,
+                          decorationColor: Colors.white,
                         ),
                       ),
                       kFullVSpace,

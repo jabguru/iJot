@@ -157,13 +157,13 @@ class SingleNoteState extends State<SingleNote> {
   bool get _isMobile => !kIsWeb && (Platform.isAndroid || Platform.isIOS);
   bool get _isDesktop => !kIsWeb && !Platform.isAndroid && !Platform.isIOS;
 
-  Future<String> _onImagePaste(Uint8List imageBytes) async {
+  Future<String?> _onImagePaste(Uint8List imageBytes) async {
     final appDocDir = await getApplicationDocumentsDirectory();
     final file = await File(
             '${appDocDir.path}/${path.basename('${DateTime.now().millisecondsSinceEpoch}.png')}')
         .writeAsBytes(imageBytes, flush: true);
 
-    String fileURL = await _uploadImageToStorage(
+    String? fileURL = await _uploadImageToStorage(
       file,
       imageBytes.lengthInBytes,
       imageBytes,
@@ -237,21 +237,21 @@ class SingleNoteState extends State<SingleNote> {
   // Renders the image picked by imagePicker from local file storage
   // You can also upload the picked image to any server (eg : AWS s3
   // or Firebase) and then return the uploaded image URL.
-  Future<String> _onImagePickCallback(
+  Future<String?> _onImagePickCallback(
       BuildContext conrext, ImagePickerService imagePickerService) async {
     final pickedFile = await imagePickerService.pickImage(
       source: ImageSource.gallery,
       maxWidth: 720,
       imageQuality: 85,
     );
-    if (pickedFile == null) return '';
+    if (pickedFile == null) return null;
     int fileSize = await pickedFile.length();
     Uint8List fileContent = await pickedFile.readAsBytes();
     File file = File(pickedFile.path);
     return await _uploadImageToStorage(file, fileSize, fileContent);
   }
 
-  Future<String> _uploadImageToStorage(
+  Future<String?> _uploadImageToStorage(
       File file, int fileSize, Uint8List fileContent) async {
     if (_checkFileSize(fileSize)) {
       FirebaseStorageService imageFSS = FirebaseStorageService();
@@ -270,7 +270,7 @@ class SingleNoteState extends State<SingleNote> {
       }
     }
 
-    return '';
+    return null;
   }
 
   bool _checkFileSize(int fileSize) {
@@ -379,6 +379,7 @@ class SingleNoteState extends State<SingleNote> {
               onRequestPickImage: _onImagePickCallback,
             ),
           ),
+          cameraButtonOptions: null,
           // showFormulaButton: true,
         ),
         showAlignmentButtons: true,

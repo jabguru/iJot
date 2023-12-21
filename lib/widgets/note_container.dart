@@ -34,6 +34,8 @@ class NoteContainerState extends State<NoteContainer> {
           return StatefulBuilder(
             builder: (BuildContext context, StateSetter setState) {
               return AlertDialog(
+                surfaceTintColor: Colors.white,
+                backgroundColor: Colors.white,
                 title: Text(
                   'delete_note'.tr(),
                   style: TextStyle(

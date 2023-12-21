@@ -16,6 +16,7 @@ const kTitleTextStyle = TextStyle(
 const kNormalUnderlineTextStyle = TextStyle(
   fontSize: 15.0,
   color: Colors.white,
+  decorationColor: Colors.white,
   decoration: TextDecoration.underline,
   fontFamily: 'Cabin',
 );
