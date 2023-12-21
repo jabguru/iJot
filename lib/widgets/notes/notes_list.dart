@@ -79,6 +79,7 @@ class NotesListWidget extends StatelessWidget {
                     );
                   }
                   return ListView.builder(
+                    controller: scrollController,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 16.0, vertical: 8.0),
                     itemCount: allNotes.length,
