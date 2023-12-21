@@ -1,40 +1,42 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_quill/flutter_quill.dart' as quill;
 import 'package:flutter_quill_extensions/flutter_quill_extensions.dart';
+import 'package:flutter_quill_extensions/services/image_picker/image_options.dart';
+import 'package:flutter_quill_extensions/services/image_picker/s_image_picker.dart';
+import 'package:go_router/go_router.dart';
+import 'package:ijot/constants/category.dart';
 import 'package:ijot/constants/colors.dart';
+import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/spaces.dart';
+import 'package:ijot/models/note.dart';
 import 'package:ijot/services/account.dart';
 import 'package:ijot/services/firebase_firestore.dart';
 import 'package:ijot/services/firebase_storage.dart';
+import 'package:ijot/services/hive.dart';
 import 'package:ijot/services/note.dart';
+import 'package:ijot/widgets/custom_scaffold.dart';
 import 'package:ijot/widgets/note/time_stamp_embed_widget.dart';
 import 'package:ijot/widgets/note/universal_ui/universal_ui.dart';
 import 'package:ijot/widgets/note/whatsapp_copy.dart';
+import 'package:ijot/widgets/snackbar.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
-
-import 'package:ijot/constants/category.dart';
-import 'package:ijot/constants/constants.dart';
-import 'package:ijot/services/hive.dart';
-import 'package:ijot/models/note.dart';
-import 'package:ijot/widgets/custom_scaffold.dart';
-import 'package:ijot/widgets/snackbar.dart';
 
 class SingleNote extends StatefulWidget {
   final Note? note;
 
   const SingleNote({
-    Key? key,
+    super.key,
     this.note,
-  }) : super(key: key);
+  });
 
   @override
   SingleNoteState createState() => SingleNoteState();
@@ -49,7 +51,7 @@ class SingleNoteState extends State<SingleNote> {
 
   late quill.QuillController _quillController;
   late quill.QuillEditor quillEditor;
-  late quill.QuillToolbar toolbar;
+  late quill.QuillSimpleToolbar toolbar;
   final FocusNode _focusNode = FocusNode();
   Timer? _selectAllTimer;
   _SelectionType _selectionType = _SelectionType.none;
@@ -110,7 +112,7 @@ class SingleNoteState extends State<SingleNote> {
         noteService.addNote(newNote);
       }
 
-      Navigator.pop(context);
+      context.pop();
     } else {
       showErrorSnackbar(context,
           title: 'note_add_note'.tr(), message: 'note_add_note_message'.tr());
@@ -161,7 +163,11 @@ class SingleNoteState extends State<SingleNote> {
             '${appDocDir.path}/${path.basename('${DateTime.now().millisecondsSinceEpoch}.png')}')
         .writeAsBytes(imageBytes, flush: true);
 
-    String fileURL = await _onImagePickCallback(file);
+    String fileURL = await _uploadImageToStorage(
+      file,
+      imageBytes.lengthInBytes,
+      imageBytes,
+    );
 
     return fileURL;
   }
@@ -208,7 +214,7 @@ class SingleNoteState extends State<SingleNote> {
         extentOffset: offset + length,
       );
 
-      controller.updateSelection(selection, quill.ChangeSource.REMOTE);
+      controller.updateSelection(selection, quill.ChangeSource.remote);
 
       // _selectionType = _SelectionType.line;
 
@@ -228,21 +234,26 @@ class SingleNoteState extends State<SingleNote> {
     });
   }
 
-  Future<String?> openFileSystemPickerForDesktop(BuildContext context) async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles();
-
-    if (result != null) {
-      File file = File(result.files.single.path!);
-      return file.path;
-    }
-    return null;
-  }
-
   // Renders the image picked by imagePicker from local file storage
   // You can also upload the picked image to any server (eg : AWS s3
   // or Firebase) and then return the uploaded image URL.
-  Future<String> _onImagePickCallback(File file) async {
-    if (_checkFileSize(file)) {
+  Future<String> _onImagePickCallback(
+      BuildContext conrext, ImagePickerService imagePickerService) async {
+    final pickedFile = await imagePickerService.pickImage(
+      source: ImageSource.gallery,
+      maxWidth: 720,
+      imageQuality: 85,
+    );
+    if (pickedFile == null) return '';
+    int fileSize = await pickedFile.length();
+    Uint8List fileContent = await pickedFile.readAsBytes();
+    File file = File(pickedFile.path);
+    return await _uploadImageToStorage(file, fileSize, fileContent);
+  }
+
+  Future<String> _uploadImageToStorage(
+      File file, int fileSize, Uint8List fileContent) async {
+    if (_checkFileSize(fileSize)) {
       FirebaseStorageService imageFSS = FirebaseStorageService();
       await imageFSS.uploadFile(
         uid: AccountService.loggedInUserId!,
@@ -251,6 +262,7 @@ class SingleNoteState extends State<SingleNote> {
                 .basenameWithoutExtension(file.path)
                 .replaceAll(RegExp('[^A-Za-z0-9]'), '_') +
             path.extension(file.path),
+        fileContent: fileContent,
       );
 
       if (imageFSS.url != null) {
@@ -261,22 +273,8 @@ class SingleNoteState extends State<SingleNote> {
     return '';
   }
 
-  Future<String?> _webImagePickImpl(
-      OnImagePickCallback onImagePickCallback) async {
-    final result = await FilePicker.platform.pickFiles();
-    if (result == null) {
-      return null;
-    }
-
-    // Take first, because we don't allow picking multiple files.
-    final fileName = result.files.first.name;
-    final file = File(fileName);
-
-    return onImagePickCallback(file);
-  }
-
-  bool _checkFileSize(File file) {
-    double sizeInMB = file.lengthSync() / (1024 * 1024);
+  bool _checkFileSize(int fileSize) {
+    double sizeInMB = fileSize / (1024 * 1024);
     if (sizeInMB > 20) {
       if (context.mounted) {
         showErrorSnackbar(context,
@@ -292,143 +290,55 @@ class SingleNoteState extends State<SingleNote> {
     return true;
   }
 
-  // // Renders the video picked by imagePicker from local file storage
-  // // You can also upload the picked video to any server (eg : AWS s3
-  // // or Firebase) and then return the uploaded video URL.
-  // Future<String> _onVideoPickCallback(File file) async {
-  //   if (_checkFileSize(file)) {
-  //     FirebaseStorageService videoFSS = FirebaseStorageService();
-  //     await videoFSS.uploadFile(
-  //       uid: loggedInUserId!,
-  //       file: file,
-  //       imageName: path.basename(file.path),
-  //     );
-
-  //     if (videoFSS.url != null) {
-  //       return videoFSS.url!;
-  //     }
-  //   }
-  //   return '';
-  // }
-
-  Future<MediaPickSetting?> _selectMediaPickSetting(BuildContext context) =>
-      showDialog<MediaPickSetting>(
-        context: context,
-        builder: (ctx) => AlertDialog(
-          contentPadding: EdgeInsets.zero,
-          content: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: TextButton.icon(
-                  icon: const Icon(
-                    Icons.collections,
-                    color: kPrimaryColor,
-                  ),
-                  label: Text(
-                    'gallery'.tr(),
-                    style: kPrimaryTextStyle,
-                  ),
-                  onPressed: () => Navigator.pop(ctx, MediaPickSetting.Gallery),
-                ),
-              ),
-              kHalfHSpace,
-              Container(
-                height: 20.0,
-                width: 1.0,
-                color: kGrey1,
-              ),
-              kHalfHSpace,
-              Expanded(
-                child: TextButton.icon(
-                  icon: const Icon(
-                    Icons.link,
-                    color: kPrimaryColor,
-                  ),
-                  label: Text(
-                    'link'.tr(),
-                    style: kPrimaryTextStyle,
-                  ),
-                  onPressed: () => Navigator.pop(ctx, MediaPickSetting.Link),
-                ),
-              )
-            ],
-          ),
-        ),
-      );
-
-  Future<MediaPickSetting?> _selectCameraPickSetting(BuildContext context) =>
-      showDialog<MediaPickSetting>(
-        context: context,
-        builder: (ctx) => AlertDialog(
-          contentPadding: EdgeInsets.zero,
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextButton.icon(
-                icon: const Icon(
-                  Icons.camera,
-                  color: kPrimaryColor,
-                ),
-                label: Text(
-                  'capture_a_photo'.tr(),
-                  style: kPrimaryTextStyle,
-                ),
-                onPressed: () => Navigator.pop(ctx, MediaPickSetting.Camera),
-              ),
-              // TextButton.icon(
-              //   icon: const Icon(Icons.video_call),
-              //   label: Text('capture_a_video'.tr()),
-              //   onPressed: () => Navigator.pop(ctx, MediaPickSetting.Video),
-              // )
-            ],
-          ),
-        ),
-      );
-
   _initializeEditor() {
     quillEditor = quill.QuillEditor(
-      controller: _quillController,
       scrollController: ScrollController(),
-      scrollable: true,
-      locale: context.locale,
       focusNode: _focusNode,
-      autoFocus: false,
-      readOnly: false,
-      placeholder: 'note_add_details'.tr(),
-      enableSelectionToolbar: _isMobile,
-      expands: false,
-      padding: EdgeInsets.zero,
-      onImagePaste: _onImagePaste,
-      onTapUp: (details, p1) {
-        return _onTripleClickSelection();
-      },
-      customStyles: quill.DefaultStyles(
-        h1: quill.DefaultTextBlockStyle(
-            const TextStyle(
-              fontSize: 32,
-              color: Colors.black,
-              height: 1.15,
-              fontWeight: FontWeight.w300,
-            ),
-            const quill.VerticalSpacing(16, 0),
-            const quill.VerticalSpacing(0, 0),
-            null),
-        sizeSmall: const TextStyle(fontSize: 9),
+      configurations: quill.QuillEditorConfigurations(
+        controller: _quillController,
+        scrollable: true,
+        sharedConfigurations: quill.QuillSharedConfigurations(
+          locale: context.locale,
+        ),
+        autoFocus: false,
+        readOnly: false,
+        placeholder: 'note_add_details'.tr(),
+        enableSelectionToolbar: _isMobile,
+        expands: false,
+        padding: EdgeInsets.zero,
+        onImagePaste: _onImagePaste,
+        onTapUp: (details, p1) {
+          return _onTripleClickSelection();
+        },
+        customStyles: const quill.DefaultStyles(
+          h1: quill.DefaultTextBlockStyle(
+              TextStyle(
+                fontSize: 32,
+                color: Colors.black,
+                height: 1.15,
+                fontWeight: FontWeight.w300,
+              ),
+              quill.VerticalSpacing(16, 0),
+              quill.VerticalSpacing(0, 0),
+              null),
+          sizeSmall: TextStyle(fontSize: 9),
+        ),
+        embedBuilders: [
+          ...FlutterQuillEmbeds.defaultEditorBuilders(),
+          TimeStampEmbedBuilderWidget()
+        ],
       ),
-      embedBuilders: [
-        ...FlutterQuillEmbeds.builders(),
-        TimeStampEmbedBuilderWidget()
-      ],
     );
     if (kIsWeb) {
       quillEditor = quill.QuillEditor(
+        scrollController: ScrollController(),
+        focusNode: _focusNode,
+        configurations: quill.QuillEditorConfigurations(
           controller: _quillController,
-          locale: context.locale,
-          scrollController: ScrollController(),
+          sharedConfigurations: quill.QuillSharedConfigurations(
+            locale: context.locale,
+          ),
           scrollable: true,
-          focusNode: _focusNode,
           autoFocus: false,
           readOnly: false,
           placeholder: 'note_add_details'.tr(),
@@ -437,92 +347,97 @@ class SingleNoteState extends State<SingleNote> {
           onTapUp: (details, p1) {
             return _onTripleClickSelection();
           },
-          customStyles: quill.DefaultStyles(
+          customStyles: const quill.DefaultStyles(
             h1: quill.DefaultTextBlockStyle(
-                const TextStyle(
+                TextStyle(
                   fontSize: 32,
                   color: Colors.black,
                   height: 1.15,
                   fontWeight: FontWeight.w300,
                 ),
-                const quill.VerticalSpacing(16, 0),
-                const quill.VerticalSpacing(0, 0),
+                quill.VerticalSpacing(16, 0),
+                quill.VerticalSpacing(0, 0),
                 null),
-            sizeSmall: const TextStyle(fontSize: 9),
+            sizeSmall: TextStyle(fontSize: 9),
           ),
           embedBuilders: [
             ...defaultEmbedBuildersWeb,
             TimeStampEmbedBuilderWidget()
-          ]);
+          ],
+        ),
+      );
     }
-    toolbar = quill.QuillToolbar.basic(
-      controller: _quillController,
-      multiRowsDisplay: false,
-      showFontFamily: false,
-      embedButtons: FlutterQuillEmbeds.buttons(
-        // provide a callback to enable picking images from device.
-        // if omit, "image" button only allows adding images from url.
-        // same goes for videos.
-        showVideoButton: false,
-        showFormulaButton: true,
-        onImagePickCallback: _onImagePickCallback,
-        onVideoPickCallback: (File file) async {
-          // not support video
-          return '';
-        },
-        // uncomment to provide a custom "pick from" dialog.
-        mediaPickSettingSelector: _selectMediaPickSetting,
-        // uncomment to provide a custom "pick from" dialog.
-        cameraPickSettingSelector: _selectCameraPickSetting,
-      ),
-      showAlignmentButtons: true,
-      afterButtonPressed: _focusNode.requestFocus,
-    );
-    if (kIsWeb) {
-      toolbar = quill.QuillToolbar.basic(
+    toolbar = quill.QuillToolbar.simple(
+      configurations: quill.QuillSimpleToolbarConfigurations(
         controller: _quillController,
         multiRowsDisplay: false,
         showFontFamily: false,
-        embedButtons: FlutterQuillEmbeds.buttons(
-          // ? COMMENTED THIS OUT FOR WEB BECAUSE WEB DOESN'T SUPPORT ADDING LOCAL FILES, ISSUE WITH DART IO AND PATH PROVIDER ON WEB, CHECK FOR WHEN QUILL IS NOW SUPPORTED ON WEB
-          // onImagePickCallback: _onImagePickCallback,
-          showVideoButton: false,
-          showCameraButton: false,
-          webImagePickImpl: _webImagePickImpl,
+        embedButtons: FlutterQuillEmbeds.toolbarButtons(
+          videoButtonOptions: null,
+          imageButtonOptions: QuillToolbarImageButtonOptions(
+            imageButtonConfigurations: QuillToolbarImageConfigurations(
+              onRequestPickImage: _onImagePickCallback,
+            ),
+          ),
+          // showFormulaButton: true,
         ),
         showAlignmentButtons: true,
-        afterButtonPressed: _focusNode.requestFocus,
+        // afterButtonPressed: _focusNode.requestFocus,
+      ),
+    );
+    if (kIsWeb) {
+      toolbar = quill.QuillToolbar.simple(
+        configurations: quill.QuillSimpleToolbarConfigurations(
+          controller: _quillController,
+          multiRowsDisplay: false,
+          showFontFamily: false,
+          embedButtons: FlutterQuillEmbeds.toolbarButtons(
+            videoButtonOptions: null,
+            cameraButtonOptions: null,
+            imageButtonOptions: QuillToolbarImageButtonOptions(
+              imageButtonConfigurations: QuillToolbarImageConfigurations(
+                onRequestPickImage: _onImagePickCallback,
+              ),
+            ),
+          ),
+          showAlignmentButtons: true,
+          // afterButtonPressed: _focusNode.requestFocus,
+        ),
       );
     }
     if (_isDesktop) {
-      toolbar = quill.QuillToolbar.basic(
+      toolbar = quill.QuillToolbar.simple(
+          configurations: quill.QuillSimpleToolbarConfigurations(
         controller: _quillController,
         multiRowsDisplay: false,
         showFontFamily: false,
-        embedButtons: FlutterQuillEmbeds.buttons(
-          onImagePickCallback: _onImagePickCallback,
-          filePickImpl: openFileSystemPickerForDesktop,
-          showVideoButton: false,
-          showCameraButton: false,
+        embedButtons: FlutterQuillEmbeds.toolbarButtons(
+          videoButtonOptions: null,
+          cameraButtonOptions: null,
+          imageButtonOptions: QuillToolbarImageButtonOptions(
+            imageButtonConfigurations: QuillToolbarImageConfigurations(
+              onRequestPickImage: _onImagePickCallback,
+            ),
+          ),
         ),
         showAlignmentButtons: true,
-        afterButtonPressed: _focusNode.requestFocus,
-      );
+        // afterButtonPressed: _focusNode.requestFocus,
+      ));
     }
   }
 
   @override
   Widget build(BuildContext context) {
     bool screenGreaterThan700 = MediaQuery.of(context).size.width > 700;
+    bool switchToTopSaveMode = !kIsWeb &&
+        (Platform.isIOS || Platform.isAndroid) &&
+        MediaQuery.of(context).viewInsets.bottom != 0;
 
     return CustomScaffold(
       title: _isUpdateMode ? 'note_edit'.tr() : 'note_new'.tr(),
       hasTopBars: true,
-      hasBottomBars: !kIsWeb &&
-              (Platform.isIOS || Platform.isAndroid) &&
-              MediaQuery.of(context).viewInsets.bottom != 0
-          ? false
-          : true,
+      showTopSaveButton: switchToTopSaveMode,
+      hasBottomBars: switchToTopSaveMode ? false : true,
       editMode: true,
       onTap: _saveNote,
       child: AnimatedContainer(
@@ -582,6 +497,8 @@ class SingleNoteState extends State<SingleNote> {
                   ),
                   child: PopupMenuButton<dynamic>(
                     itemBuilder: _buildPopUpMenuItems,
+                    surfaceTintColor: Colors.white,
+                    color: Colors.white,
                     onSelected: (dynamic value) {
                       setState(() {
                         _noteCat = value;

@@ -1,16 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
 import 'package:ijot/constants/category.dart';
 import 'package:ijot/constants/colors.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/constants/spaces.dart';
+import 'package:ijot/models/note.dart';
 import 'package:ijot/services/account.dart';
 import 'package:ijot/services/firebase_firestore.dart';
 import 'package:ijot/services/hive.dart';
-import 'package:ijot/models/note.dart';
 import 'package:ijot/services/note.dart';
 import 'package:ijot/widgets/button.dart';
 
@@ -20,8 +19,8 @@ class NoteContainer extends StatefulWidget {
   const NoteContainer(
     this.note,
     this.noteIndex, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   NoteContainerState createState() => NoteContainerState();

@@ -1,5 +1,6 @@
-import 'dart:math';
 import 'dart:developer' as dev;
+import 'dart:math';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -14,9 +15,9 @@ import 'package:ijot/widgets/custom_scaffold.dart';
 class ChangeLanguage extends StatefulWidget {
   final bool isFirstOpen;
   const ChangeLanguage({
-    Key? key,
+    super.key,
     required this.isFirstOpen,
-  }) : super(key: key);
+  });
   @override
   ChangeLanguageState createState() => ChangeLanguageState();
 }
@@ -39,8 +40,9 @@ class ChangeLanguageState extends State<ChangeLanguage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => !widget.isFirstOpen,
+    return PopScope(
+      // TODO: TEST HERE
+      canPop: !widget.isFirstOpen,
       child: CustomScaffold(
         title: 'change_language'.tr(),
         shouldShrink: false,

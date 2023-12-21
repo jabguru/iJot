@@ -64,7 +64,7 @@ showPrivacyPolicyBottomSheet(BuildContext context) {
 }
 
 class PrivacyPolicyWidget extends StatelessWidget {
-  const PrivacyPolicyWidget({Key? key}) : super(key: key);
+  const PrivacyPolicyWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

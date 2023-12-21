@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:ijot/constants/constants.dart';
 
 class CustomButton extends StatelessWidget {
@@ -9,13 +8,13 @@ class CustomButton extends StatelessWidget {
   final VoidCallback onTap;
   final Widget? child;
   const CustomButton({
-    Key? key,
+    super.key,
     required this.buttonColor,
     this.textColor,
     this.text,
     required this.onTap,
     this.child,
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -51,13 +50,13 @@ class CustomButton2 extends StatelessWidget {
   final VoidCallback onTap;
   final BoxBorder? border;
   const CustomButton2({
-    Key? key,
+    super.key,
     required this.buttonColor,
     required this.textColor,
     required this.text,
     required this.onTap,
     this.border,
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

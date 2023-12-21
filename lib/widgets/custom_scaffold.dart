@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/spaces.dart';
 import 'package:ijot/widgets/bottom_bar.dart';
@@ -16,9 +15,10 @@ class CustomScaffold extends StatefulWidget {
   final ScrollController? scrollController;
   final Widget? extraTopBarWidget;
   final bool mainContentPadding;
+  final bool showTopSaveButton;
 
   const CustomScaffold({
-    Key? key,
+    super.key,
     this.child,
     this.hasTopBars = false,
     this.hasBottomBars = false,
@@ -29,7 +29,8 @@ class CustomScaffold extends StatefulWidget {
     this.scrollController,
     this.extraTopBarWidget,
     this.mainContentPadding = false,
-  }) : super(key: key);
+    this.showTopSaveButton = false,
+  });
 
   @override
   CustomScaffoldState createState() => CustomScaffoldState();
@@ -88,6 +89,9 @@ class CustomScaffoldState extends State<CustomScaffold> {
                   title: widget.title,
                   screenGreaterThan700: screenGreaterThan700,
                   extraWidget: widget.extraTopBarWidget,
+                  showTopSaveButton: widget.showTopSaveButton,
+                  editMode: widget.editMode,
+                  onTap: widget.onTap,
                 ),
               Expanded(
                 child: _buildMainContent(screenGreaterThan700),

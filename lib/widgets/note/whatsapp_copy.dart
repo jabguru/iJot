@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_quill/flutter_quill.dart' as quill;
+import 'package:flutter_quill/quill_delta.dart';
 import 'package:ijot/constants/spaces.dart';
 import 'package:ijot/widgets/snackbar.dart';
 
@@ -61,8 +62,8 @@ class WhatsappCopyButton extends StatelessWidget {
   }
 
   String formatText(quill.QuillController controller) {
-    final quill.Delta delta = controller.document.toDelta();
-    final List<quill.Operation> ops = delta.toList();
+    final Delta delta = controller.document.toDelta();
+    final List<Operation> ops = delta.toList();
 
     final StringBuffer formattedText = StringBuffer();
 
