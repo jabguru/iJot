@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:ijot/constants/colors.dart';
+import 'package:ijot/widgets/save_button.dart';
 
 class BottomBarWidget extends StatefulWidget {
   const BottomBarWidget({
@@ -61,30 +61,9 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
             duration: const Duration(milliseconds: 700),
             bottom: notAnimated ? 1.0 : 15.0,
             curve: Curves.easeInOut,
-            child: GestureDetector(
+            child: SaveButton(
               onTap: widget.onTap,
-              child: MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: Container(
-                  width: 64.0,
-                  height: 64.0,
-                  decoration: BoxDecoration(
-                      color: kPrimaryColor,
-                      borderRadius: BorderRadius.circular(32.0),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: kPurple1,
-                          blurRadius: 8.0,
-                          offset: Offset(0, 4),
-                        )
-                      ]),
-                  child: Icon(
-                    widget.editMode ? Icons.check : Icons.add,
-                    color: Colors.white,
-                    size: 30.0,
-                  ),
-                ),
-              ),
+              editMode: widget.editMode,
             ),
           )
         ],

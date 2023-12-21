@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -14,15 +15,14 @@ import 'package:ijot/widgets/privacy_policy.dart';
 import 'package:ijot/widgets/progress.dart';
 import 'package:ijot/widgets/show_password.dart';
 import 'package:ijot/widgets/snackbar.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:ijot/widgets/textfield.dart';
 import 'package:modal_progress_hud_alt/modal_progress_hud_alt.dart';
 
 class Login extends StatefulWidget {
   const Login({
-    Key? key,
+    super.key,
     this.redirectToDeleteAccount = false,
-  }) : super(key: key);
+  });
   final bool redirectToDeleteAccount;
 
   @override
@@ -119,8 +119,8 @@ class LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
+    return PopScope(
+      canPop: false,
       child: CustomScaffold(
         title: 'sign_in'.tr(),
         shouldShrink: false,

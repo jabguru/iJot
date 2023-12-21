@@ -1,4 +1,6 @@
 import 'dart:io';
+
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -6,7 +8,6 @@ import 'package:ijot/constants/routes.dart';
 import 'package:ijot/constants/spaces.dart';
 import 'package:ijot/services/account.dart';
 import 'package:ijot/widgets/custom_scaffold.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:ijot/widgets/notes/notes_list.dart';
 import 'package:ijot/widgets/search_widget.dart';
 import 'package:ijot/widgets/sort_note_widget.dart';
@@ -17,8 +18,8 @@ class Notes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
+    return PopScope(
+      canPop: false,
       child: UpgradeAlert(
         upgrader: Upgrader(
           messages: UpgraderMessages(code: context.locale.languageCode),

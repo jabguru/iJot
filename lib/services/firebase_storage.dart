@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:firebase_storage/firebase_storage.dart';
 
@@ -12,11 +13,15 @@ class FirebaseStorageService {
     required String uid,
     required File file,
     required String imageName,
+    required Uint8List fileContent,
   }) async {
     final storageRef = FirebaseStorage.instance.ref();
     final fileRef = storageRef.child('$uid/$imageName');
 
-    await fileRef.putFile(file);
+    await fileRef.putData(
+      fileContent,
+      SettableMetadata(contentType: 'image/jpeg'),
+    );
 
     url = await fileRef.getDownloadURL();
   }

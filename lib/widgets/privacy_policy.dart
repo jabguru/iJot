@@ -35,6 +35,7 @@ showPrivacyPolicyBottomSheet(BuildContext context) {
                         style: kTitleTextStyle.copyWith(
                           decoration: TextDecoration.underline,
                           color: Colors.white,
+                          decorationColor: Colors.white,
                         ),
                       ),
                       kFullVSpace,
@@ -64,7 +65,7 @@ showPrivacyPolicyBottomSheet(BuildContext context) {
 }
 
 class PrivacyPolicyWidget extends StatelessWidget {
-  const PrivacyPolicyWidget({Key? key}) : super(key: key);
+  const PrivacyPolicyWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

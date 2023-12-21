@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -8,17 +9,24 @@ import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/constants/spaces.dart';
 import 'package:ijot/services/account.dart';
+import 'package:ijot/widgets/save_button.dart';
 
 class TopBarWidget extends StatelessWidget {
   const TopBarWidget({
+    super.key,
     required this.title,
     required this.screenGreaterThan700,
+    required this.editMode,
+    required this.onTap,
     this.extraWidget,
-    super.key,
+    this.showTopSaveButton = false,
   });
   final String title;
   final bool screenGreaterThan700;
   final Widget? extraWidget;
+  final bool showTopSaveButton;
+  final bool editMode;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -118,6 +126,15 @@ class TopBarWidget extends StatelessWidget {
                   color: kPurpleDark1,
                   fontSize: 32.0,
                   fontWeight: FontWeight.bold,
+                ),
+              ),
+              AnimatedScale(
+                duration: const Duration(milliseconds: 700),
+                scale: showTopSaveButton ? 1.0 : 0.0,
+                child: SaveButton(
+                  editMode: editMode,
+                  onTap: onTap,
+                  isSmall: true,
                 ),
               ),
               if (!screenGreaterThan700 && extraWidget != null) ...[

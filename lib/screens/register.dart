@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -11,12 +12,11 @@ import 'package:ijot/widgets/privacy_policy.dart';
 import 'package:ijot/widgets/progress.dart';
 import 'package:ijot/widgets/show_password.dart';
 import 'package:ijot/widgets/snackbar.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:ijot/widgets/textfield.dart';
 import 'package:modal_progress_hud_alt/modal_progress_hud_alt.dart';
 
 class Register extends StatefulWidget {
-  const Register({Key? key}) : super(key: key);
+  const Register({super.key});
 
   @override
   RegisterState createState() => RegisterState();
