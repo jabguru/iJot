@@ -56,7 +56,7 @@ jobs:
         - name: Setup Fastlane
           uses: ruby/setup-ruby@v1
           with:
-            ruby-version: 2.6
+            ruby-version: 3.2.2
             rubygems: latest
         
         - name: Build and Deploy
