@@ -41,7 +41,6 @@ class ChangeLanguageState extends State<ChangeLanguage> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      // TODO: TEST HERE
       canPop: !widget.isFirstOpen,
       child: CustomScaffold(
         title: 'change_language'.tr(),
