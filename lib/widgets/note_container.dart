@@ -36,8 +36,10 @@ class NoteContainerState extends State<NoteContainer> {
               return AlertDialog(
                 surfaceTintColor: Colors.white,
                 backgroundColor: Colors.white,
+                alignment: Alignment.center,
                 title: Text(
                   'delete_note'.tr(),
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Theme.of(context).primaryColor,
                     fontSize: 16.0,

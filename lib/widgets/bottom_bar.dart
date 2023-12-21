@@ -58,7 +58,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
             ),
           ),
           AnimatedPositioned(
-            duration: const Duration(milliseconds: 700),
+            duration: const Duration(milliseconds: 500),
             bottom: notAnimated ? 1.0 : 15.0,
             curve: Curves.easeInOut,
             child: SaveButton(
