@@ -430,9 +430,7 @@ class SingleNoteState extends State<SingleNote> {
   @override
   Widget build(BuildContext context) {
     bool screenGreaterThan700 = MediaQuery.of(context).size.width > 700;
-    bool switchToTopSaveMode = !kIsWeb &&
-        (Platform.isIOS || Platform.isAndroid) &&
-        MediaQuery.of(context).viewInsets.bottom != 0;
+    bool switchToTopSaveMode = MediaQuery.of(context).viewInsets.bottom != 0;
 
     return CustomScaffold(
       title: _isUpdateMode ? 'note_edit'.tr() : 'note_new'.tr(),
