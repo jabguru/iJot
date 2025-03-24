@@ -8,8 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_quill/flutter_quill.dart' as quill;
 import 'package:flutter_quill_extensions/flutter_quill_extensions.dart';
-import 'package:flutter_quill_extensions/services/image_picker/image_options.dart';
-import 'package:flutter_quill_extensions/services/image_picker/s_image_picker.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ijot/constants/category.dart';
 import 'package:ijot/constants/colors.dart';
@@ -22,6 +20,7 @@ import 'package:ijot/services/firebase_storage.dart';
 import 'package:ijot/services/hive.dart';
 import 'package:ijot/services/note.dart';
 import 'package:ijot/widgets/custom_scaffold.dart';
+import 'package:ijot/widgets/note/image_picker.dart';
 import 'package:ijot/widgets/note/time_stamp_embed_widget.dart';
 import 'package:ijot/widgets/note/universal_ui/universal_ui.dart';
 import 'package:ijot/widgets/note/whatsapp_copy.dart';
@@ -292,16 +291,12 @@ class SingleNoteState extends State<SingleNote> {
 
   _initializeEditor() {
     quillEditor = quill.QuillEditor(
+      controller: _quillController,
       scrollController: ScrollController(),
       focusNode: _focusNode,
-      configurations: quill.QuillEditorConfigurations(
-        controller: _quillController,
+      config: quill.QuillEditorConfig(
         scrollable: true,
-        sharedConfigurations: quill.QuillSharedConfigurations(
-          locale: context.locale,
-        ),
         autoFocus: false,
-        readOnly: false,
         placeholder: 'note_add_details'.tr(),
         enableSelectionToolbar: _isMobile,
         expands: false,

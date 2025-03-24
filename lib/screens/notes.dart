@@ -21,11 +21,11 @@ class Notes extends StatelessWidget {
     return PopScope(
       canPop: false,
       child: UpgradeAlert(
+        dialogStyle: !kIsWeb && Platform.isIOS
+            ? UpgradeDialogStyle.cupertino
+            : UpgradeDialogStyle.material,
         upgrader: Upgrader(
           messages: UpgraderMessages(code: context.locale.languageCode),
-          dialogStyle: !kIsWeb && Platform.isIOS
-              ? UpgradeDialogStyle.cupertino
-              : UpgradeDialogStyle.material,
         ),
         child:
             NotesScreenContent(loggedInUserId: AccountService.loggedInUserId),

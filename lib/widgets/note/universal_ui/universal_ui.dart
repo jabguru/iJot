@@ -1,14 +1,14 @@
-library universal_ui;
+library;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:ijot/widgets/note/responsive_widget.dart';
+import 'package:string_validator/string_validator.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import 'fake_ui.dart' if (dart.library.html) 'real_ui.dart' as ui_instance;
-import 'package:string_validator/string_validator.dart';
 
 bool isImageBase64(String imageUrl) {
   return !imageUrl.startsWith('http') && isBase64(imageUrl);
@@ -36,15 +36,8 @@ class ImageEmbedBuilderWeb extends EmbedBuilder {
   String get key => BlockEmbed.imageType;
 
   @override
-  Widget build(
-    BuildContext context,
-    QuillController controller,
-    Embed node,
-    bool readOnly,
-    bool inline,
-    TextStyle textStyle,
-  ) {
-    final imageUrl = node.value.data;
+  Widget build(BuildContext context, EmbedContext embedContext) {
+    final imageUrl = embedContext.node.value.data;
     if (isImageBase64(imageUrl)) {
       // TODO: handle imageUrl of base64
       return const SizedBox();
@@ -79,15 +72,8 @@ class VideoEmbedBuilderWeb extends EmbedBuilder {
   String get key => BlockEmbed.videoType;
 
   @override
-  Widget build(
-    BuildContext context,
-    QuillController controller,
-    Embed node,
-    bool readOnly,
-    bool inline,
-    TextStyle textStyle,
-  ) {
-    var videoUrl = node.value.data;
+  Widget build(BuildContext context, EmbedContext embedContext) {
+    var videoUrl = embedContext.node.value.data;
     if (videoUrl.contains('youtube.com') || videoUrl.contains('youtu.be')) {
       final youtubeID = YoutubePlayer.convertUrlToId(videoUrl);
       if (youtubeID != null) {
