@@ -21,14 +21,16 @@ class Notes extends StatelessWidget {
     return PopScope(
       canPop: false,
       child: UpgradeAlert(
-        dialogStyle: !kIsWeb && Platform.isIOS
-            ? UpgradeDialogStyle.cupertino
-            : UpgradeDialogStyle.material,
+        dialogStyle:
+            !kIsWeb && Platform.isIOS
+                ? UpgradeDialogStyle.cupertino
+                : UpgradeDialogStyle.material,
         upgrader: Upgrader(
           messages: UpgraderMessages(code: context.locale.languageCode),
         ),
-        child:
-            NotesScreenContent(loggedInUserId: AccountService.loggedInUserId),
+        child: NotesScreenContent(
+          loggedInUserId: AccountService.loggedInUserId,
+        ),
       ),
     );
   }
@@ -36,10 +38,7 @@ class Notes extends StatelessWidget {
 
 class NotesScreenContent extends StatefulWidget {
   final String? loggedInUserId;
-  const NotesScreenContent({
-    super.key,
-    required this.loggedInUserId,
-  });
+  const NotesScreenContent({super.key, required this.loggedInUserId});
 
   @override
   State<NotesScreenContent> createState() => _NotesScreenContentState();
@@ -50,7 +49,7 @@ class _NotesScreenContentState extends State<NotesScreenContent> {
   String? _searchText;
   String _category = 'All';
 
-  void _onSelected(value) {
+  void _onSelected(dynamic value) {
     setState(() {
       _category = value;
     });
@@ -76,10 +75,7 @@ class _NotesScreenContentState extends State<NotesScreenContent> {
             ),
           ),
           kHalfHSpace,
-          SortNoteWidget(
-            onSelected: _onSelected,
-            value: _category,
-          ),
+          SortNoteWidget(onSelected: _onSelected, value: _category),
         ],
       ),
       scrollController: _notesScrollController,

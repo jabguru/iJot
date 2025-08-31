@@ -1,6 +1,7 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ijot/models/note.dart';
-import 'dart:developer';
 
 class FirebaseFirestoreService {
   final notesRef = FirebaseFirestore.instance.collection('notes');
@@ -21,30 +22,25 @@ class FirebaseFirestoreService {
     }
   }
 
-  updateNote({required Note note, required String userId}) {
+  void updateNote({required Note note, required String userId}) {
     try {
-      notesRef.doc(userId).collection('userNotes').doc(note.id).update(
-        {
-          'title': note.title,
-          'details': note.details,
-          'category': note.category,
-          'dateTime': DateTime.parse(note.dateTime!),
-          'detailsJSON': note.detailsJSON,
-        },
-      );
+      notesRef.doc(userId).collection('userNotes').doc(note.id).update({
+        'title': note.title,
+        'details': note.details,
+        'category': note.category,
+        'dateTime': DateTime.parse(note.dateTime!),
+        'detailsJSON': note.detailsJSON,
+      });
     } catch (e) {
       log(e.toString());
     }
   }
 
-  deleteNote({required Note note, required String userId}) {
+  void deleteNote({required Note note, required String userId}) {
     try {
-      notesRef
-          .doc(userId)
-          .collection('userNotes')
-          .doc(note.id)
-          .get()
-          .then((doc) {
+      notesRef.doc(userId).collection('userNotes').doc(note.id).get().then((
+        doc,
+      ) {
         if (doc.exists) {
           doc.reference.delete();
         }
@@ -54,16 +50,17 @@ class FirebaseFirestoreService {
     }
   }
 
-  deleteDocument(userId) async {
+  Future<void> deleteDocument(String? userId) async {
     await notesRef.doc(userId).delete();
   }
 
   Future<List> getUserNotes(String userId) async {
-    QuerySnapshot snapshot = await notesRef
-        .doc(userId)
-        .collection('userNotes')
-        .orderBy('dateTime')
-        .get();
+    QuerySnapshot snapshot =
+        await notesRef
+            .doc(userId)
+            .collection('userNotes')
+            .orderBy('dateTime')
+            .get();
 
     return snapshot.docs;
   }

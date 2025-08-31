@@ -76,7 +76,7 @@ class LoginState extends State<Login> {
         setState(() {
           _isLoading = false;
         });
-        if (context.mounted) {
+        if (mounted) {
           showErrorSnackbar(context, message: e.message);
         }
       }
@@ -95,7 +95,7 @@ class LoginState extends State<Login> {
     }
   }
 
-  void _handleAuthenticationError(error) {
+  void _handleAuthenticationError(dynamic error) {
     // print('Error Signing in: $error');
     showErrorSnackbar(
       context,

@@ -4,12 +4,13 @@ import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/spaces.dart';
 import 'package:ijot/widgets/button.dart';
 
-showPrivacyPolicyBottomSheet(BuildContext context) {
+Future showPrivacyPolicyBottomSheet(BuildContext context) {
   return showModalBottomSheet(
-      backgroundColor: Colors.transparent,
-      context: context,
-      builder: (context) {
-        return LayoutBuilder(builder: (context, constraints) {
+    backgroundColor: Colors.transparent,
+    context: context,
+    builder: (context) {
+      return LayoutBuilder(
+        builder: (context, constraints) {
           return Stack(
             alignment: AlignmentDirectional.center,
             children: [
@@ -40,12 +41,10 @@ showPrivacyPolicyBottomSheet(BuildContext context) {
                       ),
                       kFullVSpace,
                       Text(
-                        'privacy_policy'.tr(namedArgs: {
-                          'name': "Julius Alibrown",
-                        }),
-                        style: const TextStyle(
-                          color: Colors.white,
+                        'privacy_policy'.tr(
+                          namedArgs: {'name': "Julius Alibrown"},
                         ),
+                        style: const TextStyle(color: Colors.white),
                       ),
                       kVSpace24,
                       CustomButton(
@@ -60,8 +59,10 @@ showPrivacyPolicyBottomSheet(BuildContext context) {
               ),
             ],
           );
-        });
-      });
+        },
+      );
+    },
+  );
 }
 
 class PrivacyPolicyWidget extends StatelessWidget {

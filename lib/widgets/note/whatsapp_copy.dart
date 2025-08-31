@@ -17,24 +17,26 @@ class WhatsappCopyButton extends StatelessWidget {
     return Tooltip(
       message: 'copy_for_whatsapp'.tr(),
       child: TextButton(
-        style: TextButton.styleFrom(
-          backgroundColor: theme.canvasColor,
-        ),
+        style: TextButton.styleFrom(backgroundColor: theme.canvasColor),
         onPressed: () {
           final String formattedText = formatText(quillController);
 
           Clipboard.setData(ClipboardData(text: formattedText)).then(
             (result) {
-              showSuccessSnackbar(
-                context,
-                message: 'copy_for_whatsapp_success'.tr(),
-              );
+              if (context.mounted) {
+                showSuccessSnackbar(
+                  context,
+                  message: 'copy_for_whatsapp_success'.tr(),
+                );
+              }
             },
             onError: (error) {
-              showErrorSnackbar(
-                context,
-                message: 'copy_for_whatsapp_failed'.tr(),
-              );
+              if (context.mounted) {
+                showErrorSnackbar(
+                  context,
+                  message: 'copy_for_whatsapp_failed'.tr(),
+                );
+              }
             },
           );
         },
@@ -50,10 +52,7 @@ class WhatsappCopyButton extends StatelessWidget {
             kQuarterHSpace,
             Text(
               'copy'.tr(),
-              style: TextStyle(
-                fontSize: 14.0,
-                color: theme.iconTheme.color,
-              ),
+              style: TextStyle(fontSize: 14.0, color: theme.iconTheme.color),
             ),
           ],
         ),

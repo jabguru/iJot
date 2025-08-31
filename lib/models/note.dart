@@ -38,7 +38,7 @@ class Note extends Equatable {
     this.detailsJSON,
   });
 
-  static String? _getDetaisJson(var doc) {
+  static String? _getDetaisJson(dynamic doc) {
     if (doc is Map) {
       if (doc.containsKey('detailsJSON')) {
         return doc['detailsJSON'];
@@ -51,7 +51,7 @@ class Note extends Equatable {
     return null;
   }
 
-  factory Note.fromDocument(var doc) {
+  factory Note.fromDocument(dynamic doc) {
     return Note(
       id: doc['id'],
       title: doc['title'],
@@ -82,14 +82,14 @@ class Note extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,
-        title,
-        details,
-        category,
-        dateTime,
-        ownerId,
-        detailsJSON,
-      ];
+    id,
+    title,
+    details,
+    category,
+    dateTime,
+    ownerId,
+    detailsJSON,
+  ];
 
   Note copyWith({
     String? title,

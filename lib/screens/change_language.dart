@@ -14,10 +14,7 @@ import 'package:ijot/widgets/custom_scaffold.dart';
 
 class ChangeLanguage extends StatefulWidget {
   final bool isFirstOpen;
-  const ChangeLanguage({
-    super.key,
-    required this.isFirstOpen,
-  });
+  const ChangeLanguage({super.key, required this.isFirstOpen});
   @override
   ChangeLanguageState createState() => ChangeLanguageState();
 }
@@ -80,32 +77,35 @@ class ChangeLanguageState extends State<ChangeLanguage> {
                             ),
                             kFullVSpace,
                             ClipRRect(
-                              borderRadius:
-                                  BorderRadius.circular(kCircularBorderRadius),
+                              borderRadius: BorderRadius.circular(
+                                kCircularBorderRadius,
+                              ),
                               child: DropdownButtonFormField<String>(
                                 dropdownColor: Colors.white,
-                                value: _language,
+                                initialValue: _language,
                                 decoration: const InputDecoration(
                                   filled: true,
                                   fillColor: Colors.white,
                                   border: InputBorder.none,
                                 ),
                                 icon: Transform.rotate(
-                                    angle: pi / 2,
-                                    child: const Icon(Icons.chevron_right)),
-                                items: languages
-                                    .map(
-                                      (lang) => DropdownMenuItem(
-                                        value: lang.split(" - ")[0],
-                                        child: Text(
-                                          lang.split(" - ")[1],
-                                          style: const TextStyle(
-                                            fontSize: 16.0,
+                                  angle: pi / 2,
+                                  child: const Icon(Icons.chevron_right),
+                                ),
+                                items:
+                                    languages
+                                        .map(
+                                          (lang) => DropdownMenuItem(
+                                            value: lang.split(" - ")[0],
+                                            child: Text(
+                                              lang.split(" - ")[1],
+                                              style: const TextStyle(
+                                                fontSize: 16.0,
+                                              ),
+                                            ),
                                           ),
-                                        ),
-                                      ),
-                                    )
-                                    .toList(),
+                                        )
+                                        .toList(),
                                 onChanged: (String? value) {
                                   setState(() {
                                     _language = value;
@@ -118,17 +118,19 @@ class ChangeLanguageState extends State<ChangeLanguage> {
                             CustomButton(
                               buttonColor: Theme.of(context).primaryColor,
                               textColor: Colors.white,
-                              onTap: widget.isFirstOpen
-                                  ? () {
-                                      HiveService.firstTimeBox.add('opened');
-                                      context.go(MyRoutes.loginRoute());
-                                    }
-                                  : () {
-                                      context.go(MyRoutes.homeRoute);
-                                    },
-                              text: widget.isFirstOpen
-                                  ? 'language_continue'.tr()
-                                  : 'language_done'.tr(),
+                              onTap:
+                                  widget.isFirstOpen
+                                      ? () {
+                                        HiveService.firstTimeBox.add('opened');
+                                        context.go(MyRoutes.loginRoute());
+                                      }
+                                      : () {
+                                        context.go(MyRoutes.homeRoute);
+                                      },
+                              text:
+                                  widget.isFirstOpen
+                                      ? 'language_continue'.tr()
+                                      : 'language_done'.tr(),
                             ),
                           ],
                         ),

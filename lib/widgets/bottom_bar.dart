@@ -27,7 +27,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
     Timer(const Duration(milliseconds: 200), animateButton);
   }
 
-  animateButton() {
+  void animateButton() {
     if (mounted) {
       setState(() {
         notAnimated = false;
@@ -39,7 +39,8 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-          horizontal: widget.screenGreaterThan700 ? 40.0 : 0.0),
+        horizontal: widget.screenGreaterThan700 ? 40.0 : 0.0,
+      ),
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -61,11 +62,8 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
             duration: const Duration(milliseconds: 500),
             bottom: notAnimated ? 1.0 : 15.0,
             curve: Curves.easeInOut,
-            child: SaveButton(
-              onTap: widget.onTap,
-              editMode: widget.editMode,
-            ),
-          )
+            child: SaveButton(onTap: widget.onTap, editMode: widget.editMode),
+          ),
         ],
       ),
     );

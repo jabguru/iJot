@@ -1,4 +1,5 @@
 import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ijot/services/firebase_firestore.dart';
 import 'package:ijot/services/hive.dart';
@@ -14,12 +15,12 @@ class AccountService {
   static bool get canDeleteAccount =>
       loggedInUserId != null && currentUser != null;
 
-  static logout() async {
+  static Future<void> logout() async {
     await hiveService.userBox.clear();
     await fireBaseAuth.signOut();
   }
 
-  static login(String userId) async {
+  static Future<void> login(String userId) async {
     await hiveService.userBox.put('userId', userId);
     FirebaseFirestoreService firebaseFirestoreService =
         FirebaseFirestoreService();

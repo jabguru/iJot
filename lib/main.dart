@@ -3,7 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:ijot/constants/colors.dart';
 import 'package:ijot/constants/routes.dart';
@@ -61,12 +60,7 @@ class MyApp extends StatelessWidget {
       ),
       localizationsDelegates:
           context.localizationDelegates +
-          const [
-            GlobalMaterialLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            FlutterQuillLocalizations.delegate,
-          ],
+          const [FlutterQuillLocalizations.delegate],
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       routerConfig: MyRoutes.router,

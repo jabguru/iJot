@@ -26,7 +26,6 @@ import 'package:ijot/widgets/note/universal_ui/universal_ui.dart';
 import 'package:ijot/widgets/note/whatsapp_copy.dart';
 import 'package:ijot/widgets/snackbar.dart';
 import 'package:path/path.dart' as path;
-import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
 
 class SingleNote extends StatefulWidget {
@@ -156,20 +155,20 @@ class SingleNoteState extends State<SingleNote> {
   bool get _isMobile => !kIsWeb && (Platform.isAndroid || Platform.isIOS);
   bool get _isDesktop => !kIsWeb && !Platform.isAndroid && !Platform.isIOS;
 
-  Future<String?> _onImagePaste(Uint8List imageBytes) async {
-    final appDocDir = await getApplicationDocumentsDirectory();
-    final file = await File(
-      '${appDocDir.path}/${path.basename('${DateTime.now().millisecondsSinceEpoch}.png')}',
-    ).writeAsBytes(imageBytes, flush: true);
+  // Future<String?> _onImagePaste(Uint8List imageBytes) async {
+  //   final appDocDir = await getApplicationDocumentsDirectory();
+  //   final file = await File(
+  //     '${appDocDir.path}/${path.basename('${DateTime.now().millisecondsSinceEpoch}.png')}',
+  //   ).writeAsBytes(imageBytes, flush: true);
 
-    String? fileURL = await _uploadImageToStorage(
-      file,
-      imageBytes.lengthInBytes,
-      imageBytes,
-    );
+  //   String? fileURL = await _uploadImageToStorage(
+  //     file,
+  //     imageBytes.lengthInBytes,
+  //     imageBytes,
+  //   );
 
-    return fileURL;
-  }
+  //   return fileURL;
+  // }
 
   bool _onTripleClickSelection() {
     final controller = _quillController;
@@ -504,7 +503,7 @@ class SingleNoteState extends State<SingleNote> {
                   ),
                   height: 28.0,
                   decoration: BoxDecoration(
-                    color: categoryColor(_noteCat).withOpacity(0.3),
+                    color: categoryColor(_noteCat).withValues(alpha: 0.3),
                     borderRadius: BorderRadius.circular(18.0),
                   ),
                   child: PopupMenuButton<dynamic>(
