@@ -6,7 +6,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_quill/flutter_quill.dart' as quill;
+import 'package:flutter_quill/flutter_quill.dart';
 import 'package:flutter_quill_extensions/flutter_quill_extensions.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ijot/constants/category.dart';
@@ -32,10 +32,7 @@ import 'package:uuid/uuid.dart';
 class SingleNote extends StatefulWidget {
   final Note? note;
 
-  const SingleNote({
-    super.key,
-    this.note,
-  });
+  const SingleNote({super.key, this.note});
 
   @override
   SingleNoteState createState() => SingleNoteState();
@@ -48,9 +45,9 @@ class SingleNoteState extends State<SingleNote> {
   late final String? _noteDetailsJSON = widget.note?.detailsJSON;
   late final bool _isUpdateMode = widget.note != null;
 
-  late quill.QuillController _quillController;
-  late quill.QuillEditor quillEditor;
-  late quill.QuillSimpleToolbar toolbar;
+  late QuillController _quillController;
+  late QuillEditor quillEditor;
+  late QuillSimpleToolbar toolbar;
   final FocusNode _focusNode = FocusNode();
   Timer? _selectAllTimer;
   _SelectionType _selectionType = _SelectionType.none;
@@ -62,18 +59,18 @@ class SingleNoteState extends State<SingleNote> {
     if (_isUpdateMode) {
       dynamic myJSON;
       if (_noteDetailsJSON != null) {
-        myJSON = jsonDecode(_noteDetailsJSON!);
+        myJSON = jsonDecode(_noteDetailsJSON);
       } else {
         myJSON = [
-          jsonDecode(jsonEncode({'insert': '$_noteDetails\n'}))
+          jsonDecode(jsonEncode({'insert': '$_noteDetails\n'})),
         ];
       }
-      _quillController = quill.QuillController(
-        document: quill.Document.fromJson(myJSON),
+      _quillController = QuillController(
+        document: Document.fromJson(myJSON),
         selection: const TextSelection.collapsed(offset: 0),
       );
     } else {
-      _quillController = quill.QuillController.basic();
+      _quillController = QuillController.basic();
     }
   }
 
@@ -113,8 +110,11 @@ class SingleNoteState extends State<SingleNote> {
 
       context.pop();
     } else {
-      showErrorSnackbar(context,
-          title: 'note_add_note'.tr(), message: 'note_add_note_message'.tr());
+      showErrorSnackbar(
+        context,
+        title: 'note_add_note'.tr(),
+        message: 'note_add_note_message'.tr(),
+      );
     }
   }
 
@@ -159,8 +159,8 @@ class SingleNoteState extends State<SingleNote> {
   Future<String?> _onImagePaste(Uint8List imageBytes) async {
     final appDocDir = await getApplicationDocumentsDirectory();
     final file = await File(
-            '${appDocDir.path}/${path.basename('${DateTime.now().millisecondsSinceEpoch}.png')}')
-        .writeAsBytes(imageBytes, flush: true);
+      '${appDocDir.path}/${path.basename('${DateTime.now().millisecondsSinceEpoch}.png')}',
+    ).writeAsBytes(imageBytes, flush: true);
 
     String? fileURL = await _uploadImageToStorage(
       file,
@@ -213,7 +213,7 @@ class SingleNoteState extends State<SingleNote> {
         extentOffset: offset + length,
       );
 
-      controller.updateSelection(selection, quill.ChangeSource.remote);
+      controller.updateSelection(selection, ChangeSource.remote);
 
       // _selectionType = _SelectionType.line;
 
@@ -236,8 +236,8 @@ class SingleNoteState extends State<SingleNote> {
   // Renders the image picked by imagePicker from local file storage
   // You can also upload the picked image to any server (eg : AWS s3
   // or Firebase) and then return the uploaded image URL.
-  Future<String?> _onImagePickCallback(
-      BuildContext conrext, ImagePickerService imagePickerService) async {
+  Future<String?> _onImagePickCallback(BuildContext context) async {
+    ImagePickerService imagePickerService = ImagePickerService();
     final pickedFile = await imagePickerService.pickImage(
       source: ImageSource.gallery,
       maxWidth: 720,
@@ -251,13 +251,17 @@ class SingleNoteState extends State<SingleNote> {
   }
 
   Future<String?> _uploadImageToStorage(
-      File file, int fileSize, Uint8List fileContent) async {
+    File file,
+    int fileSize,
+    Uint8List fileContent,
+  ) async {
     if (_checkFileSize(fileSize)) {
       FirebaseStorageService imageFSS = FirebaseStorageService();
       await imageFSS.uploadFile(
         uid: AccountService.loggedInUserId!,
         file: file,
-        imageName: path
+        imageName:
+            path
                 .basenameWithoutExtension(file.path)
                 .replaceAll(RegExp('[^A-Za-z0-9]'), '_') +
             path.extension(file.path),
@@ -276,11 +280,11 @@ class SingleNoteState extends State<SingleNote> {
     double sizeInMB = fileSize / (1024 * 1024);
     if (sizeInMB > 20) {
       if (context.mounted) {
-        showErrorSnackbar(context,
-            title: 'error_uploading_file'.tr(),
-            message: 'file_exceeds_limit'.tr(namedArgs: {
-              'limit': "20 MB",
-            }));
+        showErrorSnackbar(
+          context,
+          title: 'error_uploading_file'.tr(),
+          message: 'file_exceeds_limit'.tr(namedArgs: {'limit': "20 MB"}),
+        );
       }
 
       return false;
@@ -289,88 +293,92 @@ class SingleNoteState extends State<SingleNote> {
     return true;
   }
 
-  _initializeEditor() {
-    quillEditor = quill.QuillEditor(
+  void _initializeEditor() {
+    quillEditor = QuillEditor(
       controller: _quillController,
       scrollController: ScrollController(),
       focusNode: _focusNode,
-      config: quill.QuillEditorConfig(
+      config: QuillEditorConfig(
         scrollable: true,
         autoFocus: false,
         placeholder: 'note_add_details'.tr(),
         enableSelectionToolbar: _isMobile,
         expands: false,
         padding: EdgeInsets.zero,
-        onImagePaste: _onImagePaste,
+        // TODO: CHECK IF IMAGE PASTING WORKS.
+        // onImagePaste: _onImagePaste,
         onTapUp: (details, p1) {
           return _onTripleClickSelection();
         },
-        customStyles: const quill.DefaultStyles(
-          h1: quill.DefaultTextBlockStyle(
-              TextStyle(
-                fontSize: 32,
-                color: Colors.black,
-                height: 1.15,
-                fontWeight: FontWeight.w300,
-              ),
-              quill.VerticalSpacing(16, 0),
-              quill.VerticalSpacing(0, 0),
-              null),
+        customStyles: const DefaultStyles(
+          h1: DefaultTextBlockStyle(
+            TextStyle(
+              fontSize: 32,
+              color: Colors.black,
+              height: 1.15,
+              fontWeight: FontWeight.w300,
+            ),
+            HorizontalSpacing(0, 0),
+            VerticalSpacing(16, 0),
+            VerticalSpacing(0, 0),
+            null,
+          ),
           sizeSmall: TextStyle(fontSize: 9),
         ),
         embedBuilders: [
           ...FlutterQuillEmbeds.defaultEditorBuilders(),
-          TimeStampEmbedBuilderWidget()
+          TimeStampEmbedBuilderWidget(),
         ],
       ),
     );
     if (kIsWeb) {
-      quillEditor = quill.QuillEditor(
+      quillEditor = QuillEditor(
+        controller: _quillController,
         scrollController: ScrollController(),
         focusNode: _focusNode,
-        configurations: quill.QuillEditorConfigurations(
-          controller: _quillController,
-          sharedConfigurations: quill.QuillSharedConfigurations(
-            locale: context.locale,
-          ),
+        config: QuillEditorConfig(
           scrollable: true,
           autoFocus: false,
-          readOnly: false,
           placeholder: 'note_add_details'.tr(),
           expands: false,
           padding: EdgeInsets.zero,
           onTapUp: (details, p1) {
             return _onTripleClickSelection();
           },
-          customStyles: const quill.DefaultStyles(
-            h1: quill.DefaultTextBlockStyle(
-                TextStyle(
-                  fontSize: 32,
-                  color: Colors.black,
-                  height: 1.15,
-                  fontWeight: FontWeight.w300,
-                ),
-                quill.VerticalSpacing(16, 0),
-                quill.VerticalSpacing(0, 0),
-                null),
+          customStyles: const DefaultStyles(
+            h1: DefaultTextBlockStyle(
+              TextStyle(
+                fontSize: 32,
+                color: Colors.black,
+                height: 1.15,
+                fontWeight: FontWeight.w300,
+              ),
+              HorizontalSpacing(0, 0),
+              VerticalSpacing(16, 0),
+              VerticalSpacing(0, 0),
+              null,
+            ),
             sizeSmall: TextStyle(fontSize: 9),
           ),
           embedBuilders: [
             ...defaultEmbedBuildersWeb,
-            TimeStampEmbedBuilderWidget()
+            TimeStampEmbedBuilderWidget(),
           ],
         ),
       );
     }
-    toolbar = quill.QuillToolbar.simple(
-      configurations: quill.QuillSimpleToolbarConfigurations(
-        controller: _quillController,
+    toolbar = QuillSimpleToolbar(
+      controller: _quillController,
+      config: QuillSimpleToolbarConfig(
         multiRowsDisplay: false,
         showFontFamily: false,
+        showClipboardCut: true,
+        showClipboardCopy: true,
+        showClipboardPaste: true,
         embedButtons: FlutterQuillEmbeds.toolbarButtons(
           videoButtonOptions: null,
           imageButtonOptions: QuillToolbarImageButtonOptions(
-            imageButtonConfigurations: QuillToolbarImageConfigurations(
+            imageButtonConfig: QuillToolbarImageConfig(
               onRequestPickImage: _onImagePickCallback,
             ),
           ),
@@ -382,16 +390,19 @@ class SingleNoteState extends State<SingleNote> {
       ),
     );
     if (kIsWeb) {
-      toolbar = quill.QuillToolbar.simple(
-        configurations: quill.QuillSimpleToolbarConfigurations(
-          controller: _quillController,
+      toolbar = QuillSimpleToolbar(
+        controller: _quillController,
+        config: QuillSimpleToolbarConfig(
           multiRowsDisplay: false,
           showFontFamily: false,
+          showClipboardCut: true,
+          showClipboardCopy: true,
+          showClipboardPaste: true,
           embedButtons: FlutterQuillEmbeds.toolbarButtons(
             videoButtonOptions: null,
             cameraButtonOptions: null,
             imageButtonOptions: QuillToolbarImageButtonOptions(
-              imageButtonConfigurations: QuillToolbarImageConfigurations(
+              imageButtonConfig: QuillToolbarImageConfig(
                 onRequestPickImage: _onImagePickCallback,
               ),
             ),
@@ -402,23 +413,27 @@ class SingleNoteState extends State<SingleNote> {
       );
     }
     if (_isDesktop) {
-      toolbar = quill.QuillToolbar.simple(
-          configurations: quill.QuillSimpleToolbarConfigurations(
+      toolbar = QuillSimpleToolbar(
         controller: _quillController,
-        multiRowsDisplay: false,
-        showFontFamily: false,
-        embedButtons: FlutterQuillEmbeds.toolbarButtons(
-          videoButtonOptions: null,
-          cameraButtonOptions: null,
-          imageButtonOptions: QuillToolbarImageButtonOptions(
-            imageButtonConfigurations: QuillToolbarImageConfigurations(
-              onRequestPickImage: _onImagePickCallback,
+        config: QuillSimpleToolbarConfig(
+          multiRowsDisplay: false,
+          showFontFamily: false,
+          showClipboardCut: true,
+          showClipboardCopy: true,
+          showClipboardPaste: true,
+          embedButtons: FlutterQuillEmbeds.toolbarButtons(
+            videoButtonOptions: null,
+            cameraButtonOptions: null,
+            imageButtonOptions: QuillToolbarImageButtonOptions(
+              imageButtonConfig: QuillToolbarImageConfig(
+                onRequestPickImage: _onImagePickCallback,
+              ),
             ),
           ),
+          showAlignmentButtons: true,
+          // afterButtonPressed: _focusNode.requestFocus,
         ),
-        showAlignmentButtons: true,
-        // afterButtonPressed: _focusNode.requestFocus,
-      ));
+      );
     }
   }
 
@@ -436,9 +451,10 @@ class SingleNoteState extends State<SingleNote> {
       onTap: _saveNote,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        margin: screenGreaterThan700
-            ? null
-            : const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        margin:
+            screenGreaterThan700
+                ? null
+                : const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         padding: const EdgeInsets.all(16.0),
         width: double.infinity,
         decoration: BoxDecoration(
@@ -483,7 +499,9 @@ class SingleNoteState extends State<SingleNote> {
                 kFullHSpace,
                 Container(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 6.0, vertical: 4.0),
+                    horizontal: 6.0,
+                    vertical: 4.0,
+                  ),
                   height: 28.0,
                   decoration: BoxDecoration(
                     color: categoryColor(_noteCat).withOpacity(0.3),
@@ -515,7 +533,7 @@ class SingleNoteState extends State<SingleNote> {
                       ],
                     ),
                   ),
-                )
+                ),
               ],
             ),
             kFullVSpace,
@@ -527,9 +545,7 @@ class SingleNoteState extends State<SingleNote> {
                     children: [
                       toolbar,
                       kFullVSpace,
-                      Expanded(
-                        child: quillEditor,
-                      ),
+                      Expanded(child: quillEditor),
                     ],
                   ),
                   Positioned(

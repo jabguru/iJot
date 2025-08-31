@@ -122,18 +122,7 @@ extension CameraDeviceExt on CameraDevice {
 
 /// A service used for packing images in the extensions package
 class ImagePickerService extends ImagePickerInterface {
-  const ImagePickerService(
-    this._impl,
-  );
-
-  factory ImagePickerService.imagePickerPackage() => const ImagePickerService(
-        ImagePickerPackageImpl(),
-      );
-
-  factory ImagePickerService.defaultImpl() =>
-      ImagePickerService.imagePickerPackage();
-
-  final ImagePickerInterface _impl;
+  final ImagePickerInterface _impl = ImagePickerPackageImpl();
   @override
   Future<package.XFile?> pickImage({
     required ImageSource source,
