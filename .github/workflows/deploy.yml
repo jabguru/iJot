@@ -78,18 +78,18 @@ jobs:
             channel: 'stable'
             cache: true
 
-        - name: Make Web Build
-          run: |
-            flutter pub get
-            flutter build web
+        # - name: Make Web Build
+        #   run: |
+        #     flutter pub get
+        #     flutter build web
 
-        - name: Deploy Web Build
-          uses: FirebaseExtended/action-hosting-deploy@v0
-          with:
-            repoToken: '${{ secrets.GITHUB_TOKEN }}'
-            firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_IJOT_1DA7A }}'
-            channelId: live
-            projectId: ijot-1da7a
+        # - name: Deploy Web Build
+        #   uses: FirebaseExtended/action-hosting-deploy@v0
+        #   with:
+        #     repoToken: '${{ secrets.GITHUB_TOKEN }}'
+        #     firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_IJOT_1DA7A }}'
+        #     channelId: live
+        #     projectId: ijot-1da7a
 
 
     tag:

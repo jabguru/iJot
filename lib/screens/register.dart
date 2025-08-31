@@ -30,7 +30,7 @@ class RegisterState extends State<Register> {
 
   final _formKey = GlobalKey<FormState>();
 
-  handleSignUp() async {
+  Future<void> handleSignUp() async {
     final form = _formKey.currentState!;
 
     if (form.validate()) {
@@ -42,17 +42,19 @@ class RegisterState extends State<Register> {
       try {
         final fireBaseAuth = FirebaseAuth.instance;
         await fireBaseAuth.createUserWithEmailAndPassword(
-            email: _emailInput!.trim(), password: _passwordInput!.trim());
+          email: _emailInput!.trim(),
+          password: _passwordInput!.trim(),
+        );
         final User currentUser = fireBaseAuth.currentUser!;
         String userId = currentUser.uid;
 
         await AccountService.login(userId);
 
-        if (context.mounted) {
+        if (mounted) {
           context.go(MyRoutes.homeRoute);
         }
       } on FirebaseException catch (e) {
-        if (context.mounted) {
+        if (mounted) {
           showErrorSnackbar(context, message: e.message);
         }
       }
@@ -86,80 +88,86 @@ class RegisterState extends State<Register> {
               child: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.all(38.0),
-                  child: LayoutBuilder(builder: (context, constraints) {
-                    return SizedBox(
-                      width: constraints.maxWidth > 700 ? 400 : double.infinity,
-                      child: Column(
-                        children: [
-                          Image.asset('assets/images/logo-with-circle.png',
-                              height: 115.0),
-                          kVLargeVSpace,
-                          Form(
-                            key: _formKey,
-                            child: Column(
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      return SizedBox(
+                        width:
+                            constraints.maxWidth > 700 ? 400 : double.infinity,
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              'assets/images/logo-with-circle.png',
+                              height: 115.0,
+                            ),
+                            kVLargeVSpace,
+                            Form(
+                              key: _formKey,
+                              child: Column(
+                                children: [
+                                  TextFieldWidget(
+                                    validator: kEmailValidator,
+                                    onSaved: (value) => _emailInput = value,
+                                    hintText: 'email'.tr(),
+                                    keyboardType: TextInputType.emailAddress,
+                                  ),
+                                  kHalfVSpace,
+                                  TextFieldWidget(
+                                    validator: kPasswordValidator,
+                                    onSaved: (value) => _passwordInput = value,
+                                    hintText: 'password'.tr(),
+                                    obscureText: _hidePassword,
+                                    suffixIcon: ShowPasswordWidget(
+                                      onTap: () {
+                                        setState(() {
+                                          _hidePassword = !_hidePassword;
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                  kHalfVSpace,
+                                  CustomButton(
+                                    buttonColor: Theme.of(context).primaryColor,
+                                    onTap: handleSignUp,
+                                    text: 'sign_up'.tr(),
+                                    textColor: Colors.white,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            kHalfVSpace,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                TextFieldWidget(
-                                  validator: kEmailValidator,
-                                  onSaved: (value) => _emailInput = value,
-                                  hintText: 'email'.tr(),
-                                  keyboardType: TextInputType.emailAddress,
-                                ),
-                                kHalfVSpace,
-                                TextFieldWidget(
-                                  validator: kPasswordValidator,
-                                  onSaved: (value) => _passwordInput = value,
-                                  hintText: 'password'.tr(),
-                                  obscureText: _hidePassword,
-                                  suffixIcon: ShowPasswordWidget(
-                                    onTap: () {
-                                      setState(() {
-                                        _hidePassword = !_hidePassword;
-                                      });
-                                    },
+                                Text(
+                                  "${'already_have_an_account'.tr()} ",
+                                  style: const TextStyle(
+                                    fontSize: 15.0,
+                                    color: Colors.white,
+                                    fontFamily: 'Cabin',
                                   ),
                                 ),
-                                kHalfVSpace,
-                                CustomButton(
-                                  buttonColor: Theme.of(context).primaryColor,
-                                  onTap: handleSignUp,
-                                  text: 'sign_up'.tr(),
-                                  textColor: Colors.white,
-                                )
+                                GestureDetector(
+                                  onTap:
+                                      () => context.go(MyRoutes.loginRoute()),
+                                  child: MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    child: Text(
+                                      'sign_in'.tr(),
+                                      style: kNormalUnderlineTextStyle,
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
-                          ),
-                          kHalfVSpace,
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "${'already_have_an_account'.tr()} ",
-                                style: const TextStyle(
-                                  fontSize: 15.0,
-                                  color: Colors.white,
-                                  fontFamily: 'Cabin',
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () => context.go(MyRoutes.loginRoute()),
-                                child: MouseRegion(
-                                  cursor: SystemMouseCursors.click,
-                                  child: Text(
-                                    'sign_in'.tr(),
-                                    style: kNormalUnderlineTextStyle,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.07),
-                          const PrivacyPolicyWidget(),
-                        ],
-                      ),
-                    );
-                  }),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.07,
+                            ),
+                            const PrivacyPolicyWidget(),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
             ),

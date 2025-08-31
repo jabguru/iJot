@@ -26,18 +26,11 @@ class TimeStampEmbedBuilderWidget extends EmbedBuilder {
   }
 
   @override
-  Widget build(
-    BuildContext context,
-    QuillController controller,
-    Embed node,
-    bool readOnly,
-    bool inline,
-    TextStyle textStyle,
-  ) {
+  Widget build(BuildContext context, EmbedContext embedContext) {
     return Row(
       children: [
         const Icon(Icons.access_time_rounded),
-        Text(node.value.data as String),
+        Text(embedContext.node.value.data as String),
       ],
     );
   }

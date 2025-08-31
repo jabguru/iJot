@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -19,10 +21,7 @@ import 'package:ijot/widgets/textfield.dart';
 import 'package:modal_progress_hud_alt/modal_progress_hud_alt.dart';
 
 class Login extends StatefulWidget {
-  const Login({
-    super.key,
-    this.redirectToDeleteAccount = false,
-  });
+  const Login({super.key, this.redirectToDeleteAccount = false});
   final bool redirectToDeleteAccount;
 
   @override
@@ -36,9 +35,9 @@ class LoginState extends State<Login> {
   bool _isLoading = false;
 
   final _formKey = GlobalKey<FormState>();
-  final GoogleSignIn googleSignIn = GoogleSignIn();
+  final GoogleSignIn googleSignIn = GoogleSignIn.instance;
 
-  _naviagateToScreenOnSuccess() {
+  void _naviagateToScreenOnSuccess() {
     if (context.mounted) {
       context.go(
         widget.redirectToDeleteAccount
@@ -48,7 +47,7 @@ class LoginState extends State<Login> {
     }
   }
 
-  handleSignIn() async {
+  Future<void> handleSignIn() async {
     final form = _formKey.currentState!;
 
     if (form.validate()) {
@@ -77,31 +76,45 @@ class LoginState extends State<Login> {
         setState(() {
           _isLoading = false;
         });
-        if (context.mounted) {
+        if (mounted) {
           showErrorSnackbar(context, message: e.message);
         }
       }
     }
   }
 
-  _handleGoogleSignIn() {
+  void _handleGoogleSignIn() {
     try {
-      googleSignIn.signIn();
+      googleSignIn.authenticate();
     } catch (e) {
       // print('Error Signing in: $e');
-      showErrorSnackbar(context,
-          message: 'Unable to Sign in with Google, try again.');
+      showErrorSnackbar(
+        context,
+        message: 'Unable to Sign in with Google, try again.',
+      );
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-    googleSignIn.onCurrentUserChanged.listen((account) async {
-      setState(() {
-        _isLoading = true;
-      });
-      final GoogleSignInAccount currentUser = googleSignIn.currentUser!;
+  void _handleAuthenticationError(dynamic error) {
+    // print('Error Signing in: $error');
+    showErrorSnackbar(
+      context,
+      message: 'Unable to Sign in with Google, try again.',
+    );
+  }
+
+  Future<void> _handleAuthenticationEvent(
+    GoogleSignInAuthenticationEvent event,
+  ) async {
+    setState(() {
+      _isLoading = true;
+    });
+    final GoogleSignInAccount? currentUser = switch (event) {
+      GoogleSignInAuthenticationEventSignIn() => event.user,
+      GoogleSignInAuthenticationEventSignOut() => null,
+    };
+
+    if (currentUser != null) {
       String userId = currentUser.id;
 
       await AccountService.login(userId);
@@ -110,11 +123,19 @@ class LoginState extends State<Login> {
         _isLoading = false;
       });
       _naviagateToScreenOnSuccess();
-    }, onError: (error) {
-      // print('Error Signing in: $error');
-      showErrorSnackbar(context,
-          message: 'Unable to Sign in with Google, try again.');
-    });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    unawaited(
+      googleSignIn.initialize().then((_) {
+        googleSignIn.authenticationEvents
+            .listen(_handleAuthenticationEvent)
+            .onError(_handleAuthenticationError);
+      }),
+    );
   }
 
   @override
@@ -143,128 +164,140 @@ class LoginState extends State<Login> {
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.all(38.0),
-                    child: LayoutBuilder(builder: (context, constraints) {
-                      return SizedBox(
-                        width:
-                            constraints.maxWidth > 700 ? 400 : double.infinity,
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/logo-with-circle.png',
-                              height: 115.0,
-                            ),
-                            kVLargeVSpace,
-                            Form(
-                              key: _formKey,
-                              child: Column(
+                    child: LayoutBuilder(
+                      builder: (context, constraints) {
+                        return SizedBox(
+                          width:
+                              constraints.maxWidth > 700
+                                  ? 400
+                                  : double.infinity,
+                          child: Column(
+                            children: [
+                              Image.asset(
+                                'assets/images/logo-with-circle.png',
+                                height: 115.0,
+                              ),
+                              kVLargeVSpace,
+                              Form(
+                                key: _formKey,
+                                child: Column(
+                                  children: [
+                                    TextFieldWidget(
+                                      validator: kEmailValidator,
+                                      onSaved: (value) => _emailInput = value,
+                                      hintText: 'email'.tr(),
+                                      keyboardType: TextInputType.emailAddress,
+                                    ),
+                                    kHalfVSpace,
+                                    TextFieldWidget(
+                                      validator: kPasswordValidator,
+                                      onSaved:
+                                          (value) => _passwordInput = value,
+                                      hintText: 'password'.tr(),
+                                      obscureText: _hidePassword,
+                                      suffixIcon: ShowPasswordWidget(
+                                        onTap: () {
+                                          setState(() {
+                                            _hidePassword = !_hidePassword;
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                    kHalfVSpace,
+                                    GestureDetector(
+                                      onTap:
+                                          () => showForgotPasswordBottomSheet(
+                                            context,
+                                          ),
+                                      child: MouseRegion(
+                                        cursor: SystemMouseCursors.click,
+                                        child: Text(
+                                          'forgot_password'.tr(),
+                                          style: kNormalUnderlineTextStyle,
+                                        ),
+                                      ),
+                                    ),
+                                    kHalfVSpace,
+                                    CustomButton(
+                                      buttonColor:
+                                          Theme.of(context).primaryColor,
+                                      text: 'sign_in'.tr(),
+                                      textColor: Colors.white,
+                                      onTap: handleSignIn,
+                                    ),
+                                    kHalfVSpace,
+                                    Text(
+                                      'or'.tr(),
+                                      style: const TextStyle(
+                                        color: kGrey2,
+                                        fontSize: 12.0,
+                                      ),
+                                    ),
+                                    kHalfVSpace,
+                                    CustomButton(
+                                      buttonColor: Colors.white,
+                                      onTap: _handleGoogleSignIn,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            'assets/images/google-logo.png',
+                                            width: 30.0,
+                                          ),
+                                          kHalfHSpace,
+                                          Text(
+                                            'sign_in'.tr(),
+                                            style: TextStyle(
+                                              fontSize: 20.0,
+                                              color:
+                                                  Theme.of(
+                                                    context,
+                                                  ).primaryColor,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              kHalfVSpace,
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  TextFieldWidget(
-                                    validator: kEmailValidator,
-                                    onSaved: (value) => _emailInput = value,
-                                    hintText: 'email'.tr(),
-                                    keyboardType: TextInputType.emailAddress,
-                                  ),
-                                  kHalfVSpace,
-                                  TextFieldWidget(
-                                    validator: kPasswordValidator,
-                                    onSaved: (value) => _passwordInput = value,
-                                    hintText: 'password'.tr(),
-                                    obscureText: _hidePassword,
-                                    suffixIcon: ShowPasswordWidget(
-                                      onTap: () {
-                                        setState(() {
-                                          _hidePassword = !_hidePassword;
-                                        });
-                                      },
+                                  Text(
+                                    "${'dont_have_an_account'.tr()} ",
+                                    style: const TextStyle(
+                                      fontSize: 15.0,
+                                      color: Colors.white,
+                                      fontFamily: 'Cabin',
                                     ),
                                   ),
-                                  kHalfVSpace,
                                   GestureDetector(
-                                    onTap: () =>
-                                        showForgotPasswordBottomSheet(context),
+                                    onTap:
+                                        () =>
+                                            context.go(MyRoutes.registerRoute),
                                     child: MouseRegion(
                                       cursor: SystemMouseCursors.click,
                                       child: Text(
-                                        'forgot_password'.tr(),
+                                        'register'.tr(),
                                         style: kNormalUnderlineTextStyle,
                                       ),
                                     ),
                                   ),
-                                  kHalfVSpace,
-                                  CustomButton(
-                                    buttonColor: Theme.of(context).primaryColor,
-                                    text: 'sign_in'.tr(),
-                                    textColor: Colors.white,
-                                    onTap: handleSignIn,
-                                  ),
-                                  kHalfVSpace,
-                                  Text(
-                                    'or'.tr(),
-                                    style: const TextStyle(
-                                      color: kGrey2,
-                                      fontSize: 12.0,
-                                    ),
-                                  ),
-                                  kHalfVSpace,
-                                  CustomButton(
-                                    buttonColor: Colors.white,
-                                    onTap: _handleGoogleSignIn,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Image.asset(
-                                          'assets/images/google-logo.png',
-                                          width: 30.0,
-                                        ),
-                                        kHalfHSpace,
-                                        Text(
-                                          'sign_in'.tr(),
-                                          style: TextStyle(
-                                            fontSize: 20.0,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
                                 ],
                               ),
-                            ),
-                            kHalfVSpace,
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "${'dont_have_an_account'.tr()} ",
-                                  style: const TextStyle(
-                                    fontSize: 15.0,
-                                    color: Colors.white,
-                                    fontFamily: 'Cabin',
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: () =>
-                                      context.go(MyRoutes.registerRoute),
-                                  child: MouseRegion(
-                                    cursor: SystemMouseCursors.click,
-                                    child: Text(
-                                      'register'.tr(),
-                                      style: kNormalUnderlineTextStyle,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
+                              SizedBox(
                                 height:
-                                    MediaQuery.of(context).size.height * 0.07),
-                            const PrivacyPolicyWidget(),
-                          ],
-                        ),
-                      );
-                    }),
+                                    MediaQuery.of(context).size.height * 0.07,
+                              ),
+                              const PrivacyPolicyWidget(),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),

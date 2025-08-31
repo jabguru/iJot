@@ -25,19 +25,19 @@ import 'package:flutter/material.dart';
 //   }
 // }
 
-void showSuccessSnackbar(BuildContext context,
-    {String? title, String? message}) {
+void showSuccessSnackbar(
+  BuildContext context, {
+  String? title,
+  String? message,
+}) {
   Flushbar(
     margin: const EdgeInsets.all(20.0),
     padding: const EdgeInsets.all(20.0),
     borderRadius: BorderRadius.circular(15.0),
     title: title,
     message: message,
-    backgroundColor: Theme.of(context).primaryColor.withOpacity(0.9),
-    icon: const Icon(
-      Icons.check_circle,
-      color: Colors.white,
-    ),
+    backgroundColor: Theme.of(context).primaryColor.withValues(alpha: 0.9),
+    icon: const Icon(Icons.check_circle, color: Colors.white),
     duration: const Duration(seconds: 3),
   ).show(context);
 }
@@ -48,12 +48,8 @@ void showErrorSnackbar(BuildContext context, {String? title, String? message}) {
     padding: const EdgeInsets.all(20.0),
     borderRadius: BorderRadius.circular(15.0),
     message: message,
-    backgroundColor: Theme.of(context).primaryColor.withOpacity(0.9),
-    icon: const Icon(
-      Icons.warning,
-      size: 28.0,
-      color: Colors.red,
-    ),
+    backgroundColor: Theme.of(context).primaryColor.withValues(alpha: 0.9),
+    icon: const Icon(Icons.warning, size: 28.0, color: Colors.red),
     duration: const Duration(seconds: 3),
   ).show(context);
 }

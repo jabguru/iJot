@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+
 import 'package:hive/hive.dart';
 import 'package:ijot/models/note.dart';
 import 'package:ijot/services/firebase_firestore.dart';
@@ -21,7 +22,7 @@ class NoteService {
   static bool userItemsAvailable = false;
   Box<Note> get notesBox => hiveService.notesBox;
 
-  static initialize(userId) async {
+  static Future<void> initialize(String? userId) async {
     if (userId != null) {
       NoteService noteService = NoteService(
         hiveService: HiveService(),
@@ -85,16 +86,17 @@ class NoteService {
     }
   }
 
-  static deletePhotos(Note note) {
+  static void deletePhotos(Note note) {
     if (note.detailsJSON != null) {
       String noteText = note.detailsJSON!;
       List<dynamic> listOfLines = jsonDecode(noteText);
-      List<Map> maps = listOfLines.map((e) => e as Map).where((element) {
-        if (element['insert'] is Map) {
-          return element['insert'].containsKey('image');
-        }
-        return false;
-      }).toList();
+      List<Map> maps =
+          listOfLines.map((e) => e as Map).where((element) {
+            if (element['insert'] is Map) {
+              return element['insert'].containsKey('image');
+            }
+            return false;
+          }).toList();
 
       for (Map map in maps) {
         String url = map['insert']['image'];
@@ -110,11 +112,12 @@ class NoteService {
     }
   }
 
-  cloudToLocal() async {
+  Future<void> cloudToLocal() async {
     try {
       if (loggedInUserId != null) {
-        final docs =
-            await firebaseFirestoreService.getUserNotes(loggedInUserId!);
+        final docs = await firebaseFirestoreService.getUserNotes(
+          loggedInUserId!,
+        );
 
         for (var doc in docs) {
           bool isContained = false;
@@ -140,7 +143,7 @@ class NoteService {
     }
   }
 
-  deleteNotesDeletedFromOtherDevices() async {
+  Future<void> deleteNotesDeletedFromOtherDevices() async {
     final docs = await firebaseFirestoreService.getUserNotes(loggedInUserId!);
 
     List<Note> cloudNotes =
@@ -148,8 +151,9 @@ class NoteService {
 
     for (var i = 0; i < notesBox.length; i++) {
       if (loggedInUserId == notesBox.getAt(i)!.ownerId) {
-        Iterable<Note> containedNotes =
-            cloudNotes.where((Note note) => note.id == notesBox.getAt(i)!.id);
+        Iterable<Note> containedNotes = cloudNotes.where(
+          (Note note) => note.id == notesBox.getAt(i)!.id,
+        );
         if (containedNotes.isEmpty) {
           notesBox.deleteAt(i);
         }

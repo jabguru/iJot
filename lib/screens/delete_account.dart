@@ -24,7 +24,7 @@ class DeleteAccountScreenScreen extends StatefulWidget {
 class _DeleteAccountScreenScreenState extends State<DeleteAccountScreenScreen> {
   bool _isLoading = false;
 
-  _handleDeleteAccount() async {
+  Future<void> _handleDeleteAccount() async {
     setState(() {
       _isLoading = true;
     });
@@ -32,9 +32,9 @@ class _DeleteAccountScreenScreenState extends State<DeleteAccountScreenScreen> {
     setState(() {
       _isLoading = false;
     });
-    if (context.mounted) {
-      context.go(MyRoutes.loginRoute(redirectToDeleteAccount: !deleted));
 
+    if (mounted) {
+      context.go(MyRoutes.loginRoute(redirectToDeleteAccount: !deleted));
       if (deleted) {
         showSuccessSnackbar(context, message: 'delete_account_sucessful'.tr());
       } else {
@@ -60,7 +60,9 @@ class _DeleteAccountScreenScreenState extends State<DeleteAccountScreenScreen> {
             children: [
               CustomContainer(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 16.0, vertical: 24.0),
+                  horizontal: 16.0,
+                  vertical: 24.0,
+                ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
@@ -72,9 +74,7 @@ class _DeleteAccountScreenScreenState extends State<DeleteAccountScreenScreen> {
                     Text(
                       'delete_account_confirmation_details'.tr(),
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: kGrey1,
-                      ),
+                      style: const TextStyle(color: kGrey1),
                     ),
                     kLargeVSpace,
                     Row(
