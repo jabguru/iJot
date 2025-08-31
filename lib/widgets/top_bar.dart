@@ -36,7 +36,7 @@ class TopBarWidget extends StatelessWidget {
         Padding(
           padding: EdgeInsets.fromLTRB(
             screenGreaterThan700 ? 40.0 : 16.0,
-            kIsWeb ? 20.0 : 40.0,
+            kIsWeb ? 20.0 : 10.0,
             screenGreaterThan700 ? 40.0 : 16.0,
             8.0,
           ),
@@ -48,10 +48,7 @@ class TopBarWidget extends StatelessWidget {
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
                   onTap: () => kIsWeb ? context.go(MyRoutes.homeRoute) : null,
-                  child: Image.asset(
-                    'assets/images/logo.png',
-                    height: 38.0,
-                  ),
+                  child: Image.asset('assets/images/logo.png', height: 38.0),
                 ),
               ),
               kLargeHSpace,
@@ -67,8 +64,9 @@ class TopBarWidget extends StatelessWidget {
                         height: 35.0,
                         decoration: BoxDecoration(
                           color: kPurple1,
-                          borderRadius:
-                              BorderRadius.circular(kCircularBorderRadius),
+                          borderRadius: BorderRadius.circular(
+                            kCircularBorderRadius,
+                          ),
                         ),
                         child: TextButton(
                           style: TextButton.styleFrom(
@@ -94,9 +92,7 @@ class TopBarWidget extends StatelessWidget {
                       ),
                     kHSpace6,
                     GestureDetector(
-                      onTap: () => context.go(
-                        MyRoutes.languageRoute(),
-                      ),
+                      onTap: () => context.go(MyRoutes.languageRoute()),
                       child: MouseRegion(
                         cursor: SystemMouseCursors.click,
                         child: Icon(

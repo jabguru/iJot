@@ -40,9 +40,10 @@ class CustomScaffoldState extends State<CustomScaffold> {
   Widget _buildMainContent(bool screenGreaterThan700) {
     Widget child = Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: screenGreaterThan700
-            ? 40.0
-            : widget.mainContentPadding
+        horizontal:
+            screenGreaterThan700
+                ? 40.0
+                : widget.mainContentPadding
                 ? 16.0
                 : 0.0,
       ),
@@ -81,29 +82,32 @@ class CustomScaffoldState extends State<CustomScaffold> {
             gradient: kLinearGradient,
             color: Colors.white,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (widget.hasTopBars)
-                TopBarWidget(
-                  title: widget.title,
-                  screenGreaterThan700: screenGreaterThan700,
-                  extraWidget: widget.extraTopBarWidget,
-                  showTopSaveButton: widget.showTopSaveButton,
-                  editMode: widget.editMode,
-                  onTap: widget.onTap,
-                ),
-              Expanded(
-                child: _buildMainContent(screenGreaterThan700),
-              ),
-              kHalfVSpace,
-              if (widget.hasBottomBars)
-                BottomBarWidget(
-                  screenGreaterThan700: screenGreaterThan700,
-                  editMode: widget.editMode,
-                  onTap: widget.onTap,
-                )
-            ],
+          child: SafeArea(
+            left: false,
+            right: false,
+            bottom: false,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (widget.hasTopBars)
+                  TopBarWidget(
+                    title: widget.title,
+                    screenGreaterThan700: screenGreaterThan700,
+                    extraWidget: widget.extraTopBarWidget,
+                    showTopSaveButton: widget.showTopSaveButton,
+                    editMode: widget.editMode,
+                    onTap: widget.onTap,
+                  ),
+                Expanded(child: _buildMainContent(screenGreaterThan700)),
+                kHalfVSpace,
+                if (widget.hasBottomBars)
+                  BottomBarWidget(
+                    screenGreaterThan700: screenGreaterThan700,
+                    editMode: widget.editMode,
+                    onTap: widget.onTap,
+                  ),
+              ],
+            ),
           ),
         ),
       ),
