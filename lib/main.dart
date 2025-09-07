@@ -4,6 +4,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ijot/constants/colors.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/constants/supported_locales.dart';
@@ -37,7 +38,7 @@ void main() async {
     EasyLocalization(
       path: 'assets/translations',
       supportedLocales: supportedLocales,
-      child: const MyApp(),
+      child: ProviderScope(child: const MyApp()),
     ),
   );
 }
