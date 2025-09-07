@@ -24,17 +24,45 @@ class AuthNotifier extends _$AuthNotifier {
 
   void init({
     required BuildContext context,
-    required bool redirectToDeleteAccount,
+    bool isLogin = false,
+    bool redirectToDeleteAccount = false,
   }) {
     _redirectToDeleteAccount = redirectToDeleteAccount;
     _context = context;
-    unawaited(
-      googleSignIn.initialize().then((_) {
-        googleSignIn.authenticationEvents
-            .listen(_handleAuthenticationEvent)
-            .onError(_handleAuthenticationError);
-      }),
-    );
+    if (isLogin) {
+      unawaited(
+        googleSignIn.initialize().then((_) {
+          googleSignIn.authenticationEvents
+              .listen(_handleAuthenticationEvent)
+              .onError(_handleAuthenticationError);
+        }),
+      );
+    }
+  }
+
+  Future<void> signUp({required String email, required String password}) async {
+    state = true;
+    try {
+      final fireBaseAuth = FirebaseAuth.instance;
+      await fireBaseAuth.createUserWithEmailAndPassword(
+        email: email.trim(),
+        password: password.trim(),
+      );
+      final User currentUser = fireBaseAuth.currentUser!;
+      String userId = currentUser.uid;
+
+      await AccountService.login(userId);
+
+      if (_context?.mounted ?? false) {
+        _context!.go(MyRoutes.homeRoute);
+      }
+    } on FirebaseException catch (e) {
+      if (_context?.mounted ?? false) {
+        showErrorSnackbar(_context!, message: e.message);
+      }
+    }
+
+    state = false;
   }
 
   Future<void> signIn({required String email, required String password}) async {

@@ -52,6 +52,7 @@ class LoginState extends ConsumerState<Login> {
         .init(
           context: context,
           redirectToDeleteAccount: widget.redirectToDeleteAccount,
+          isLogin: true,
         );
   }
 
