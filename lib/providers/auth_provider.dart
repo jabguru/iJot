@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -99,6 +100,24 @@ class AuthNotifier extends _$AuthNotifier {
           _context!,
           message: 'Unable to Sign in with Google, try again.',
         );
+      }
+    }
+  }
+
+  Future<void> deleteAccount() async {
+    state = true;
+    bool deleted = await AccountService.deleteAccount();
+    state = false;
+
+    if (_context?.mounted ?? false) {
+      _context!.go(MyRoutes.loginRoute(redirectToDeleteAccount: !deleted));
+      if (deleted) {
+        showSuccessSnackbar(
+          _context!,
+          message: 'delete_account_sucessful'.tr(),
+        );
+      } else {
+        showErrorSnackbar(_context!, message: 'delete_account_error'.tr());
       }
     }
   }
