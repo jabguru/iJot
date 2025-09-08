@@ -1,141 +1,59 @@
 import 'dart:async';
 
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ijot/constants/colors.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/constants/spaces.dart';
-import 'package:ijot/services/account.dart';
+import 'package:ijot/providers/auth_provider.dart';
 import 'package:ijot/widgets/button.dart';
 import 'package:ijot/widgets/custom_scaffold.dart';
 import 'package:ijot/widgets/password_reset.dart';
 import 'package:ijot/widgets/privacy_policy.dart';
 import 'package:ijot/widgets/progress.dart';
 import 'package:ijot/widgets/show_password.dart';
-import 'package:ijot/widgets/snackbar.dart';
 import 'package:ijot/widgets/textfield.dart';
 import 'package:modal_progress_hud_alt/modal_progress_hud_alt.dart';
 
-class Login extends StatefulWidget {
+class Login extends ConsumerStatefulWidget {
   const Login({super.key, this.redirectToDeleteAccount = false});
   final bool redirectToDeleteAccount;
 
   @override
-  LoginState createState() => LoginState();
+  ConsumerState<ConsumerStatefulWidget> createState() => LoginState();
 }
 
-class LoginState extends State<Login> {
+class LoginState extends ConsumerState<Login> {
   bool _hidePassword = true;
   String? _emailInput;
   String? _passwordInput;
-  bool _isLoading = false;
 
   final _formKey = GlobalKey<FormState>();
-  final GoogleSignIn googleSignIn = GoogleSignIn.instance;
 
-  void _naviagateToScreenOnSuccess() {
-    if (context.mounted) {
-      context.go(
-        widget.redirectToDeleteAccount
-            ? MyRoutes.deleteAccountRoute
-            : MyRoutes.homeRoute,
-      );
-    }
-  }
-
-  Future<void> handleSignIn() async {
+  Future<void> _handleSignIn() async {
     final form = _formKey.currentState!;
 
     if (form.validate()) {
-      setState(() {
-        _isLoading = true;
-      });
       form.save();
-
-      try {
-        final fireBaseAuth = FirebaseAuth.instance;
-        await fireBaseAuth.signInWithEmailAndPassword(
-          email: _emailInput!.trim(),
-          password: _passwordInput!.trim(),
-        );
-        final User currentUser = fireBaseAuth.currentUser!;
-        String userId = currentUser.uid;
-
-        await AccountService.login(userId);
-
-        setState(() {
-          _isLoading = false;
-        });
-
-        _naviagateToScreenOnSuccess();
-      } on FirebaseException catch (e) {
-        setState(() {
-          _isLoading = false;
-        });
-        if (mounted) {
-          showErrorSnackbar(context, message: e.message);
-        }
-      }
-    }
-  }
-
-  void _handleGoogleSignIn() {
-    try {
-      googleSignIn.authenticate();
-    } catch (e) {
-      // print('Error Signing in: $e');
-      showErrorSnackbar(
-        context,
-        message: 'Unable to Sign in with Google, try again.',
-      );
-    }
-  }
-
-  void _handleAuthenticationError(dynamic error) {
-    // print('Error Signing in: $error');
-    showErrorSnackbar(
-      context,
-      message: 'Unable to Sign in with Google, try again.',
-    );
-  }
-
-  Future<void> _handleAuthenticationEvent(
-    GoogleSignInAuthenticationEvent event,
-  ) async {
-    setState(() {
-      _isLoading = true;
-    });
-    final GoogleSignInAccount? currentUser = switch (event) {
-      GoogleSignInAuthenticationEventSignIn() => event.user,
-      GoogleSignInAuthenticationEventSignOut() => null,
-    };
-
-    if (currentUser != null) {
-      String userId = currentUser.id;
-
-      await AccountService.login(userId);
-
-      setState(() {
-        _isLoading = false;
-      });
-      _naviagateToScreenOnSuccess();
+      ref
+          .read(authNotifierProvider.notifier)
+          .signIn(email: _emailInput!, password: _passwordInput!);
     }
   }
 
   @override
   void initState() {
     super.initState();
-    unawaited(
-      googleSignIn.initialize().then((_) {
-        googleSignIn.authenticationEvents
-            .listen(_handleAuthenticationEvent)
-            .onError(_handleAuthenticationError);
-      }),
-    );
+    ref
+        .read(authNotifierProvider.notifier)
+        .init(
+          context: context,
+          redirectToDeleteAccount: widget.redirectToDeleteAccount,
+          isLogin: true,
+        );
   }
 
   @override
@@ -146,7 +64,7 @@ class LoginState extends State<Login> {
         title: 'sign_in'.tr(),
         shouldShrink: false,
         child: ModalProgressHUD(
-          inAsyncCall: _isLoading,
+          inAsyncCall: ref.watch(authNotifierProvider),
           color: Theme.of(context).primaryColor,
           progressIndicator: circularProgress(),
           child: Stack(
@@ -223,7 +141,7 @@ class LoginState extends State<Login> {
                                           Theme.of(context).primaryColor,
                                       text: 'sign_in'.tr(),
                                       textColor: Colors.white,
-                                      onTap: handleSignIn,
+                                      onTap: _handleSignIn,
                                     ),
                                     kHalfVSpace,
                                     Text(
@@ -236,7 +154,12 @@ class LoginState extends State<Login> {
                                     kHalfVSpace,
                                     CustomButton(
                                       buttonColor: Colors.white,
-                                      onTap: _handleGoogleSignIn,
+                                      onTap:
+                                          ref
+                                              .read(
+                                                authNotifierProvider.notifier,
+                                              )
+                                              .signInWithGoogle,
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,

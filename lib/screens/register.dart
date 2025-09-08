@@ -1,67 +1,51 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ijot/constants/constants.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/constants/spaces.dart';
-import 'package:ijot/services/account.dart';
+import 'package:ijot/providers/auth_provider.dart';
 import 'package:ijot/widgets/button.dart';
 import 'package:ijot/widgets/custom_scaffold.dart';
 import 'package:ijot/widgets/privacy_policy.dart';
 import 'package:ijot/widgets/progress.dart';
 import 'package:ijot/widgets/show_password.dart';
-import 'package:ijot/widgets/snackbar.dart';
 import 'package:ijot/widgets/textfield.dart';
 import 'package:modal_progress_hud_alt/modal_progress_hud_alt.dart';
 
-class Register extends StatefulWidget {
+class Register extends ConsumerStatefulWidget {
   const Register({super.key});
 
   @override
-  RegisterState createState() => RegisterState();
+  ConsumerState<ConsumerStatefulWidget> createState() => RegisterState();
+
+  // @override
+  // RegisterState createState() => RegisterState();
 }
 
-class RegisterState extends State<Register> {
+class RegisterState extends ConsumerState<Register> {
   bool _hidePassword = true;
   String? _emailInput;
   String? _passwordInput;
-  bool _isLoading = false;
 
   final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    ref.read(authNotifierProvider.notifier).init(context: context);
+  }
 
   Future<void> handleSignUp() async {
     final form = _formKey.currentState!;
 
     if (form.validate()) {
-      setState(() {
-        _isLoading = true;
-      });
       form.save();
 
-      try {
-        final fireBaseAuth = FirebaseAuth.instance;
-        await fireBaseAuth.createUserWithEmailAndPassword(
-          email: _emailInput!.trim(),
-          password: _passwordInput!.trim(),
-        );
-        final User currentUser = fireBaseAuth.currentUser!;
-        String userId = currentUser.uid;
-
-        await AccountService.login(userId);
-
-        if (mounted) {
-          context.go(MyRoutes.homeRoute);
-        }
-      } on FirebaseException catch (e) {
-        if (mounted) {
-          showErrorSnackbar(context, message: e.message);
-        }
-      }
-
-      setState(() {
-        _isLoading = false;
-      });
+      ref
+          .read(authNotifierProvider.notifier)
+          .signUp(email: _emailInput!, password: _passwordInput!);
     }
   }
 
@@ -70,7 +54,7 @@ class RegisterState extends State<Register> {
     return CustomScaffold(
       title: 'register'.tr(),
       child: ModalProgressHUD(
-        inAsyncCall: _isLoading,
+        inAsyncCall: ref.watch(authNotifierProvider),
         color: Theme.of(context).primaryColor,
         progressIndicator: circularProgress(),
         child: Stack(
