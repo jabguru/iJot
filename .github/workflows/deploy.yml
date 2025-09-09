@@ -62,6 +62,7 @@ jobs:
         - name: Build and Deploy
           run: |
             flutter pub get
+            sed -i '/integration_test/d' android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
             make deploy-android
         
     web:
