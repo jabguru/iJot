@@ -1,13 +1,9 @@
 import 'dart:async';
 
-import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:ijot/constants/routes.dart';
 import 'package:ijot/services/account.dart';
-import 'package:ijot/widgets/snackbar.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_provider.g.dart';
@@ -15,12 +11,10 @@ part 'auth_provider.g.dart';
 @riverpod
 class AuthNotifier extends _$AuthNotifier {
   final GoogleSignIn googleSignIn = GoogleSignIn.instance;
-  bool _redirectToDeleteAccount = false;
-  BuildContext? _context;
 
   @override
-  bool build() {
-    return false;
+  AsyncValue<bool> build() {
+    return AsyncValue.data(false);
   }
 
   void init({
@@ -28,8 +22,6 @@ class AuthNotifier extends _$AuthNotifier {
     bool isLogin = false,
     bool redirectToDeleteAccount = false,
   }) {
-    _redirectToDeleteAccount = redirectToDeleteAccount;
-    _context = context;
     if (isLogin) {
       unawaited(
         googleSignIn.initialize().then((_) {
@@ -42,7 +34,7 @@ class AuthNotifier extends _$AuthNotifier {
   }
 
   Future<void> signUp({required String email, required String password}) async {
-    state = true;
+    state = const AsyncValue.loading();
     try {
       final fireBaseAuth = FirebaseAuth.instance;
       await fireBaseAuth.createUserWithEmailAndPassword(
@@ -53,21 +45,18 @@ class AuthNotifier extends _$AuthNotifier {
       String userId = currentUser.uid;
 
       await AccountService.login(userId);
-
-      if (_context?.mounted ?? false) {
-        _context!.go(MyRoutes.homeRoute);
-      }
     } on FirebaseException catch (e) {
-      if (_context?.mounted ?? false) {
-        showErrorSnackbar(_context!, message: e.message);
-      }
+      state = AsyncValue.error(
+        e.message ?? 'An error occurred, please try again.',
+        StackTrace.current,
+      );
     }
 
-    state = false;
+    state = const AsyncValue.data(true);
   }
 
   Future<void> signIn({required String email, required String password}) async {
-    state = true;
+    state = const AsyncValue.loading();
 
     try {
       final fireBaseAuth = FirebaseAuth.instance;
@@ -79,15 +68,14 @@ class AuthNotifier extends _$AuthNotifier {
       String userId = currentUser.uid;
 
       await AccountService.login(userId);
-
-      state = false;
-      _naviagateToScreenOnSuccess();
     } on FirebaseException catch (e) {
-      state = false;
-      if (_context?.mounted ?? false) {
-        showErrorSnackbar(_context!, message: e.message);
-      }
+      state = AsyncValue.error(
+        e.message ?? 'An error occurred, please try again.',
+        StackTrace.current,
+      );
     }
+
+    state = const AsyncValue.data(true);
   }
 
   void signInWithGoogle() {
@@ -95,37 +83,22 @@ class AuthNotifier extends _$AuthNotifier {
       googleSignIn.authenticate();
     } catch (e) {
       // print('Error Signing in: $e');
-      if (_context?.mounted ?? false) {
-        showErrorSnackbar(
-          _context!,
-          message: 'Unable to Sign in with Google, try again.',
-        );
-      }
+      state = AsyncValue.error(e.toString(), StackTrace.current);
     }
   }
 
   Future<void> deleteAccount() async {
-    state = true;
-    bool deleted = await AccountService.deleteAccount();
-    state = false;
+    state = const AsyncValue.loading();
 
-    if (_context?.mounted ?? false) {
-      _context!.go(MyRoutes.loginRoute(redirectToDeleteAccount: !deleted));
-      if (deleted) {
-        showSuccessSnackbar(
-          _context!,
-          message: 'delete_account_sucessful'.tr(),
-        );
-      } else {
-        showErrorSnackbar(_context!, message: 'delete_account_error'.tr());
-      }
-    }
+    bool deleted = await AccountService.deleteAccount();
+    state = AsyncValue.data(deleted);
   }
 
   Future<void> _handleAuthenticationEvent(
     GoogleSignInAuthenticationEvent event,
   ) async {
-    state = true;
+    state = const AsyncValue.loading();
+
     final GoogleSignInAccount? currentUser = switch (event) {
       GoogleSignInAuthenticationEventSignIn() => event.user,
       GoogleSignInAuthenticationEventSignOut() => null,
@@ -136,28 +109,15 @@ class AuthNotifier extends _$AuthNotifier {
 
       await AccountService.login(userId);
 
-      state = false;
-      _naviagateToScreenOnSuccess();
+      state = const AsyncValue.data(true);
     }
   }
 
   void _handleAuthenticationError(dynamic error) {
     // print('Error Signing in: $error');
-    if (_context?.mounted ?? false) {
-      showErrorSnackbar(
-        _context!,
-        message: 'Unable to Sign in with Google, try again.',
-      );
-    }
-  }
-
-  void _naviagateToScreenOnSuccess() {
-    if (_context?.mounted ?? false) {
-      _context!.go(
-        _redirectToDeleteAccount
-            ? MyRoutes.deleteAccountRoute
-            : MyRoutes.homeRoute,
-      );
-    }
+    state = AsyncValue.error(
+      'Unable to Sign in with Google, try again.',
+      StackTrace.current,
+    );
   }
 }

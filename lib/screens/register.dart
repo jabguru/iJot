@@ -11,6 +11,7 @@ import 'package:ijot/widgets/custom_scaffold.dart';
 import 'package:ijot/widgets/privacy_policy.dart';
 import 'package:ijot/widgets/progress.dart';
 import 'package:ijot/widgets/show_password.dart';
+import 'package:ijot/widgets/snackbar.dart';
 import 'package:ijot/widgets/textfield.dart';
 import 'package:modal_progress_hud_alt/modal_progress_hud_alt.dart';
 
@@ -51,10 +52,24 @@ class RegisterState extends ConsumerState<Register> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen(authNotifierProvider, (_, next) {
+      next.when(
+        data: (data) {
+          if (context.mounted) {
+            context.go(MyRoutes.homeRoute);
+          }
+        },
+        error: (error, st) {
+          showErrorSnackbar(context, message: error.toString());
+        },
+        loading: () {},
+      );
+    });
+
     return CustomScaffold(
       title: 'register'.tr(),
       child: ModalProgressHUD(
-        inAsyncCall: ref.watch(authNotifierProvider),
+        inAsyncCall: ref.watch(authNotifierProvider).isLoading,
         color: Theme.of(context).primaryColor,
         progressIndicator: circularProgress(),
         child: Stack(
