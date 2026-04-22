@@ -30,11 +30,11 @@ dependencies:
   easy_localization: ^3.0.8
   equatable: ^2.0.7
   file_picker: ^10.3.2
-  firebase_auth: ^6.0.1
-  firebase_auth_web: ^6.0.1
-  firebase_core: ^4.0.0
-  firebase_crashlytics: ^5.0.0
-  firebase_storage: ^13.0.0
+  firebase_auth: ^6.4.0
+  firebase_auth_web: ^6.1.5
+  firebase_core: ^4.7.0
+  firebase_crashlytics: ^5.2.0
+  firebase_storage: ^13.3.0
   flutter:
     sdk: flutter
   flutter_lints: ^6.0.0

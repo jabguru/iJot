@@ -22,7 +22,7 @@ if (localPropertiesFile.exists()) {
 
 android {
     namespace "com.jabguru.iJot"
-    ndkVersion "27.0.12077973"
+    ndkVersion "28.2.13676358"
     compileSdkVersion 36
 
     compileOptions {
