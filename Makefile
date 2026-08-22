@@ -3,7 +3,7 @@ test:
 	flutter test
 
 deploy-android:
-	@echo "╠ Sending Android Build to Closed Testing..."
+	@echo "╠ Sending Android Build to Production..."
 	cd android && bundle install
 	cd android/fastlane && bundle exec fastlane deploy
 
