@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:ijot/constants/colors.dart';
 import 'package:ijot/constants/routes.dart';
 import 'package:ijot/constants/supported_locales.dart';
@@ -12,7 +13,6 @@ import 'package:ijot/firebase_options.dart';
 import 'package:ijot/services/account.dart';
 import 'package:ijot/services/hive.dart';
 import 'package:ijot/services/note.dart';
-import 'package:url_strategy/url_strategy.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +33,7 @@ void main() async {
     return true;
   };
 
-  setPathUrlStrategy();
+  usePathUrlStrategy();
   runApp(
     EasyLocalization(
       path: 'assets/translations',

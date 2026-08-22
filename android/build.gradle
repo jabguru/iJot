@@ -12,6 +12,20 @@ subprojects {
 subprojects {
     project.evaluationDependsOn(':app')
 }
+subprojects {
+    project.configurations.all {
+        resolutionStrategy {
+            // Force androidx.datastore to 1.1.7 because 1.2.0 ships
+            // libdatastore_shared_counter.so that is not 16KB page-size aligned
+            force 'androidx.datastore:datastore:1.1.7'
+            force 'androidx.datastore:datastore-android:1.1.7'
+            force 'androidx.datastore:datastore-core:1.1.7'
+            force 'androidx.datastore:datastore-core-android:1.1.7'
+            force 'androidx.datastore:datastore-preferences:1.1.7'
+            force 'androidx.datastore:datastore-preferences-android:1.1.7'
+        }
+    }
+}
 
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
